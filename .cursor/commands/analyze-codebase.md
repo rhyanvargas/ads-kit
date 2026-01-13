@@ -12,19 +12,22 @@ If no scope is provided, analyze the whole repo.
 
 ## Constraints
 - [ ] Do **not** modify code or files (report only)
-- [ ] Exclude `node_modules/` from all searches
+- [ ] Exclude `node_modules/`, `dist/`, `.next/`, `build/` from all searches
 - [ ] Avoid reading large generated/lock files
 
 ## Steps
 
 1. **Load rules**
    - Read all `.cursor/rules/**/RULE.md` files
-   - Extract verifiable requirements with applicability (global vs glob-scoped)
+   - Extract verifiable requirements with applicability:
+     - `alwaysApply: true` → applies to entire codebase
+     - `globs: [...]` → applies only to matching file patterns
+     - No frontmatter → agent-decided based on context
 
 2. **Scan the codebase**
    - Use grep/search to find high-signal patterns
    - Targeted file reads only for confirmation
-   - Apply rules to their scoped paths (e.g., `express-backend` → `ai_request_form_backend/**/*.ts`)
+   - Apply glob-scoped rules only to matching paths
 
 3. **Detect rule-doc conflicts**
    - Cross-check rule documents for contradictions
