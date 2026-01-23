@@ -1,27 +1,38 @@
 # Quick Start
 
-Set up minimal Cursor rules for your project. This is the **recommended approach** for most projects.
-
 ## Overview
 
-Creates a single, focused rule file based on YOUR project's unique patterns. Follows Cursor best practices: *"Add rules only when you notice Agent making the same mistake repeatedly."*
+Set up minimal Cursor rules for your project. Creates a single, focused rule file based on YOUR project's unique patterns.
 
-## What This Does
+> **Philosophy**: *"Add rules only when Agent makes the same mistake repeatedly."* — Cursor Docs
 
-1. Asks about your project's unique architecture decisions
-2. Creates ONE rule file: `.cursor/rules/project.mdc`
-3. Optionally creates `AGENTS.md` for simpler projects
+## Parameters
 
-## Questions
+```text
+/quick-start              # Interactive setup
+/quick-start agents-only  # Creates only AGENTS.md (simplest)
+```
 
-**Architecture:**
-- What's your folder structure? (feature-based, layer-based, custom)
-- What internal libraries should Agent know about?
-- What patterns do you use that DIFFER from defaults?
-- What anti-patterns should Agent avoid?
+## Steps
 
-**References:**
-- Point to 2-3 canonical example files for Agent to follow
+1. **Ask architecture questions**
+   - Folder structure? (feature-based, layer-based, custom)
+   - Internal libraries Agent doesn't know about?
+   - Patterns that DIFFER from defaults?
+   - Anti-patterns to avoid?
+
+2. **Identify reference files**
+   - Ask user for 2-3 canonical example files
+   - These become `@path/to/file` references in the rule
+
+3. **Create rule file**
+   - Use template at `.cursor/templates/rules/project.mdc`
+   - Output to `.cursor/rules/project.mdc`
+   - For `agents-only`: create `AGENTS.md` in project root instead
+
+4. **Summarize**
+   - Show what was created
+   - Remind user: add more rules only when needed
 
 ## Output
 
@@ -49,16 +60,16 @@ alwaysApply: true
 @path/to/example-api-route.ts
 ```
 
-## Parameters
+## When to Use Extended Templates
 
-- `/quick-start` — interactive setup
-- `/quick-start agents-only` — creates only AGENTS.md (simplest option)
+Use `/create-rules` instead if:
+- Large teams needing comprehensive documentation
+- Compliance/audit requirements
+- Code review automation
 
-## When to Use Extended Templates Instead
+## Completion Checklist
 
-Use `/create-general-rules` and extended templates if:
-- You need comprehensive documentation for large teams
-- You have compliance/audit requirements
-- You want detailed rules for code review automation
-
-Extended templates are in `.cursor/templates/extended/rules/`.
+- [ ] Architecture questions answered
+- [ ] Reference files identified
+- [ ] Rule file created (`.cursor/rules/project.mdc` or `AGENTS.md`)
+- [ ] User reminded to add rules incrementally

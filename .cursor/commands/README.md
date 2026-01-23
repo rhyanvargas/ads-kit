@@ -8,11 +8,7 @@ Custom commands for project setup, analysis, and rule generation.
 |---------|---------|-----------------|
 | `/quick-start` | **Create minimal, focused rules** | ⭐ Most projects |
 | `/init-project-config` | Capture architecture decisions → config | Extended setup |
-| `/create-general-rules` | Framework-agnostic standards (5 rules) | Large teams |
-| `/create-lang-rules` | Language-specific rules | Custom conventions |
-| `/create-frontend-rules` | UI/component standards | Custom design systems |
-| `/create-api-rules` | Backend/API standards | Custom API patterns |
-| `/create-infra-rules` | CI/CD and deployment | Custom pipelines |
+| `/create-rules` | Comprehensive rules from templates | Large teams |
 | `/analyze-codebase` | Audit code against rules | Code review |
 | `/create-feature-spec` | Generate feature specification | Planning |
 
@@ -30,10 +26,7 @@ Done! Add more rules only when Agent makes repeated mistakes.
 
 ```bash
 /init-project-config      # Answer architecture questions → config file
-/create-general-rules     # 5 framework-agnostic rules
-/create-lang-rules        # Language-specific rules (if needed)
-/create-frontend-rules    # Frontend rules (if needed)
-/create-api-rules         # API rules (if needed)
+/create-rules             # All extended rules (or use parameters for specific types)
 ```
 
 ## Project Structure
@@ -43,8 +36,9 @@ Done! Add more rules only when Agent makes repeated mistakes.
 ├── commands/                    # This folder
 │   ├── quick-start.md          # ⭐ Recommended starting point
 │   ├── init-project-config.md
-│   ├── create-general-rules.md
-│   └── ...
+│   ├── create-rules.md         # 📚 Extended rules (all types)
+│   ├── analyze-codebase.md
+│   └── create-feature-spec.md
 ├── templates/
 │   ├── rules/
 │   │   └── project.mdc         # ⭐ Minimal template
@@ -84,18 +78,20 @@ Agent already knows:
 
 ### Extended Templates
 
-| Template | Used By | Lines |
-|----------|---------|-------|
-| `templates/extended/rules/general-rule.md` | `/create-general-rules` | 162 |
-| `templates/extended/rules/typescript-rule.md` | `/create-lang-rules` | 114 |
-| `templates/extended/rules/react-rule.md` | `/create-frontend-rules` | 100 |
-| `templates/extended/rules/python-rule.md` | `/create-lang-rules` | 81 |
-| `templates/extended/rules/api-rule.md` | `/create-api-rules` | 119 |
-| `templates/extended/rules/security-rule.md` | `/create-general-rules` | 141 |
-| `templates/extended/rules/testing-rule.md` | `/create-general-rules` | 146 |
-| `templates/extended/rules/documentation-rule.md` | `/create-general-rules` | 141 |
-| `templates/extended/rules/git-rule.md` | `/create-general-rules` | 156 |
-| `templates/extended/rules/infrastructure-rule.md` | `/create-infra-rules` | 97 |
+All extended templates are used by `/create-rules` with appropriate parameters.
+
+| Template | Parameter | Lines |
+|----------|-----------|-------|
+| `extended/rules/general-rule.md` | (default) | 162 |
+| `extended/rules/security-rule.md` | (default) | 141 |
+| `extended/rules/git-rule.md` | (default) | 156 |
+| `extended/rules/testing-rule.md` | (default) | 146 |
+| `extended/rules/documentation-rule.md` | (default) | 141 |
+| `extended/rules/typescript-rule.md` | `lang:typescript` | 114 |
+| `extended/rules/python-rule.md` | `lang:python` | 81 |
+| `extended/rules/react-rule.md` | `frontend` | 100 |
+| `extended/rules/api-rule.md` | `api` | 119 |
+| `extended/rules/infrastructure-rule.md` | `infra` | 97 |
 
 ## Customization
 
