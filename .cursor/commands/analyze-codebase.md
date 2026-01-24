@@ -18,7 +18,7 @@ If no scope is provided, analyze the whole repo.
 ## Steps
 
 1. **Load rules**
-   - Read all `.cursor/rules/**/RULE.md` files
+   - Read all `.cursor/rules/**/*.mdc` and `.cursor/rules/**/RULE.md` files
    - Extract verifiable requirements with applicability:
      - `alwaysApply: true` → applies to entire codebase
      - `globs: [...]` → applies only to matching file patterns

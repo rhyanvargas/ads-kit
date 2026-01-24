@@ -1,80 +1,58 @@
-<!-- Template: Used by /create-lang-rules python → .cursor/rules/python/RULE.md -->
 ---
-description: Python best practices and idioms
+description: Project-specific Python patterns
 globs:
   - "**/*.py"
 ---
 
-# Python Best Practices
+# Python Patterns
 
-## Philosophy
+> Project-specific Python conventions. Generic Python best practices are omitted — Cursor already knows those.
 
-Write Pythonic code—explicit is better than implicit, simple is better than complex. Leverage Python's standard library and type hints for maintainability.
+## Project Setup
 
-## Type Hints
+<!-- Your project's Python configuration -->
 
-Use modern type hint syntax (Python 3.10+):
+- Python version: `<!-- 3.x -->`
+- Package manager: `<!-- pip / poetry / uv -->`
+- Virtual env: `<!-- venv / poetry / conda -->`
 
-```python
-def get_user(user_id: str) -> User | None:
-    ...
+## Code Style
 
-def process_items(items: list[str]) -> dict[str, int]:
-    ...
-```
+<!-- Your project's specific style choices -->
 
-## Data Classes
-
-Use dataclasses for DTOs:
-
-```python
-from dataclasses import dataclass
-
-@dataclass
-class User:
-    id: str
-    email: str
-    name: str
-    active: bool = True
-```
-
-## Pydantic for Validation
-
-```python
-from pydantic import BaseModel, EmailStr
-
-class CreateUserRequest(BaseModel):
-    email: EmailStr
-    name: str
-    age: int = Field(ge=0, le=150)
-```
-
-## Best Practices
-
-- Use `pathlib` over `os.path`
-- Context managers for resources (`with` statements)
-- List/dict comprehensions when readable
-- Avoid mutable default arguments
-- Use `logging` module, not `print`
+- Formatter: `<!-- black / ruff -->`
+- Linter: `<!-- ruff / flake8 / pylint -->`
+- Type checker: `<!-- mypy / pyright -->`
 
 ## Project Structure
 
+<!-- Your project's organization -->
+
 ```
-src/
-  package_name/
-    __init__.py
-    models/
-    services/
-    api/
-tests/
-  test_*.py
-pyproject.toml
+<!-- discovered structure -->
 ```
 
-<!-- ================================================================
-     PROJECT-SPECIFIC ADDITIONS
-     ================================================================ -->
+## Import Conventions
 
-## Project-Specific Patterns
+<!-- Your project's import organization -->
 
-<!-- Add your team's patterns here -->
+```python
+# Your import order/style
+```
+
+## Type Hints
+
+<!-- Your project's typing requirements -->
+
+- Required for: `<!-- public APIs / all functions / etc. -->`
+- Style: `<!-- annotations / comments -->`
+
+## Patterns We Use
+
+- `<!-- pattern 1 -->`
+- `<!-- pattern 2 -->`
+
+## Reference Files
+
+@<!-- path/to/well-structured-module -->
+@<!-- path/to/example-class -->

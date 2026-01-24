@@ -1,96 +1,63 @@
-<!-- Template: Used by /create-infra-rules → .cursor/rules/infrastructure/RULE.md -->
 ---
-description: CI/CD and deployment standards
+description: Project-specific infrastructure and CI/CD patterns
 globs:
   - ".github/**"
-  - ".gitlab-ci.yml"
-  - "**/Dockerfile"
-  - "**/docker-compose*.yml"
+  - "**/*.yaml"
+  - "**/*.yml"
+  - "**/Dockerfile*"
 ---
 
-# Infrastructure Standards
+# Infrastructure Patterns
 
-## Philosophy
+> Project-specific infrastructure conventions.
 
-Infrastructure as code should be reviewable, testable, and reproducible. Automate everything that can be automated. Fail fast in CI, deploy safely to production.
+## CI/CD Platform
 
-## Environment Configuration
+<!-- Your project's CI/CD setup -->
 
-- Environment variables for env-specific config
-- No secrets in code or config files
-- Validate config at application startup
-- Document all required env vars in README
+- Platform: `<!-- GitHub Actions / GitLab CI / etc. -->`
+- Config location: `<!-- path -->`
 
-## {{CI_PLATFORM}} Conventions
+## Workflows
 
-{{IF github-actions}}
-### GitHub Actions
+<!-- Your project's CI workflows -->
 
-```yaml
-.github/
-  workflows/
-    ci.yml            # Lint, test, build on PR
-    deploy.yml        # Deploy on merge to main
-  actions/
-    setup/            # Reusable setup action
-```
+| Workflow | Trigger | Purpose |
+|----------|---------|---------|
+| `<!-- name -->` | `<!-- trigger -->` | `<!-- purpose -->` |
 
-**Best Practices:**
-- Pin action versions with SHA
-- Cache dependencies
-- Use environments for deployment protection
-- Fail fast on PR checks
-{{/IF}}
+## Deployment
 
-{{IF gitlab-ci}}
-### GitLab CI
+<!-- Your project's deployment approach -->
 
-**Best Practices:**
-- Stages: lint, test, build, deploy
-- Use `extends` for job templates
-- Cache between jobs
-- Use rules for conditional jobs
-{{/IF}}
+- Environments: `<!-- dev / staging / prod -->`
+- Deploy method: `<!-- approach -->`
+- Hosting: `<!-- platform -->`
 
-## Deployment Safety
+## Docker
 
-- Feature flags for gradual rollout
-- Health checks / readiness probes
-- Rollback procedures documented
-- Database migrations run before deploy
+<!-- Your project's containerization approach, if applicable -->
 
-## Container Best Practices
+- Base image: `<!-- image -->`
+- Dockerfile location: `<!-- path -->`
+- Compose file: `<!-- path -->`
 
-```dockerfile
-# Multi-stage builds
-FROM node:20-alpine AS builder
-# ...
+## Environment Management
 
-FROM node:20-alpine
-# Run as non-root user
-USER node
-# Health check
-HEALTHCHECK CMD curl -f http://localhost:3000/health
-```
+<!-- How environments are configured -->
 
-## Secrets Management
+- Env file pattern: `<!-- .env.* -->`
+- Secret management: `<!-- approach -->`
 
-- Use secret managers (not env vars in CI config)
-- Least privilege for CI/CD service accounts
-- Rotate secrets regularly
-- Audit secret access
+## Monitoring
 
-## Observability
+<!-- Your project's observability setup -->
 
-- Structured JSON logs
-- Correlation ID propagation
-- Define SLOs/SLIs
-- Alert on symptoms, not causes
+- Logging: `<!-- tool/approach -->`
+- Metrics: `<!-- tool/approach -->`
+- Alerting: `<!-- tool/approach -->`
 
-<!-- ================================================================
-     PROJECT-SPECIFIC ADDITIONS
-     ================================================================ -->
+## Reference Files
 
-## Project-Specific Patterns
-
-<!-- Add your team's patterns here -->
+@<!-- path/to/main-workflow -->
+@<!-- path/to/dockerfile -->

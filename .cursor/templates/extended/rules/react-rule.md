@@ -1,6 +1,5 @@
-<!-- Template: Used by /create-frontend-rules → .cursor/rules/react/RULE.md -->
 ---
-description: React patterns for scalable frontend development
+description: Project-specific React/UI patterns
 globs:
   - "**/*.tsx"
   - "**/*.jsx"
@@ -8,92 +7,64 @@ globs:
 
 # React Patterns
 
-## Philosophy
-
-Build components that are **predictable, composable, and testable**. Prefer composition over inheritance. Keep components focused on a single responsibility.
+> Project-specific React conventions. Generic React best practices are omitted — Cursor already knows those.
 
 ## Component Structure
 
-```typescript
-// 1. Imports (external, then internal)
-import { useState } from 'react';
-import { Button } from '@/components/ui';
+<!-- Your project's component organization -->
 
-// 2. Types
-interface UserCardProps {
-  user: User;
-  onEdit?: (user: User) => void;
-}
-
-// 3. Component
-export function UserCard({ user, onEdit }: UserCardProps) {
-  // 3a. Hooks
-  const [isExpanded, setIsExpanded] = useState(false);
-  
-  // 3b. Derived state
-  const fullName = `${user.firstName} ${user.lastName}`;
-  
-  // 3c. Handlers
-  const handleEdit = () => onEdit?.(user);
-  
-  // 3d. Render
-  return <div>...</div>;
-}
-```
-
-## Component Sizing
-
-- Max ~150 lines per component
-- Extract reusable logic into custom hooks
-- Extract repeated UI into smaller components
+- Component location: `<!-- discovered -->`
+- Naming convention: `<!-- PascalCase.tsx / kebab-case.tsx -->`
+- Export style: `<!-- named / default -->`
 
 ## State Management
 
-### {{STATE_APPROACH}}
+<!-- Your project's specific approach -->
 
-- **Local state first**: Start with `useState`
-- **Lift when needed**: When siblings need same state
-- **Server state**: Use React Query/TanStack Query
-- **Global state**: Context or Zustand for truly global
+- Global state: `<!-- Zustand / Redux / Context / etc. -->`
+- Server state: `<!-- React Query / SWR / etc. -->`
+- Form state: `<!-- React Hook Form / Formik / etc. -->`
 
-## Custom Hooks
+## Styling
 
-Extract when:
-- Logic is reused across components
-- Logic obscures component's purpose
-- Logic needs independent testing
+<!-- Your project's styling approach -->
 
-```typescript
-function useAuth() {
-  return { user, isAuthenticated, login, logout };
-}
-```
+- CSS approach: `<!-- Tailwind / CSS Modules / styled-components -->`
+- Design system: `<!-- path to components -->`
+- Theme location: `<!-- path to theme -->`
 
-## Performance
+## Component Patterns
 
-Use sparingly and measure first:
-- `useMemo` for expensive calculations
-- `useCallback` for stable references to children
-- `React.memo` for components with same props
+<!-- Patterns specific to YOUR codebase -->
 
-## Server vs Client Components (Next.js)
+### Layout Components
 
-Default to Server Components. Use `'use client'` only when needed:
-- Interactivity (onClick, onChange)
-- Browser APIs
-- State (useState, useEffect)
+- `<!-- path/pattern -->`
 
-## Accessibility
+### Form Components
 
-- Semantic HTML elements
-- `aria-label` for icon buttons
-- Keyboard navigation
-- Focus management for modals
+- `<!-- path/pattern -->`
 
-<!-- ================================================================
-     PROJECT-SPECIFIC ADDITIONS
-     ================================================================ -->
+### Data Display
 
-## Project-Specific Patterns
+- `<!-- path/pattern -->`
 
-<!-- Add your team's patterns here -->
+## Hooks
+
+<!-- Custom hooks in your project -->
+
+- `<!-- useAuth: path -->`
+- `<!-- useApi: path -->`
+- `<!-- other custom hooks -->`
+
+## Patterns We Avoid
+
+<!-- React anti-patterns in your project -->
+
+- `<!-- anti-pattern: reason -->`
+
+## Reference Files
+
+@<!-- path/to/example-component -->
+@<!-- path/to/example-page -->
+@<!-- path/to/design-system-component -->

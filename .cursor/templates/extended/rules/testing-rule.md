@@ -1,145 +1,62 @@
-<!-- Template: Used by /create-general-rules → .cursor/rules/testing/RULE.md -->
 ---
-description: Testing strategy and patterns for reliable test suites
+description: Project-specific testing patterns
 globs:
-  - "**/*.test.ts"
-  - "**/*.spec.ts"
-  - "**/*.test.tsx"
-  - "**/*.spec.tsx"
-  - "**/*.test.js"
-  - "**/*.spec.js"
-  - "**/test/**"
-  - "**/tests/**"
+  - "**/*.test.*"
+  - "**/*.spec.*"
   - "**/__tests__/**"
 ---
 
-# Testing Strategy
+# Testing Patterns
 
-## Philosophy
+> Project-specific testing conventions. Generic testing practices are omitted — Cursor already knows those.
 
-Tests exist to **give confidence when making changes**. Write tests that catch real bugs, not tests that break on every refactor. Test behavior, not implementation.
+## Test Stack
 
-## Testing Pyramid
+<!-- Your project's testing tools -->
 
-Prioritize tests in this order (more at bottom, fewer at top):
+- Unit tests: `<!-- Vitest / Jest / etc. -->`
+- Integration tests: `<!-- tool -->`
+- E2E tests: `<!-- Playwright / Cypress / etc. -->`
+- Coverage tool: `<!-- tool -->`
+
+## Test Organization
+
+<!-- Your project's test file structure -->
 
 ```
-       /\
-      /  \     E2E Tests (few, slow, high confidence)
-     /----\
-    /      \   Integration Tests (moderate)
-   /--------\
-  /          \ Unit Tests (many, fast, focused)
- /____________\
+<!-- discovered structure -->
 ```
 
-### {{TESTING_STRATEGY}}
+## Naming Conventions
 
-{{IF unit-first}}
-**Focus on unit tests**: Fast feedback, high coverage of business logic. Use integration tests for critical paths.
-{{/IF}}
+- Test files: `<!-- *.test.ts / *.spec.ts -->`
+- Test descriptions: `<!-- your pattern -->`
 
-{{IF integration-first}}
-**Focus on integration tests**: Test modules working together. Unit tests for complex algorithms only.
-{{/IF}}
+## Mocking Patterns
 
-{{IF e2e-first}}
-**Focus on E2E tests**: Test complete user workflows. Fewer but higher confidence tests.
-{{/IF}}
+<!-- Your project's mocking approach -->
 
-## Test Structure: Arrange-Act-Assert
+- API mocks: `<!-- MSW / manual / etc. -->`
+- Module mocks: `<!-- approach -->`
+- Mock location: `<!-- path -->`
 
-Every test should follow the AAA pattern:
+## Test Utilities
 
-```typescript
-describe('calculateDiscount', () => {
-  it('should apply 10% discount for orders over $100', () => {
-    // Arrange - set up test data
-    const order = { total: 150, items: [] };
-    
-    // Act - perform the action
-    const result = calculateDiscount(order);
-    
-    // Assert - verify the outcome
-    expect(result.discount).toBe(15);
-    expect(result.finalTotal).toBe(135);
-  });
-});
-```
+<!-- Custom test helpers in your project -->
 
-## Test Naming
+- `<!-- renderWithProviders: path -->`
+- `<!-- createMockUser: path -->`
+- `<!-- other utilities -->`
 
-Use descriptive names that explain behavior:
+## Coverage Requirements
 
-```typescript
-// Good - describes behavior
-it('should return null when user is not found')
-it('should throw ValidationError for invalid email')
+<!-- Your project's coverage expectations -->
 
-// Bad - describes implementation
-it('calls findById')
-it('returns error')
-```
+- Minimum coverage: `<!-- % -->`
+- Critical paths requiring tests: `<!-- list -->`
 
-## What to Test
+## Reference Files
 
-- Business logic thoroughly
-- Edge cases and error paths
-- Critical user paths
-- API contracts
-
-## What NOT to Test
-
-- Framework internals
-- Trivial code (getters/setters)
-- Implementation details
-- Third-party libraries
-
-## Mocking Guidelines
-
-### What to Mock
-
-- External APIs and services
-- Database calls (for unit tests)
-- Time and dates
-- Random values
-
-### What NOT to Mock
-
-- The code under test
-- Simple utility functions
-- Types and interfaces
-
-## Test Data
-
-Use factories for consistent test data:
-
-```typescript
-function createTestUser(overrides: Partial<User> = {}): User {
-  return {
-    id: 'test-user-id',
-    email: 'test@example.com',
-    name: 'Test User',
-    ...overrides,
-  };
-}
-```
-
-## Coverage Guidelines
-
-- Aim for 80%+ coverage on business logic
-- Don't chase 100%—focus on meaningful tests
-- Exclude from coverage: types, trivial code
-- Cover edge cases and error paths
-
-<!-- ================================================================
-     PROJECT-SPECIFIC ADDITIONS
-     ================================================================ -->
-
-## Project-Specific Patterns
-
-<!-- Add your team's patterns here:
-- Specific testing libraries/frameworks
-- Custom test utilities
-- CI integration requirements
--->
+@<!-- path/to/example-unit-test -->
+@<!-- path/to/example-integration-test -->
+@<!-- path/to/test-utilities -->

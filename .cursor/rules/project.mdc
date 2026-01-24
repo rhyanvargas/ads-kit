@@ -1,0 +1,53 @@
+---
+description: Project-specific context and architecture guidance
+alwaysApply: true
+---
+
+# Project Context
+
+This rule helps Cursor understand YOUR project. Run `/quick-start` to automatically populate this with your codebase's actual patterns.
+
+## Discovery Guidelines
+
+When working in this codebase, follow these principles:
+
+### Before Making Changes
+
+1. **Explore first** — Scan the codebase to understand existing patterns before suggesting new ones
+2. **Follow established conventions** — Match the style, naming, and structure already in use
+3. **Ask when uncertain** — If architecture decisions aren't clear, ask rather than assume
+
+### Architecture Awareness
+
+- **Folder structure**: Respect the existing organization. Don't reorganize without discussion.
+- **Dependencies**: Use libraries already in the project. Don't add new ones without asking.
+- **Patterns**: Follow patterns evident in existing code, even if alternatives exist.
+
+### What to Preserve
+
+- Existing file organization and naming conventions
+- Current state management approach
+- Established API patterns and error handling
+- Test structure and conventions
+
+---
+
+<!-- 
+=============================================================================
+PROJECT-SPECIFIC SECTION (Auto-populated by /quick-start)
+=============================================================================
+The section below is populated when you run /quick-start. 
+Until then, Cursor will discover patterns by reading your codebase.
+-->
+
+## Project Specifics
+
+_Run `/quick-start` to auto-discover and document your project's architecture._
+
+<!--
+After running /quick-start, this section will contain:
+- Your folder structure
+- Internal libraries
+- Key architectural decisions
+- Reference files
+-->

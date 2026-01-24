@@ -1,233 +1,135 @@
-# Cursor AI Grounding Kit
+# Cursor Rules Starter Kit
 
-A minimal, best-practices-aligned starter for grounding Cursor's AI agent with project-specific context.
+A drop-in `.cursor/` folder that helps Cursor understand your existing codebase — no manual configuration required.
 
-> **Philosophy**: Per [Cursor's docs](https://cursor.com/docs/context/rules.md), *"Start simple. Add rules only when you notice Agent making the same mistake repeatedly."* Agent already knows common patterns—your rules should focus on what makes YOUR project unique.
+## What Is This?
 
-## Quick Start
+This repo contains a ready-to-use `.cursor/` folder you can clone into any project (brownfield or greenfield). It includes:
 
-### Option 1: Minimal (Recommended)
+- **Discovery-based rules** — Automatically learns your project's patterns
+- **Slash commands** — `/quick-start`, `/analyze-codebase`, `/create-rules`
+- **Extended templates** — Comprehensive rules for large teams (optional)
 
-Copy just what you need:
+## Installation
 
-```bash
-# Copy to your project
-cp AGENTS.md your-project/
-# OR
-mkdir -p your-project/.cursor/rules
-cp .cursor/templates/rules/project.mdc your-project/.cursor/rules/
-```
-
-Then fill in YOUR project-specific patterns.
-
-### Option 2: Extended (Enterprise/Large Teams)
-
-For comprehensive coverage, use the extended templates:
+### Option 1: Clone the `.cursor/` folder (Recommended)
 
 ```bash
-cp -r .cursor/ your-project/
-# Run commands to generate rules
-/init-project-config
-/create-general-rules
+# From your project root
+git clone --depth 1 https://github.com/YOUR_USERNAME/cursor-rules-starter.git temp-cursor
+cp -r temp-cursor/.cursor .
+rm -rf temp-cursor
 ```
 
----
+### Option 2: Add as a git subtree
 
-## Choosing Your Approach
+```bash
+git subtree add --prefix=.cursor https://github.com/YOUR_USERNAME/cursor-rules-starter.git main --squash
+```
 
-| Approach | When to Use | Rules Count |
-|----------|-------------|-------------|
-| **Minimal** | Solo/small teams, new projects, rapid iteration | 1 rule + AGENTS.md |
-| **Extended** | Enterprise, large teams, compliance requirements | 10+ rules |
+### Option 3: Manual download
 
-### What NOT to Include in Rules
+1. Download this repo as a ZIP
+2. Extract the `.cursor/` folder
+3. Copy it into your project root
 
-Per [Cursor best practices](https://cursor.com/docs/context/rules.md):
+## Getting Started
 
-- ❌ SOLID, KISS, DRY (Agent knows these)
-- ❌ TypeScript/React/Python basics (Agent knows frameworks)
-- ❌ Conventional commits (Agent knows git)
-- ❌ REST/GraphQL conventions (Agent knows APIs)
-- ❌ Testing pyramid (Agent knows testing)
+After installation, run this in Cursor's chat:
 
-### What TO Include
+```
+/quick-start
+```
 
-- ✅ YOUR folder structure and architecture decisions
-- ✅ Internal libraries Agent doesn't know about
-- ✅ Team conventions that DIFFER from defaults
-- ✅ Project-specific security requirements
-- ✅ References to canonical example files
+The command will:
+1. **Scan your codebase** to discover existing architecture
+2. **Show you what it found** for confirmation
+3. **Update the rules file** automatically
 
----
+No manual editing. No placeholder replacement. Just run the command.
 
-## Project Structure
+## What's Inside
 
 ```
 .cursor/
-├── commands/                    # Slash command definitions
-│   ├── init-project-config.md
-│   ├── create-general-rules.md
+├── README.md              ← Getting started guide
+├── rules/
+│   └── project.mdc        ← Your rules (auto-populated by /quick-start)
+├── commands/
+│   ├── quick-start.md     ← Discovers and documents your architecture
 │   ├── analyze-codebase.md
+│   ├── create-rules.md
 │   └── create-feature-spec.md
-├── templates/
-│   ├── rules/
-│   │   └── project.mdc          # ⭐ MINIMAL: One focused rule
-│   ├── extended/
-│   │   └── rules/               # 📚 EXTENDED: Comprehensive templates
-│   │       ├── general-rule.md
-│   │       ├── typescript-rule.md
-│   │       ├── react-rule.md
-│   │       └── ...
-│   ├── project-config.yaml
-│   └── feature-spec-template.md
-AGENTS.md                        # ⭐ MINIMAL: Simple alternative
+└── templates/
+    └── extended/          ← Comprehensive templates for large teams
+        └── rules/
 ```
 
----
+## Philosophy
 
-## Minimal Approach
+### Discovery Over Prescription
 
-### Using `AGENTS.md`
+This toolkit **discovers** your existing architecture rather than prescribing patterns:
 
-The simplest option. Place in your project root:
+| Traditional Approach | This Toolkit |
+|---------------------|--------------|
+| "Fill in this template" | "Let me scan your codebase" |
+| "What pattern do you want?" | "Here's what I found — is this right?" |
+| Prescribes best practices | Documents YOUR practices |
+| Introduces external bias | Preserves existing conventions |
 
-```markdown
-# Project Instructions
+### Why This Matters
 
-## Architecture
-- We organize code by feature, not layer
-- State: Zustand for global, useState for local
+- **Brownfield projects**: Respects and documents existing architecture
+- **Greenfield projects**: Learns patterns as you establish them
+- **Architecture integrity**: Helps maintain consistency without imposing opinions
 
-## Internal Tools
-- Use `@/lib/auth` for authentication
-- Use `@/lib/api` for API calls
+### When to Add Rules
 
-## What to Avoid
-- Don't use Redux (we use Zustand)
-- Don't create new API clients (use @/lib/api)
+Per [Cursor's documentation](https://docs.cursor.com/context/rules-for-ai):
 
-## Reference Files
-- Components: `src/components/Button.tsx`
-- API routes: `src/app/api/users/route.ts`
-```
+> *"Start simple. Add rules only when you notice Agent making the same mistake repeatedly."*
 
-### Using `project.mdc`
+Cursor already knows common patterns. Only add rules for things that are **unique to YOUR project**.
 
-For more control, use the single rule file at `.cursor/rules/project.mdc`:
-
-```markdown
----
-description: Project-specific standards
-alwaysApply: true
----
-
-# Project Standards
-
-## Architecture
-<!-- YOUR specific decisions only -->
-
-## Internal Libraries
-- **Auth**: Use `@/lib/auth` — see @lib/auth/README.md
-- **API Client**: Use `@/lib/api` wrapper
-
-## Reference Files
-@src/components/Button.tsx
-@src/app/api/users/route.ts
-```
-
----
-
-## Extended Approach
-
-For teams needing comprehensive documentation, use templates in `.cursor/templates/extended/rules/`.
-
-### Commands
+## Commands
 
 | Command | Purpose |
 |---------|---------|
-| `/init-project-config` | Capture architecture decisions |
-| `/create-general-rules` | Generate 5 framework-agnostic rules |
-| `/create-lang-rules` | TypeScript/Python rules |
-| `/create-frontend-rules` | React patterns |
-| `/create-api-rules` | API standards |
-| `/create-infra-rules` | CI/CD standards |
-| `/analyze-codebase` | Audit code against rules |
-| `/create-feature-spec` | Generate feature specs |
+| `/quick-start` | Discovers your architecture, updates rules automatically |
+| `/analyze-codebase` | Audits code against documented rules (catches drift) |
+| `/create-rules` | Generates comprehensive rules from templates |
+| `/create-feature-spec` | Creates feature specification document |
 
-### Extended Templates
+## Maintaining Architecture Integrity
 
-| Template | Lines | Coverage |
-|----------|-------|----------|
-| `general-rule.md` | 162 | SOLID, naming, error handling |
-| `typescript-rule.md` | 114 | Type safety patterns |
-| `react-rule.md` | 100 | Component patterns |
-| `python-rule.md` | 81 | Python idioms |
-| `api-rule.md` | 119 | REST/GraphQL patterns |
-| `security-rule.md` | 141 | Security best practices |
-| `testing-rule.md` | 146 | Testing strategy |
-| `documentation-rule.md` | 141 | Doc standards |
-| `git-rule.md` | 156 | Git workflow |
-| `infrastructure-rule.md` | 97 | CI/CD patterns |
+```bash
+# Initial setup — document existing architecture
+/quick-start
 
----
+# Periodic checks — catch drift between docs and code
+/analyze-codebase
 
-## Template Placeholder System
-
-Extended templates use placeholders processed by the AI:
-
-### Simple Placeholders
-
-```markdown
-## {{API_STYLE}} Conventions
+# When architecture evolves — update documentation
+/quick-start
 ```
 
-Becomes `## REST Conventions` when config has `api_style: REST`.
+## Extended Templates
 
-### Conditional Blocks
+For large teams needing comprehensive documentation, see `templates/extended/rules/`:
 
-```markdown
-{{IF REST}}
-### RESTful URLs
-- Use plural nouns for resources
-{{/IF}}
-```
-
-Only included when config matches.
-
-### Available Placeholders
-
-| Placeholder | Options |
-|-------------|---------|
-| `{{API_STYLE}}` | `REST`, `GraphQL`, `tRPC` |
-| `{{AUTH_PATTERN}}` | `JWT`, `session`, `OAuth-only` |
-| `{{TESTING_STRATEGY}}` | `unit-first`, `integration-first`, `e2e-first` |
-| `{{CI_PLATFORM}}` | `github-actions`, `gitlab-ci` |
-
----
-
-## Best Practices (from Cursor Docs)
-
-> *"Keep rules under 500 lines. Split large rules into multiple, composable rules."*
-
-> *"Provide concrete examples or referenced files. Avoid vague guidance."*
-
-> *"Reference files instead of copying their contents—this keeps rules short and prevents them from becoming stale."*
-
-### Do
-
-- ✅ Reference canonical example files with `@filename.ts`
-- ✅ Focus on patterns you use frequently
-- ✅ Update rules when Agent makes repeated mistakes
-- ✅ Check rules into git for team sharing
-
-### Don't
-
-- ❌ Copy entire style guides (use a linter)
-- ❌ Document every possible command
-- ❌ Add edge case instructions
-- ❌ Duplicate what's in your codebase
-
----
+| Template | Coverage |
+|----------|----------|
+| `general-rule.md` | Code organization, naming, error handling |
+| `typescript-rule.md` | Type safety patterns |
+| `react-rule.md` | Component patterns |
+| `python-rule.md` | Python idioms |
+| `api-rule.md` | REST/GraphQL patterns |
+| `security-rule.md` | Security best practices |
+| `testing-rule.md` | Testing strategy |
+| `documentation-rule.md` | Documentation standards |
+| `git-rule.md` | Git workflow |
+| `infrastructure-rule.md` | CI/CD patterns |
 
 ## Contributing
 
@@ -237,4 +139,4 @@ Only included when config matches.
 
 ## License
 
-[MIT](LICENSE) © Rhyguy
+[MIT](LICENSE)

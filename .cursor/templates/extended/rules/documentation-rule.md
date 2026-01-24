@@ -1,140 +1,54 @@
-<!-- Template: Used by /create-general-rules → .cursor/rules/documentation/RULE.md -->
 ---
-description: Documentation requirements and standards
+description: Project-specific documentation standards
 globs:
-  - "**/README.md"
-  - "**/docs/**"
-  - "**/CONTRIBUTING.md"
-  - "**/CHANGELOG.md"
-  - "**/ADR-*.md"
-  - "**/adr/**"
+  - "**/*.md"
+  - "**/README*"
 ---
 
 # Documentation Standards
 
-## Philosophy
+> Project-specific documentation conventions.
 
-Documentation should reduce friction for future developers (including yourself). Document decisions, not just code. Keep docs close to code so they stay in sync.
+## Documentation Locations
 
-## When to Document
+<!-- Where docs live in your project -->
 
-### Always Document
+- Main README: `<!-- path -->`
+- API docs: `<!-- path -->`
+- Component docs: `<!-- path / Storybook -->`
+- Architecture docs: `<!-- path -->`
 
-- Public APIs and their contracts
-- Non-obvious business logic
-- Architectural decisions (ADRs)
-- Setup and deployment procedures
-- Environment variables and configuration
+## README Requirements
 
-### Don't Over-Document
+<!-- What each README should contain -->
 
-- Obvious code (self-documenting)
-- Implementation details that change frequently
-- Anything the type system already describes
+### Package/Feature READMEs
 
-## README Structure
+- `<!-- required section 1 -->`
+- `<!-- required section 2 -->`
 
-Every project should have a README with:
+## Code Documentation
 
-```markdown
-# Project Name
+<!-- Your project's code doc standards -->
 
-Brief description of what this project does.
-
-## Quick Start
-
-Steps to get running in <5 minutes.
-
-## Development Setup
-
-Detailed setup instructions.
-
-## Architecture
-
-Overview or link to architecture docs.
-
-## Contributing
-
-How to contribute, coding standards link.
-```
-
-## Inline Documentation
-
-### JSDoc / Docstrings
-
-Document public functions with:
-
-```typescript
-/**
- * Calculates the discount for an order based on total value.
- * 
- * @param order - The order to calculate discount for
- * @returns The discount amount in cents
- * @throws {ValidationError} If order total is negative
- */
-function calculateDiscount(order: Order): number {
-  // ...
-}
-```
-
-### Code Comments
-
-- Explain **why**, not **what**
-- Link to tickets for workarounds
-- No commented-out code
-
-{{IF documentation includes ADRs}}
-## Architecture Decision Records (ADRs)
-
-Document significant decisions in `docs/adr/`:
-
-```markdown
-# ADR-001: Use PostgreSQL for primary database
-
-## Status
-Accepted
-
-## Context
-We need a relational database for our user and order data...
-
-## Decision
-We will use PostgreSQL...
-
-## Consequences
-- Pros: ACID compliance, JSON support...
-- Cons: Operational complexity...
-```
-
-### ADR Guidelines
-
-- Number sequentially (ADR-001, ADR-002...)
-- Never delete, only supersede
-- Include date and status
-- Keep concise but complete
-{{/IF}}
+- JSDoc requirements: `<!-- when to use -->`
+- Comment style: `<!-- your preference -->`
 
 ## API Documentation
 
-- Document all public endpoints
-- Include request/response examples
-- Document error responses
-- Keep in sync with implementation (or generate from code)
+<!-- How API endpoints are documented -->
 
-## Keeping Docs Current
+- Format: `<!-- OpenAPI / inline / etc. -->`
+- Location: `<!-- path -->`
 
-- Review docs in code reviews
-- Link docs to related code files
-- Use `@see` references for related docs
-- Delete outdated documentation
+## Changelog
 
-<!-- ================================================================
-     PROJECT-SPECIFIC ADDITIONS
-     ================================================================ -->
+<!-- How changes are tracked -->
 
-## Project-Specific Patterns
+- Format: `<!-- Keep a Changelog / custom -->`
+- Location: `<!-- path -->`
 
-<!-- Add your team's patterns here:
-- Documentation tools (Storybook, Swagger, etc.)
-- Wiki or external doc requirements
-- Specific doc review processes
--->
+## Reference Files
+
+@<!-- path/to/well-documented-module -->
+@<!-- path/to/readme-template -->

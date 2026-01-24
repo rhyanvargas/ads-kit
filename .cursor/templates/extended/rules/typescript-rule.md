@@ -1,113 +1,64 @@
-<!-- Template: Used by /create-lang-rules typescript → .cursor/rules/typescript/RULE.md -->
 ---
-description: TypeScript best practices and type safety patterns
+description: Project-specific TypeScript patterns
 globs:
   - "**/*.ts"
   - "**/*.tsx"
 ---
 
-# TypeScript Best Practices
+# TypeScript Patterns
 
-## Philosophy
-
-TypeScript's value comes from its type system. Use it fully—don't escape hatch with `any`. Types are documentation that the compiler verifies.
+> Project-specific TypeScript conventions. Basic TypeScript best practices are omitted — Cursor already knows those.
 
 ## Strict Configuration
 
-Always use strict TypeScript settings:
+<!-- Your project's tsconfig strictness level -->
 
 ```json
 {
   "compilerOptions": {
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    <!-- discovered from tsconfig.json -->
   }
 }
 ```
 
-## Avoiding `any`
+## Type Conventions
 
-- Use `unknown` for truly unknown types, then narrow
-- Use generics for flexible but type-safe code
-- Use `Record<string, unknown>` for object dictionaries
+<!-- Only conventions specific to YOUR project -->
 
-```typescript
-// BAD
-function parse(input: any): any { ... }
+### Naming
 
-// GOOD
-function parse<T>(input: unknown): T { ... }
-```
+- Type prefix/suffix convention: `<!-- e.g., IUser vs User vs UserType -->`
+- Generic naming: `<!-- e.g., TData vs T -->`
 
-## Interface vs Type
+### Interface vs Type
 
-### Use `interface` for:
-- Object shapes that may be extended
-- Public API contracts
+<!-- Your project's specific preference, if any -->
 
-### Use `type` for:
-- Unions and intersections
-- Mapped types and utility types
-- Function signatures
+- Use `interface` for: `<!-- discovered -->`
+- Use `type` for: `<!-- discovered -->`
 
-## Discriminated Unions
+## Custom Utility Types
 
-Use for type-safe state management:
+<!-- Project-specific utility types -->
 
 ```typescript
-type AsyncState<T> =
-  | { status: 'idle' }
-  | { status: 'loading' }
-  | { status: 'success'; data: T }
-  | { status: 'error'; error: Error };
+// Add your project's custom types here
 ```
 
-## Null Safety
+## Patterns We Use
 
-- Use `T | null` for intentionally nullable values
-- Use optional chaining (`?.`) for safe property access
-- Use nullish coalescing (`??`) for defaults
-- Avoid non-null assertions (`!`) except in tests
+<!-- TypeScript patterns specific to your codebase -->
 
-## Generics
+- <!-- Pattern 1 -->
+- <!-- Pattern 2 -->
 
-- Use meaningful names (`TUser`, not just `T`)
-- Add constraints to catch errors early
-- Don't over-genericize—start concrete
+## Patterns We Avoid
 
-## Const Objects Over Enums
+<!-- TypeScript anti-patterns in your project -->
 
-```typescript
-// Prefer this
-const Status = {
-  Pending: 'pending',
-  Active: 'active',
-} as const;
-type Status = typeof Status[keyof typeof Status];
+- <!-- Anti-pattern with reason -->
 
-// Over enums (runtime overhead and quirks)
-```
+## Reference Files
 
-## Explicit Return Types
-
-Add for public/exported functions:
-
-```typescript
-async function fetchUser(id: string): Promise<User | null> {
-  // ...
-}
-```
-
-<!-- ================================================================
-     PROJECT-SPECIFIC ADDITIONS
-     ================================================================ -->
-
-## Project-Specific Patterns
-
-<!-- Add your team's patterns here:
-- Custom utility types
-- Specific type conventions
-- Linting rules
--->
+@<!-- path/to/well-typed-example -->
+@<!-- path/to/utility-types -->

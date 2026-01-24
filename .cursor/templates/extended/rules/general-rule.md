@@ -1,161 +1,73 @@
-<!-- Template: Used by /create-general-rules → .cursor/rules/general/RULE.md -->
 ---
-description: Core coding principles and clean code conventions
+description: Project-specific coding standards and architecture decisions
 alwaysApply: true
 ---
 
-# General Coding Principles
+# Project Standards
 
-## Philosophy
+> This rule documents YOUR project's specific patterns. Generic best practices (SOLID, DRY, KISS) are omitted — Cursor already knows those.
 
-Write code that is **boring, predictable, and maintainable**. Optimize for readability and long-term maintainability over cleverness. Code is read far more often than it is written.
+## Architecture
 
-## Core Principles
+<!-- Populated by /quick-start based on codebase discovery -->
 
-### SOLID Principles
-
-- **Single Responsibility**: Each module, class, or function should have one reason to change
-- **Open/Closed**: Open for extension, closed for modification. Use composition and interfaces
-- **Liskov Substitution**: Subtypes must be substitutable for their base types
-- **Interface Segregation**: Prefer many specific interfaces over one general-purpose interface
-- **Dependency Inversion**: Depend on abstractions, not concretions. Inject dependencies
-
-### Keep It Simple
-
-- **KISS**: Choose the simplest solution that works. Avoid premature optimization
-- **YAGNI**: Don't build features until they're actually needed
-- **DRY**: Don't repeat yourself, but don't over-abstract. Rule of three: abstract on the third occurrence
-
-## Code Organization
-
-### {{ORGANIZATION_PATTERN}} Structure
-
-{{IF feature-based}}
-Organize code by feature/domain, not by technical layer:
+### Folder Structure
 
 ```
-src/
-  features/
-    users/
-      components/
-      hooks/
-      api/
-      types.ts
-      index.ts          # Public API (barrel file)
-    orders/
-      ...
-  shared/
-    components/         # Used by 2+ features
-    utils/
-    hooks/
+<!-- Your discovered structure here -->
 ```
-
-**Benefits**: Colocation, scalability, team ownership, easy refactoring
-{{/IF}}
-
-{{IF layer-based}}
-Organize code by technical layer:
-
-```
-src/
-  components/
-  hooks/
-  services/
-  utils/
-  types/
-```
-
-**Note**: Consider migrating to feature-based when complexity grows (>20 components)
-{{/IF}}
 
 ### Module Boundaries
 
-- Each feature module should have a clear public API (index.ts barrel file)
-- Avoid circular dependencies between modules
-- Shared code goes in `shared/` only when used by 2+ features
+- Public APIs exported via `index.ts` barrel files
+- Shared code location: `<!-- discovered -->`
+- Feature module pattern: `<!-- discovered -->`
 
 ## Naming Conventions
 
-### General Rules
+<!-- Only conventions that DIFFER from standard practices -->
 
-- Use descriptive, intention-revealing names
-- Avoid abbreviations except for widely understood ones (id, url, api)
-- Boolean variables: use `is`, `has`, `should`, `can` prefixes
-- Functions: use verb phrases (`getUserById`, `validateInput`, `calculateTotal`)
-- Constants: use SCREAMING_SNAKE_CASE for true constants
-
-### File Naming
-
-- Components: PascalCase (`UserProfile.tsx`)
-- Utilities/hooks: camelCase (`useAuth.ts`, `formatDate.ts`)
-- Types/interfaces: PascalCase (`UserTypes.ts`)
-- Test files: `*.test.ts` or `*.spec.ts`
+| Type | Convention | Example |
+|------|------------|---------|
+| Components | <!-- discovered --> | |
+| Utilities | <!-- discovered --> | |
+| Types | <!-- discovered --> | |
+| Tests | <!-- discovered --> | |
 
 ## Error Handling
 
-### {{ERROR_STRATEGY}}
+<!-- Your project's specific error handling approach -->
 
-{{IF result-types}}
-Use Result types for expected failures, exceptions for unexpected:
+- Error class: `<!-- discovered, e.g., AppError -->`
+- Validation library: `<!-- discovered, e.g., zod -->`
+- Error boundary pattern: `<!-- discovered -->`
 
-```typescript
-type Result<T, E = Error> = { success: true; data: T } | { success: false; error: E };
+## Internal Libraries
 
-// Use exceptions for unexpected failures
-throw new Error('Descriptive message with context');
-```
-{{/IF}}
+<!-- Libraries/utilities specific to YOUR project that Cursor doesn't know about -->
 
-{{IF exceptions}}
-Use exceptions with proper error hierarchies:
+- **Auth**: `<!-- path to auth utility -->`
+- **API Client**: `<!-- path to API wrapper -->`
+- **Components**: `<!-- path to design system -->`
 
-```typescript
-class AppError extends Error {
-  constructor(public code: string, message: string) {
-    super(message);
-  }
-}
-```
-{{/IF}}
+## Patterns We Use
 
-### Error Principles
+<!-- Only patterns unique to your project -->
 
-- Validate inputs at system boundaries (API endpoints, user input)
-- Throw errors early rather than propagating invalid state
-- Never silently swallow errors
-- Always include context in error messages
+- <!-- Pattern 1 -->
+- <!-- Pattern 2 -->
 
-## Comments
+## Patterns We Avoid
 
-### When to Comment
+<!-- Anti-patterns specific to your project with reasoning -->
 
-- Explain **why**, not **what** (code should be self-documenting for "what")
-- Document non-obvious business rules
-- Explain workarounds with links to issues/tickets
-- Add JSDoc for public APIs
+- <!-- Anti-pattern 1: reason -->
+- <!-- Anti-pattern 2: reason -->
 
-### When NOT to Comment
+## Reference Files
 
-- Don't comment obvious code
-- Don't leave commented-out code (use version control)
-- Don't write TODOs without ticket references
+<!-- Canonical examples demonstrating your patterns -->
 
-## Dependencies
-
-- Prefer well-maintained packages with active communities
-- Check bundle size impact for frontend dependencies
-- Avoid dependencies for trivial functionality
-- Pin versions and use lockfiles
-- Regular security audits (`npm audit`, `pnpm audit`)
-
-<!-- ================================================================
-     PROJECT-SPECIFIC ADDITIONS
-     ================================================================ -->
-
-## Project-Specific Patterns
-
-<!-- Add your team's patterns here:
-- Domain-specific naming conventions
-- Custom error types
-- Specific architectural decisions
--->
+@<!-- path/to/example-component -->
+@<!-- path/to/example-api-route -->
+@<!-- path/to/example-test -->
