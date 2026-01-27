@@ -48,6 +48,16 @@ The command will:
 
 No manual editing. No placeholder replacement. Just run the command.
 
+## Documented Approach (Discovery-first)
+
+This repo follows a **discovery-first** workflow:
+
+- `/quick-start` should **scan your codebase** and **summarize what it found**
+- You **confirm/correct** the findings
+- The agent then **updates your project rules** to reflect what exists today
+
+This helps avoid introducing architecture bias up-front and keeps rules aligned with reality over time.
+
 ## What's Inside
 
 ```
@@ -117,6 +127,8 @@ Cursor already knows common patterns. Only add rules for things that are **uniqu
 ## Extended Templates
 
 For large teams needing comprehensive documentation, see `templates/extended/rules/`:
+
+> These templates are intentionally **trimmed**: they avoid generic best practices Cursor already knows. They act as scaffolds for **project-specific** standards and should be grounded with `@` references to real files in your codebase.
 
 | Template | Coverage |
 |----------|----------|

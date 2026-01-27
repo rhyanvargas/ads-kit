@@ -33,6 +33,13 @@ The rules file is populated with YOUR project's actual:
 - Coding patterns and conventions
 - Reference files demonstrating your standards
 
+### What “Discovery-first” means
+
+- **We scan before we suggest**: the agent should look for existing conventions before proposing changes.
+- **We document what exists**: rules encode your current architecture, not generic “best practices”.
+- **We confirm with you**: `/quick-start` should present findings and allow corrections before updating rules.
+- **We avoid bias**: extended templates are scaffolds for project-specific details, not prescriptive guides.
+
 ---
 
 ## What's Inside
@@ -152,6 +159,8 @@ Available templates in `templates/extended/rules/`:
 - `security-rule.md` — Security best practices
 - `testing-rule.md` — Testing strategy
 - And more...
+
+> Note: These templates were intentionally trimmed to avoid generic advice Cursor already knows. They are meant to be populated with project-specific details (often via discovery) and anchored with `@` references to real files.
 
 ---
 
