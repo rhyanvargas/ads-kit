@@ -1,154 +1,78 @@
-# Cursor Rules Starter Kit
+# Cursor Spec-Driven Starter
 
-A drop-in `.cursor/` folder that helps Cursor understand your existing codebase — no manual configuration required.
+A minimal starter template for spec-driven AI-assisted development with Cursor IDE.
 
-## What Is This?
+## Purpose
 
-This repo contains a ready-to-use `.cursor/` folder you can clone into any project (brownfield or greenfield). It includes:
+Write specs, let the agent implement. This starter provides commands, rules, and workflows for consistent, reliable AI-assisted coding.
 
-- **Discovery-based rules** — Automatically learns your project's patterns
-- **Slash commands** — `/quick-start`, `/analyze-codebase`, `/create-rules`
-- **Extended templates** — Comprehensive rules for large teams (optional)
-
-## Installation
-
-### Option 1: Clone the `.cursor/` folder (Recommended)
+## Quick Start
 
 ```bash
-# From your project root
-git clone --depth 1 https://github.com/YOUR_USERNAME/cursor-rules-starter.git temp-cursor
-cp -r temp-cursor/.cursor .
-rm -rf temp-cursor
-```
+# 1. Copy to your project
+cp -r .cursor/ your-project/
+cp -r docs/ your-project/
 
-### Option 2: Add as a git subtree
-
-```bash
-git subtree add --prefix=.cursor https://github.com/YOUR_USERNAME/cursor-rules-starter.git main --squash
-```
-
-### Option 3: Manual download
-
-1. Download this repo as a ZIP
-2. Extract the `.cursor/` folder
-3. Copy it into your project root
-
-## Getting Started
-
-After installation, run this in Cursor's chat:
-
-```
+# 2. Open in Cursor and run
 /quick-start
+
+# 3. Start building
+/draft-spec "your feature idea"
 ```
 
-The command will:
-1. **Scan your codebase** to discover existing architecture
-2. **Show you what it found** for confirmation
-3. **Update the rules file** automatically
+## Workflows
 
-No manual editing. No placeholder replacement. Just run the command.
+| Workflow | When | Flow |
+|----------|------|------|
+| **Greenfield** | New features | `/draft-spec` → `/plan-impl` → `/implement-spec` → `/review` |
+| **Brownfield** | Existing code | `/quick-start` → `/extract-spec` → then greenfield flow |
+| **Quick fix** | Trivial changes | Just describe in chat |
 
-## Documented Approach (Discovery-first)
-
-This repo follows a **discovery-first** workflow:
-
-- `/quick-start` should **scan your codebase** and **summarize what it found**
-- You **confirm/correct** the findings
-- The agent then **updates your project rules** to reflect what exists today
-
-This helps avoid introducing architecture bias up-front and keeps rules aligned with reality over time.
-
-## What's Inside
-
-```
-.cursor/
-├── README.md              ← Getting started guide
-├── rules/
-│   └── project.mdc        ← Your rules (auto-populated by /quick-start)
-├── commands/
-│   ├── quick-start.md     ← Discovers and documents your architecture
-│   ├── analyze-codebase.md
-│   ├── create-rules.md
-│   └── create-feature-spec.md
-└── templates/
-    └── extended/          ← Comprehensive templates for large teams
-        └── rules/
-```
-
-## Philosophy
-
-### Discovery Over Prescription
-
-This toolkit **discovers** your existing architecture rather than prescribing patterns:
-
-| Traditional Approach | This Toolkit |
-|---------------------|--------------|
-| "Fill in this template" | "Let me scan your codebase" |
-| "What pattern do you want?" | "Here's what I found — is this right?" |
-| Prescribes best practices | Documents YOUR practices |
-| Introduces external bias | Preserves existing conventions |
-
-### Why This Matters
-
-- **Brownfield projects**: Respects and documents existing architecture
-- **Greenfield projects**: Learns patterns as you establish them
-- **Architecture integrity**: Helps maintain consistency without imposing opinions
-
-### When to Add Rules
-
-Per [Cursor's documentation](https://docs.cursor.com/context/rules-for-ai):
-
-> *"Start simple. Add rules only when you notice Agent making the same mistake repeatedly."*
-
-Cursor already knows common patterns. Only add rules for things that are **unique to YOUR project**.
+See [Greenfield Workflow](docs/greenfield-workflow.md) and [Brownfield Workflow](docs/brownfield-workflow.md).
 
 ## Commands
 
-| Command | Purpose |
-|---------|---------|
-| `/quick-start` | Discovers your architecture, updates rules automatically |
-| `/analyze-codebase` | Audits code against documented rules (catches drift) |
-| `/create-rules` | Generates comprehensive rules from templates |
-| `/create-feature-spec` | Creates feature specification document |
+| Command | When to Use |
+|---------|-------------|
+| `/draft-spec` | New feature idea |
+| `/plan-impl` | Before coding (medium+ changes) |
+| `/implement-spec` | After spec approved |
+| `/review` | After implementation |
+| `/extract-spec` | Document existing code |
+| `/quick-start` | First-time setup |
 
-## Maintaining Architecture Integrity
+See [Commands Reference](docs/commands-reference.md).
 
+## Documentation
+
+| Doc | Purpose |
+|-----|---------|
+| [Getting Started](docs/getting-started.md) | Installation and setup |
+| [Problem Size Guide](docs/problem-size-guide.md) | When to use which workflow |
+| [Spec Writing Guide](docs/spec-writing-guide.md) | Write effective specs |
+| [Extending](docs/extending.md) | Add rules and commands |
+| [Best Practices](docs/best-practices.md) | Tips and references |
+| [Overview](docs/spec-driven-overview.md) | SDD concepts explained |
+
+## Extending
+
+Add rules when the agent makes repeated mistakes:
 ```bash
-# Initial setup — document existing architecture
-/quick-start
-
-# Periodic checks — catch drift between docs and code
-/analyze-codebase
-
-# When architecture evolves — update documentation
-/quick-start
+cp .cursor/templates/coding-style.rule.md .cursor/rules/my-style.mdc
 ```
 
-## Extended Templates
+Add commands for workflows you repeat:
+```bash
+touch .cursor/commands/my-workflow.md
+```
 
-For large teams needing comprehensive documentation, see `templates/extended/rules/`:
+See [Extending](docs/extending.md).
 
-> These templates are intentionally **trimmed**: they avoid generic best practices Cursor already knows. They act as scaffolds for **project-specific** standards and should be grounded with `@` references to real files in your codebase.
+## References
 
-| Template | Coverage |
-|----------|----------|
-| `general-rule.md` | Code organization, naming, error handling |
-| `typescript-rule.md` | Type safety patterns |
-| `react-rule.md` | Component patterns |
-| `python-rule.md` | Python idioms |
-| `api-rule.md` | REST/GraphQL patterns |
-| `security-rule.md` | Security best practices |
-| `testing-rule.md` | Testing strategy |
-| `documentation-rule.md` | Documentation standards |
-| `git-rule.md` | Git workflow |
-| `infrastructure-rule.md` | CI/CD patterns |
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Submit a pull request
+- [Cursor Agent Best Practices](https://cursor.com/blog/agent-best-practices)
+- [Martin Fowler: Understanding SDD](https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html)
 
 ## License
 
-[MIT](LICENSE)
+MIT

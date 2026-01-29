@@ -1,53 +1,43 @@
----
-description: Project-specific context and architecture guidance
-alwaysApply: true
----
+# Project Rules
 
-# Project Context
+This rule file provides persistent context for the Cursor AI agent. It is always loaded at the start of each session.
 
-This rule helps Cursor understand YOUR project. Run `/quick-start` to automatically populate this with your codebase's actual patterns.
+## Project Overview
+
+This is a **Spec-Driven Starter Template** for Cursor IDE. It provides commands, rules, and workflows for AI-assisted development using a spec-first approach.
 
 ## Discovery Guidelines
 
-When working in this codebase, follow these principles:
+When working in this codebase:
 
-### Before Making Changes
+1. **Explore first** - Scan the codebase to understand existing patterns before suggesting new ones
+2. **Follow established conventions** - Match the style, naming, and structure already in use
+3. **Ask when uncertain** - If architecture decisions aren't clear, ask rather than assume
 
-1. **Explore first** — Scan the codebase to understand existing patterns before suggesting new ones
-2. **Follow established conventions** — Match the style, naming, and structure already in use
-3. **Ask when uncertain** — If architecture decisions aren't clear, ask rather than assume
+## Architecture
 
-### Architecture Awareness
+- **Commands** (`.cursor/commands/`): Slash commands for spec-driven workflows
+- **Templates** (`.cursor/templates/`): Rule templates for project customization
+- **Docs** (`docs/`): Modular documentation with single source of truth
+- **Specs** (`docs/specs/`): Generated specification files
 
-- **Folder structure**: Respect the existing organization. Don't reorganize without discussion.
-- **Dependencies**: Use libraries already in the project. Don't add new ones without asking.
-- **Patterns**: Follow patterns evident in existing code, even if alternatives exist.
+## Workflow
 
-### What to Preserve
+Use the spec-driven workflow:
+1. `/draft-spec` - Generate spec from idea
+2. `/plan-impl` - Create implementation plan
+3. `/implement-spec` - Generate code from spec
+4. `/review` - Post-implementation quality check
 
-- Existing file organization and naming conventions
-- Current state management approach
-- Established API patterns and error handling
-- Test structure and conventions
+For brownfield projects, start with `/quick-start` and `/extract-spec`.
 
----
+## Coding Standards
 
-<!-- 
-=============================================================================
-PROJECT-SPECIFIC SECTION (Auto-populated by /quick-start)
-=============================================================================
-The section below is populated when you run /quick-start. 
-Until then, Cursor will discover patterns by reading your codebase.
--->
+- Keep files focused and small
+- Use clear, descriptive names
+- Follow existing patterns in the codebase
+- Document non-obvious decisions
 
-## Project Specifics
+## Commands Reference
 
-_Run `/quick-start` to auto-discover and document your project's architecture._
-
-<!--
-After running /quick-start, this section will contain:
-- Your folder structure
-- Internal libraries
-- Key architectural decisions
-- Reference files
--->
+See `docs/commands-reference.md` for full command documentation.

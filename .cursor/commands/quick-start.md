@@ -1,143 +1,110 @@
-# Quick Start
+# /quick-start
 
-## Overview
+Initialize the spec-driven workflow for a project.
 
-Discover and document your project's existing architecture. This command **scans your codebase first**, then confirms findings with you before updating `.cursor/rules/project.mdc`.
+## Usage
 
-> **Philosophy**: Document what exists. Don't prescribe what should exist.
-
-## Parameters
-
-```text
-/quick-start              # Full discovery + documentation
-/quick-start scan-only    # Just show findings, don't update rules
+```
+/quick-start
 ```
 
-## Steps
+## Behavior
 
-### 1. Discover Architecture (Automatic)
+1. **Detect** - Analyze project structure and tech stack
+2. **Configure** - Set up rules based on detected patterns
+3. **Guide** - Explain next steps for the workflow
 
-Scan the codebase to identify:
+## What It Does
 
-**Structure**
-- Folder organization pattern (feature-based, layer-based, domain-driven, hybrid)
-- Key directories and their purposes
-- File naming conventions
+### 1. Project Detection
 
-**Stack Detection**
-- Read `package.json`, `requirements.txt`, `go.mod`, `Cargo.toml`, etc.
-- Identify frameworks, libraries, and tools in use
-- Note testing frameworks and build tools
+Scans for:
+- Package managers (`package.json`, `requirements.txt`, `Cargo.toml`, etc.)
+- Frameworks (React, Django, Rails, etc.)
+- Build tools (webpack, vite, cargo, etc.)
+- Test frameworks (jest, pytest, etc.)
+- Linters (eslint, prettier, ruff, etc.)
 
-**Pattern Recognition**
-- State management approach (if frontend)
-- API patterns (REST routes, GraphQL schemas, tRPC)
-- Error handling patterns
-- Authentication/authorization approach
+### 2. Rules Configuration
 
-**Reference Files**
-- Identify well-structured example files that demonstrate project conventions
-- Look for README files in subdirectories
-- Find existing documentation
+Updates `.cursor/rules/project.mdc` with:
+- Detected tech stack
+- Build/test/run commands
+- Coding conventions from existing config files
+- Project-specific patterns
 
-### 2. Present Findings
+### 3. Workflow Guidance
 
-Show the user what was discovered:
+Provides recommendations based on project state:
+- **Greenfield**: Start with `/draft-spec`
+- **Brownfield**: Start with `/extract-spec` for documentation
+
+## Instructions
+
+When the user invokes `/quick-start`:
+
+1. Scan the project root for configuration files
+2. Detect the tech stack:
+   ```
+   Language: {detected}
+   Framework: {detected}
+   Package Manager: {detected}
+   Test Framework: {detected}
+   Linter: {detected}
+   ```
+3. Read existing configs for conventions
+4. Update `.cursor/rules/project.mdc` with:
+   - Project overview
+   - Tech stack summary
+   - Key commands (build, test, run)
+   - Coding standards
+5. Check for existing documentation
+6. Recommend next steps
+
+## Output
 
 ```markdown
-## Architecture Discovery
+## Quick Start Complete
 
-### Folder Structure
-I found a [feature-based] organization:
-- `src/features/` — Feature modules
-- `src/shared/` — Shared utilities
-- `src/components/` — UI components
+### Detected Stack
+- **Language**: TypeScript
+- **Framework**: React
+- **Package Manager**: npm
+- **Test Framework**: Jest
+- **Linter**: ESLint + Prettier
 
-### Stack
-- **Framework**: Next.js 14 (App Router)
-- **State**: Zustand
-- **API**: tRPC
-- **Testing**: Vitest + Playwright
+### Commands Configured
+- **Build**: `npm run build`
+- **Test**: `npm test`
+- **Run**: `npm start`
+- **Lint**: `npm run lint`
 
-### Patterns I Noticed
-- Components use named exports
-- API routes follow RESTful naming
-- Errors are handled with a custom `AppError` class
+### Rules Updated
+Updated `.cursor/rules/project.mdc` with project context.
 
-### Suggested Reference Files
-- `src/features/auth/components/LoginForm.tsx` — Component pattern
-- `src/server/routers/user.ts` — API pattern
+### Next Steps
 
----
+**For new features:**
+1. Run `/draft-spec "your feature idea"`
+2. Review and refine the spec
+3. Run `/plan-impl` to create a plan
+4. Run `/implement-spec` to build it
 
-Does this look correct? I can adjust before saving.
+**For existing code documentation:**
+1. Run `/extract-spec src/` to document existing code
+2. Review generated specs
+3. Use as foundation for changes
 ```
 
-### 3. Confirm or Adjust
+## Brownfield vs Greenfield
 
-Ask the user:
-- "Does this accurately reflect your architecture?"
-- "Anything I missed or got wrong?"
-- "Any internal libraries or conventions I should know about?"
+### Greenfield (new project)
+- Minimal detection needed
+- Focus on setting up conventions
+- Recommend starting with `/draft-spec`
 
-### 4. Update Rules File
-
-After confirmation, update `.cursor/rules/project.mdc`:
-
-```markdown
----
-description: Project-specific context and architecture guidance
-alwaysApply: true
----
-
-# Project Context
-
-[Keep the Discovery Guidelines section unchanged]
-
-## Project Specifics
-
-### Architecture
-- **Organization**: Feature-based (`src/features/[feature]/`)
-- **State**: Zustand for global state
-- **API**: tRPC with server routers in `src/server/`
-
-### Stack
-- Next.js 14 (App Router)
-- TypeScript (strict mode)
-- Tailwind CSS
-- Vitest for unit tests
-
-### Conventions
-- Named exports for components
-- Barrel files (`index.ts`) for public APIs
-- Error handling via `AppError` class in `src/lib/errors.ts`
-
-### Reference Files
-@src/features/auth/components/LoginForm.tsx
-@src/server/routers/user.ts
-@src/lib/errors.ts
-```
-
-### 5. Summary
-
-Show what was documented and remind user:
-- "Rules updated based on your actual codebase"
-- "Run `/analyze-codebase` periodically to check for drift"
-- "Add specific rules only when Agent makes repeated mistakes"
-
-## Key Principles
-
-| Do | Don't |
-|----|-------|
-| Discover existing patterns | Prescribe new patterns |
-| Ask "did I get this right?" | Ask "what pattern do you want?" |
-| Document what IS | Document what SHOULD BE |
-| Suggest based on evidence | Assume based on best practices |
-
-## Completion Checklist
-
-- [ ] Codebase scanned for structure, stack, and patterns
-- [ ] Findings presented to user for confirmation
-- [ ] User confirmed or corrected findings
-- [ ] `.cursor/rules/project.mdc` updated with actual architecture
-- [ ] Reference files identified and linked
+### Brownfield (existing project)
+- Deep detection of patterns
+- Extract conventions from existing code
+- Recommend `/extract-spec` first to document
+- Then use spec-driven workflow for changes
