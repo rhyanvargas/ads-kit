@@ -38,6 +38,7 @@ When the user invokes `/implement-spec`:
    - Run linters
    - Fix any issues
 6. Report completion status
+7. **Suggest next step**: Tell the user to run `/review` to verify code quality, or `/review --spec {spec-path}` to check against the original spec
 
 ## Implementation Guidelines
 

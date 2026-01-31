@@ -68,6 +68,7 @@ When the user invokes `/review`:
    - Suggest specific improvements
 3. Generate a review report
 4. If requested, apply fixes automatically
+5. **Suggest next step**: If issues found, suggest fixing and re-running `/review`. If all checks pass, tell the user the implementation is ready to commit or open a PR
 
 ## Report Format
 

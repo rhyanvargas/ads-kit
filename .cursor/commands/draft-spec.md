@@ -37,6 +37,7 @@ When the user invokes `/draft-spec`:
 3. Search the codebase for related code, patterns, or existing specs
 4. Generate a spec file at `.cursor/docs/specs/{feature-name}.md`
 5. Use the template below
+6. **Suggest next step**: Tell the user to run `/plan-impl .cursor/docs/specs/{feature-name}.md` to create an implementation plan
 
 ## Spec Template
 

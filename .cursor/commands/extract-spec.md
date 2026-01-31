@@ -52,6 +52,7 @@ When the user invokes `/extract-spec`:
    - How it's used (interfaces)
    - What it depends on (dependencies)
 5. Save to `.cursor/docs/specs/{module-name}-existing.md`
+6. **Suggest next step**: Tell the user to review the generated spec, then run `/draft-spec` to plan enhancements or new features that build on this code
 
 ## Output Template
 

@@ -46,6 +46,7 @@ When the user invokes `/plan-impl`:
 5. Assign unique task IDs (e.g., `TASK-001`, `TASK-002`) for tracking
 6. Save the plan to `.cursor/plans/{feature-name}.plan.md`
 7. **Initialize todos** using the TodoWrite tool with all tasks in `pending` status
+8. **Suggest next step**: Tell the user to run `/implement-spec .cursor/plans/{feature-name}.plan.md` to execute the plan
 
 ## Plan Template
 
