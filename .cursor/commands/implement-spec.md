@@ -32,6 +32,7 @@ When the user invokes `/implement-spec`:
    - Create or modify the specified files
    - Follow coding standards from `.cursor/rules/`
    - Write tests for new functionality
+   - **Update the plan file's todo status** (both frontmatter and markdown body)
 5. After implementation:
    - Run the test suite
    - Run linters
@@ -63,6 +64,7 @@ Before reporting completion:
 - [ ] Tests written and passing
 - [ ] Linter passing
 - [ ] No regressions in existing tests
+- [ ] Plan file todos updated to `completed` status (if using a plan)
 
 ## Next Steps
 
