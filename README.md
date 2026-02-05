@@ -1,48 +1,57 @@
-# Cursor Spec-Driven Starter
+# Agentic Dev Starter Kit (ADS Kit)
 
-A minimal starter template for spec-driven AI-assisted development with Cursor IDE.
+A cross-platform starter kit for agentic AI-assisted development. Works with Cursor, Windsurf, Claude Code, and other AI coding tools.
 
 ## Purpose
 
-Write specs, let the agent implement. This starter provides commands, rules, and workflows for consistent, reliable AI-assisted coding.
+Portable skills, workflows, and tooling for consistent AI-assisted development across any agentic platform.
 
 ## Quick Start
 
 ```bash
 # Clone into a temp directory
-git clone --depth 1 https://github.com/rhyanvargas/rhyan-cursor-docs.git /tmp/cursor-starter
+git clone --depth 1 https://github.com/rhyanvargas/ads-kit.git /tmp/ads
 
-# Copy .cursor folder to your project (no-clobber to avoid overwriting)
-cp -rn /tmp/cursor-starter/.cursor ./
+# Copy .agents folder (works with any AI tool)
+cp -rn /tmp/ads/.agents ./
+
+# Optionally copy .cursor folder (for Cursor IDE)
+cp -rn /tmp/ads/.cursor ./
 
 # Clean up
-rm -rf /tmp/cursor-starter
-```
-
-**Next steps**
-```bash
-# Open in Cursor and run
-/quick-start
-
-# Start building
-/draft-spec "your feature idea"
+rm -rf /tmp/ads
 ```
 
 ## What's Included
 
-Everything lives in `.cursor/` for zero conflicts with your project:
-
 ```
-.cursor/
-├── commands/       # Slash commands (/draft-spec, /plan-impl, etc.)
-├── docs/           # Documentation and specs
-│   └── specs/      # Generated specifications
-├── plans/          # Implementation plans
-├── rules/          # Persistent rules
-└── templates/      # Rule templates
+.agents/                    # Cross-platform portable content
+└── skills/                 # Reusable skills (ai-elements, etc.)
+    └── ai-elements/        # AI chat component library skill
+
+.cursor/                    # Cursor IDE-specific
+├── commands/               # Slash commands (/draft-spec, /plan-impl, etc.)
+├── docs/                   # Documentation and specs
+├── plans/                  # Implementation plans
+├── rules/                  # Persistent rules
+├── skills/ -> .agents/skills  # Symlink to portable skills
+└── templates/              # Rule templates
 ```
 
-## Workflows
+## Platform Support
+
+| Platform | Directory | Status |
+|----------|-----------|--------|
+| Cursor | `.cursor/` | Full support (skills, commands, rules) |
+| Windsurf | `.agents/` | Skills only |
+| Claude Code | `.agents/` | Skills only |
+| Other | `.agents/` | Skills only |
+
+## Cursor-Specific Features
+
+If using Cursor IDE, you get additional features:
+
+### Workflows
 
 | Workflow | When | Flow |
 |----------|------|------|
@@ -50,9 +59,7 @@ Everything lives in `.cursor/` for zero conflicts with your project:
 | **Brownfield** | Existing code | `/quick-start` → `/extract-spec` → then greenfield flow |
 | **Quick fix** | Trivial changes | Just describe in chat |
 
-See [Greenfield Workflow](.cursor/docs/greenfield-workflow.md) and [Brownfield Workflow](.cursor/docs/brownfield-workflow.md).
-
-## Commands
+### Commands
 
 | Command | When to Use |
 |---------|-------------|
@@ -66,7 +73,7 @@ See [Greenfield Workflow](.cursor/docs/greenfield-workflow.md) and [Brownfield W
 
 See [Commands Reference](.cursor/docs/commands-reference.md).
 
-## Documentation
+### Documentation
 
 | Doc | Purpose |
 |-----|---------|
@@ -75,34 +82,61 @@ See [Commands Reference](.cursor/docs/commands-reference.md).
 | [Spec Writing Guide](.cursor/docs/spec-writing-guide.md) | Write effective specs |
 | [Extending](.cursor/docs/extending.md) | Add rules and commands |
 | [Best Practices](.cursor/docs/best-practices.md) | Tips and references |
-| [Overview](.cursor/docs/spec-driven-overview.md) | SDD concepts explained |
+
+## Available Skills
+
+| Skill | Description |
+|-------|-------------|
+| `ai-elements` | AI chat interface components (shadcn/ui + Vercel AI SDK) |
 
 ## Extending
 
-Add rules when the agent makes repeated mistakes:
+### Add custom skills
+
+Create a new skill in `.agents/skills/`:
+
+```
+.agents/skills/my-skill/
+├── SKILL.md           # Skill definition and instructions
+├── references/        # Documentation files
+└── scripts/           # Example code
+```
+
+### Add Cursor rules
+
 ```bash
 cp .cursor/templates/coding-style.rule.md .cursor/rules/my-style.mdc
 ```
 
-Add commands for workflows you repeat:
+### Add Cursor commands
+
 ```bash
 touch .cursor/commands/my-workflow.md
 ```
 
-See [Extending](.cursor/docs/extending.md).
+## Updating
+
+To pull the latest version:
+
+```bash
+# Clone fresh copy
+git clone --depth 1 https://github.com/rhyanvargas/ads-kit.git /tmp/ads
+
+# Copy new files (no-clobber preserves your changes)
+cp -rn /tmp/ads/.agents ./
+cp -rn /tmp/ads/.cursor ./
+
+# Clean up
+rm -rf /tmp/ads
+```
 
 ## References
 
 - [Cursor Agent Best Practices](https://cursor.com/blog/agent-best-practices)
 - [Martin Fowler: Understanding SDD](https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html)
-- [Tessl](https://tessl.io/) – Agent enablement platform with versioned context and evals
-- [GitHub Spec Kit](https://github.com/github/spec-kit/blob/main/README.md) – Open source spec-driven development toolkit
-- [Microsoft: Diving Into Spec-Driven Development With GitHub Spec Kit](https://developer.microsoft.com/blog/spec-driven-development-spec-kit)
+- [Tessl](https://tessl.io/) – Agent enablement platform
+- [GitHub Spec Kit](https://github.com/github/spec-kit/blob/main/README.md) – Spec-driven development toolkit
 - [Kiro: Specs Concepts](https://kiro.dev/docs/specs/concepts/) – Requirements, design, and implementation planning
-
-## Source Credits
-
-- [Tessl](https://tessl.io/)
 
 ## License
 

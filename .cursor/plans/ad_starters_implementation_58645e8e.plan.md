@@ -4,25 +4,25 @@ overview: Restructure the repo as "Agentic Dev Starter Kit (ADS Kit)" with .agen
 todos:
   - id: restructure
     content: Delete .cursor/skills/ai-elements/, create symlink to .agents/skills/
-    status: pending
+    status: completed
   - id: cli-setup
     content: Create packages/cli/ with TypeScript, commander, basic structure
-    status: pending
+    status: completed
   - id: cli-init
     content: Implement 'init' command - copies .agents/ and optionally .cursor/ to target
-    status: pending
+    status: completed
   - id: cli-sync
     content: Implement 'sync' command - fetches latest from GitHub, merges
-    status: pending
+    status: completed
   - id: cli-add
     content: Implement 'add' command - fetches specific skill
-    status: pending
+    status: completed
   - id: config
     content: Create .adsrc.json config schema and loader
-    status: pending
+    status: completed
   - id: readme
     content: Rebrand README.md to Agentic Dev Starter Kit (ADS Kit)
-    status: pending
+    status: completed
 isProject: false
 ---
 
