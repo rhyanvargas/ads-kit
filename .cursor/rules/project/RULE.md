@@ -1,6 +1,11 @@
+---
+description: "Project overview + workflow + definition of done for this repo"
+alwaysApply: true
+---
+
 # Project Rules
 
-This rule file provides persistent context for the Cursor AI agent. It is always loaded at the start of each session.
+This rule provides persistent context for the Cursor AI agent. It is always loaded at the start of each session.
 
 ## Project Overview
 
@@ -20,6 +25,7 @@ When working in this codebase:
 - **Templates** (`.cursor/templates/`): Rule templates for project customization
 - **Docs** (`.cursor/skills/spec-driven-workflow/references/`): Modular documentation; single source of truth
 - **Specs** (`.cursor/docs/specs/`): Generated specification files
+- **Rules** (`.cursor/rules/`): Persistent technical constraints and quality gates (including testing policy)
 
 ## Workflow
 
@@ -37,6 +43,16 @@ For brownfield projects, start with `/quick-start` and `/extract-spec`.
 - Use clear, descriptive names
 - Follow existing patterns in the codebase
 - Document non-obvious decisions
+
+## Definition of Done (quality gates)
+
+For any change that affects behavior:
+
+- **Spec is testable**: requirements are specific and testable (prefer `REQ-XXX` IDs).
+- **Tests included**: each implemented requirement has tests (or a short, explicit “no tests needed because…” justification when truly non-behavioral).
+- **Verification executed**: run the repo’s verification commands (see `.cursor/rules/project-cmds/`).
+
+Testing policy lives in `.cursor/rules/testing/`.
 
 ## Commands Reference
 

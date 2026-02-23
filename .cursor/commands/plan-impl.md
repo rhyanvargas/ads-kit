@@ -30,6 +30,7 @@ The generated plan includes:
 - **Tasks**: Ordered list with unique IDs for todo tracking
 - **Files**: Which files will be created or modified
 - **Tests**: What tests to write
+- **Coverage map**: Which tests cover which requirements (or explicit exceptions)
 - **Risks**: Potential issues or unknowns
 
 ## Instructions
@@ -106,10 +107,23 @@ Before starting implementation:
 
 ## Test Plan
 
+### Requirement Coverage
+
+Map each spec requirement to at least one automated test. If a requirement is intentionally verified manually or is non-behavioral, document the exception.
+
+| Requirement | Test ID(s) | Type | Notes |
+|------------|------------|------|------|
+| REQ-001 | TEST-001 | unit | {what is asserted} |
+| REQ-002 | TEST-002 | integration | {what is asserted} |
+
 | Test ID | Type | Description | Task |
 |---------|------|-------------|------|
 | TEST-001 | contract | {description} | TASK-XXX |
 | TEST-002 | unit | {description} | TASK-XXX |
+
+### No-Test Exceptions (must be explicit)
+
+- {Requirement/Change}: {why no automated test is needed} (verification: {how you will verify})
 
 ## Risks
 

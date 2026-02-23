@@ -43,6 +43,7 @@ Review against a spec:
 - [ ] Tests exist for new code
 - [ ] Edge cases covered
 - [ ] Tests are readable
+- [ ] Requirements ↔ tests mapping is clear (or explicit “no tests needed because…” exception)
 
 ### Security
 - [ ] No hardcoded secrets

@@ -73,8 +73,8 @@ What this does and why it matters.
 ## Requirements
 
 ### Functional
-- [ ] User can do X
-- [ ] System responds with Y
+- [ ] REQ-001: User can do X
+- [ ] REQ-002: System responds with Y
 
 ### Non-Functional
 - [ ] Performance: responds in < 200ms
@@ -82,6 +82,10 @@ What this does and why it matters.
 
 ## Acceptance Criteria
 - Given [context], when [action], then [result]
+
+## Test Strategy
+- REQ-001: {unit|integration|e2e} — {what to assert}
+- REQ-002: {unit|integration|e2e} — {what to assert}
 
 ## Constraints
 - Must work with existing Z
@@ -203,7 +207,7 @@ This prevents scope creep and clarifies boundaries.
 "As a user, I want to..." forces you to think about value.
 
 ### Write tests first (mentally)
-If you can't test it, you can't spec it.
+If you can't test it, you can't spec it. Prefer assigning `REQ-XXX` IDs so plans and tests can map cleanly back to requirements.
 
 ### Include examples
 ```markdown

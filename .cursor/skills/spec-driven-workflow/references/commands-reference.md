@@ -112,7 +112,9 @@ From plan:
 
 ### Options
 - Dry run: `/implement-spec spec.md --dry-run` (shows what would change)
-- No tests: `/implement-spec spec.md --no-tests` (skip test generation)
+- No tests (discouraged): `/implement-spec spec.md --no-tests`
+  - Only for clearly non-behavioral work (docs/formatting) or repos without a test harness
+  - Must include an explicit “no tests needed because…” justification in the plan/spec
 
 ---
 

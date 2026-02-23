@@ -31,7 +31,7 @@ When the user invokes `/implement-spec`:
 4. For each step:
    - Create or modify the specified files
    - Follow coding standards from `.cursor/rules/`
-   - Write tests for new functionality
+   - Write or update tests for each implemented requirement (see `.cursor/rules/testing.mdc`)
    - **Update the plan file's todo status** (both frontmatter and markdown body)
 5. After implementation:
    - Run the test suite
@@ -49,9 +49,13 @@ When the user invokes `/implement-spec`:
 - Add comments for non-obvious logic
 
 ### Testing
-- Write tests alongside implementation
+- Write tests alongside implementation (tests are a deliverable, not an afterthought)
 - Cover happy path and edge cases
 - Use existing test patterns
+- Prefer TDD (red → green → refactor) when practical:
+  - New behavior: write a failing test first, then implement until it passes
+  - Bug fix: add a regression test that fails before the fix
+- If tests are intentionally omitted (docs-only / non-behavioral), include an explicit justification in the plan/spec (“No tests needed because…”)
 
 ### Iteration
 - If tests fail, analyze and fix
@@ -62,7 +66,8 @@ When the user invokes `/implement-spec`:
 
 Before reporting completion:
 - [ ] All spec requirements addressed
-- [ ] Tests written and passing
+- [ ] Each implemented requirement is covered by tests (or has an explicit, justified exception)
+- [ ] Tests written/updated and passing
 - [ ] Linter passing
 - [ ] No regressions in existing tests
 - [ ] Plan file todos updated to `completed` status (if using a plan)

@@ -24,6 +24,7 @@ The generated spec includes:
 - **Constraints**: Technical or business constraints
 - **Out of Scope**: What this spec does NOT cover
 - **Dependencies**: Related systems or features
+- **Test Strategy**: What must be proven via automated tests (and what can be verified manually)
 
 ## Instructions
 
@@ -50,11 +51,14 @@ When the user invokes `/draft-spec`:
 ## Requirements
 
 ### Functional
-- [ ] {Requirement 1}
-- [ ] {Requirement 2}
+- [ ] REQ-001: {Requirement 1}
+- [ ] REQ-002: {Requirement 2}
 
 ### Acceptance Criteria
-- Given {context}, when {action}, then {result}
+- REQ-001
+  - Given {context}, when {action}, then {result}
+- REQ-002
+  - Given {context}, when {action}, then {result}
 
 ## Constraints
 - {Technical or business constraint}
@@ -64,6 +68,15 @@ When the user invokes `/draft-spec`:
 
 ## Dependencies
 - {Related features or systems}
+
+## Test Strategy
+
+### Automated
+- REQ-001: {unit|integration|e2e} — {what to assert}
+- REQ-002: {unit|integration|e2e} — {what to assert}
+
+### Manual (only if needed)
+- {Scenario}: {why manual is needed}
 
 ## Notes
 - {Any additional context}
