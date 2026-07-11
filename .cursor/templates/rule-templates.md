@@ -1,16 +1,30 @@
 # Rule Templates
 
-Copy the section you need to `.cursor/rules/<name>.mdc` and customize. `/quick-start` can merge detected project info with these.
+Copy the section you need into a new rule folder and customize:
+
+```bash
+mkdir -p .cursor/rules/<name>
+# then create .cursor/rules/<name>/RULE.md
+```
+
+`/quick-start` can merge detected project info with these patterns.
 
 ---
 
 ## 1. Architecture
 
-Copy to `.cursor/rules/architecture.mdc`.
+Copy to `.cursor/rules/architecture/RULE.md`.
+
+```markdown
+---
+description: "Architecture boundaries and layering for this project"
+alwaysApply: true
+---
+
+# Architecture
 
 ### Layer Structure (typical web app)
 
-```
 src/
 ├── components/     # UI (presentation)
 ├── services/       # Business logic
@@ -18,7 +32,6 @@ src/
 ├── models/         # Domain types
 ├── utils/          # Shared utilities
 └── config/         # Configuration
-```
 
 **Rules:** Components → services → repositories; no direct repo access from UI. Models shared. No circular dependencies.
 
@@ -40,12 +53,22 @@ src/
 
 ### Security
 - Validate/sanitize input; parameterized queries; no secrets in code; use established auth libraries.
+```
 
 ---
 
 ## 2. Coding Style
 
-Copy to `.cursor/rules/coding-style.mdc`.
+Copy to `.cursor/rules/coding-style/RULE.md`.
+
+```markdown
+---
+description: "Naming, formatting, and function conventions"
+globs: "**/*.{ts,tsx,js,jsx,py,go,rs}"
+alwaysApply: false
+---
+
+# Coding Style
 
 ### Naming
 - `camelCase` variables/functions; `PascalCase` classes/types; `SCREAMING_SNAKE_CASE` constants; `kebab-case` file names.
@@ -61,14 +84,15 @@ Copy to `.cursor/rules/coding-style.mdc`.
 
 ### Linters
 - Align with project ESLint/Prettier/ruff/etc. in config files.
+```
 
 ---
 
 ## 3. Project Commands
 
-Copy to `.cursor/rules/project-cmds.mdc`.
+Copy to `.cursor/rules/project-cmds/RULE.md` (or update the existing one).
 
-List the commands the agent should use: **build**, **test**, **run**, **lint**, **typecheck**. Include language-specific examples (npm/pip/cargo/go). Add env vars, Docker, DB, deploy if relevant. `/quick-start` detects from `package.json`/`Cargo.toml`/etc. and can merge into `project.mdc`.
+List the commands the agent should use: **build**, **test**, **run**, **lint**, **typecheck**. Include language-specific examples (npm/pip/cargo/go). Add env vars, Docker, DB, deploy if relevant. `/quick-start` detects from `package.json`/`Cargo.toml`/etc. and merges into `project/RULE.md` + `project-cmds/RULE.md`.
 
 Example skeleton:
 

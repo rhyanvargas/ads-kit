@@ -6,13 +6,25 @@ Cursor IDE configuration for spec-driven development.
 
 ```
 .cursor/
-├── commands/   # Slash commands
-├── docs/       # Documentation and specs
+├── commands/   # Slash commands (/draft-spec, /review, …)
+├── docs/       # Generated specs (.cursor/docs/specs/)
 ├── plans/      # Implementation plans (output of /plan-impl)
-├── rules/      # Persistent rules (always loaded)
-└── templates/  # Rule templates (copy to rules/ and customize)
+├── rules/      # Persistent rules (always / file-scoped)
+├── skills/     # Agent skills (workflows + progressive references)
+└── templates/  # Rule templates (copy into rules/ and customize)
 ```
 
 ## Quick Start
 
-Run `/quick-start` in chat, then see [docs/getting-started.md](docs/getting-started.md) and [docs/commands-reference.md](docs/commands-reference.md) for full command and workflow reference.
+Run `/quick-start` in chat, then:
+
+- [Getting started](skills/spec-driven-workflow/references/getting-started.md)
+- [Commands reference](skills/spec-driven-workflow/references/commands-reference.md)
+- [Spec-driven overview](skills/spec-driven-workflow/references/spec-driven-overview.md)
+
+## Skills
+
+| Skill | Use when |
+|-------|----------|
+| `spec-driven-workflow` | Specs, plans, implement, review, extract, greenfield/brownfield |
+| `devops-strategy-facilitator` | Designing CI/CD / branching / promotion strategy (`/design-devops-strategy`) |

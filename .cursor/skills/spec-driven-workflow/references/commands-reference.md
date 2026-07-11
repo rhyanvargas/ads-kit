@@ -207,7 +207,7 @@ Initialize the spec-driven workflow for a project.
 ### Behavior
 1. Detects tech stack (language, framework, tools)
 2. Reads existing config files
-3. Updates `.cursor/rules/project.mdc`
+3. Updates `.cursor/rules/project/RULE.md` and `.cursor/rules/project-cmds/RULE.md`
 4. Provides next steps
 
 ### Output

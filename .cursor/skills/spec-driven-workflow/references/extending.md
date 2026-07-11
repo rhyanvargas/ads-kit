@@ -16,11 +16,11 @@ Add custom rules, commands, and workflows to fit your project.
 
 ## Adding Rules
 
-Rules live in `.cursor/rules/` and are always loaded.
+Rules live in `.cursor/rules/<name>/RULE.md`. Control apply mode with frontmatter (`alwaysApply`, `globs`).
 
 ### Create a new rule
 
-1. Open `.cursor/templates/rule-templates.md`, copy the section you need (Architecture, Coding Style, or Project Commands) into a new file `.cursor/rules/my-style.mdc`.
+1. Open `.cursor/templates/rule-templates.md`, copy the section you need into `.cursor/rules/<name>/RULE.md`.
 
 2. Customize for your project
 
@@ -29,28 +29,32 @@ Rules live in `.cursor/rules/` and are always loaded.
 ### Rule file format
 
 ```markdown
+---
+description: What this rule covers
+alwaysApply: true
+---
+
 # Rule Name
 
-Brief description of what this rule covers.
-
 ## Section 1
-- Guideline
-- Guideline
-
-## Section 2
 - Guideline
 ```
 
 ### Tips for rules
-- Keep rules focused (one topic per file)
+- Keep rules focused (one topic per rule folder)
 - Be specific (vague rules are ignored)
 - Update when patterns change
 - Remove outdated rules
 
 ### Example: Domain rule
 
-`.cursor/rules/domain.mdc`:
+`.cursor/rules/domain/RULE.md`:
 ```markdown
+---
+description: E-commerce domain terminology and business rules
+alwaysApply: true
+---
+
 # E-commerce Domain Rules
 
 ## Terminology
@@ -67,6 +71,20 @@ Brief description of what this rule covers.
 - Use "Order" not "Purchase"
 - Use "Cart" not "Basket"
 ```
+
+---
+
+## Adding Skills
+
+Skills live in `.cursor/skills/<name>/SKILL.md` (optional `references/`, `scripts/`, `assets/`).
+
+### Create a new skill
+
+1. Create `.cursor/skills/my-skill/SKILL.md` with `name` + `description` frontmatter
+2. Put deep docs in `references/` and link them from `SKILL.md`
+3. Prefer agent auto-apply via a specific description; set `disable-model-invocation: true` only for slash-only skills
+
+Do not duplicate the same skill under `.agents/skills/` in this template.
 
 ---
 
@@ -145,7 +163,7 @@ When the user invokes `/migrate-db`:
 
 ### Modify templates
 
-Edit `rule-templates.md` and adjust the section(s) you use. Copy updated content into `.cursor/rules/<name>.mdc` as needed.
+Edit `rule-templates.md` and adjust the section(s) you use. Copy updated content into `.cursor/rules/<name>/RULE.md` as needed.
 
 ### Add a new template section
 
@@ -227,7 +245,7 @@ Create a `CURSOR.md` in your project:
 # Cursor Extensions
 
 ## Custom Rules
-- `domain.mdc` - Business domain terminology
+- `domain/` - Business domain terminology
 
 ## Custom Commands
 - `/migrate-db` - Database migrations

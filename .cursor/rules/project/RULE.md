@@ -22,10 +22,13 @@ When working in this codebase:
 ## Architecture
 
 - **Commands** (`.cursor/commands/`): Slash commands for spec-driven workflows
+- **Skills** (`.cursor/skills/`): Domain workflows + progressive `references/` docs
 - **Templates** (`.cursor/templates/`): Rule templates for project customization
-- **Docs** (`.cursor/skills/spec-driven-workflow/references/`): Modular documentation; single source of truth
 - **Specs** (`.cursor/docs/specs/`): Generated specification files
+- **Plans** (`.cursor/plans/`): Implementation plans from `/plan-impl`
 - **Rules** (`.cursor/rules/`): Persistent technical constraints and quality gates (including testing policy)
+
+Artifact placement rules: see `.cursor/rules/cursor-artifacts/`.
 
 ## Workflow
 

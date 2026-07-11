@@ -31,7 +31,7 @@ When the user invokes `/implement-spec`:
 4. For each step:
    - Create or modify the specified files
    - Follow coding standards from `.cursor/rules/`
-   - Write or update tests for each implemented requirement (see `.cursor/rules/testing.mdc`)
+   - Write or update tests for each implemented requirement (see `.cursor/rules/testing/`)
    - **Update the plan file's todo status** (both frontmatter and markdown body)
 5. After implementation:
    - Run the test suite
