@@ -109,6 +109,22 @@ Prevent scope creep:
 - Multi-factor authentication
 ```
 
+### Keep the spec alive
+
+- Update the spec when decisions or scope change (before coding the change when possible)
+- Commit specs with the code
+- Reference `REQ-XXX` or spec sections in PRs
+
+### Common rationalizations
+
+| Rationalization | Reality |
+|---|---|
+| "This is simple, I don't need a spec" | Simple work needs short acceptance criteria, not a novel |
+| "I'll write the spec after I code" | That is documentation, not specification |
+| "The spec will slow us down" | A short gated spec prevents expensive rework |
+| "Requirements will change anyway" | Living specs absorb change; chat history does not |
+| "The user knows what they want" | Clear requests still hide assumptions — surface them |
+
 ---
 
 ## Workflow Best Practices
@@ -233,6 +249,7 @@ Don't let specs rot:
 ### Spec-Driven Development
 - [Martin Fowler: Understanding SDD](https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html)
 - [Alex Merced: AI-Assisted Coding Guide](https://dev.to/alexmercedcoder/a-practical-guide-to-ai-assisted-coding-tools-2fh5)
+- Patterns absorbed (not vendored): [addyosmani/agent-skills@spec-driven-development](https://skills.sh/addyosmani/agent-skills/spec-driven-development) (assumption surfacing, gated phases, success-criteria reframing); [github/awesome-copilot@create-specification](https://skills.sh/github/awesome-copilot/create-specification) (AI-ready language)
 
 ### General AI Coding
 - [Anthropic: Claude Best Practices](https://docs.anthropic.com/claude/docs)

@@ -14,10 +14,10 @@ Read and follow **`skills/spec-driven-workflow`** (especially `references/spec-w
 
 ## Behavior
 
-1. Clarify if the idea is vague (2–3 questions max).
+1. If the idea is vague: surface assumptions and reframe into success criteria (2–3 questions max). Do not silently invent requirements.
 2. Scan the codebase for related patterns.
-3. Write a testable spec (prefer `REQ-XXX` IDs + acceptance criteria + test strategy).
+3. Write a testable spec (prefer `REQ-XXX` IDs + acceptance criteria + test strategy). Include Assumptions / Open Questions when anything is unresolved.
 4. Save under `.cursor/docs/specs/{feature-name}.md` (create folders if needed).
-5. Suggest `/plan-impl` for medium+ work, or `/implement-spec` for small changes.
+5. Pause for user review on medium+ work; then suggest `/plan-impl`, or `/implement-spec` for small changes.
 
 Do not duplicate the full playbook here — the skill is the source of truth.

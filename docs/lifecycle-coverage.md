@@ -28,6 +28,8 @@ Recommended upstream (pinned in recommended-skills.json)
 ├── obra/superpowers         → plans, TDD, debug, review habits
 ├── vercel-labs find-skills  → safe discovery under trust policy
 └── anthropics skill-creator → maintainers / eval automation
+
+Do not add overlapping SDD packs — see recommended-skills.json do_not_add.overlapping-sdd
 ```
 
 ## Trust criteria

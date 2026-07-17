@@ -6,6 +6,7 @@
       "prompt": "Draft a spec for adding email/password login to an existing web app. Include testable requirements and a test strategy. Save it under docs/specs/ (or .cursor/docs/specs/ if that layout exists).",
       "expected_output": "A structured specification with overview, functional requirements (preferably REQ-XXX), acceptance criteria, constraints, out of scope, and an automated test strategy.",
       "assertions": [
+        "Surfaces assumptions or asks clarifying questions before treating vague auth details as settled",
         "Output includes a dedicated requirements section with multiple concrete items",
         "Requirements use IDs or otherwise uniquely referenceable items",
         "Acceptance criteria are present in Given/When/Then or equivalent testable form",

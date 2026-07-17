@@ -10,21 +10,59 @@ Specs can fail in two ways:
 
 The goal is **just enough detail** to communicate intent clearly.
 
+## Before you draft
+
+### Surface assumptions
+
+List assumptions and get correction *before* writing the body of the spec. Silent assumptions are the most expensive misunderstandings.
+
+### Reframe vague goals
+
+Translate fuzzy requests into concrete success criteria, then confirm with the human:
+
+```
+REQUIREMENT: "Make search better"
+SUCCESS CRITERIA:
+- Partial name match, case-insensitive
+- Results return in < 300ms for 10k users
+- Empty query shows paginated full list
+→ Right targets?
+```
+
+### AI-ready language
+
+Write for both humans and agents:
+
+- Prefer precise, unambiguous wording; distinguish must / should / may
+- Define acronyms and domain terms on first use
+- Prefer structured headings, lists, and tables over prose walls
+- Include examples and edge cases where behavior could fork
+- Keep the spec self-contained (do not rely on chat history)
+
 ## Functional vs Technical
 
 ### Functional Spec (What)
-Lives in the spec document:
+Lives in the feature spec document:
 - User behavior and expectations
 - Acceptance criteria
 - Business rules
 - Constraints and edge cases
 
 ### Technical Spec (How)
-Lives in rules (`.cursor/rules/`):
+Default home is project rules (`.cursor/rules/`) and conventions:
 - Implementation patterns
 - Framework conventions
 - Coding standards
-- Architecture decisions
+- Architecture decisions that apply across features
+
+For **large** features that need both lenses, you may split:
+
+| File | Contents |
+|------|----------|
+| `{feature}.md` or `PRODUCT.md` | Outcomes, requirements, acceptance, out of scope |
+| `{feature}-tech.md` or `TECH.md` | Approach, APIs, data model, migrations — only when the “how” is a decision, not a preference |
+
+Prefer one file unless the tech section would dominate the product intent.
 
 ### When to Add Technical Details to Spec
 
@@ -70,6 +108,9 @@ One sentence: what and why.
 ## Overview
 What this does and why it matters.
 
+## Assumptions
+- [Assumptions already confirmed, or open ones marked]
+
 ## Requirements
 
 ### Functional
@@ -87,13 +128,23 @@ What this does and why it matters.
 - REQ-001: {unit|integration|e2e} — {what to assert}
 - REQ-002: {unit|integration|e2e} — {what to assert}
 
+## Boundaries (optional, feature-scoped)
+- Always: […]
+- Ask first: […]
+- Never: […]
+
 ## Constraints
 - Must work with existing Z
 - Cannot break backward compatibility
 
 ## Out of Scope
 - Not included: A, B, C
+
+## Open Questions
+- [Anything unresolved]
 ```
+
+Feature **Boundaries** (Always / Ask first / Never) are for *this change*. Project-wide commands, structure, and style belong in rules — not duplicated in every feature spec.
 
 ### Detailed Spec (Large/complex changes)
 Add as needed:
@@ -227,6 +278,7 @@ Update specs when requirements change. Outdated specs are worse than no specs.
 
 Before running `/implement-spec`:
 
+- [ ] Ambiguous assumptions were surfaced and resolved (or listed as open questions)
 - [ ] Overview explains what and why
 - [ ] Requirements are specific and testable
 - [ ] Acceptance criteria cover happy path
@@ -234,3 +286,4 @@ Before running `/implement-spec`:
 - [ ] Constraints stated
 - [ ] Out of scope defined
 - [ ] No implementation details (unless necessary)
+- [ ] Spec is saved in the project (not only in chat)

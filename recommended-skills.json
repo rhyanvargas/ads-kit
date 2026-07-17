@@ -80,8 +80,21 @@
   "do_not_add": [
     {
       "id": "overlapping-sdd",
-      "examples": ["to-spec", "generic spec-driven-development packs that replace ADSK SDD"],
-      "reason": "Collides with first-party skills/spec-driven-workflow. Prefer ADSK SDD as the kit spine."
+      "examples": [
+        "addyosmani/agent-skills@spec-driven-development",
+        "warpdotdev/common-skills@spec-driven-implementation",
+        "github/awesome-copilot@create-specification",
+        "to-spec",
+        "other generic spec-driven-development packs that replace ADSK SDD"
+      ],
+      "reason": "Collides with first-party skills/spec-driven-workflow (trigger overlap + divergent paths/templates). Reviewed 2026-07-17: absorb useful patterns into ADSK SDD instead of vendoring; keep Superpowers for plan/TDD complement.",
+      "absorbed_patterns": [
+        "Surface assumptions before drafting",
+        "Human/self gates between specify → plan → implement",
+        "Reframe vague goals as measurable success criteria",
+        "AI-ready unambiguous language + self-contained specs",
+        "Optional PRODUCT/TECH split for large features only"
+      ]
     }
   ]
 }

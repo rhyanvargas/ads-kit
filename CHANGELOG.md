@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Adopter path is CLI-first: `npx skills add` / `npx skills update`; app skills live in `.agents/skills/` (no root `skills/` in consumer apps)
 - README / AGENTS.md separate **kit package layout** (`skills/`) from **adopter layout** (`.agents/skills/`)
 - [docs/upgrading.md](docs/upgrading.md) defers to `using-adsk.md`
+- `spec-driven-workflow`: gated procedure, assumption surfacing, success-criteria reframing, living-spec guidance (patterns absorbed from high-adoption upstream SDD skills; not vendored)
+- `recommended-skills.json` `do_not_add.overlapping-sdd` lists reviewed upstream SDD skills and absorbed patterns
 
 ### Planned
 

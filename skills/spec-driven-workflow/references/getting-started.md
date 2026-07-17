@@ -56,6 +56,10 @@ Open in Cursor and run `/quick-start`, or activate `spec-driven-workflow`.
 3. In an **app** after CLI install: `.agents/skills/` has the skill folders
 4. In **this kit repo**: `skills/` is package source; `.agents/skills/` and `.cursor/skills/` link to it
 
+## Avoid overlapping SDD skills
+
+Do **not** also install generic `spec-driven-development` packs (e.g. Addy Osmani’s or Warp’s) alongside ADSK — they compete for the same triggers and use different paths/templates. Use ADSK SDD as the spine; pair with recommended Superpowers skills for planning/TDD (see repo `recommended-skills.json`).
+
 ## Next steps
 
 - [Greenfield Workflow](greenfield-workflow.md)

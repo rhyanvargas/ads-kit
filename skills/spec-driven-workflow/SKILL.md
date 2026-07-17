@@ -22,13 +22,48 @@ Spec-Driven Development (SDD) shifts coding from ad-hoc prompts to structured sp
 
 Read `references/problem-size-guide.md` when size is unclear.
 
-## Core procedure
+## Gated procedure
 
-1. **Specify** — Capture requirements with testable acceptance criteria (`REQ-XXX` IDs preferred). Read `references/spec-writing-guide.md` for structure.
-2. **Plan** (medium+) — Break work into concrete, verifiable tasks. Prefer a written plan before multi-file changes.
-3. **Implement** — Follow the spec/plan; map each requirement to tests unless non-behavioral with explicit justification.
-4. **Review** — Check correctness, security-sensitive paths, test coverage, and spec compliance.
-5. **Brownfield** — Document existing behavior with extract-spec before large changes. Read `references/brownfield-workflow.md`.
+Do not advance phases until the current artifact is good enough (user review for medium+; self-check for small).
+
+```
+SIZE → SPECIFY → PLAN (medium+) → IMPLEMENT → REVIEW
+              ↑______________ living spec ______________|
+```
+
+1. **Size** — Match depth to problem size (table above).
+2. **Specify** — Surface assumptions first, then write testable requirements (`REQ-XXX` preferred). Read `references/spec-writing-guide.md`.
+3. **Plan** (medium+) — Break work into concrete, verifiable tasks. Prefer a written plan before multi-file changes.
+4. **Implement** — Follow the spec/plan; map each requirement to tests unless non-behavioral with explicit justification.
+5. **Review** — Check correctness, security-sensitive paths, test coverage, and spec compliance.
+6. **Brownfield** — Document existing behavior with extract-spec before large changes. Read `references/brownfield-workflow.md`.
+
+### Before writing a spec
+
+**Surface assumptions immediately.** List what you are assuming and invite correction before drafting:
+
+```
+ASSUMPTIONS:
+1. …
+2. …
+→ Correct me now or I'll proceed with these.
+```
+
+**Reframe vague goals as success criteria** (measurable / testable), then confirm:
+
+```
+REQUIREMENT: "Make the dashboard faster"
+SUCCESS CRITERIA:
+- LCP < 2.5s on 4G
+- Initial data load < 500ms
+→ Are these the right targets?
+```
+
+Do not silently fill ambiguous requirements — that is the failure mode SDD exists to prevent.
+
+### Living spec
+
+Update the spec when decisions or scope change; prefer updating the spec before implementing the change. Link PRs back to the spec section or `REQ-XXX` they satisfy.
 
 ## Paths (defaults)
 
@@ -71,8 +106,13 @@ Load references only when needed:
 | `references/extending.md` | Adding rules/commands/skills |
 | `references/best-practices.md` | Tips and external links |
 
+## Complementary skills (not vendored)
+
+Prefer ADSK as the SDD spine. Pair with recommended upstream packs from repo `recommended-skills.json` (e.g. Superpowers `writing-plans`, `test-driven-development`) — do not install overlapping generic “spec-driven-development” packs that replace this skill.
+
 ## Quality gates
 
+- Assumptions surfaced before drafting when requirements are ambiguous.
 - Requirements are specific and testable.
 - Implemented requirements have automated tests (or a short justification when truly non-behavioral).
 - Run the project's verify commands (tests/lint/typecheck) before claiming done.
