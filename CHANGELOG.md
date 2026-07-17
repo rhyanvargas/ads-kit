@@ -1,0 +1,48 @@
+# Changelog
+
+All notable changes to **The Agentic Development Starter Kit (ADSK)** are documented here.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+### Planned
+
+- GitHub repository rename to `agentic-development-starter-kit` (maintainer action)
+- Optional skills.sh listing
+- First-party or pinned skills for security review and deeper observability (lifecycle gaps)
+
+## [0.1.0] — 2026-07-17
+
+### Added
+
+- Apache-2.0 `LICENSE`, `NOTICE`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`
+- GitHub issue/PR templates and `.gitignore`
+- Portable skills source of truth under `skills/` with `.cursor/skills` relative symlinks
+- First-party skills: `spec-driven-workflow`, `devops-strategy-facilitator`
+- Skill eval harness files (`evals/evals.json`, trigger query sets)
+- Docs: skill authoring, evaluating skills, scorecard, lifecycle coverage, upgrading
+- `recommended-skills.json` for pinned upstream packs (Superpowers, find-skills, skill-creator)
+- ADSK branding across README / AGENTS.md / Cursor README
+
+### Changed
+
+- Cursor commands thinned to invoke skills instead of duplicating playbooks
+- DevOps strategy template moved into skill `references/`
+- Brownfield workflow reference filled in
+- Project rule text updated for ADSK naming
+
+### Removed
+
+- Duplicated skill trees under `.cursor/skills/**` (replaced by symlinks)
+
+### Migration notes (from `rhyan-cursor-docs`)
+
+1. Rename the GitHub repo to `agentic-development-starter-kit` and update `git remote`
+2. Ensure consumer projects copy both `skills/` and `.cursor/` (or install via `npx skills add`)
+3. Re-link `.cursor/skills/<name>` → `../../skills/<name>` if upgrading an old copy
+4. Install recommended upstream skills separately if you relied on local hub copies
+
+[Unreleased]: https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/rhyanvargas/agentic-development-starter-kit/releases/tag/v0.1.0

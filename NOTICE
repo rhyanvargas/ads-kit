@@ -1,0 +1,8 @@
+The Agentic Development Starter Kit (ADSK)
+Copyright 2026 The Agentic Development Starter Kit Contributors
+
+This product includes software developed for the Agent Skills open standard
+(https://agentskills.io). Recommended upstream skills (for example from
+obra/superpowers, vercel-labs/skills, and anthropics/skills) are not
+redistributed in this repository; they remain under their own licenses when
+installed separately.
