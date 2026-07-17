@@ -1,15 +1,17 @@
 ---
 name: spec-driven-workflow
 description: >-
-  Spec-driven development workflow for AI-assisted coding. Use when drafting
-  specs, planning implementation, implementing from specs, reviewing code,
-  extracting specs from existing code, or when the user asks about spec-driven
-  development, greenfield/brownfield workflows, or problem sizing.
+  Draft specs, plan implementation, implement from specs, review against
+  specs, extract specs from existing code, and size greenfield/brownfield
+  work. Use when the user wants testable requirements, living specs,
+  spec-driven development, or /draft-spec /plan-impl /implement-spec
+  /review /extract-spec. Do not use for DevOps/CI-CD strategy design or
+  trivial one-line fixes.
 ---
 
 # Spec-Driven Workflow
 
-Spec-Driven Development (SDD) shifts coding from ad-hoc prompts to structured specifications. The spec is the shared source of truth for what to build and how to know it is done.
+The spec is the shared source of truth for what to build and how to know it is done.
 
 ## Quick size guide
 
@@ -67,28 +69,12 @@ Update the spec when decisions or scope change; prefer updating the spec before 
 
 ## Paths (defaults)
 
-These defaults match the ADSK Cursor layout; other harnesses may use equivalent project paths:
-
 | Artifact | Default path |
 |----------|----------------|
 | Specs | `.cursor/docs/specs/` or project `docs/specs/` |
 | Plans | `.cursor/plans/` or project `docs/plans/` |
 
-## Cursor slash commands (optional)
-
-When Cursor commands from this kit are installed, they invoke this skill:
-
-| Command | Role |
-|---------|------|
-| `/draft-spec` | Generate a spec |
-| `/plan-impl` | Create an implementation plan |
-| `/implement-spec` | Implement from spec/plan |
-| `/review` | Post-implementation review |
-| `/extract-spec` | Document existing code |
-| `/quick-start` | Initialize workflow for a project |
-| `/update-readme` | Sync README with codebase |
-
-Full command details: `references/commands-reference.md`.
+Cursor slash commands (`/draft-spec`, `/plan-impl`, etc.) are thin wrappers; details in `references/commands-reference.md`.
 
 ## Progressive disclosure
 
@@ -96,19 +82,15 @@ Load references only when needed:
 
 | Reference | When to read |
 |-----------|----------------|
-| `references/getting-started.md` | First-time setup / install |
-| `references/spec-driven-overview.md` | Why SDD / rationale |
-| `references/problem-size-guide.md` | Choosing workflow depth |
-| `references/greenfield-workflow.md` | New features |
-| `references/brownfield-workflow.md` | Existing codebases |
+| `references/problem-size-guide.md` | Size unclear or contested |
 | `references/spec-writing-guide.md` | Writing or reviewing a spec |
-| `references/commands-reference.md` | Slash command details |
-| `references/extending.md` | Adding rules/commands/skills |
-| `references/best-practices.md` | Tips and external links |
-
-## Complementary skills (not vendored)
-
-Prefer ADSK as the SDD spine. Pair with recommended upstream packs from repo `recommended-skills.json` (e.g. Superpowers `writing-plans`, `test-driven-development`) — do not install overlapping generic “spec-driven-development” packs that replace this skill.
+| `references/greenfield-workflow.md` | New feature, no existing behavior to preserve |
+| `references/brownfield-workflow.md` | Changing or documenting existing code |
+| `references/commands-reference.md` | Slash-command usage or options |
+| `references/getting-started.md` | User asks how to install/setup ADSK |
+| `references/spec-driven-overview.md` | User asks *why* SDD (not for routine runs) |
+| `references/best-practices.md` | User asks for tips/external links |
+| `references/extending.md` | Adding rules/commands/skills or pairing upstream packs |
 
 ## Quality gates
 

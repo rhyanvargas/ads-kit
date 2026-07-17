@@ -13,6 +13,7 @@ Complete reference for all spec-driven workflow commands.
 | `/extract-spec` | Document existing code | Brownfield projects |
 | `/quick-start` | Initialize workflow | First-time setup |
 | `/design-devops-strategy` | Design CI/CD + branching strategy | Delivery / platform decisions |
+| `/optimize-skill` | Optimize a skill for triggers/tokens | Creating or editing skills |
 | `/update-readme` | Sync README with codebase | Keep README accurate |
 
 ---

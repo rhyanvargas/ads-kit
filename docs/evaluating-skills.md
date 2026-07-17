@@ -81,7 +81,9 @@ Separate from output quality. Store labeled queries under `evals/trigger/eval_qu
 ]
 ```
 
-Aim for ~20 queries (half should / half should not). See [Optimizing skill descriptions](https://agentskills.io/skill-creation/optimizing-descriptions).
+Aim for ~20 queries (half should / half should not). Prefer near-miss negatives. See [Optimizing skill descriptions](https://agentskills.io/skill-creation/optimizing-descriptions).
+
+When authoring or revising skills, follow **`skill-optimizer`** (`references/eval-loop.md` inside that skill) so trigger + output loops stay coupled to token budgets.
 
 ## Iteration loop
 

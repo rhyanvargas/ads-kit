@@ -44,6 +44,7 @@ Skills work without slash commands. To add `/draft-spec` and friends, copy ADSK�
 
 - **`spec-driven-workflow`** — spec → plan → implement → review (+ brownfield extract)
 - **`devops-strategy-facilitator`** — concise CI/CD, branching, environments strategy
+- **`skill-optimizer`** — author/optimize skills for trigger accuracy, clarity, and token cost
 
 ## Try this repo in Cursor
 

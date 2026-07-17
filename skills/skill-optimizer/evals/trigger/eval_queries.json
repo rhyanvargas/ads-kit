@@ -1,0 +1,22 @@
+[
+  { "query": "Optimize this SKILL.md for token cost and clearer triggers", "should_trigger": true },
+  { "query": "Help me write a better description so the skill activates correctly", "should_trigger": true },
+  { "query": "Create a new Agent Skill for our team with evals and progressive disclosure", "should_trigger": true },
+  { "query": "Review whether our skills follow agentskills.io best practices", "should_trigger": true },
+  { "query": "/optimize-skill for the billing-runbook skill", "should_trigger": true },
+  { "query": "Add trigger eval queries and slim the activation body", "should_trigger": true },
+  { "query": "Where should references go and when should the agent load them?", "should_trigger": true },
+  { "query": "Our skill false-triggers on unrelated prompts — fix discovery", "should_trigger": true },
+  { "query": "Validate this skill with skills-ref and tighten the checklist", "should_trigger": true },
+  { "query": "Make this skill clearer and cheaper when it loads into context", "should_trigger": true },
+  { "query": "Draft a spec for user authentication", "should_trigger": false },
+  { "query": "Design our Kubernetes CI/CD promotion strategy", "should_trigger": false },
+  { "query": "Implement the approved export-csv spec", "should_trigger": false },
+  { "query": "What's the capital of France?", "should_trigger": false },
+  { "query": "Write unit tests first for this bug", "should_trigger": false },
+  { "query": "Debug why this flaky test fails", "should_trigger": false },
+  { "query": "Refactor this React component", "should_trigger": false },
+  { "query": "Generate a random UUID", "should_trigger": false },
+  { "query": "Find me a skill for PowerPoint decks", "should_trigger": false },
+  { "query": "Explain how TCP congestion control works", "should_trigger": false }
+]

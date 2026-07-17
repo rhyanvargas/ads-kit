@@ -10,6 +10,7 @@ Scoring axes (1–5): **Fit** (lifecycle value), **Portability**, **Clarity**, *
 |-------|-----|-------------|---------|-------|----------------|-------------|-------|
 | `spec-driven-workflow` | 5 | 5 | 4 | 5 (in-repo Apache-2.0) | 4 (cases defined; run locally) | **Keep (core)** | Kit spine: specify → plan → implement → review + brownfield |
 | `devops-strategy-facilitator` | 4 | 5 | 5 | 5 | 4 (cases defined; run locally) | **Keep** | Decision-first strategy sessions; not a full SRE pack |
+| `skill-optimizer` | 5 | 5 | 5 | 5 | 4 (cases defined; run locally) | **Keep** | Author/optimize skills; required gate for new skills |
 
 ### How to interpret “Eval readiness”
 

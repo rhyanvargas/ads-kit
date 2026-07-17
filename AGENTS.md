@@ -32,6 +32,8 @@ Prefer:
 Follow [docs/skill-authoring.md](docs/skill-authoring.md) and [docs/evaluating-skills.md](docs/evaluating-skills.md)
 (aligned with [agentskills.io](https://agentskills.io)).
 
+**When creating or editing any skill**, apply **`skill-optimizer`** (validate, lean `SKILL.md`, progressive disclosure, trigger + output evals). Cursor: rule `.cursor/rules/skill-authoring/`, command `/optimize-skill`.
+
 ## Testing note
 
 This kit is primarily templates/docs. If you add executable code, also add:

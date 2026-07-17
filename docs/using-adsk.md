@@ -76,13 +76,24 @@ Add `.agents/skills/my-company-skill/SKILL.md`:
 ```markdown
 ---
 name: my-company-skill
-description: Does X for our app. Use when the user asks about Y.
+description: >-
+  Does X for our app. Use when the user asks about Y. Do not use for Z
+  (near-miss).
 ---
 
 # My company skill
 
 1. …
 ```
+
+**Optimize before you ship it.** With ADSK installed you get `skill-optimizer`:
+
+1. Ask the agent to follow `skill-optimizer` (or run `/optimize-skill` if you copied Cursor commands).
+2. Keep `SKILL.md` lean; put depth in `references/` with when-to-load conditions.
+3. Add `evals/trigger/eval_queries.json` (~20 should/shouldn’t queries, including near-misses).
+4. Validate: `npx --yes skills-ref validate ./.agents/skills/my-company-skill`
+
+If you copied `.cursor/rules/` from ADSK, the `skill-authoring` rule reminds the agent of these gates when `SKILL.md` is in context.
 
 Restart / refresh the agent so it picks up the new skill.
 
@@ -99,7 +110,7 @@ More authoring guidance: [skill-authoring.md](skill-authoring.md).
 
 ## 5. Quick check
 
-- Agent sees `spec-driven-workflow` (and `devops-strategy-facilitator` if installed).
+- Agent sees `spec-driven-workflow`, `skill-optimizer`, and `devops-strategy-facilitator` (if installed).
 - Project install → folders under `.agents/skills/`.
 - Your `.cursor/docs/specs/` and `.cursor/plans/` (if any) are unchanged after `npx skills update`.
 

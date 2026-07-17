@@ -27,6 +27,7 @@ Adopters (not contributing upstream) should use [docs/using-adsk.md](docs/using-
 ## Adding or changing skills
 
 - First-party skills: edit under `skills/<name>/` and keep `SKILL.md` lean; put depth in `references/`.
+- **Run the optimization gates** via `skill-optimizer` (or `/optimize-skill`): validate, description triggers, progressive disclosure, `evals/trigger/` + `evals/evals.json`.
 - Recommended upstream skills: update [`recommended-skills.json`](recommended-skills.json) and [docs/lifecycle-coverage.md](docs/lifecycle-coverage.md) — do **not** vendor upstream trees unless maintainers agree.
 - See [docs/skill-authoring.md](docs/skill-authoring.md) and [docs/evaluating-skills.md](docs/evaluating-skills.md).
 

@@ -1,11 +1,12 @@
 ---
 name: devops-strategy-facilitator
 description: >-
-  Facilitates a concise DevOps strategy design session (branching, CI/CD,
-  environments, governance, artifacts, secrets). Use when the user asks to
-  design or refine a DevOps/CI-CD strategy, branching model, environment
-  promotion flow, deployment governance, or when /design-devops-strategy is
-  invoked.
+  Facilitate a concise DevOps strategy session covering branching, CI/CD,
+  environments, promotion, governance, artifacts, secrets, and rollback.
+  Use when designing or refining delivery strategy, environment promotion,
+  deployment governance, or when /design-devops-strategy is invoked. Do not
+  use for feature specs, writing unit tests, or debugging a single pipeline
+  failure.
 ---
 
 # DevOps Strategy Facilitator
@@ -52,6 +53,4 @@ Design a DevOps strategy that is **explicit, minimal, and adoptable**.
 |-----------|----------------|
 | `references/strategy-template.md` | When drafting or reviewing the strategy document |
 
-## Cursor command (optional)
-
-`/design-devops-strategy` — thin wrapper that invokes this skill.
+`/design-devops-strategy` is a thin Cursor wrapper that invokes this skill.

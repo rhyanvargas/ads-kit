@@ -18,5 +18,5 @@
   { "query": "Generate a random UUID", "should_trigger": false },
   { "query": "What npm package should I use for date formatting?", "should_trigger": false },
   { "query": "Translate this paragraph to Spanish", "should_trigger": false },
-  { "query": "Show me the git blame for this file", "should_trigger": false }
+  { "query": "Why did this single GitHub Actions run fail on lint?", "should_trigger": false }
 ]

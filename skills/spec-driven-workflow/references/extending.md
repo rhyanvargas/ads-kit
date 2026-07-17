@@ -87,6 +87,8 @@ ln -sfn ../../skills/my-skill .cursor/skills/my-skill
 
 Prefer agent auto-apply via a specific description; set `disable-model-invocation: true` only for slash-only skills. Do not duplicate skill trees.
 
+Before calling a new skill done, follow **`skill-optimizer`** (validate, lean body, progressive disclosure, trigger + output evals) or `/optimize-skill`.
+
 ---
 
 ## Adding Commands

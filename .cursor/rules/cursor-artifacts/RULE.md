@@ -29,7 +29,8 @@ Do not keep duplicate skill trees.
 ## When to use which
 
 - **Rule** — Stable project constraints the agent must always (or for matching files) follow: coding standards, testing policy, verify commands.
-- **Skill** — Specialized workflow knowledge with a clear trigger description (spec-driven SDD, DevOps strategy facilitation). Prefer skills when the agent should auto-apply from context.
+- **Skill** — Specialized workflow knowledge with a clear trigger description (spec-driven SDD, DevOps strategy facilitation, skill optimization). Prefer skills when the agent should auto-apply from context.
+- **New/edited skills** — Follow `skill-optimizer` and the `skill-authoring` rule; do not ship without validate + trigger evals.
 - **Command** — User-invoked multi-step procedure via `/`. Keep command bodies thin; point to the matching skill for deep guidance when one exists.
 
 ## Anti-duplication
