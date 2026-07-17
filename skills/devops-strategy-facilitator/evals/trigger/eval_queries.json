@@ -1,0 +1,18 @@
+[
+  { "query": "Design a CI/CD and branching strategy for our new service", "should_trigger": true },
+  { "query": "Help us decide build-once promote vs rebuild per environment", "should_trigger": true },
+  { "query": "We need environment promotion and prod approval gates", "should_trigger": true },
+  { "query": "/design-devops-strategy for Azure DevOps + AKS", "should_trigger": true },
+  { "query": "How should we handle secrets injection and OIDC to cloud?", "should_trigger": true },
+  { "query": "Propose a release branching model and PR gates", "should_trigger": true },
+  { "query": "What's our rollback approach for Kubernetes deployments?", "should_trigger": true },
+  { "query": "Facilitate a short DevOps strategy workshop for the team", "should_trigger": true },
+  { "query": "Draft a spec for the notifications feature", "should_trigger": false },
+  { "query": "Extract a spec from the payments module", "should_trigger": false },
+  { "query": "Write unit tests first for this bugfix", "should_trigger": false },
+  { "query": "Debug why the flaky test fails intermittently", "should_trigger": false },
+  { "query": "What's the capital of France?", "should_trigger": false },
+  { "query": "Find a skill for making slide decks", "should_trigger": false },
+  { "query": "Refactor this React component for readability", "should_trigger": false },
+  { "query": "Generate a UUID", "should_trigger": false }
+]

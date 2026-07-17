@@ -1,0 +1,22 @@
+[
+  { "query": "Draft a spec for user authentication with email and password", "should_trigger": true },
+  { "query": "Help me write a specification before we implement the billing refactor", "should_trigger": true },
+  { "query": "Create an implementation plan from our feature spec", "should_trigger": true },
+  { "query": "Extract a spec from the existing auth module so we know current behavior", "should_trigger": true },
+  { "query": "Should this be greenfield or brownfield workflow for our legacy checkout?", "should_trigger": true },
+  { "query": "Review this change against the notifications spec", "should_trigger": true },
+  { "query": "How do we size problems for spec-driven development?", "should_trigger": true },
+  { "query": "Walk me through /draft-spec then /plan-impl for this feature", "should_trigger": true },
+  { "query": "What's the difference between a vague idea and a testable requirement?", "should_trigger": true },
+  { "query": "Implement from the approved spec in docs/specs/export-csv.md", "should_trigger": true },
+  { "query": "What's the capital of France?", "should_trigger": false },
+  { "query": "Roll a d20 for me", "should_trigger": false },
+  { "query": "Design our Kubernetes branching and CI/CD promotion strategy", "should_trigger": false },
+  { "query": "Find me a skill for creating PowerPoint decks", "should_trigger": false },
+  { "query": "Fix this one-character typo in a comment", "should_trigger": false },
+  { "query": "Explain how TCP congestion control works", "should_trigger": false },
+  { "query": "Generate a random UUID", "should_trigger": false },
+  { "query": "What npm package should I use for date formatting?", "should_trigger": false },
+  { "query": "Translate this paragraph to Spanish", "should_trigger": false },
+  { "query": "Show me the git blame for this file", "should_trigger": false }
+]

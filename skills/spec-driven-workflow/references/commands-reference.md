@@ -12,6 +12,7 @@ Complete reference for all spec-driven workflow commands.
 | `/review` | Quality check | After implementation |
 | `/extract-spec` | Document existing code | Brownfield projects |
 | `/quick-start` | Initialize workflow | First-time setup |
+| `/design-devops-strategy` | Design CI/CD + branching strategy | Delivery / platform decisions |
 | `/update-readme` | Sync README with codebase | Keep README accurate |
 
 ---
@@ -249,6 +250,26 @@ Initialize the spec-driven workflow for a project.
 ```
 "Fix the typo in README.md"            # Direct chat
 ```
+
+---
+
+## /design-devops-strategy
+
+Collaborate on a concise DevOps strategy (branching, CI/CD, environments, governance).
+
+### Usage
+```
+/design-devops-strategy
+/design-devops-strategy "GitHub Actions + Kubernetes, dev/stage/prod"
+```
+
+### Behavior
+1. Asks up to 5–10 targeted questions
+2. Drafts a short strategy using `skills/devops-strategy-facilitator/references/strategy-template.md`
+3. Records a decision log and open questions
+
+### Skill
+`skills/devops-strategy-facilitator`
 
 ---
 

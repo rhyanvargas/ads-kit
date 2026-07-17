@@ -1,0 +1,37 @@
+{
+  "skill_name": "devops-strategy-facilitator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Help us design a DevOps strategy for a B2B SaaS API on GitHub Actions deploying to Kubernetes. We have dev and prod. Prefer build-once promote. Keep it to about two pages with a decision log.",
+      "expected_output": "A concise strategy covering branching/PR gates, CI, artifacts, CD promotion, secrets, rollback, observability minimums, assumptions, and a decision log table — not a long essay.",
+      "assertions": [
+        "Output includes branching or PR policy decisions",
+        "Output includes CI responsibilities and artifact/promotion model",
+        "Output includes environment promotion and prod approval/governance notes",
+        "Output includes secrets or configuration approach",
+        "Includes a decision log table or equivalent structured decisions",
+        "Marks assumptions or open questions"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "We need a DevOps strategy but I don't know our environments yet. Facilitate the session — don't invent a full Azure-specific stack without asking.",
+      "expected_output": "A short set of targeted questions (≤10) covering platform, runtime, envs/approvals, promotion, branching, secrets/compliance — then a provisional draft only with assumptions marked.",
+      "assertions": [
+        "Asks clarifying questions before finalizing platform-specific details",
+        "Limits questions to a small focused set rather than an unbounded interview",
+        "Any draft content clearly marks assumptions when facts are missing"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Write our DevOps strategy as a 20-page treatise covering every possible CD pattern in the industry.",
+      "expected_output": "Pushes back toward a short, decision-first 1–2 page strategy with explicit non-goals instead of an encyclopedic document.",
+      "assertions": [
+        "Recommends keeping the strategy short / decision-first",
+        "Does not produce an exhaustive multi-dozen-page catalog of all CD patterns as the primary deliverable"
+      ]
+    }
+  ]
+}

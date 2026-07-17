@@ -1,0 +1,48 @@
+{
+  "skill_name": "spec-driven-workflow",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Draft a spec for adding email/password login to an existing web app. Include testable requirements and a test strategy. Save it under docs/specs/ (or .cursor/docs/specs/ if that layout exists).",
+      "expected_output": "A structured specification with overview, functional requirements (preferably REQ-XXX), acceptance criteria, constraints, out of scope, and an automated test strategy.",
+      "assertions": [
+        "Output includes a dedicated requirements section with multiple concrete items",
+        "Requirements use IDs or otherwise uniquely referenceable items",
+        "Acceptance criteria are present in Given/When/Then or equivalent testable form",
+        "A test strategy section maps requirements to automated checks",
+        "Out of scope or constraints are explicitly listed"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "We have a messy payments module with no docs. Walk me through the brownfield workflow before we change refund behavior — what do we do first and what artifacts should exist?",
+      "expected_output": "A clear sequence that starts with documenting current behavior (extract/baseline spec), then a change/delta spec, then plan/implement/review sized appropriately — not jumping straight to coding refunds.",
+      "assertions": [
+        "Mentions documenting or extracting current behavior before implementing the change",
+        "Distinguishes baseline/current spec from the desired change spec",
+        "Mentions planning and/or review for non-trivial change",
+        "Does not recommend skipping straight to production code without a spec for this scenario"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "hey can you just rename a typo in a comment in README — do we need the whole spec workflow?",
+      "expected_output": "Recognizes trivial scope and advises skipping the formal SDD workflow; handle in chat / direct edit.",
+      "assertions": [
+        "Recommends skipping formal draft-spec/plan/implement workflow for this trivial change",
+        "Does not require producing a multi-section specification for a comment typo"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Create an implementation plan for a medium-sized feature whose spec already lists 6 REQ items touching API + UI + DB. Assume the spec file is at docs/specs/notifications.md.",
+      "expected_output": "An ordered plan with concrete tasks, files to touch, tests per requirement slice, and risks — suitable for medium size (plan before implement).",
+      "assertions": [
+        "Plan is broken into ordered tasks or steps",
+        "Mentions specific areas or files (API, UI, DB or equivalents)",
+        "Includes testing or verification steps tied to requirements",
+        "Flags risks or dependencies"
+      ]
+    }
+  ]
+}

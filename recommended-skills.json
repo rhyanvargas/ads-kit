@@ -1,0 +1,87 @@
+{
+  "$schema_comment": "ADSK recommended upstream skills — not vendored. Pin and review before enterprise use.",
+  "version": 1,
+  "trust_policy": {
+    "prefer_orgs": ["anthropics", "vercel-labs", "obra"],
+    "require_license_review": true,
+    "disallow_unpinned_registry_longtail": true,
+    "checklist": [
+      "Source org / maintainer reputation",
+      "License compatible with org policy",
+      "Install or star signal supports trust",
+      "Review SKILL.md and scripts/ for secrets exfiltration",
+      "Pin version; re-review on upgrade"
+    ]
+  },
+  "recommended": [
+    {
+      "id": "superpowers",
+      "source": "obra/superpowers",
+      "license": "See upstream repository",
+      "lifecycle_roles": ["plan", "develop", "test", "debug", "review"],
+      "skills": [
+        "writing-plans",
+        "test-driven-development",
+        "systematic-debugging",
+        "requesting-code-review",
+        "brainstorming"
+      ],
+      "trust_notes": "High-adoption engineering methodology pack. May assume Superpowers-specific paths (e.g. docs/superpowers/). Pin and adapt paths to your repo layout.",
+      "install": "npx skills add obra/superpowers -g",
+      "pin": {
+        "strategy": "git-tag-or-commit",
+        "value": "latest-reviewed",
+        "note": "Replace with an explicit tag/commit after your security review."
+      },
+      "disposition": "recommend"
+    },
+    {
+      "id": "find-skills",
+      "source": "vercel-labs/skills",
+      "skill": "find-skills",
+      "license": "See upstream repository",
+      "lifecycle_roles": ["expand", "discover"],
+      "trust_notes": "Official Skills CLI discovery helper. Still apply trust checklist before installing anything it suggests.",
+      "install": "npx skills add vercel-labs/skills@find-skills -g",
+      "pin": {
+        "strategy": "package-or-repo-ref",
+        "value": "latest-reviewed",
+        "note": "Prefer a known-good CLI/skills release after review."
+      },
+      "disposition": "recommend"
+    },
+    {
+      "id": "skill-creator",
+      "source": "anthropics/skills",
+      "skill": "skill-creator",
+      "license": "Apache-2.0 (upstream)",
+      "lifecycle_roles": ["maintain-skills", "evals"],
+      "trust_notes": "Official Anthropic helper for creating and evaluating skills. Aimed at maintainers, not every app developer.",
+      "install": "npx skills add anthropics/skills@skill-creator -g",
+      "pin": {
+        "strategy": "git-tag-or-commit",
+        "value": "latest-reviewed"
+      },
+      "disposition": "recommend-maintainers"
+    }
+  ],
+  "optional": [
+    {
+      "id": "frontend-design",
+      "source": "anthropics/skills",
+      "skill": "frontend-design",
+      "license": "Apache-2.0 (upstream)",
+      "lifecycle_roles": ["design-ui"],
+      "trust_notes": "High-adoption UI craft skill. Optional for non-UI teams.",
+      "install": "npx skills add anthropics/skills@frontend-design -g",
+      "disposition": "optional"
+    }
+  ],
+  "do_not_add": [
+    {
+      "id": "overlapping-sdd",
+      "examples": ["to-spec", "generic spec-driven-development packs that replace ADSK SDD"],
+      "reason": "Collides with first-party skills/spec-driven-workflow. Prefer ADSK SDD as the kit spine."
+    }
+  ]
+}

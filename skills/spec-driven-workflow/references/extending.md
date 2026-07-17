@@ -1,6 +1,6 @@
-# Extending the Starter
+# Extending ADSK
 
-Add custom rules, commands, and workflows to fit your project.
+Add custom rules, commands, and workflows to fit your project. Keep portable playbooks in `skills/`; keep Cursor commands thin.
 
 ## When to Extend
 
@@ -76,15 +76,21 @@ alwaysApply: true
 
 ## Adding Skills
 
-Skills live in `.cursor/skills/<name>/SKILL.md` (optional `references/`, `scripts/`, `assets/`).
+Follow the skills.sh model: **repo `skills/` is source of truth**, `~/.agents/skills/` is the hub, agent dirs symlink to the hub.
 
 ### Create a new skill
 
-1. Create `.cursor/skills/my-skill/SKILL.md` with `name` + `description` frontmatter
+1. Create `skills/my-skill/SKILL.md` with `name` + `description` frontmatter
 2. Put deep docs in `references/` and link them from `SKILL.md`
-3. Prefer agent auto-apply via a specific description; set `disable-model-invocation: true` only for slash-only skills
+3. Wire discovery:
+   ```bash
+   ln -sfn "$(pwd)/skills/my-skill" ~/.agents/skills/my-skill
+   ln -sfn ~/.agents/skills/my-skill ~/.cursor/skills/my-skill
+   ln -sfn ../../skills/my-skill .cursor/skills/my-skill
+   ```
+4. Prefer agent auto-apply via a specific description; set `disable-model-invocation: true` only for slash-only skills
 
-Do not duplicate the same skill under `.agents/skills/` in this template.
+Do not duplicate real skill trees under `.cursor/skills/` or as copies in the hub.
 
 ---
 
