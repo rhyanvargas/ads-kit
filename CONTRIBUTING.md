@@ -6,8 +6,11 @@ Thanks for helping improve **The Agentic Development Starter Kit (ADSK)**.
 
 - **Portable first**: skill content lives in `skills/<name>/` (Agent Skills format).
 - **No duplication**: Cursor commands/rules should reference skills, not copy them.
+- **Discovery links**: after adding a first-party skill, add relative symlinks under `.agents/skills/` and `.cursor/skills/` → `../../skills/<name>`.
 - **Evidence-based**: prefer links to real paths and agentskills.io guidance.
 - **Eval when you change behavior**: update or add `evals/evals.json` cases for first-party skills.
+
+Adopters (not contributing upstream) should use [docs/using-adsk.md](docs/using-adsk.md) instead of this guide.
 
 ## How to contribute
 

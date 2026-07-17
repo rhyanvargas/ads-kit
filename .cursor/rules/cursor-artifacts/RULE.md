@@ -13,15 +13,18 @@ Use the right artifact type. Do not duplicate the same guidance in multiple plac
 |----------|------|---------|
 | Rules | `.cursor/rules/<name>/RULE.md` | Persistent constraints always/globs/manual |
 | Skills (git source) | `skills/<name>/` | Versioned skill content in this repo |
-| Skills (hub) | `~/.agents/skills/<name>` → repo `skills/` | Cross-agent canonical install location |
-| Skills (Cursor) | `~/.cursor/skills/<name>` → hub | Cursor global discovery |
-| Skills (project) | `.cursor/skills/<name>` → `../../skills/<name>` | Relative symlink for this template |
+| Skills (project, cross-client) | `.agents/skills/<name>` → `../../skills/<name>` | agentskills.io project discovery |
+| Skills (project, Cursor) | `.cursor/skills/<name>` → `../../skills/<name>` | Cursor project discovery |
+| Skills (user hub) | `~/.agents/skills/<name>` | Global install via `npx skills add -g` |
+| Skills (user, Cursor) | `~/.cursor/skills/<name>` → hub | Cursor global discovery |
 | Commands | `.cursor/commands/*.md` | Explicit `/` slash workflows |
 | Specs | `.cursor/docs/specs/` | Generated feature specs |
 | Plans | `.cursor/plans/` | Implementation plans from `/plan-impl` |
 | Templates | `.cursor/templates/` | Copy-paste starters for new rules |
 
-Follow the [skills.sh / Agent Skills](https://agentskills.io) install model: **real content in the repo**, hub at `~/.agents/skills/`, agent dirs symlink to the hub. Do not keep duplicate skill trees.
+**This kit:** real content in `skills/`; `.agents/skills/` and `.cursor/skills/` are symlinks.  
+**Adopter apps:** real content in `.agents/skills/` via `npx skills add` — see `docs/using-adsk.md`.  
+Do not keep duplicate skill trees.
 
 ## When to use which
 

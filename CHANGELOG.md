@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Project-level `.agents/skills/` symlinks → `skills/` (agentskills.io cross-client discovery)
+- Adopter guide: [docs/using-adsk.md](docs/using-adsk.md)
+
+### Changed
+
+- Adopter path is CLI-first: `npx skills add` / `npx skills update`; app skills live in `.agents/skills/` (no root `skills/` in consumer apps)
+- README / AGENTS.md separate **kit package layout** (`skills/`) from **adopter layout** (`.agents/skills/`)
+- [docs/upgrading.md](docs/upgrading.md) defers to `using-adsk.md`
+
 ### Planned
 
 - GitHub repository rename to `agentic-development-starter-kit` (maintainer action)

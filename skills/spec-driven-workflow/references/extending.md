@@ -76,21 +76,16 @@ alwaysApply: true
 
 ## Adding Skills
 
-Follow the skills.sh model: **repo `skills/` is source of truth**, `~/.agents/skills/` is the hub, agent dirs symlink to the hub.
+**Adopters (app repo):** create `.agents/skills/my-skill/SKILL.md` — see [docs/using-adsk.md](../../../docs/using-adsk.md).
 
-### Create a new skill
+**Kit maintainers (this repo):** author under `skills/my-skill/`, then link discovery:
 
-1. Create `skills/my-skill/SKILL.md` with `name` + `description` frontmatter
-2. Put deep docs in `references/` and link them from `SKILL.md`
-3. Wire discovery:
-   ```bash
-   ln -sfn "$(pwd)/skills/my-skill" ~/.agents/skills/my-skill
-   ln -sfn ~/.agents/skills/my-skill ~/.cursor/skills/my-skill
-   ln -sfn ../../skills/my-skill .cursor/skills/my-skill
-   ```
-4. Prefer agent auto-apply via a specific description; set `disable-model-invocation: true` only for slash-only skills
+```bash
+ln -sfn ../../skills/my-skill .agents/skills/my-skill
+ln -sfn ../../skills/my-skill .cursor/skills/my-skill
+```
 
-Do not duplicate real skill trees under `.cursor/skills/` or as copies in the hub.
+Prefer agent auto-apply via a specific description; set `disable-model-invocation: true` only for slash-only skills. Do not duplicate skill trees.
 
 ---
 

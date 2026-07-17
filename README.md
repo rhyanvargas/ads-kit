@@ -5,72 +5,65 @@
 
 Portable, eval-ready starter for **spec-driven agentic development**. Use it with Cursor or any Agent Skills–compatible harness.
 
-**Repository:** [`rhyanvargas/agentic-development-starter-kit`](https://github.com/rhyanvargas/agentic-development-starter-kit)  
-*(If your remote still uses the old name `rhyan-cursor-docs`, rename the GitHub repo to match — see [docs/upgrading.md](docs/upgrading.md).)*
+**Repository:** [`rhyanvargas/agentic-development-starter-kit`](https://github.com/rhyanvargas/agentic-development-starter-kit)
 
-## What’s in here
+## Use in your app (2 minutes)
+
+In your project:
+
+```bash
+npx skills add rhyanvargas/agentic-development-starter-kit
+```
+
+Skills install under `.agents/skills/` (not a root `skills/` folder).
+
+Later:
+
+```bash
+npx skills update
+```
+
+**Full guide** (global install, optional Cursor `/` commands, add your own skill, gitignore): [docs/using-adsk.md](docs/using-adsk.md).
+
+### Optional: Cursor slash commands
+
+Skills work without slash commands. To add `/draft-spec` and friends, copy ADSK’s `.cursor/commands/` (and optionally `.cursor/rules/`) into your project — steps in [docs/using-adsk.md](docs/using-adsk.md).
+
+## What’s in this kit repo
 
 | Layer | Path | Purpose |
 |-------|------|---------|
-| **Portable skills** | `skills/<name>/` | Source of truth (Agent Skills `SKILL.md`) |
-| **Cursor commands** | `.cursor/commands/` | Slash workflows (`/draft-spec`, …) |
-| **Cursor rules** | `.cursor/rules/` | Quality gates (testing, verify commands) |
-| **Cursor skill links** | `.cursor/skills/` | Relative symlinks → `../../skills/<name>` |
+| **Package source** | `skills/<name>/` | What `npx skills add` publishes from |
+| **Discovery (this repo)** | `.agents/skills/`, `.cursor/skills/` | Symlinks → `skills/` for local use of the kit |
+| **Cursor wiring** | `.cursor/commands/`, `.cursor/rules/` | Optional slash commands + quality gates |
 | **Recommended upstream** | [`recommended-skills.json`](recommended-skills.json) | Pinned external skills (not vendored) |
+
+**Your app** should use `.agents/skills/` only — see [docs/using-adsk.md](docs/using-adsk.md).
 
 ## First-party skills
 
 - **`spec-driven-workflow`** — spec → plan → implement → review (+ brownfield extract)
 - **`devops-strategy-facilitator`** — concise CI/CD, branching, environments strategy
 
-Lifecycle coverage and recommended upstream packs: [docs/lifecycle-coverage.md](docs/lifecycle-coverage.md).
-
-## Quick start (Cursor)
+## Try this repo in Cursor
 
 ```bash
 git clone https://github.com/rhyanvargas/agentic-development-starter-kit.git
 cd agentic-development-starter-kit
 ```
 
-Open in Cursor, then:
-
-1. `/quick-start`
-2. `/draft-spec "idea"` → `/plan-impl` → `/implement-spec` → `/review`
-
-### Copy into another project
-
-```bash
-cp -R .cursor /path/to/your-project/
-cp -R skills /path/to/your-project/
-# Ensure .cursor/skills/* → ../../skills/* (relative symlinks)
-```
-
-## Quick start (any Agent Skills harness)
-
-```bash
-npx skills add rhyanvargas/agentic-development-starter-kit -g
-```
-
-Skills install under `~/.agents/skills/`. Optional recommended pack:
-
-```bash
-# See recommended-skills.json for pinned sources
-npx skills add obra/superpowers -g
-npx skills add vercel-labs/skills@find-skills -g
-```
-
-Install modes and upgrades: [docs/upgrading.md](docs/upgrading.md).
+Then `/quick-start` → `/draft-spec` → `/plan-impl` → `/implement-spec` → `/review`.
 
 ## Docs
 
 | Doc | Topic |
 |-----|--------|
-| [AGENTS.md](AGENTS.md) | Repo-level agent contract |
-| [docs/skill-authoring.md](docs/skill-authoring.md) | agentskills.io best practices |
+| [docs/using-adsk.md](docs/using-adsk.md) | Adopt, update, add your own skills |
+| [AGENTS.md](AGENTS.md) | Repo-level agent contract (kit maintainers) |
+| [docs/skill-authoring.md](docs/skill-authoring.md) | Skill authoring |
 | [docs/evaluating-skills.md](docs/evaluating-skills.md) | Eval-driven iteration |
-| [docs/evals/SCORECARD.md](docs/evals/SCORECARD.md) | Skill decision scorecard |
 | [docs/lifecycle-coverage.md](docs/lifecycle-coverage.md) | Enterprise lifecycle map |
-| [CONTRIBUTING.md](CONTRIBUTING.md) | How to contribute |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Upstream contributions |
 | [CHANGELOG.md](CHANGELOG.md) | Release notes |
 
 ## License

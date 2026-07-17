@@ -1,14 +1,16 @@
 # Agent Instructions — The Agentic Development Starter Kit (ADSK)
 
-This repository is an **Agentic Development Starter Kit**:
+This repository is the **kit source** (package + optional Cursor wiring).
 
-- Portable Agent Skills under `skills/` (source of truth)
-- Optional Cursor wiring under `.cursor/` (commands, rules, skill symlinks)
+**Adopters adding ADSK to an app:** follow [docs/using-adsk.md](docs/using-adsk.md) — install into `.agents/skills/`, not a root `skills/` folder.
 
-## Single source of truth
+## Kit layout (this repo)
 
-- **Portable content** lives in `skills/<name>/` and must work across Agent Skills–compatible tools.
-- **Cursor wiring** lives in `.cursor/` and should **reference** `skills/` rather than duplicating playbooks.
+- **Package source:** `skills/<name>/` (Agent Skills `SKILL.md` — what `npx skills add` ships)
+- **Discovery links (do not duplicate trees):**
+  - `.agents/skills/<name>` → `../../skills/<name>`
+  - `.cursor/skills/<name>` → `../../skills/<name>`
+- **Cursor wiring:** `.cursor/commands/`, `.cursor/rules/` — thin wrappers; reference skills, don’t copy playbooks
 
 Prefer:
 
@@ -22,7 +24,7 @@ Prefer:
 
 - Keep docs concise and evidence-based (link to real file paths).
 - When changing workflow behavior, update the skill **and** any thin command that invokes it.
-- New skills: `skills/<name>/SKILL.md` + optional `references/`, `evals/`, `scripts/`.
+- New first-party skills: add under `skills/<name>/`, then symlink in `.agents/skills/` and `.cursor/skills/`.
 - Recommended upstream skills are listed in `recommended-skills.json` — do not vendor them without an explicit decision.
 
 ## Authoring & evals

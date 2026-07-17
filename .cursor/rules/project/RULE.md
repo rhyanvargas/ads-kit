@@ -19,9 +19,11 @@ This repo is **The Agentic Development Starter Kit (ADSK)** for Cursor IDE (opti
 - **Rules**: `.cursor/rules/<name>/RULE.md` — persistent constraints + quality gates
 - **Templates**: `.cursor/templates/` — copy-paste starters for new rules
 - **Skills (source of truth)**: `skills/<name>/` — portable AgentSkills content
-- **Skills (project view)**: `.cursor/skills/<name>` → `../../skills/<name>` — relative symlinks for Cursor discovery
+- **Skills (cross-client)**: `.agents/skills/<name>` → `../../skills/<name>`
+- **Skills (Cursor)**: `.cursor/skills/<name>` → `../../skills/<name>`
 - **Specs**: `.cursor/docs/specs/` — generated feature specs
 - **Plans**: `.cursor/plans/` — implementation plans from `/plan-impl`
+- **Adopter guide** (CLI install into `.agents/skills/`): `docs/using-adsk.md`
 
 ## Workflow
 

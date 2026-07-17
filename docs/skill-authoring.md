@@ -35,17 +35,21 @@ npx --yes skills-ref validate ./skills/<skill-name>
 - Include near-miss negatives in trigger evals (should not fire)
 - Optimize with ~20 labeled queries; see [Optimizing skill descriptions](https://agentskills.io/skill-creation/optimizing-descriptions)
 
-## ADSK layout
+## Layout
+
+**This kit (package source):**
 
 ```
 skills/<name>/
 ├── SKILL.md
-├── references/          # optional deep docs
-├── scripts/             # optional deterministic helpers
+├── references/
+├── scripts/
 └── evals/
-    ├── evals.json       # output-quality cases
-    └── trigger/         # optional trigger query sets
+.agents/skills/<name> → ../../skills/<name>
+.cursor/skills/<name> → ../../skills/<name>
 ```
+
+**Your app (adopter):** put skills only under `.agents/skills/<name>/` — [docs/using-adsk.md](using-adsk.md).
 
 ## Anti-patterns
 
