@@ -1,6 +1,10 @@
 # /draft-spec
 
-Generate a specification document from a feature idea or brief description.
+Generate a specification from a feature idea.
+
+## Skill
+
+Read and follow **`skills/spec-driven-workflow`** (especially `references/spec-writing-guide.md`).
 
 ## Usage
 
@@ -10,80 +14,10 @@ Generate a specification document from a feature idea or brief description.
 
 ## Behavior
 
-1. **Clarify** - Ask clarifying questions if the idea is vague
-2. **Research** - Scan the codebase for relevant context
-3. **Generate** - Create a structured spec in `.cursor/docs/specs/`
-4. **Output** - Return the spec for review
+1. Clarify if the idea is vague (2–3 questions max).
+2. Scan the codebase for related patterns.
+3. Write a testable spec (prefer `REQ-XXX` IDs + acceptance criteria + test strategy).
+4. Save under `.cursor/docs/specs/{feature-name}.md` (create folders if needed).
+5. Suggest `/plan-impl` for medium+ work, or `/implement-spec` for small changes.
 
-## Spec Structure
-
-The generated spec includes:
-
-- **Overview**: What the feature does
-- **Requirements**: Functional requirements with acceptance criteria
-- **Constraints**: Technical or business constraints
-- **Out of Scope**: What this spec does NOT cover
-- **Dependencies**: Related systems or features
-- **Test Strategy**: What must be proven via automated tests (and what can be verified manually)
-
-## Instructions
-
-When the user invokes `/draft-spec`:
-
-1. Parse the provided description
-2. If the description is unclear or missing key details, ask 2-3 clarifying questions:
-   - What problem does this solve?
-   - Who is the user?
-   - Are there existing patterns to follow?
-3. Search the codebase for related code, patterns, or existing specs
-4. Generate a spec file at `.cursor/docs/specs/{feature-name}.md`
-5. Use the template below
-6. **Suggest next step**: Tell the user to run `/plan-impl .cursor/docs/specs/{feature-name}.md` to create an implementation plan
-
-## Spec Template
-
-```markdown
-# {Feature Name}
-
-## Overview
-{One paragraph describing what this feature does and why}
-
-## Requirements
-
-### Functional
-- [ ] REQ-001: {Requirement 1}
-- [ ] REQ-002: {Requirement 2}
-
-### Acceptance Criteria
-- REQ-001
-  - Given {context}, when {action}, then {result}
-- REQ-002
-  - Given {context}, when {action}, then {result}
-
-## Constraints
-- {Technical or business constraint}
-
-## Out of Scope
-- {What this does NOT include}
-
-## Dependencies
-- {Related features or systems}
-
-## Test Strategy
-
-### Automated
-- REQ-001: {unit|integration|e2e} — {what to assert}
-- REQ-002: {unit|integration|e2e} — {what to assert}
-
-### Manual (only if needed)
-- {Scenario}: {why manual is needed}
-
-## Notes
-- {Any additional context}
-```
-
-## Next Steps
-
-After generating the spec:
-- Review and refine the spec
-- Run `/plan-impl .cursor/docs/specs/{feature-name}.md` to create an implementation plan
+Do not duplicate the full playbook here — the skill is the source of truth.

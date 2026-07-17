@@ -3,7 +3,7 @@ description: "Where Cursor artifacts live and when to use rules vs skills vs com
 alwaysApply: true
 ---
 
-# Cursor Artifact Conventions
+# Cursor Artifact Conventions (ADSK)
 
 Use the right artifact type. Do not duplicate the same guidance in multiple places.
 
@@ -12,13 +12,16 @@ Use the right artifact type. Do not duplicate the same guidance in multiple plac
 | Artifact | Path | Purpose |
 |----------|------|---------|
 | Rules | `.cursor/rules/<name>/RULE.md` | Persistent constraints always/globs/manual |
-| Skills | `.cursor/skills/<name>/SKILL.md` | Domain workflows; agent-decided or `/skill-name` |
+| Skills (git source) | `skills/<name>/` | Versioned skill content in this repo |
+| Skills (hub) | `~/.agents/skills/<name>` → repo `skills/` | Cross-agent canonical install location |
+| Skills (Cursor) | `~/.cursor/skills/<name>` → hub | Cursor global discovery |
+| Skills (project) | `.cursor/skills/<name>` → `../../skills/<name>` | Relative symlink for this template |
 | Commands | `.cursor/commands/*.md` | Explicit `/` slash workflows |
 | Specs | `.cursor/docs/specs/` | Generated feature specs |
 | Plans | `.cursor/plans/` | Implementation plans from `/plan-impl` |
 | Templates | `.cursor/templates/` | Copy-paste starters for new rules |
 
-Do **not** keep a parallel skills tree under `.agents/skills/` in this repo. Cursor loads project skills from `.cursor/skills/`.
+Follow the [skills.sh / Agent Skills](https://agentskills.io) install model: **real content in the repo**, hub at `~/.agents/skills/`, agent dirs symlink to the hub. Do not keep duplicate skill trees.
 
 ## When to use which
 

@@ -1,11 +1,11 @@
 ---
-description: "Canonical build/test/lint/typecheck commands for verification"
+description: "Exact build/test/lint/typecheck commands for this repo"
 alwaysApply: true
 ---
 
 # Project Commands (build/test/lint/typecheck)
 
-This file should list the **exact** commands the agent must use to verify work in this repo.
+This rule should list the **exact** commands the agent must use to verify work in this repo.
 
 If this repo has no code/test tooling (docs-only), state that explicitly.
 

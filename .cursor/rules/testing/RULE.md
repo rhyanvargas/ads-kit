@@ -1,5 +1,5 @@
 ---
-description: "Testing policy (TDD guidance + requirement-to-test coverage expectations)"
+description: "Testing policy and TDD expectations"
 alwaysApply: true
 ---
 
@@ -18,6 +18,7 @@ Tests are a first-class deliverable. For any change that affects behavior (new f
 ## When tests may be omitted (must be explicit)
 
 Tests may be omitted only when the change is demonstrably non-behavioral, e.g.:
+
 - Documentation-only changes
 - Formatting-only changes
 - Dependency bumps with no codepath changes (still run tests if they exist)
@@ -42,5 +43,5 @@ If tests are omitted, the plan/spec/review must include a short **“No tests ne
 
 ## Evidence required
 
-- Run the test suite using the project’s test command(s) (see `.cursor/rules/project-cmds/`).
+- Run the test suite using the project’s test command(s) (see `@.cursor/rules/project-cmds` if present).
 - If a repo has no automated test harness yet, include a plan task to add one (unless the repo is purely documentation).
