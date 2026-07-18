@@ -1,0 +1,79 @@
+# Publish packages/create-adsk to npm via Trusted Publishing (OIDC).
+# Docs: https://docs.npmjs.com/trusted-publishers/
+#
+# Bootstrap (once, on npmjs.com — package must already exist):
+#   Package settings → Trusted Publisher → GitHub Actions
+#   - Organization or user: rhyanvargas
+#   - Repository: agentic-development-starter-kit
+#   - Workflow filename: publish-create-adsk.yml
+#   - Allowed actions: npm publish
+#
+# Release: bump packages/create-adsk/package.json version, then
+#   git tag -a create-adsk-vX.Y.Z -m "create-adsk vX.Y.Z" && git push origin create-adsk-vX.Y.Z
+name: publish-create-adsk
+
+on:
+  push:
+    tags:
+      - "create-adsk-v*"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Pack only (skip npm publish)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  id-token: write # required for npm OIDC trusted publishing
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          registry-url: "https://registry.npmjs.org"
+          package-manager-cache: false
+
+      # Trusted publishing needs npm >= 11.5.1
+      - name: Upgrade npm
+        run: npm install -g npm@latest
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: npm audit (high+)
+        run: npm audit --audit-level=high
+
+      - name: Test
+        run: npm test -w create-adsk
+
+      - name: Build
+        run: npm run build -w create-adsk
+
+      - name: Verify tag matches package version
+        if: startsWith(github.ref, 'refs/tags/create-adsk-v')
+        run: |
+          tag_version="${GITHUB_REF_NAME#create-adsk-v}"
+          pkg_version="$(node -p "require('./packages/create-adsk/package.json').version")"
+          if [ "$tag_version" != "$pkg_version" ]; then
+            echo "Tag version ($tag_version) != package.json version ($pkg_version)" >&2
+            exit 1
+          fi
+
+      - name: Pack (dry-run)
+        if: github.event_name == 'workflow_dispatch' && inputs.dry_run == true
+        run: npm pack -w create-adsk
+
+      - name: Publish to npm
+        if: >-
+          startsWith(github.ref, 'refs/tags/create-adsk-v') ||
+          (github.event_name == 'workflow_dispatch' && inputs.dry_run == false)
+        env:
+          NPM_CONFIG_PROVENANCE: "true"
+        run: npm publish -w create-adsk --access public

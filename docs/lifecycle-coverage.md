@@ -16,7 +16,7 @@ How The Agentic Development Starter Kit maps to enterprise product delivery stag
 | Test | **Core** | Recommended TDD + Cursor `testing` / `project-cmds` rules in consumer projects |
 | Deploy | **Core (strategy)** | First-party `devops-strategy-facilitator` (strategy, not full pipelines) |
 | Release / changelog | **Core** | First-party `release-automation` (+ Cursor `/setup-releases`; platform-confirmed) |
-| Secure | **Recommended (baseline)** | Kit: Dependabot + `npm audit` CI ([SECURITY.md](../SECURITY.md)); skills: `dependabot`, `npm-security-best-practices`. Broader AppSec still via org-approved review |
+| Secure | **Recommended (baseline)** | Kit: Dependabot + `npm audit` CI + Trusted Publishing for `create-adsk` ([SECURITY.md](../SECURITY.md)); skills: `dependabot`, `npm-security-best-practices`. Broader AppSec still via org-approved review |
 | Maintain / monitor | **Gap (v1)** | Observability minimums only inside DevOps strategy template |
 | Debug | **Recommended** | Superpowers `systematic-debugging` |
 | Author agent skills | **Core** | First-party `skill-optimizer` (+ Cursor `skill-authoring` rule / `/optimize-skill`) |

@@ -19,10 +19,10 @@ Skills in **your** project live under `.agents/skills/` ([agentskills.io](https:
 ## 0. Recommended: adopt a profile with create-adsk
 
 ```bash
-# After publish to npm:
+# After the package is on npm:
 npx create-adsk --profile delivery --yes
 
-# From a kit checkout (until npm publish):
+# From a kit checkout (local path / before first registry release):
 npx --yes /path/to/agentic-development-starter-kit/packages/create-adsk --profile delivery --yes
 ```
 

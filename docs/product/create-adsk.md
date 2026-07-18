@@ -2,7 +2,7 @@
 
 Single source of truth for ADSK’s **adopter product**. Agents and contributors must align adopter UX with this document and [`profiles.json`](../../profiles.json). Living requirements: [`.cursor/docs/specs/create-adsk.md`](../../.cursor/docs/specs/create-adsk.md).
 
-**Status:** CLI implemented in [`packages/create-adsk`](../../packages/create-adsk). Use via package path / workspace until published to npm. Alternate paths remain valid: [`docs/using-adsk.md`](../using-adsk.md) (`npx skills` alone, or `sync-adsk.sh adopter`).
+**Status:** CLI implemented in [`packages/create-adsk`](../../packages/create-adsk). npm publish is wired via Trusted Publishing ([`publish-create-adsk.yml`](../../.github/workflows/publish-create-adsk.yml)); use the package path / workspace until the first registry release lands. Alternate paths remain valid: [`docs/using-adsk.md`](../using-adsk.md) (`npx skills` alone, or `sync-adsk.sh adopter`).
 
 ---
 
