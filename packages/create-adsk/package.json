@@ -1,0 +1,39 @@
+{
+  "name": "create-adsk",
+  "version": "0.1.0",
+  "description": "Adopt the Agentic Development Starter Kit as a versioned profile (skills + Cursor wiring).",
+  "type": "module",
+  "bin": {
+    "create-adsk": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "kit-snapshot",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "snapshot": "bash ../../scripts/prepare-create-adsk-snapshot.sh",
+    "prepack": "npm run snapshot && npm run build",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.10.1",
+    "commander": "^13.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.4"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhyanvargas/agentic-development-starter-kit.git",
+    "directory": "packages/create-adsk"
+  }
+}

@@ -9,17 +9,18 @@ This repository is the **kit source** (package + optional Cursor wiring).
 - **Contract:** [docs/product/create-adsk.md](docs/product/create-adsk.md) — kit **profile** adoption, not a skills marketplace.
 - **Profiles:** [`profiles.json`](profiles.json) (core / delivery / maintainer / skills-only).
 - **Rule:** [`.cursor/rules/adopter-product/`](.cursor/rules/adopter-product/) — do not invent skill-picker UX that competes with skills.sh.
-- **North star (planned):** `npx create-adsk` — wraps `npx skills` + Cursor adopter sync; living spec [`.cursor/docs/specs/create-adsk.md`](.cursor/docs/specs/create-adsk.md).
-- **Interim:** `npx skills add …` + `scripts/sync-adsk.sh adopter --from <kit>` (see using-adsk).
+- **Adopter CLI:** `npx create-adsk` ([`packages/create-adsk`](packages/create-adsk)) — wraps `npx skills` + Cursor adopter sync; living spec [`.cursor/docs/specs/create-adsk.md`](.cursor/docs/specs/create-adsk.md).
+- **Alternate:** `npx skills add …` and/or `scripts/sync-adsk.sh adopter --from <kit>` (see using-adsk).
 
 ## When the user asks to sync ADSK
 
-Run the script; do not hand-copy skill trees or Cursor files.
+Do not hand-copy skill trees or Cursor files.
 
 | Context | Run |
 |---------|-----|
 | **This kit repo** | `./scripts/sync-adsk.sh kit` (optional: `./scripts/sync-adsk.sh self-check`) |
-| **Adopter app** | Resolve kit checkout → `<kit>/scripts/sync-adsk.sh adopter --from <kit>` from the app root |
+| **Adopter app with `.adsk/config.json`** | `npx create-adsk update` (or `status`) |
+| **Adopter app (script path)** | Resolve kit checkout → `<kit>/scripts/sync-adsk.sh adopter --from <kit>` from the app root |
 
 Playbook: [`.cursor/commands/sync-adsk.md`](.cursor/commands/sync-adsk.md). Dual-audience steps: [docs/upgrading.md](docs/upgrading.md).
 
@@ -58,8 +59,9 @@ Follow [docs/skill-authoring.md](docs/skill-authoring.md) and [docs/evaluating-s
 
 ## Testing note
 
-This kit is primarily templates/docs. Executable tooling today:
+Executable tooling:
 
-- Smoke: `./scripts/sync-adsk.sh self-check` (see `.cursor/rules/project-cmds/`)
+- Smoke: `./scripts/sync-adsk.sh self-check`
+- create-adsk: `npm test -w create-adsk` (see `.cursor/rules/project-cmds/`)
 
-If you add more executable code, also add a test harness, exact verify commands in `project-cmds`, and map spec requirements to tests where applicable.
+When adding executable code, keep exact verify commands in `project-cmds` and map spec requirements to tests where applicable.

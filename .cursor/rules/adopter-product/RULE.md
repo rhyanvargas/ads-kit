@@ -14,11 +14,11 @@ Adopter UX must follow the product contract. Do not invent a skill-marketplace i
 | Product contract | `docs/product/create-adsk.md` |
 | Profile matrix | `profiles.json` |
 | Living spec | `.cursor/docs/specs/create-adsk.md` |
-| Interim adopter guide | `docs/using-adsk.md` |
+| Adopter guide | `docs/using-adsk.md` |
 
 ## Non-negotiables
 
-- **create-adsk** (planned) = kit **profile** adoption (skills + Cursor wiring + `.adsk/config.json`).
+- **create-adsk** = kit **profile** adoption (skills + Cursor wiring + `.adsk/config.json`). Package: `packages/create-adsk`.
 - **`npx skills`** = skill transport only. create-adsk wraps it; never reimplements install.
 - Primary UX is **named profiles** from `profiles.json` (core / delivery / maintainer / skills-only), not multi-select skill menus or third-party catalogs.
 - Optional product-value-loop packs are a separate yes/no from `recommended-skills.json` — not mixed into a free-form picker.
@@ -45,5 +45,5 @@ Update in the same change:
 | Mode | Audience | Mechanism |
 |------|----------|-----------|
 | **Kit** | Maintainers of this repo | `./scripts/sync-adsk.sh kit` |
-| **Adopter (interim)** | App teams today | `npx skills` + `sync-adsk.sh adopter --from <kit>` |
-| **Adopter (north star)** | App teams after CLI ships | `npx create-adsk` reading `profiles.json` |
+| **Adopter (CLI)** | App teams | `npx create-adsk` reading `profiles.json` |
+| **Adopter (alternate)** | App teams without CLI / skills-only | `npx skills` and/or `sync-adsk.sh adopter --from <kit>` |

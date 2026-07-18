@@ -16,7 +16,8 @@ Both roles can ask the agent to sync instead of running commands by hand.
 | You say… | Agent should… |
 |----------|----------------|
 | “Sync ADSK” / `/sync-adsk` in **this kit repo** | Run `./scripts/sync-adsk.sh kit` |
-| “Sync ADSK” / `/sync-adsk` in an **app** | Resolve a kit checkout, then run `adopter --from <kit>` from the app root |
+| “Sync ADSK” / `/sync-adsk` in an **app** with `.adsk/config.json` | Run `npx create-adsk update` |
+| “Sync ADSK” / `/sync-adsk` in an **app** (script path) | Resolve a kit checkout, then run `adopter --from <kit>` from the app root |
 
 Details and adopter caveats (agent needs a kit path or clone): [using-adsk.md — Ask your coding agent](using-adsk.md#ask-your-coding-agent-recommended).
 
@@ -28,7 +29,12 @@ Command playbook: [`.cursor/commands/sync-adsk.md`](../.cursor/commands/sync-ads
 
 Step-by-step install, Cursor sync, updates, and custom skills: **[using-adsk.md](using-adsk.md)**.
 
-Short path:
+**Recommended short path (profile + Cursor):**
+
+1. `npx create-adsk --profile delivery --yes` (or from a kit checkout: `npx --yes ./packages/create-adsk …`)
+2. Later: `npx create-adsk update` / `npx create-adsk status`
+
+**Alternate (skills / script):**
 
 1. `npx skills add rhyanvargas/agentic-development-starter-kit`
 2. Optional Cursor: keep a kit clone → ask agent to sync **or** run `scripts/sync-adsk.sh adopter --from <kit>`

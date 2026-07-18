@@ -2,7 +2,7 @@
 
 Single source of truth for ADSK’s **adopter product**. Agents and contributors must align adopter UX with this document and [`profiles.json`](../../profiles.json). Living requirements: [`.cursor/docs/specs/create-adsk.md`](../../.cursor/docs/specs/create-adsk.md).
 
-**Status:** Direction locked. CLI (`npx create-adsk`) is **planned** — not shipped. Interim adopter path: [`docs/using-adsk.md`](../using-adsk.md) (`npx skills` + `sync-adsk.sh adopter`).
+**Status:** CLI implemented in [`packages/create-adsk`](../../packages/create-adsk). Use via package path / workspace until published to npm. Alternate paths remain valid: [`docs/using-adsk.md`](../using-adsk.md) (`npx skills` alone, or `sync-adsk.sh adopter`).
 
 ---
 
@@ -19,11 +19,11 @@ Single source of truth for ADSK’s **adopter product**. Agents and contributors
 | Tool | Owns | Does not own |
 |------|------|----------------|
 | **`npx skills`** (skills.sh) | Discover, install, update skill folders into `.agents/skills/` | Cursor commands/rules, ADSK profiles, kit trust policy |
-| **`npx create-adsk`** (planned) | Apply an ADSK **profile** (skills + Cursor + config), update/status | Third-party skill catalog, kit-maintainer symlink sync |
+| **`npx create-adsk`** | Apply an ADSK **profile** (skills + Cursor + config), update/status | Third-party skill catalog, kit-maintainer symlink sync |
 
 **README answer:** Use `npx skills` to install skill folders. Use `npx create-adsk` when you want ADSK’s workflow + Cursor commands adopted as a versioned profile in your repo.
 
-create-adsk **wraps** `npx skills` and [`scripts/sync-adsk.sh`](../../scripts/sync-adsk.sh) `adopter`. It must not reimplement skill install.
+create-adsk **wraps** `npx skills` and adopter Cursor sync (same behavior as [`scripts/sync-adsk.sh`](../../scripts/sync-adsk.sh) `adopter`, against a vendored kit snapshot). It must not reimplement skill install.
 
 ---
 
@@ -58,22 +58,24 @@ Optional second prompt (default **No**): add recommended **product-value-loop** 
 - Interactive multi-select of every first-party skill as the primary UX
 - Competing with skills.sh discovery or hosting arbitrary third-party skills
 - Kit-maintainer `sync-adsk.sh kit` mode behind `npx create-adsk`
-- Replacing the interim agent `/sync-adsk` flow before the CLI ships
+- Removing the script-based `/sync-adsk` / `adopter --from` path for teams that prefer it
 
 ---
 
 ## Success metrics
 
-- Time-to-first `/draft-spec` (or equivalent) in a fresh app under 2 minutes (after CLI ships)
+- Time-to-first `/draft-spec` (or equivalent) in a fresh app under 2 minutes
 - Adopters who want Cursor commands get them without a manual kit clone (~100% for non–skills-only)
 - Support questions about “which path do I clone?” → near zero
 - Non-goal: skills.sh download share
 
 ---
 
-## Interim path (until CLI ships)
+## Alternate paths
 
-1. `npx skills add rhyanvargas/agentic-development-starter-kit` (optionally with `--skill` flags matching a profile)
-2. Optional Cursor: kit checkout → `scripts/sync-adsk.sh adopter --from <kit>`
+Still supported — see [using-adsk.md](../using-adsk.md):
 
-See [using-adsk.md](../using-adsk.md). After create-adsk ships, that CLI becomes the recommended first-time adopt path; skills-only users may still use `npx skills` alone.
+1. **Skills only:** `npx skills add rhyanvargas/agentic-development-starter-kit` (optionally with `--skill` flags matching a profile)
+2. **Script Cursor sync:** kit checkout → `scripts/sync-adsk.sh adopter --from <kit>`
+
+`create-adsk` is the recommended first-time adopt path for profile + Cursor. Skills-only users may still use `npx skills` alone.

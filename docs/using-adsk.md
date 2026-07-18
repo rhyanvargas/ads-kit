@@ -6,19 +6,49 @@ Skills in **your** project live under `.agents/skills/` ([agentskills.io](https:
 
 **Kit maintainers** (this repo): see [upgrading.md](upgrading.md#kit-maintainers) and [CONTRIBUTING.md](../CONTRIBUTING.md).
 
-### Direction (two-tool model)
+### Two-tool model
 
 | Goal | Use |
 |------|-----|
-| Install skill folders only | `npx skills add …` (below) |
-| Adopt ADSK as a **profile** (skills + Cursor wiring + saved config) | **`npx create-adsk`** — *planned*; see [product/create-adsk.md](product/create-adsk.md) and [`profiles.json`](../profiles.json) |
-| Cursor commands today (interim) | Kit checkout + `sync-adsk.sh adopter` (section 2) |
-
-Until create-adsk ships, the steps below remain the supported path.
+| Install skill folders only | `npx skills add …` (section 1) |
+| Adopt ADSK as a **profile** (skills + Cursor wiring + saved config) | **`npx create-adsk`** — [`packages/create-adsk`](../packages/create-adsk); see [product/create-adsk.md](product/create-adsk.md) and [`profiles.json`](../profiles.json) |
+| Cursor commands without the CLI | Kit checkout + `sync-adsk.sh adopter` (section 2) |
 
 ---
 
-## Ask your coding agent (recommended)
+## 0. Recommended: adopt a profile with create-adsk
+
+```bash
+# After publish to npm:
+npx create-adsk --profile delivery --yes
+
+# From a kit checkout (until npm publish):
+npx --yes /path/to/agentic-development-starter-kit/packages/create-adsk --profile delivery --yes
+```
+
+| Profile | What you get |
+|---------|----------------|
+| `core` | `spec-driven-workflow` + Cursor commands |
+| `delivery` | Core + DevOps strategy + release automation + Cursor commands |
+| `maintainer` | Delivery + skill-optimizer + readme-authoring + Cursor commands + stock rules |
+| `skills-only` | All five first-party skills; no `.cursor/` writes |
+
+Interactive (TTY): omit `--yes` to pick a profile and optionally add product-value-loop packs.
+
+Later:
+
+```bash
+npx create-adsk update    # refresh skills + Cursor from .adsk/config.json
+npx create-adsk status    # profile + drift (exit 1 if drift)
+```
+
+Flags: `--dry-run`, `--scope project|global`, `--force-rules`, `--with-optional-packs`. Details: [`packages/create-adsk/README.md`](../packages/create-adsk/README.md).
+
+The sections below remain valid for skills-only installs and the script-based Cursor path.
+
+---
+
+## Ask your coding agent
 
 You can ask the agent in plain language, for example:
 
@@ -26,20 +56,21 @@ You can ask the agent in plain language, for example:
 - “Update ADSK Cursor commands and skills”
 - `/sync-adsk` (after Cursor wiring is installed)
 
-The agent should run [`scripts/sync-adsk.sh`](../scripts/sync-adsk.sh) — not hand-copy files.
+If the app already has `.adsk/config.json`, prefer `npx create-adsk update`. Otherwise the agent should run [`scripts/sync-adsk.sh`](../scripts/sync-adsk.sh) — not hand-copy files.
 
 | You are in… | Agent should run |
 |-------------|------------------|
 | **This kit repo** | `./scripts/sync-adsk.sh kit` |
-| **Your app** | `<kit>/scripts/sync-adsk.sh adopter --from <kit>` from the app root |
+| **Your app (create-adsk adopted)** | `npx create-adsk update` (or status) |
+| **Your app (script path)** | `<kit>/scripts/sync-adsk.sh adopter --from <kit>` from the app root |
 
-**Adopter requirement:** the agent needs a kit checkout (path you provide, an existing clone, or it clones GitHub once). `npx skills add` installs skills only; it does **not** install the sync script into your app. After the first Cursor sync, `/sync-adsk` is available in your project and points the agent at the same flow.
+**Script-path requirement:** the agent needs a kit checkout (path you provide, an existing clone, or it clones GitHub once). `npx skills add` installs skills only; it does **not** install the sync script into your app. After the first Cursor sync, `/sync-adsk` is available and points the agent at the same flow. `create-adsk` vendors Cursor artifacts in the package — no kit clone required for update.
 
 ---
 
-## 1. Install skills
+## 1. Install skills only
 
-### This project only (recommended)
+### This project only (recommended for skills-only)
 
 In your app repo:
 
@@ -67,13 +98,13 @@ ADSK’s first-party skills cover **spec → plan → implement → review**. To
 Discover → Research → Prioritize → Plan → Execute → measure → Discover
 ```
 
-Those upstream skills are listed under `optional` in [`recommended-skills.json`](../recommended-skills.json). Install **project-local** (team share) and/or **global** (`-g`, personal) after your trust review; do not treat them as ADSK first-party packages.
+Those upstream skills are listed under `optional` in [`recommended-skills.json`](../recommended-skills.json). Install **project-local** (team share) and/or **global** (`-g`, personal) after your trust review; do not treat them as ADSK first-party packages. With create-adsk, you can also answer yes to the optional-packs prompt (or pass `--with-optional-packs`).
 
 ---
 
-## 2. Optional: Cursor slash commands (first time)
+## 2. Optional: Cursor slash commands (script path)
 
-Skills work without this. Do this only if you want `/draft-spec`, `/plan-impl`, `/sync-adsk`, etc.
+Skills work without this. Prefer [section 0](#0-recommended-adopt-a-profile-with-create-adsk) when you want profile + Cursor in one step. Use this path only if you want `/draft-spec`, `/plan-impl`, `/sync-adsk`, etc. **without** create-adsk.
 
 ### Steps
 
@@ -112,7 +143,14 @@ Useful flags: `--dry-run`, `--commands-only`, `--skip-skills`, `--force-rules`, 
 
 When ADSK ships changes, skim [`CHANGELOG.md`](../CHANGELOG.md) on GitHub, then update.
 
-### Cursor wiring + skills (if you use slash commands)
+### create-adsk adopters
+
+```bash
+npx create-adsk update
+npx create-adsk status
+```
+
+### Cursor wiring + skills (script path)
 
 1. Update your kit checkout: `git -C ~/src/adsk pull`
 2. From your **app** root, ask the agent “Sync ADSK” / run `/sync-adsk`, **or**:
@@ -139,7 +177,7 @@ If the CLI asks for **Update scope**:
 
 For a normal app install, pick **Project**.
 
-`npx skills update` alone does **not** refresh Cursor commands/rules. The sync script does. It will not overwrite customized rules unless you pass `--force-rules`.
+`npx skills update` alone does **not** refresh Cursor commands/rules. `create-adsk update` or the sync script does. Neither overwrites customized rules unless you pass `--force-rules`.
 
 ---
 
@@ -186,7 +224,8 @@ More authoring guidance: [skill-authoring.md](skill-authoring.md).
 - Project install → real folders under `.agents/skills/`
 - Specs/plans unchanged after update/sync
 - Synced slash commands reference `.agents/skills/<name>` (not kit `skills/`)
-- `/sync-adsk` is available if you synced Cursor commands
+- `/sync-adsk` is available if you synced Cursor commands (create-adsk or script)
+- create-adsk adopters have `.adsk/config.json` and `npx create-adsk status` is clean
 
 ---
 
@@ -195,8 +234,9 @@ More authoring guidance: [skill-authoring.md](skill-authoring.md).
 | Topic | Detail |
 |-------|--------|
 | This ADSK repo | Package source under `skills/`; not used that way in your app |
-| Cursor sync | [`scripts/sync-adsk.sh`](../scripts/sync-adsk.sh) `adopter` |
-| Ask the agent | Preferred UX; agent must run the script (see top of this page) |
+| Profile adopt | [`packages/create-adsk`](../packages/create-adsk) · [product/create-adsk.md](product/create-adsk.md) |
+| Cursor sync (script) | [`scripts/sync-adsk.sh`](../scripts/sync-adsk.sh) `adopter` |
+| Ask the agent | Preferred UX; agent runs create-adsk or the sync script (see above) |
 | Cursor-only skills | `.cursor/skills/` works; prefer `.agents/skills/` for portability |
 | Upstream PRs | [CONTRIBUTING.md](../CONTRIBUTING.md) |
 | Releases | [CHANGELOG.md](../CHANGELOG.md) · [RELEASE.md](RELEASE.md) |

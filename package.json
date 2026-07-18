@@ -1,0 +1,18 @@
+{
+  "name": "agentic-development-starter-kit",
+  "private": true,
+  "description": "ADSK kit source — skills, Cursor wiring, and create-adsk package",
+  "workspaces": [
+    "packages/create-adsk"
+  ],
+  "scripts": {
+    "test": "npm run test -w create-adsk",
+    "test:create-adsk": "npm run test -w create-adsk",
+    "build:create-adsk": "npm run build -w create-adsk",
+    "snapshot:create-adsk": "bash scripts/prepare-create-adsk-snapshot.sh",
+    "self-check": "bash scripts/sync-adsk.sh self-check"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
