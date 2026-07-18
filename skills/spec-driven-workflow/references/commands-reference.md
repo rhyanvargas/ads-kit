@@ -281,6 +281,8 @@ Collaborate on a concise DevOps strategy (branching, CI/CD, environments, govern
 
 Synchronize README.md with current codebase state.
 
+Invokes first-party **`readme-authoring`** in update/sync mode (see `.agents/skills/readme-authoring`).
+
 ### Usage
 ```
 /update-readme
@@ -288,10 +290,10 @@ Synchronize README.md with current codebase state.
 ```
 
 ### Behavior
-1. Scan codebase (manifests, src, tests, docs)
-2. Compare with README claims
-3. Update sections to match; reference files instead of duplicating content
-4. Verify links and tech stack against actual manifests
+1. Gather evidence (manifests, entry points, examples, existing docs)
+2. List missing / stale findings vs README claims
+3. Patch sections to match; prefer links over duplicated content
+4. Verify install/run commands and tech stack against actual files — do not invent
 
 ### When to Use
 - After adding/removing dependencies or modules

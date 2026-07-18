@@ -1,0 +1,46 @@
+{
+  "skill_name": "readme-authoring",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a README for a new internal Node service that already has pnpm-lock.yaml, scripts start/test, and an AGENTS.md. Don't invent features.",
+      "expected_output": "An internal-oriented README with setup/run/test from real scripts, correct pnpm commands, and a link to AGENTS.md — not an OSS badge-heavy template.",
+      "assertions": [
+        "Uses pnpm (not npm) for install/run commands",
+        "Includes local setup and test/run guidance",
+        "Links or references AGENTS.md rather than inventing contribution policy",
+        "Does not invent features or APIs not stated in the prompt"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Our root README still says `npm install` but the repo has pnpm-lock.yaml and a `dev` script. Sync the README.",
+      "expected_output": "Presents a short stale/missing findings list, then patches install/dev commands to pnpm without rewriting unrelated sections.",
+      "assertions": [
+        "Identifies npm vs pnpm drift as a finding before or while editing",
+        "Updates install/dev commands to pnpm",
+        "Does not perform an unnecessary full rewrite of unrelated README sections"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Write the most comprehensive README possible with every badge, every internal helper function, and marketing fluff about how pivotal we are.",
+      "expected_output": "Pushes back toward audience-fit, evidence-based docs: limited badges, public surface only, no promotional inflation.",
+      "assertions": [
+        "Avoids documenting private/internal helpers as public API",
+        "Keeps badges limited or questions badge clutter",
+        "Avoids promotional/inflated significance language in the deliverable"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Add a What's Here section for our dotfiles config folder README — this isn't an OSS library.",
+      "expected_output": "Uses config-folder structure (what's here / why / extend / gotchas) rather than install+API library sections.",
+      "assertions": [
+        "Treats the project as config/dotfiles audience",
+        "Includes or proposes a what's-here style section",
+        "Does not force OSS install/API/license sections as the primary structure"
+      ]
+    }
+  ]
+}

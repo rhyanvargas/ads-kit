@@ -4,7 +4,8 @@ Synchronize README.md with the current codebase.
 
 ## Skill
 
-Part of **`skills/spec-driven-workflow`** maintenance commands. See `references/commands-reference.md`.
+Follow **`readme-authoring`** in **update/sync** mode  
+(`.agents/skills/readme-authoring` — kit source: `skills/readme-authoring`).
 
 ## Usage
 
@@ -15,7 +16,8 @@ Part of **`skills/spec-driven-workflow`** maintenance commands. See `references/
 
 ## Behavior
 
-1. Scan manifests, source layout, tests, CI, and docs for evidence.
-2. Update README sections to match reality; prefer links over duplicated content.
-3. Verify links and claimed tech stack against actual files.
-4. Do not invent features or dependencies that are not present.
+1. Scope the README path (root or package) and gather evidence (manifests, scripts, entry points, existing docs).
+2. List missing / stale / wrong-audience findings before editing.
+3. Patch README sections to match reality; prefer links over duplicated content.
+4. Verify install/run commands and claimed stack against actual files.
+5. Do not invent features, APIs, or dependencies.
