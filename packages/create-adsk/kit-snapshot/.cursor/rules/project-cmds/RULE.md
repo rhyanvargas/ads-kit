@@ -9,9 +9,9 @@ This rule should list the **exact** commands the agent must use to verify work i
 
 If this repo has no code/test tooling (docs-only), state that explicitly.
 
-## Default (docs + sync + skill CI script)
+## Default (docs + sync + skill CI + create-adsk)
 
-This repository is documentation/templates plus `scripts/sync-adsk.sh` and Tier 1 skill gates in `scripts/check-skills-ci.sh`. There is no app build toolchain.
+This repository is documentation/templates plus `scripts/sync-adsk.sh`, Tier 1 skill gates in `scripts/check-skills-ci.sh`, and the `create-adsk` workspace package under `packages/create-adsk`.
 
 ## Commands
 

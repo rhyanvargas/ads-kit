@@ -19,7 +19,8 @@ When the user asks to sync ADSK, update kit Cursor artifacts, refresh skills, or
 | Context | Signals | Command |
 |---------|---------|---------|
 | **Kit repo** | `scripts/sync-adsk.sh` + package source `skills/*/SKILL.md` exist in the workspace | `./scripts/sync-adsk.sh kit` |
-| **Adopter app** | App uses `.agents/skills/` (no kit `skills/` package tree), or user wants Cursor `/` commands updated | `<kit>/scripts/sync-adsk.sh adopter --from <kit>` from the **app root** |
+| **Adopter app (create-adsk)** | `.adsk/config.json` present | `npx create-adsk update` (prefer over script) |
+| **Adopter app (script path)** | App uses `.agents/skills/` (no kit `skills/` package tree), or user wants Cursor `/` commands updated without create-adsk | `<kit>/scripts/sync-adsk.sh adopter --from <kit>` from the **app root** |
 
 ### 2. Kit maintainer path
 
@@ -32,6 +33,10 @@ When the user asks to sync ADSK, update kit Cursor artifacts, refresh skills, or
 4. Report which symlinks were linked or removed.
 
 ### 3. Adopter path
+
+**If `.adsk/config.json` exists:** run `npx create-adsk update` (and `status` if useful). Skip the kit-clone script path unless the user asks for it.
+
+**Otherwise (script path):**
 
 1. Resolve a kit source (`--from`):
    - Use the path the user gave, or

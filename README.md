@@ -1,44 +1,60 @@
+```text
+ █████╗ ██████╗ ███████╗██╗  ██╗
+██╔══██╗██╔══██╗██╔════╝██║ ██╔╝
+███████║██║  ██║███████╗█████╔╝
+██╔══██║██║  ██║╚════██║██╔═██╗
+██║  ██║██████╔╝███████║██║  ██╗
+╚═╝  ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝
+```
+
 # The Agentic Development Starter Kit (ADSK)
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Agent Skills](https://img.shields.io/badge/Agent_Skills-compatible-green.svg)](https://agentskills.io)
 
-Portable, eval-ready starter for **spec-driven agentic development**. Use it with Cursor or any Agent Skills–compatible harness.
+A ready-to-adopt kit for agentic, spec-driven development — workflow skills, Cursor slash commands, and a versioned profile for your team.
 
 **Repository:** [`rhyanvargas/agentic-development-starter-kit`](https://github.com/rhyanvargas/agentic-development-starter-kit)
 
-### Direction
+### Two-tool model
 
-- **`npx skills`** installs skill folders.
-- **`npx create-adsk`** adopts ADSK as a versioned **profile** (skills + Cursor wiring) — package [`packages/create-adsk`](packages/create-adsk); see [docs/product/create-adsk.md](docs/product/create-adsk.md) and [`profiles.json`](profiles.json).
-- Until that CLI ships, use the install + sync steps below.
+| Tool | Owns |
+|------|------|
+| **`npx skills`** | Install and update skill folders into `.agents/skills/` |
+| **`npx create-adsk`** | Adopt ADSK as a versioned **profile** (skills + Cursor wiring + `.adsk/config.json`) |
+
+Use `npx skills` for skill folders alone. Use `npx create-adsk` when you want this kit’s workflow + Cursor commands adopted as a versioned profile. Profiles: [`profiles.json`](profiles.json). Contract: [docs/product/create-adsk.md](docs/product/create-adsk.md).
 
 ## Use in your app (2 minutes)
 
-In your project:
+**Recommended — adopt a profile:**
+
+```bash
+# After publish to npm:
+npx create-adsk --profile delivery --yes
+
+# From a kit checkout (until npm publish):
+npx --yes ./packages/create-adsk --profile delivery --yes
+```
+
+That installs the profile’s first-party skills, syncs Cursor commands when the profile includes them, and writes `.adsk/config.json`. Later: `npx create-adsk update` / `npx create-adsk status`. Package docs: [`packages/create-adsk`](packages/create-adsk).
+
+**Skills only** (no Cursor wiring / no profile config):
 
 ```bash
 npx skills add rhyanvargas/agentic-development-starter-kit
 ```
 
-Skills install under `.agents/skills/` (not a root `skills/` folder).
+Skills install under `.agents/skills/` (not a root `skills/` folder). Updates: `npx skills update` (choose **Project** scope for a normal app install).
 
-**Ask your agent:** “Sync ADSK” (or `/sync-adsk` after Cursor wiring is installed) — the agent should run [`scripts/sync-adsk.sh`](scripts/sync-adsk.sh). Adopters need a kit checkout path (or the agent clones one). Step-by-step: [docs/using-adsk.md](docs/using-adsk.md).
+**Script-based Cursor sync** (without create-adsk): ask your agent “Sync ADSK” / `/sync-adsk`, or run [`scripts/sync-adsk.sh`](scripts/sync-adsk.sh) `adopter --from <kit>`. Step-by-step: [docs/using-adsk.md](docs/using-adsk.md).
 
-Later, skills only:
-
-```bash
-npx skills update
-```
-
-If the CLI asks for **Update scope**, choose **Project** for a normal app install. Details: [docs/using-adsk.md](docs/using-adsk.md#3-get-updates-later).
-
-**Full guide** (Cursor `/` commands, updates, custom skills): [docs/using-adsk.md](docs/using-adsk.md).  
+**Full guide:** [docs/using-adsk.md](docs/using-adsk.md).  
 **Kit maintainers:** [docs/upgrading.md](docs/upgrading.md#kit-maintainers).
 
-### Optional: Cursor slash commands
+### Optional: Cursor slash commands (script path)
 
-Skills work without slash commands. To add `/draft-spec`, `/sync-adsk`, `/update-readme`, and friends:
+Skills work without slash commands. If you are not using `create-adsk` and still want `/draft-spec`, `/sync-adsk`, `/update-readme`, and friends:
 
 1. Clone ADSK once → keep the checkout.
 2. Ask your agent to sync from that path, **or** run:
@@ -56,6 +72,7 @@ That syncs `.cursor/commands/` (paths → `.agents/skills/`), adds missing stock
 | **Package source** | `skills/<name>/` | What `npx skills add` publishes from |
 | **Discovery (this repo)** | `.agents/skills/`, `.cursor/skills/` | Symlinks → `skills/` only (do not vendor upstream trees here) |
 | **Cursor wiring** | `.cursor/commands/`, `.cursor/rules/` | Optional slash commands + quality gates |
+| **Adopter CLI** | [`packages/create-adsk`](packages/create-adsk) | `npx create-adsk` — init / update / status |
 | **Sync script** | [`scripts/sync-adsk.sh`](scripts/sync-adsk.sh) | Kit discovery links + adopter Cursor sync (`kit` / `adopter` / `self-check`) |
 | **Recommended upstream** | [`recommended-skills.json`](recommended-skills.json) | Pinned external skills for **adopter apps** (not shipped as first-party) |
 
@@ -84,7 +101,7 @@ To maximize customer value before (and while) you execute specs:
 Discover → Research → Prioritize → Plan → Execute → (measure) → Discover
 ```
 
-Optional upstream skills (`inspired-product`, `mom-test`, `continuous-discovery`, `jobs-to-be-done`, `competitive-intelligence`, roadmap/prioritization) install **project-local** or **global** (`-g`) — see **[docs/product-value-loop.md](docs/product-value-loop.md)**. They complement ADSK SDD; they do not replace it. Pins live in [`recommended-skills.json`](recommended-skills.json).
+Optional upstream skills (`inspired-product`, `mom-test`, `continuous-discovery`, `jobs-to-be-done`, `competitive-intelligence`, roadmap/prioritization) install **project-local** or **global** (`-g`) — see **[docs/product-value-loop.md](docs/product-value-loop.md)**. They complement ADSK spec-driven delivery; they do not replace it. Pins live in [`recommended-skills.json`](recommended-skills.json).
 
 ## Try this repo in Cursor
 
@@ -103,7 +120,7 @@ cd agentic-development-starter-kit
 
 | Doc | Topic |
 |-----|--------|
-| [docs/using-adsk.md](docs/using-adsk.md) | Install, ask-agent sync, Cursor, custom skills |
+| [docs/using-adsk.md](docs/using-adsk.md) | Install, create-adsk, ask-agent sync, Cursor, custom skills |
 | [docs/product/create-adsk.md](docs/product/create-adsk.md) | Product contract — create-adsk profiles |
 | [packages/create-adsk](packages/create-adsk) | `create-adsk` CLI (init / update / status) |
 | [`profiles.json`](profiles.json) | Machine-readable adopter profiles |

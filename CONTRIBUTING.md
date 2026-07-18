@@ -49,6 +49,17 @@ Adopters (not contributing upstream) should use [docs/using-adsk.md](docs/using-
 
 See [docs/skill-authoring.md](docs/skill-authoring.md), [docs/evaluating-skills.md](docs/evaluating-skills.md), and [docs/upgrading.md](docs/upgrading.md#kit-maintainers).
 
+## Changing create-adsk
+
+Package: [`packages/create-adsk`](packages/create-adsk). After Cursor command/rule changes that ship to adopters, refresh the vendored snapshot:
+
+```bash
+./scripts/prepare-create-adsk-snapshot.sh
+npm test -w create-adsk
+```
+
+Exact verify commands: [`.cursor/rules/project-cmds/RULE.md`](.cursor/rules/project-cmds/RULE.md).
+
 ## Code of conduct
 
 By participating, you agree to uphold our [Code of Conduct](CODE_OF_CONDUCT.md).
