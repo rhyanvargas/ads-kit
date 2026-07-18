@@ -32,6 +32,16 @@
         "Recommends keeping the strategy short / decision-first",
         "Does not produce an exhaustive multi-dozen-page catalog of all CD patterns as the primary deliverable"
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "Just write the GitHub Actions YAML for lint+test on PRs — we already agreed our promotion model last quarter.",
+      "expected_output": "Treats this as pipeline implementation, not a strategy session; declines to run a full strategy workshop and either redirects or offers a minimal workflow without inventing a new delivery strategy.",
+      "assertions": [
+        "Does not start a full multi-topic strategy workshop as the primary response",
+        "Recognizes the request as implementing a specific pipeline rather than designing delivery strategy",
+        "Does not invent a new environments/promotion strategy when the user says that is already decided"
+      ]
     }
   ]
 }

@@ -4,21 +4,14 @@ description: >-
   Author and optimize Agent Skills for clarity, trigger accuracy, and token
   cost. Use when creating a new skill, editing SKILL.md, reviewing skill
   quality, optimizing descriptions, adding progressive disclosure, or when
-  /optimize-skill is invoked. Do not use for general app feature specs or
-  DevOps strategy sessions.
+  /optimize-skill is invoked. Do not use for README authoring, finding or
+  installing third-party skills, general app feature specs, or DevOps
+  strategy sessions.
 ---
 
 # Skill Optimizer
 
 Make every skill **discoverable**, **lean when activated**, and **eval-backed**.
-Aligned with [agentskills.io best practices](https://agentskills.io/skill-creation/best-practices)
-and [optimizing descriptions](https://agentskills.io/skill-creation/optimizing-descriptions).
-
-## When this skill applies
-
-- Creating or substantially editing any skill (kit `skills/` or adopter `.agents/skills/`)
-- User asks to optimize, slim, or improve trigger quality of a skill
-- `/optimize-skill` is invoked
 
 ## Non-negotiable gates (do before calling done)
 
@@ -45,7 +38,7 @@ Prefer: capability verbs + **Use when…** + **Do not use for…** (near-misses)
 - User intent keywords, not internal file layout
 - Keep short (few sentences); every installed skill pays this cost at session start
 
-Read `references/description-checklist.md` while drafting or revising descriptions.
+Load `references/description-checklist.md` when drafting or revising the `description` field.
 
 ### 3. Write lean instructions (activation tier)
 
@@ -55,15 +48,15 @@ Read `references/description-checklist.md` while drafting or revising descriptio
 - Defaults with escape hatches — not equal menus of options
 - Match specificity to fragility (prescriptive for migrations/scripts; freer for reviews)
 
+Load `references/token-budget.md` when deciding what to cut or move out of `SKILL.md`.
+
 ### 4. Progressive disclosure (resource tier)
 
 ```
 SKILL.md (always on activate) → references/* or scripts/* (only when instructed)
 ```
 
-In `SKILL.md`, name each reference and the **condition** to load it. Soft triggers (“see overview for why”) invite early loads — tighten them.
-
-Read `references/token-budget.md` for cut/move heuristics.
+Name each reference and the **condition** to load it. Soft triggers (“see overview for why”) invite early loads — tighten them.
 
 ### 5. Eval loop
 
@@ -72,20 +65,15 @@ Read `references/token-budget.md` for cut/move heuristics.
 | Trigger | `evals/trigger/eval_queries.json` | Right skill activates; near-misses do not |
 | Output | `evals/evals.json` | With-skill beats without/prior; watch token Δ |
 
-Iterate: fail train queries → generalize description/instructions → recheck held-out queries. Do not overfit keywords from individual failures. Details: `references/eval-loop.md` and repo `docs/evaluating-skills.md`.
+Iterate: fail train queries → generalize description/instructions → recheck held-out queries. Do not overfit keywords from individual failures.
 
-### 6. Layout (kit vs adopter)
+Load `references/eval-loop.md` when adding or revising evals (also `docs/evaluating-skills.md` in this repo).
 
-| Context | Skill path | Discovery |
-|---------|------------|-----------|
-| **ADSK kit repo** | `skills/<name>/` | Symlink `.agents/skills/<name>` and `.cursor/skills/<name>` → `../../skills/<name>` |
-| **Adopter app** | `.agents/skills/<name>/` only | No root `skills/` folder |
+### 6. Layout
 
-Optional thin Cursor command may invoke this skill; do not duplicate the playbook into the command body.
+Load `references/layout.md` when creating a skill or unsure where files go (kit `skills/` vs adopter `.agents/skills/`).
 
 ## Done checklist
-
-Copy and tick:
 
 ```
 - [ ] skills-ref validate passes
@@ -97,9 +85,12 @@ Copy and tick:
 - [ ] Kit-only: discovery symlinks added
 ```
 
-## Official references
+## Progressive disclosure
 
-- [Specification](https://agentskills.io/specification) (progressive disclosure, frontmatter)
-- [Best practices](https://agentskills.io/skill-creation/best-practices)
-- [Optimizing descriptions](https://agentskills.io/skill-creation/optimizing-descriptions)
-- [Evaluating skills](https://agentskills.io/skill-creation/evaluating-skills)
+| Reference | When to read |
+|-----------|----------------|
+| `references/description-checklist.md` | Drafting or revising the `description` field |
+| `references/token-budget.md` | Trimming `SKILL.md` or deciding cut vs move |
+| `references/eval-loop.md` | Adding or revising trigger/output evals |
+| `references/layout.md` | Creating a skill or choosing kit vs adopter path |
+| `references/official-links.md` | User asks for agentskills.io policy/spec links |

@@ -9,14 +9,14 @@
   { "query": "Walk me through /draft-spec then /plan-impl for this feature", "should_trigger": true },
   { "query": "What's the difference between a vague idea and a testable requirement?", "should_trigger": true },
   { "query": "Implement from the approved spec in docs/specs/export-csv.md", "should_trigger": true },
-  { "query": "What's the capital of France?", "should_trigger": false },
-  { "query": "Roll a d20 for me", "should_trigger": false },
   { "query": "Design our Kubernetes branching and CI/CD promotion strategy", "should_trigger": false },
-  { "query": "Find me a skill for creating PowerPoint decks", "should_trigger": false },
+  { "query": "Update the README to match the current codebase", "should_trigger": false },
+  { "query": "Optimize this SKILL.md for token cost and clearer triggers", "should_trigger": false },
   { "query": "Fix this one-character typo in a comment", "should_trigger": false },
-  { "query": "Explain how TCP congestion control works", "should_trigger": false },
-  { "query": "Generate a random UUID", "should_trigger": false },
-  { "query": "What npm package should I use for date formatting?", "should_trigger": false },
-  { "query": "Translate this paragraph to Spanish", "should_trigger": false },
-  { "query": "Why did this single GitHub Actions run fail on lint?", "should_trigger": false }
+  { "query": "Why did this single GitHub Actions run fail on lint?", "should_trigger": false },
+  { "query": "Write unit tests first for this bug fix", "should_trigger": false },
+  { "query": "Find me a skill for creating PowerPoint decks", "should_trigger": false },
+  { "query": "Add a GitHub Actions workflow that runs lint and test on PRs", "should_trigger": false },
+  { "query": "Edit CONTRIBUTING.md only with our PR process", "should_trigger": false },
+  { "query": "Generate OpenAPI/API reference docs from the code", "should_trigger": false }
 ]

@@ -5,8 +5,8 @@ description: >-
   specs, extract specs from existing code, and size greenfield/brownfield
   work. Use when the user wants testable requirements, living specs,
   spec-driven development, or /draft-spec /plan-impl /implement-spec
-  /review /extract-spec. Do not use for DevOps/CI-CD strategy design or
-  trivial one-line fixes.
+  /review /extract-spec. Do not use for DevOps/CI-CD strategy design,
+  README authoring, Agent Skill optimization, or trivial one-line fixes.
 ---
 
 # Spec-Driven Workflow

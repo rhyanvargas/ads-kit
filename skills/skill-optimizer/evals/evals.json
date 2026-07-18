@@ -32,6 +32,16 @@
         "References or updates trigger eval near-miss queries",
         "Does not expand SKILL.md body as the primary fix"
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "I only want to rename the skill folder from my_skill to my-skill. Do we need the full optimizer gates?",
+      "expected_output": "Recognizes a narrow naming fix: align folder name with YAML name (lowercase/hyphens), validate, skip a full rewrite of body/evals unless description or behavior also changes.",
+      "assertions": [
+        "Addresses name/folder hyphen conventions",
+        "Does not require rewriting the entire skill body or inventing new progressive-disclosure content for a rename-only task",
+        "Still mentions validation or a minimal check after the rename"
+      ]
     }
   ]
 }

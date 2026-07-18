@@ -5,7 +5,8 @@ description: >-
   codebase, matched to audience (OSS, internal, personal, config). Use when
   writing or refreshing a README, documenting a package, fixing stale docs, or
   when /update-readme is invoked. Do not use for changelogs, release notes,
-  API reference generation, CONTRIBUTING-only edits, or marketing copy.
+  API reference generation, CONTRIBUTING-only or AGENTS.md-only edits,
+  marketing copy, or optimizing Agent Skills.
 ---
 
 # README Authoring

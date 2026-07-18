@@ -8,15 +8,15 @@
   { "query": "Create a README for packages/core in the monorepo", "should_trigger": true },
   { "query": "Review our README for accuracy and missing sections", "should_trigger": true },
   { "query": "Add an installation section to the README", "should_trigger": true },
-  { "query": "Help me craft an effective open-source README", "should_trigger": true },
+  { "query": "readme still says npm but we switched to pnpm — sync it", "should_trigger": true },
   { "query": "Draft a changelog for the next release", "should_trigger": false },
   { "query": "Write release notes for v2.0", "should_trigger": false },
   { "query": "Generate OpenAPI/API reference docs from the code", "should_trigger": false },
   { "query": "Edit CONTRIBUTING.md only with our PR process", "should_trigger": false },
+  { "query": "Update AGENTS.md with our agent conventions only", "should_trigger": false },
   { "query": "Draft a marketing landing-page hero copy", "should_trigger": false },
   { "query": "Draft a spec for the notifications feature", "should_trigger": false },
   { "query": "Design a CI/CD and branching strategy", "should_trigger": false },
   { "query": "Optimize this skill's SKILL.md description", "should_trigger": false },
-  { "query": "What's the capital of France?", "should_trigger": false },
   { "query": "Find a skill for making slide decks", "should_trigger": false }
 ]

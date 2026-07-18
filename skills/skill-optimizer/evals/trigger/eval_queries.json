@@ -8,15 +8,15 @@
   { "query": "Where should references go and when should the agent load them?", "should_trigger": true },
   { "query": "Our skill false-triggers on unrelated prompts — fix discovery", "should_trigger": true },
   { "query": "Validate this skill with skills-ref and tighten the checklist", "should_trigger": true },
-  { "query": "Make this skill clearer and cheaper when it loads into context", "should_trigger": true },
+  { "query": "this skill is too long and keeps loading when it shouldn't — tighten it", "should_trigger": true },
   { "query": "Draft a spec for user authentication", "should_trigger": false },
   { "query": "Design our Kubernetes CI/CD promotion strategy", "should_trigger": false },
+  { "query": "Update the README to match the current codebase", "should_trigger": false },
+  { "query": "Find me a skill for making PowerPoint decks", "should_trigger": false },
+  { "query": "Install the recommended product discovery skills", "should_trigger": false },
   { "query": "Implement the approved export-csv spec", "should_trigger": false },
-  { "query": "What's the capital of France?", "should_trigger": false },
   { "query": "Write unit tests first for this bug", "should_trigger": false },
   { "query": "Debug why this flaky test fails", "should_trigger": false },
-  { "query": "Refactor this React component", "should_trigger": false },
-  { "query": "Generate a random UUID", "should_trigger": false },
-  { "query": "Find me a skill for PowerPoint decks", "should_trigger": false },
-  { "query": "Explain how TCP congestion control works", "should_trigger": false }
+  { "query": "Why did this single GitHub Actions run fail on lint?", "should_trigger": false },
+  { "query": "Add an installation section to the README", "should_trigger": false }
 ]

@@ -8,15 +8,15 @@
   { "query": "What's our rollback approach for Kubernetes deployments?", "should_trigger": true },
   { "query": "Facilitate a short DevOps strategy workshop for the team", "should_trigger": true },
   { "query": "Define artifact storage and promotion path for container images", "should_trigger": true },
-  { "query": "What environments and approval gates should we have before prod?", "should_trigger": true },
+  { "query": "we don't have a delivery model yet — help us pick envs + promotion", "should_trigger": true },
   { "query": "Draft a spec for the notifications feature", "should_trigger": false },
   { "query": "Extract a spec from the payments module", "should_trigger": false },
   { "query": "Write unit tests first for this bug fix", "should_trigger": false },
-  { "query": "Debug why the flaky test fails intermittently", "should_trigger": false },
-  { "query": "What's the capital of France?", "should_trigger": false },
-  { "query": "Find a skill for making slide decks", "should_trigger": false },
-  { "query": "Refactor this React component for readability", "should_trigger": false },
-  { "query": "Generate a UUID", "should_trigger": false },
   { "query": "Write a Dockerfile for this Node app", "should_trigger": false },
-  { "query": "Why did this single GitHub Actions run fail on lint?", "should_trigger": false }
+  { "query": "Add a GitHub Actions workflow that runs lint and test on PRs", "should_trigger": false },
+  { "query": "Why did this single GitHub Actions run fail on lint?", "should_trigger": false },
+  { "query": "Update the README to document our deploy steps", "should_trigger": false },
+  { "query": "Optimize this skill's SKILL.md description", "should_trigger": false },
+  { "query": "Refactor this React component for readability", "should_trigger": false },
+  { "query": "Implement the approved export-csv spec", "should_trigger": false }
 ]
