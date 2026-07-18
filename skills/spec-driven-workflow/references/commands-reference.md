@@ -2,6 +2,8 @@
 
 Complete reference for all spec-driven workflow commands.
 
+**Paths:** Resolve spec/plan locations with `artifact-homes.md` before writing files. Cursor `/` commands default to `.cursor/...` unless the project already uses `docs/specs|plans` or the user passes an explicit path. Cursor Plan YAML `todos` rules: `cursor-adapter.md`.
+
 ## Command Summary
 
 | Command | Purpose | When to Use |
@@ -37,15 +39,15 @@ Generate a specification document from a feature idea.
 ### Behavior
 1. Asks clarifying questions if needed
 2. Searches codebase for context
-3. Generates spec in `.cursor/docs/specs/{feature-name}.md`
+3. Resolves output home (`artifact-homes.md`); Cursor default `.cursor/docs/specs/{feature-name}.md`
 
 ### Output
 - Spec file with requirements, constraints, acceptance criteria
-- Location: `.cursor/docs/specs/`
+- Location: resolved spec home (Cursor default `.cursor/docs/specs/`)
 
 ### Options
 - Add context: `/draft-spec "feature" @src/related-file.ts`
-- Specify output: `/draft-spec "feature" --out .cursor/docs/specs/custom-name.md`
+- Specify output: `/draft-spec "feature" --out docs/specs/custom-name.md`
 
 ---
 
@@ -61,7 +63,7 @@ Create an implementation plan from a specification.
 ### Examples
 ```
 /plan-impl .cursor/docs/specs/user-auth.md
-/plan-impl @.cursor/docs/specs/payment-refactor.md
+/plan-impl @docs/specs/payment-refactor.md
 ```
 
 ### Behavior
@@ -69,10 +71,11 @@ Create an implementation plan from a specification.
 2. Breaks down into concrete steps
 3. Identifies files to create/modify
 4. Plans tests and verification
+5. Writes **trackable todos** (Cursor: YAML frontmatter `todos` — see `cursor-adapter.md`)
 
 ### Output
-- Plan file with steps, files, tests, risks
-- Location: `.cursor/plans/{feature-name}.plan.md`
+- Plan file with steps, files, tests, risks, and trackable todos
+- Location: resolved plan home (Cursor default `.cursor/plans/{feature-name}.plan.md`)
 
 ### When to Use
 - Medium and large changes
@@ -92,12 +95,12 @@ Generate code from a specification or plan.
 ### Usage
 From spec:
 ```
-/implement-spec .cursor/docs/specs/feature.md
+/implement-spec path/to/feature.md
 ```
 
 From plan:
 ```
-/implement-spec .cursor/plans/feature.plan.md
+/implement-spec path/to/feature.plan.md
 ```
 
 ### Behavior
@@ -187,7 +190,7 @@ From file:
 
 ### Output
 - Spec file documenting existing behavior
-- Location: `.cursor/docs/specs/{module}-existing.md`
+- Location: resolved spec home (Cursor default `.cursor/docs/specs/{module}-current.md`)
 
 ### Use Cases
 - Brownfield onboarding
@@ -306,8 +309,12 @@ Synchronize README.md with current codebase state.
 
 ### Spec not generated
 - Provide more detail in description
-- Check `.cursor/docs/specs/` folder exists
+- Confirm resolved spec home exists (or allow the agent to create it) — see `artifact-homes.md`
 - Review agent output for errors
+
+### Plan shows 0 To-dos in Cursor
+- Ensure `.cursor/plans/*.plan.md` has YAML frontmatter with a non-empty `todos` array (`cursor-adapter.md`)
+- A REQ→task table in the body alone is not enough for Cursor Plan UI
 
 ### Plan missing files
 - Spec may be too vague

@@ -112,7 +112,7 @@ More authoring guidance: [skill-authoring.md](skill-authoring.md).
 
 - Agent sees `spec-driven-workflow`, `skill-optimizer`, and `devops-strategy-facilitator` (if installed).
 - Project install → folders under `.agents/skills/`.
-- Your `.cursor/docs/specs/` and `.cursor/plans/` (if any) are unchanged after `npx skills update`.
+- Your specs/plans (`.cursor/docs/specs/`, `.cursor/plans/`, or portable `docs/specs|plans`) are unchanged after `npx skills update`.
 
 ---
 

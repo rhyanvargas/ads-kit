@@ -48,7 +48,7 @@ Document **current** behavior (not the desired future):
 
 Or, without Cursor: explore the code and write a spec under the project's specs directory describing what the system does today.
 
-**Output:** a baseline spec (e.g. `.cursor/docs/specs/{area}-current.md`)
+**Output:** a baseline spec at the resolved spec home (Cursor default `.cursor/docs/specs/{area}-current.md`; portable `docs/specs/{area}-current.md`)
 
 Include:
 

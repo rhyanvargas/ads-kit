@@ -37,9 +37,10 @@ Begin with a clear description of what you want to build:
 The agent will:
 - Ask clarifying questions if needed
 - Search for related patterns in your codebase
-- Generate a structured spec in `.cursor/docs/specs/`
+- Resolve the spec home (`artifact-homes.md`) and write a structured spec
 
-**Output**: `.cursor/docs/specs/user-authentication.md`
+**Output (Cursor default)**: `.cursor/docs/specs/user-authentication.md`  
+**Output (portable)**: `docs/specs/user-authentication.md`
 
 ### 3. Review and refine the spec
 
@@ -54,7 +55,7 @@ Edit the spec directly if needed.
 ### 4. Create an implementation plan (medium/large features)
 
 ```
-/plan-impl .cursor/docs/specs/user-authentication.md
+/plan-impl path/to/user-authentication.md
 ```
 
 The agent will:
@@ -62,8 +63,10 @@ The agent will:
 - Identify files to create/modify
 - Plan tests to write
 - Flag potential risks
+- Emit trackable todos (Cursor: Plan YAML frontmatter — `cursor-adapter.md`)
 
-**Output**: `.cursor/plans/user-authentication.plan.md`
+**Output (Cursor default)**: `.cursor/plans/user-authentication.plan.md`  
+**Output (portable)**: `docs/plans/user-authentication.plan.md`
 
 Review the plan and adjust if needed.
 

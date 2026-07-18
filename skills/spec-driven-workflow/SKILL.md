@@ -67,14 +67,18 @@ Do not silently fill ambiguous requirements — that is the failure mode SDD exi
 
 Update the spec when decisions or scope change; prefer updating the spec before implementing the change. Link PRs back to the spec section or `REQ-XXX` they satisfy.
 
-## Paths (defaults)
+## Artifact homes
 
-| Artifact | Default path |
-|----------|----------------|
-| Specs | `.cursor/docs/specs/` or project `docs/specs/` |
-| Plans | `.cursor/plans/` or project `docs/plans/` |
+Before writing a spec or plan, **resolve the output home** (do not assume `.cursor/`):
 
-Cursor slash commands (`/draft-spec`, `/plan-impl`, etc.) are thin wrappers; details in `references/commands-reference.md`.
+1. Explicit path from the user (`--out`, `@file`, concrete path)
+2. Existing project convention (`docs/specs|plans` or `.cursor/docs/specs` / `.cursor/plans`)
+3. Client default — Cursor `/` or Cursor wiring → `.cursor/...`; otherwise → `docs/specs` + `docs/plans`
+
+Read `references/artifact-homes.md` whenever creating or locating specs/plans.  
+Read `references/cursor-adapter.md` when the home is Cursor (Plan YAML `todos` required).
+
+Slash commands are optional thin wrappers; details in `references/commands-reference.md`.
 
 ## Progressive disclosure
 
@@ -82,6 +86,8 @@ Load references only when needed:
 
 | Reference | When to read |
 |-----------|----------------|
+| `references/artifact-homes.md` | Creating/locating specs or plans; path unclear |
+| `references/cursor-adapter.md` | Cursor `/` commands or `.cursor/plans` / `.cursor/docs` homes |
 | `references/problem-size-guide.md` | Size unclear or contested |
 | `references/spec-writing-guide.md` | Writing or reviewing a spec |
 | `references/greenfield-workflow.md` | New feature, no existing behavior to preserve |

@@ -13,7 +13,7 @@ Based on [Cursor's official guidance](https://cursor.com/blog/agent-best-practic
 - Use Plan Mode (Shift+Tab) for medium+ tasks
 - Let the agent research and ask questions
 - Review and edit plans before implementing
-- Save plans to `.cursor/plans/` for future reference
+- Save plans to the resolved plan home (Cursor: `.cursor/plans/` with YAML `todos`; portable: `docs/plans/`)
 
 ### Write specific prompts
 

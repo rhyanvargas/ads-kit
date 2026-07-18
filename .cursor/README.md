@@ -8,8 +8,8 @@ Optional Cursor wiring for **The Agentic Development Starter Kit (ADSK)**.
 | `.cursor/rules/` | Project Rules (`RULE.md`) — quality gates |
 | `.cursor/skills/` | Relative symlinks → `../../skills/` (Cursor discovery) |
 | `.cursor/templates/` | Copy-paste starters for new rules |
-| `.cursor/docs/specs/` | Generated feature specs |
-| `.cursor/plans/` | Implementation plans |
+| `.cursor/docs/specs/` | Generated feature specs (Cursor default; portable: `docs/specs/`) |
+| `.cursor/plans/` | Implementation plans (Cursor default; portable: `docs/plans/`; YAML `todos` required) |
 
 In **this kit**, skill content is packaged under `skills/` with discovery symlinks from `.agents/skills/` and `.cursor/skills/`.
 

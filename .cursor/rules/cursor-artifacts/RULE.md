@@ -18,13 +18,15 @@ Use the right artifact type. Do not duplicate the same guidance in multiple plac
 | Skills (user hub) | `~/.agents/skills/<name>` | Global install via `npx skills add -g` |
 | Skills (user, Cursor) | `~/.cursor/skills/<name>` → hub | Cursor global discovery |
 | Commands | `.cursor/commands/*.md` | Explicit `/` slash workflows |
-| Specs | `.cursor/docs/specs/` | Generated feature specs |
-| Plans | `.cursor/plans/` | Implementation plans from `/plan-impl` |
+| Specs | `.cursor/docs/specs/` (Cursor default) | Generated feature specs; portable alternative `docs/specs/` |
+| Plans | `.cursor/plans/` (Cursor default) | Implementation plans; portable alternative `docs/plans/` |
 | Templates | `.cursor/templates/` | Copy-paste starters for new rules |
 
 **This kit:** real content in `skills/`; `.agents/skills/` and `.cursor/skills/` are symlinks.  
 **Adopter apps:** real content in `.agents/skills/` via `npx skills add` — see `docs/using-adsk.md`.  
 Do not keep duplicate skill trees.
+
+**Artifact paths:** Resolve via `skills/spec-driven-workflow/references/artifact-homes.md`. Cursor `/` commands default to `.cursor/...`; skills-only projects use `docs/specs|plans`. Cursor plans need YAML `todos` (`cursor-adapter.md`).
 
 ## When to use which
 

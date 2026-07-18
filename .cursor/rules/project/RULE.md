@@ -21,8 +21,7 @@ This repo is **The Agentic Development Starter Kit (ADSK)** for Cursor IDE (opti
 - **Skills (source of truth)**: `skills/<name>/` — portable AgentSkills content
 - **Skills (cross-client)**: `.agents/skills/<name>` → `../../skills/<name>`
 - **Skills (Cursor)**: `.cursor/skills/<name>` → `../../skills/<name>`
-- **Specs**: `.cursor/docs/specs/` — generated feature specs
-- **Plans**: `.cursor/plans/` — implementation plans from `/plan-impl`
+- **Specs / plans**: resolve via `skills/spec-driven-workflow/references/artifact-homes.md` (Cursor default `.cursor/docs/specs/` + `.cursor/plans/`; portable `docs/specs/` + `docs/plans/`)
 - **Adopter guide** (CLI install into `.agents/skills/`): `docs/using-adsk.md`
 
 ## Workflow

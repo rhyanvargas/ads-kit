@@ -37,12 +37,33 @@
     {
       "id": 4,
       "prompt": "Create an implementation plan for a medium-sized feature whose spec already lists 6 REQ items touching API + UI + DB. Assume the spec file is at docs/specs/notifications.md.",
-      "expected_output": "An ordered plan with concrete tasks, files to touch, tests per requirement slice, and risks — suitable for medium size (plan before implement).",
+      "expected_output": "An ordered plan with concrete tasks, files to touch, tests per requirement slice, and risks — suitable for medium size (plan before implement). Saved under docs/plans/ because the project already uses docs/specs/.",
       "assertions": [
         "Plan is broken into ordered tasks or steps",
         "Mentions specific areas or files (API, UI, DB or equivalents)",
         "Includes testing or verification steps tied to requirements",
-        "Flags risks or dependencies"
+        "Flags risks or dependencies",
+        "Uses docs/plans/ (or equivalent portable home) rather than forcing .cursor/plans/ when docs/specs/ is the existing convention"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "We are in Cursor. /plan-impl a medium auth feature whose spec has REQ-001..REQ-009. Save under .cursor/plans/. The Plan UI must show real todos, not zero.",
+      "expected_output": "A .cursor/plans/*.plan.md file with YAML frontmatter containing a non-empty todos array (T1..Tn mapped to REQs), plus a body that may include a requirements→tasks table.",
+      "assertions": [
+        "Plan file includes YAML frontmatter with a todos array",
+        "todos array is non-empty with id and content (and status) per task",
+        "Todo contents or body map tasks to REQ-XXX identifiers",
+        "Does not rely on a body-only requirements table without frontmatter todos"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Draft a spec for password reset in a skills-only app repo that has .agents/skills/ but no .cursor/commands or .cursor/docs tree. Where do you save the spec?",
+      "expected_output": "Spec written under docs/specs/ (portable default), not .cursor/docs/specs/.",
+      "assertions": [
+        "Chooses docs/specs/ as the output home",
+        "Does not require creating .cursor/docs/specs/ for this skills-only layout"
       ]
     }
   ]
