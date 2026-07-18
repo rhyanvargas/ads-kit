@@ -32,7 +32,7 @@ If the CLI asks for **Update scope**, choose **Project** for a normal app instal
 
 ### Optional: Cursor slash commands
 
-Skills work without slash commands. To add `/draft-spec`, `/sync-adsk`, and friends:
+Skills work without slash commands. To add `/draft-spec`, `/sync-adsk`, `/update-readme`, and friends:
 
 1. Clone ADSK once → keep the checkout.
 2. Ask your agent to sync from that path, **or** run:
@@ -48,9 +48,10 @@ That syncs `.cursor/commands/` (paths → `.agents/skills/`), adds missing stock
 | Layer | Path | Purpose |
 |-------|------|---------|
 | **Package source** | `skills/<name>/` | What `npx skills add` publishes from |
-| **Discovery (this repo)** | `.agents/skills/`, `.cursor/skills/` | Symlinks → `skills/` for local use of the kit |
+| **Discovery (this repo)** | `.agents/skills/`, `.cursor/skills/` | Symlinks → `skills/` only (do not vendor upstream trees here) |
 | **Cursor wiring** | `.cursor/commands/`, `.cursor/rules/` | Optional slash commands + quality gates |
-| **Recommended upstream** | [`recommended-skills.json`](recommended-skills.json) | Pinned external skills (not vendored) |
+| **Sync script** | [`scripts/sync-adsk.sh`](scripts/sync-adsk.sh) | Kit discovery links + adopter Cursor sync (`kit` / `adopter` / `self-check`) |
+| **Recommended upstream** | [`recommended-skills.json`](recommended-skills.json) | Pinned external skills for **adopter apps** (not shipped as first-party) |
 
 **Your app** should use `.agents/skills/` only — see [docs/using-adsk.md](docs/using-adsk.md).
 
@@ -61,15 +62,22 @@ That syncs `.cursor/commands/` (paths → `.agents/skills/`), adds missing stock
 - **`skill-optimizer`** — author/optimize skills for trigger accuracy, clarity, and token cost
 - **`readme-authoring`** — evidence-grounded README create/update/review (audience-aware; `/update-readme`)
 
+## Recommended upstream (adopter apps)
+
+Install after trust review — pins and commands in [`recommended-skills.json`](recommended-skills.json):
+
+- **Recommended:** Superpowers (`writing-plans`, TDD, systematic debugging), Vercel Labs `find-skills`, Anthropic `skill-creator` (maintainers)
+- **Optional:** product value loop pack + `frontend-design` (see below)
+
 ## Product value loop (optional)
 
 To maximize customer value before (and while) you execute specs:
 
 ```text
-Discover → Research → Prioritize → Plan → Execute → measure → Discover
+Discover → Research → Prioritize → Plan → Execute → (measure) → Discover
 ```
 
-Recommended upstream skills (`inspired-product`, `mom-test`, `continuous-discovery`, JTBD, competitive intel, roadmap/prioritization) install **project-local** or **global** (`-g`) — see **[docs/product-value-loop.md](docs/product-value-loop.md)**. They complement ADSK SDD; they do not replace it. Pins live in [`recommended-skills.json`](recommended-skills.json).
+Optional upstream skills (`inspired-product`, `mom-test`, `continuous-discovery`, `jobs-to-be-done`, `competitive-intelligence`, roadmap/prioritization) install **project-local** or **global** (`-g`) — see **[docs/product-value-loop.md](docs/product-value-loop.md)**. They complement ADSK SDD; they do not replace it. Pins live in [`recommended-skills.json`](recommended-skills.json).
 
 ## Try this repo in Cursor
 
@@ -98,10 +106,15 @@ cd agentic-development-starter-kit
 |-----|--------|
 | [AGENTS.md](AGENTS.md) | Repo layout contract (package source vs discovery) |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Contributions; do not vendor upstream skills |
-| [docs/upgrading.md](docs/upgrading.md#kit-maintainers) | Sync after first-party skill changes |
+| [`scripts/sync-adsk.sh`](scripts/sync-adsk.sh) | `kit` / `self-check` after first-party skill changes |
+| [docs/upgrading.md](docs/upgrading.md#kit-maintainers) | Sync / upgrade playbook |
 | [docs/skill-authoring.md](docs/skill-authoring.md) / [evaluating-skills.md](docs/evaluating-skills.md) | Author + eval skills |
 | [docs/lifecycle-coverage.md](docs/lifecycle-coverage.md) / [docs/evals/SCORECARD.md](docs/evals/SCORECARD.md) | Coverage map |
-| [docs/RELEASE.md](docs/RELEASE.md) / [CHANGELOG.md](CHANGELOG.md) | Releases |
+| [docs/RELEASE.md](docs/RELEASE.md) / [CHANGELOG.md](CHANGELOG.md) | release-please + Conventional Commits |
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). Security reports: [SECURITY.md](SECURITY.md). Code of conduct: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 
 ## License
 
