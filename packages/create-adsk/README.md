@@ -53,3 +53,7 @@ Flags: `--yes` / `-y`, `--dry-run`, `--scope project|global`, `--force-rules`, `
 cd packages/create-adsk && npm install && npm test && npm run build
 node dist/cli.js --help
 ```
+
+## Publishing
+
+Releases use npm [Trusted Publishing](https://docs.npmjs.com/trusted-publishers/) from [`.github/workflows/publish-create-adsk.yml`](../../.github/workflows/publish-create-adsk.yml) (OIDC + provenance). Day-to-day and bootstrap steps: [`docs/RELEASE.md`](../../docs/RELEASE.md).

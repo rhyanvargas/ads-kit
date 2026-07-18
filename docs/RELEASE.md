@@ -47,6 +47,34 @@ Create a GitHub Release from the tag (or paste the `[0.1.0]` section from `CHANG
 
 The workflow uses `GITHUB_TOKEN` with `contents` + `pull-requests` write. If Release PRs fail to open in an org repo, allow Actions to create PRs or use a PAT per [release-please-action credentials](https://github.com/googleapis/release-please-action#github-credentials).
 
+## npm publish — `create-adsk`
+
+Kit tags (`vX.Y.Z` from release-please) and the npm CLI package are **versioned independently**.
+
+| Artifact | Role |
+|----------|------|
+| [`.github/workflows/publish-create-adsk.yml`](../.github/workflows/publish-create-adsk.yml) | Publishes `packages/create-adsk` via npm Trusted Publishing (OIDC) |
+| Tag pattern | `create-adsk-vX.Y.Z` (must match `packages/create-adsk/package.json` `version`) |
+
+### Bootstrap (once)
+
+1. Reserve the npm name if needed (placeholder `0.0.0` or first real version) — Trusted Publisher cannot be configured until the package exists on the registry.
+2. On npmjs.com → `create-adsk` → **Settings → Trusted Publisher** → GitHub Actions:
+   - user: `rhyanvargas`, repo: `agentic-development-starter-kit`, workflow: `publish-create-adsk.yml`
+3. Optional: Actions → **publish-create-adsk** → Run workflow with **dry_run** to pack without publishing.
+4. Prefer restricting traditional token publish access after OIDC is verified (see [SECURITY.md](../SECURITY.md)).
+
+### Cut an npm release
+
+```bash
+# 1. Bump version in packages/create-adsk/package.json (and commit on main)
+# 2. Tag and push (from the commit that has that version):
+git tag -a create-adsk-v0.1.0 -m "create-adsk v0.1.0"
+git push origin create-adsk-v0.1.0
+```
+
+The workflow runs tests/build, checks the tag matches `package.json`, then `npm publish -w create-adsk` with provenance.
+
 ## Optional next
 
 - Publish/list on [skills.sh](https://skills.sh) via `npx skills`

@@ -35,6 +35,24 @@ Local check:
 npm ci && npm audit --audit-level=high
 ```
 
+## npm Trusted Publishing (`create-adsk`)
+
+The `create-adsk` package publishes from GitHub Actions with [npm Trusted Publishing](https://docs.npmjs.com/trusted-publishers/) (OIDC) — no long-lived `NPM_TOKEN` in repo secrets. Provenance attestations are enabled via `publishConfig.provenance`.
+
+| Artifact | Role |
+|----------|------|
+| [`.github/workflows/publish-create-adsk.yml`](.github/workflows/publish-create-adsk.yml) | OIDC publish on `create-adsk-v*` tags (or manual `workflow_dispatch`) |
+| [`packages/create-adsk/package.json`](packages/create-adsk/package.json) | `publishConfig.access` + `provenance` |
+
+**Maintainer bootstrap (once):** npm requires the package name to exist before Trusted Publisher can be configured. Publish a one-time placeholder (e.g. `0.0.0`) or the first real version with an interactive npm login / short-lived token, then on npmjs.com → package **Settings → Trusted Publisher**:
+
+- Organization or user: `rhyanvargas`
+- Repository: `agentic-development-starter-kit`
+- Workflow filename: `publish-create-adsk.yml` (filename only)
+- Allowed actions: `npm publish`
+
+After Trusted Publisher works, prefer restricting token publish access on the package (npm “disallow tokens” / 2FA settings). Day-to-day release steps: [docs/RELEASE.md](docs/RELEASE.md).
+
 ## Skill supply-chain guidance
 
 ADSK recommends (but does not vendor) third-party skills. Treat unpinned installs
