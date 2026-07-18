@@ -1,0 +1,23 @@
+# /plan-impl
+
+Create an implementation plan from a specification.
+
+## Skill
+
+Read and follow **`skills/spec-driven-workflow`**. Resolve paths with `references/artifact-homes.md`. For Cursor plan files, follow `references/cursor-adapter.md` (YAML `todos` required). Recommended upstream `writing-plans` (see `recommended-skills.json`) may also apply for granular task style.
+
+## Usage
+
+```
+/plan-impl path/to/spec.md
+```
+
+## Behavior
+
+1. Read the spec; if open questions or unconfirmed assumptions remain, resolve those before planning.
+2. Break work into ordered, verifiable tasks (files, tests, risks). Prefer tasks that map to `REQ-XXX` and stay within a focused file set.
+3. **Resolve the plan path** via the skill. As a Cursor `/` command, default to `.cursor/plans/{feature-name}.plan.md` unless the project already uses `docs/plans/` or the user overrides the path.
+4. Write the plan with **trackable todos** (Cursor: non-empty frontmatter `todos`; never body-only REQ tables with empty Plan UI todos).
+5. Suggest `/implement-spec` only after the user approves the plan (medium+).
+
+Keep this command thin — planning depth lives in the skill / recommended upstream.

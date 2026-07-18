@@ -1,0 +1,72 @@
+{
+  "$schema_comment": "ADSK adopter profiles — machine-readable contract for create-adsk. Docs must not invent a different skill list. See docs/product/create-adsk.md.",
+  "version": 1,
+  "product": "create-adsk",
+  "status": "implemented",
+  "kit_source": "rhyanvargas/agentic-development-starter-kit",
+  "do_not": [
+    "Expose a third-party or arbitrary GitHub skill catalog in create-adsk UX",
+    "Reimplement skill install — shell out to npx skills",
+    "Present create-adsk as a skills.sh menu wrapper",
+    "Put sync-adsk.sh kit (maintainer symlink mode) behind create-adsk"
+  ],
+  "cursor_modes": ["commands", "none"],
+  "rules_modes": ["stock", "none"],
+  "profiles": {
+    "core": {
+      "description": "Spec-driven delivery spine only.",
+      "skills": ["spec-driven-workflow"],
+      "cursor": "commands",
+      "rules": "none"
+    },
+    "delivery": {
+      "description": "SDD plus DevOps strategy and release automation.",
+      "skills": [
+        "spec-driven-workflow",
+        "devops-strategy-facilitator",
+        "release-automation"
+      ],
+      "cursor": "commands",
+      "rules": "none"
+    },
+    "maintainer": {
+      "description": "Full first-party kit including skill authoring and README workflows.",
+      "skills": [
+        "spec-driven-workflow",
+        "devops-strategy-facilitator",
+        "release-automation",
+        "skill-optimizer",
+        "readme-authoring"
+      ],
+      "cursor": "commands",
+      "rules": "stock"
+    },
+    "skills-only": {
+      "description": "All first-party skills; no Cursor commands or rules writes.",
+      "skills": [
+        "spec-driven-workflow",
+        "devops-strategy-facilitator",
+        "release-automation",
+        "skill-optimizer",
+        "readme-authoring"
+      ],
+      "cursor": "none",
+      "rules": "none"
+    }
+  },
+  "optional_packs": {
+    "prompt_default": false,
+    "description": "Optional yes/no after profile choice — not a skill picker. Install via recommended-skills.json.",
+    "ids": [
+      "product-value-loop-wondelai",
+      "product-value-loop-deanpeters",
+      "competitive-intelligence"
+    ],
+    "source_file": "recommended-skills.json",
+    "docs": "docs/product-value-loop.md"
+  },
+  "config_marker": {
+    "path": ".adsk/config.json",
+    "fields": ["version", "profile", "cursor", "rules", "scope", "kitRef", "optionalPacks"]
+  }
+}
