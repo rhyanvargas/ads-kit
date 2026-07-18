@@ -5,6 +5,14 @@ All notable changes to **The Agentic Development Starter Kit (ADSK)** are docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0](https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.4.0...v0.5.0) (2026-07-18)
+
+
+### Added
+
+* add Dependabot and npm audit security baseline ([fd0ef20](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/fd0ef200da2309cafdddac070ca42cb0838aa68a))
+* add npm Trusted Publishing workflow for create-adsk ([#14](https://github.com/rhyanvargas/agentic-development-starter-kit/issues/14)) ([181b373](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/181b373e24c230b7176f263ec3c42a18b54c8715))
+
 ## [0.4.0](https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.3.1...v0.4.0) (2026-07-18)
 
 
