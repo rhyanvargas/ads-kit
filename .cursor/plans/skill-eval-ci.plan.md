@@ -23,8 +23,8 @@ Spec: [`.cursor/docs/specs/skill-eval-ci.md`](../docs/specs/skill-eval-ci.md)
 
 ## Locked defaults (from open questions)
 
-- Path filter includes `skills/**`, `scripts/check-skills-ci.sh`, and the Tier 1 workflow file.
-- Branch protection “required check” is a post-merge ops step (document only).
+- No path filters on Tier 1 (required check `tier1` must always report; path filters stuck release-please PRs).
+- Branch protection required check context: `tier1`.
 - Tier 2 v1 = schedule/`workflow_dispatch` stub + runbook/artifact path; no LLM on PR critical path; no Tier 3.
 
 ## Requirements → tasks
@@ -58,7 +58,7 @@ Match release-please style (pinned major actions, explicit Node if needed — RE
 
 | File | Role |
 |------|------|
-| [`.github/workflows/skills-ci.yml`](../../.github/workflows/skills-ci.yml) | Tier 1: `pull_request` + `push` to `main`, path filters; checkout → setup-node → `./scripts/check-skills-ci.sh`; **fail hard** (REQ-001). |
+| [`.github/workflows/skills-ci.yml`](../../.github/workflows/skills-ci.yml) | Tier 1: `pull_request` + `push` to `main` (no path filters); checkout → setup-node → `./scripts/check-skills-ci.sh`; **fail hard** (REQ-001). |
 | [`.github/workflows/skills-evals-soft.yml`](../../.github/workflows/skills-evals-soft.yml) | Tier 2: `schedule` (weekly) + `workflow_dispatch` only; stub steps + pointer to runbook; `continue-on-error: true` or non-required workflow; optional `actions/upload-artifact` for a summary placeholder (REQ-009–011). |
 
 Do not touch `release-please.yml` behavior.

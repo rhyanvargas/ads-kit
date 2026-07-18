@@ -2,21 +2,14 @@
 # Spec: .cursor/docs/specs/skill-eval-ci.md
 name: skills-ci
 
+# No path filters: branch protection requires job `tier1`. Path-filtered
+# workflows never report status on unrelated PRs (e.g. release-please), so
+# those PRs stay blocked on "Expected — Waiting for status to be reported."
 on:
   pull_request:
-    paths:
-      - "skills/**"
-      - "scripts/check-skills-ci.sh"
-      - "scripts/fixtures/skill-ci/**"
-      - ".github/workflows/skills-ci.yml"
   push:
     branches:
       - main
-    paths:
-      - "skills/**"
-      - "scripts/check-skills-ci.sh"
-      - "scripts/fixtures/skill-ci/**"
-      - ".github/workflows/skills-ci.yml"
 
 permissions:
   contents: read

@@ -20,7 +20,7 @@ Confirmed from product direction discussion (correct before implement if wrong):
 
 ### Functional — Tier 1 (PR hard gate)
 
-- [ ] REQ-001: On pull requests that touch `skills/**` (and optionally on `push` to `main` for the same paths), a GitHub Actions workflow runs the Tier 1 checks and **fails the job** on any check failure.
+- [ ] REQ-001: On every `pull_request` and on `push` to `main` (no path filters — required check `tier1` must always report), a GitHub Actions workflow runs the Tier 1 checks and **fails the job** on any check failure.
 - [ ] REQ-002: For every directory `skills/<name>/` that contains `SKILL.md`, CI runs `npx --yes skills-ref validate ./skills/<name>` (or equivalent pinned invoke) and fails if validation fails.
 - [ ] REQ-003: For every first-party skill directory, CI asserts presence of:
   - `evals/evals.json` (valid JSON)
@@ -56,7 +56,7 @@ Confirmed from product direction discussion (correct before implement if wrong):
 
 - Given a PR that breaks `SKILL.md` validation, when Tier 1 CI runs, then the check fails and the PR cannot be considered green.
 - Given a PR that removes `evals/evals.json` or empties assertions from a first-party skill, when Tier 1 CI runs, then the check fails.
-- Given a PR that only changes docs outside `skills/**`, when path filters apply, then Tier 1 may skip or no-op without failing unrelated work (path filter behavior documented).
+- Given a PR that only changes docs or release metadata (no skill edits), when Tier 1 CI runs, then the job still runs and reports `tier1` (pass if harness intact).
 - Given Tier 2 is triggered without model credentials, when the soft workflow runs, then it does not fail required PR status checks or release-please.
 - Given a maintainer on a laptop, when they run the Tier 1 script from repo root, then they get the same pass/fail signal as CI.
 

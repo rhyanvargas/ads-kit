@@ -98,7 +98,7 @@ Optional automation: Anthropic [`skill-creator`](https://github.com/anthropics/s
 
 | Tier | When | What | Merge impact |
 |------|------|------|--------------|
-| **1 (hard)** | PRs/pushes touching `skills/**` (and the check script / workflow) | `skills-ref validate` + eval harness integrity (`evals.json` + trigger queries shape) via [`scripts/check-skills-ci.sh`](../scripts/check-skills-ci.sh) | Fails the job on check failure |
+| **1 (hard)** | Every PR + every push to `main` (`.github/workflows/skills-ci.yml`) | `skills-ref validate` + eval harness integrity (`evals.json` + trigger queries shape) via [`scripts/check-skills-ci.sh`](../scripts/check-skills-ci.sh) | Fails the job on check failure; required check context `tier1` |
 | **2 (soft)** | Weekly schedule + `workflow_dispatch` (`.github/workflows/skills-evals-soft.yml`) | Full with_skill vs without_skill iterations (runbook below); v1 uploads a stub summary artifact | Must **not** be a required PR check; does not block release-please |
 | **3** | Future | Hard pass-rate gate vs baselines | Out of scope until flakiness/cost baselines exist |
 
@@ -109,7 +109,7 @@ Local verify (same as CI Tier 1):
 ./scripts/check-skills-ci.sh --self-test
 ```
 
-Path filters skip Tier 1 when a PR only changes docs outside `skills/**` / the check script / workflow.
+Tier 1 has **no path filters** so the required `tier1` status always reports (including release-please PRs that only touch changelog/version).
 
 ### Tier 2 runbook (manual until agent loops are automated)
 
