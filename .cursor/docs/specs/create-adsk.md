@@ -7,7 +7,7 @@ Ship `npx create-adsk` so app teams can adopt ADSK as a **versioned profile** (s
 Product contract: [`docs/product/create-adsk.md`](../../../docs/product/create-adsk.md).  
 Profiles: [`profiles.json`](../../../profiles.json).
 
-**Status:** Spec for planned CLI. This bake-in slice lands the contract only; implementation is a later `/plan-impl`.
+**Status:** Spec for planned CLI. Implementation plan: [`.cursor/plans/create-adsk.plan.md`](../../plans/create-adsk.plan.md).
 
 ## Assumptions
 
@@ -16,6 +16,9 @@ Profiles: [`profiles.json`](../../../profiles.json).
 - [x] Cursor sync reuses [`scripts/sync-adsk.sh`](../../../scripts/sync-adsk.sh) `adopter` (or a thin port with the same flags/behavior)
 - [x] Four profiles and defaults match `profiles.json` exactly
 - [x] Kit-maintainer `kit` mode stays out of the CLI
+- [x] npm layout: `packages/create-adsk` (not repo-root bin)
+- [x] Cursor artifacts: vendored `kit-snapshot/` at pack time; no manual kit clone for update (REQ-008)
+- [x] skills CLI selective add: `npx --yes skills add <kit_source> --skill <name>… -y` (+ `-g` when scope=global)
 
 ## Requirements
 
@@ -66,8 +69,14 @@ Profiles: [`profiles.json`](../../../profiles.json).
 - Do not overwrite adopter specs/plans content (same as current sync script).
 - Keep `recommended-skills.json` as the source for optional upstream packs.
 
-## Open for implementation plan
+## Implementation decisions (locked in plan)
 
-- npm package layout (repo-root bin vs `packages/create-adsk`)
-- Whether to vendor Cursor artifacts at publish time or fetch kit ref at runtime
-- Exact skills CLI flags for selective add across CLI versions
+Resolved in [`.cursor/plans/create-adsk.plan.md`](../../plans/create-adsk.plan.md):
+
+| Topic | Decision |
+|-------|----------|
+| Package layout | `packages/create-adsk`, npm name `create-adsk` |
+| Cursor artifacts | Vendor kit snapshot into package; TS port of adopter sync; `kitRef` records snapshot identity |
+| skills CLI flags | `--skill` per skill, `-y` / `--yes`, `-g` for global; update via `skills update -y` (`-p`/`-g` when scoped) |
+
+Out of v1: live `--from` kit override; npm registry publish step (package first).
