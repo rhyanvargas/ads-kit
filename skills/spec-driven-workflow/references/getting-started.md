@@ -9,7 +9,8 @@ Set up ADSK’s spec-driven workflow in your project.
 
 ## Installation
 
-Adopter guide (install, update, add your own skill): [docs/using-adsk.md](../../../docs/using-adsk.md).
+Adopter guide (install, ask-agent sync, Cursor, custom skills): [docs/using-adsk.md](../../../docs/using-adsk.md).  
+Kit maintainers: [docs/upgrading.md](../../../docs/upgrading.md#kit-maintainers).
 
 ### In your app (recommended)
 
@@ -17,7 +18,7 @@ Adopter guide (install, update, add your own skill): [docs/using-adsk.md](../../
 npx skills add rhyanvargas/agentic-development-starter-kit
 ```
 
-Skills land in `.agents/skills/`. Updates: from the app repo run `npx skills update` and choose **Project** (refreshes that repo’s `.agents/skills/`). Choose **Global** only if you installed with `-g`; **Both** only if you maintain project and hub copies. See [docs/using-adsk.md](../../../docs/using-adsk.md#3-get-updates-later).
+Skills land in `.agents/skills/`. You can ask the agent “Sync ADSK” (it should run `scripts/sync-adsk.sh`; adopters need a kit checkout). Skills-only updates: `npx skills update` → **Project**. See [docs/using-adsk.md](../../../docs/using-adsk.md).
 
 ### Global (all projects)
 
@@ -54,7 +55,7 @@ Open in Cursor and run `/quick-start`, or activate `spec-driven-workflow`.
 ## Verify setup
 
 1. Agent discovers `spec-driven-workflow` (and `devops-strategy-facilitator` if installed)
-2. Cursor commands (optional): `/draft-spec`, `/plan-impl`, `/implement-spec`, `/review`, `/extract-spec`, `/quick-start`
+2. Cursor commands (optional): `/draft-spec`, `/plan-impl`, `/implement-spec`, `/review`, `/extract-spec`, `/quick-start`, `/sync-adsk`
 3. In an **app** after CLI install: `.agents/skills/` has the skill folders
 4. In **this kit repo**: `skills/` is package source; `.agents/skills/` and `.cursor/skills/` link to it
 

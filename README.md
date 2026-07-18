@@ -17,19 +17,31 @@ npx skills add rhyanvargas/agentic-development-starter-kit
 
 Skills install under `.agents/skills/` (not a root `skills/` folder).
 
-Later (from your app repo):
+**Ask your agent:** “Sync ADSK” (or `/sync-adsk` after Cursor wiring is installed) — the agent should run [`scripts/sync-adsk.sh`](scripts/sync-adsk.sh). Adopters need a kit checkout path (or the agent clones one). Step-by-step: [docs/using-adsk.md](docs/using-adsk.md).
+
+Later, skills only:
 
 ```bash
 npx skills update
 ```
 
-If the CLI asks for **Update scope**, choose **Project** for a normal app install (`.agents/skills/` in the current repo). Use **Global** only if you installed with `-g`; use **Both** only if you maintain both. Details: [docs/using-adsk.md](docs/using-adsk.md#3-get-updates-later).
+If the CLI asks for **Update scope**, choose **Project** for a normal app install. Details: [docs/using-adsk.md](docs/using-adsk.md#3-get-updates-later).
 
-**Full guide** (global install, optional Cursor `/` commands, add your own skill, gitignore): [docs/using-adsk.md](docs/using-adsk.md).
+**Full guide** (Cursor `/` commands, updates, custom skills): [docs/using-adsk.md](docs/using-adsk.md).  
+**Kit maintainers:** [docs/upgrading.md](docs/upgrading.md#kit-maintainers).
 
 ### Optional: Cursor slash commands
 
-Skills work without slash commands. To add `/draft-spec` and friends, copy ADSK’s `.cursor/commands/` (and optionally `.cursor/rules/`) into your project — steps in [docs/using-adsk.md](docs/using-adsk.md).
+Skills work without slash commands. To add `/draft-spec`, `/sync-adsk`, and friends:
+
+1. Clone ADSK once → keep the checkout.
+2. Ask your agent to sync from that path, **or** run:
+
+```bash
+/path/to/adsk/scripts/sync-adsk.sh adopter --from /path/to/adsk
+```
+
+That syncs `.cursor/commands/` (paths → `.agents/skills/`), adds missing stock rules, and refreshes skills via the CLI.
 
 ## What’s in this kit repo
 
@@ -61,7 +73,9 @@ Then `/quick-start` → `/draft-spec` → `/plan-impl` → `/implement-spec` →
 
 | Doc | Topic |
 |-----|--------|
-| [docs/using-adsk.md](docs/using-adsk.md) | Adopt, update, add your own skills |
+| [docs/using-adsk.md](docs/using-adsk.md) | Adopter: install, ask-agent sync, Cursor, custom skills |
+| [docs/upgrading.md](docs/upgrading.md) | Adopter + kit-maintainer sync/upgrade steps |
+| [scripts/sync-adsk.sh](scripts/sync-adsk.sh) | Sync Cursor wiring + discovery links |
 | [AGENTS.md](AGENTS.md) | Repo-level agent contract (kit maintainers) |
 | [docs/skill-authoring.md](docs/skill-authoring.md) | Skill authoring |
 | [docs/evaluating-skills.md](docs/evaluating-skills.md) | Eval-driven iteration |

@@ -8,9 +8,10 @@ Maintainer checklist for the first ADSK public release.
 - [ ] Local remote updated (`git remote -v` shows the new URL)
 - [ ] README clone URLs resolve
 - [ ] `CHANGELOG.md` `[0.1.0]` section is accurate
-- [ ] Symlinks under `.agents/skills/` and `.cursor/skills/` resolve to `skills/`
+- [ ] Symlinks under `.agents/skills/` and `.cursor/skills/` resolve to `skills/` (`./scripts/sync-adsk.sh kit`)
+- [ ] `./scripts/sync-adsk.sh self-check` passes
 - [ ] Spot-check thin commands still point at skills
-- [ ] `docs/using-adsk.md` adopt/update steps still match the layout
+- [ ] `docs/using-adsk.md` adopt/update steps still match the layout (incl. sync script)
 
 ## Tag (when ready)
 

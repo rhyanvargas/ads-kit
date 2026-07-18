@@ -6,7 +6,7 @@ Thanks for helping improve **The Agentic Development Starter Kit (ADSK)**.
 
 - **Portable first**: skill content lives in `skills/<name>/` (Agent Skills format).
 - **No duplication**: Cursor commands/rules should reference skills, not copy them.
-- **Discovery links**: after adding a first-party skill, add relative symlinks under `.agents/skills/` and `.cursor/skills/` → `../../skills/<name>`.
+- **Discovery links**: after adding a first-party skill, run `./scripts/sync-adsk.sh kit` (or add relative symlinks under `.agents/skills/` and `.cursor/skills/` → `../../skills/<name>`).
 - **Evidence-based**: prefer links to real paths and agentskills.io guidance.
 - **Eval when you change behavior**: update or add `evals/evals.json` cases for first-party skills.
 
@@ -26,10 +26,16 @@ Adopters (not contributing upstream) should use [docs/using-adsk.md](docs/using-
 
 ## Adding or changing skills
 
-- First-party skills: edit under `skills/<name>/` and keep `SKILL.md` lean; put depth in `references/`.
-- **Run the optimization gates** via `skill-optimizer` (or `/optimize-skill`): validate, description triggers, progressive disclosure, `evals/trigger/` + `evals/evals.json`.
-- Recommended upstream skills: update [`recommended-skills.json`](recommended-skills.json) and [docs/lifecycle-coverage.md](docs/lifecycle-coverage.md) — do **not** vendor upstream trees unless maintainers agree.
-- See [docs/skill-authoring.md](docs/skill-authoring.md) and [docs/evaluating-skills.md](docs/evaluating-skills.md).
+1. Edit under `skills/<name>/`; keep `SKILL.md` lean; put depth in `references/`.
+2. **Run the optimization gates** via `skill-optimizer` (or `/optimize-skill`): validate, description triggers, progressive disclosure, `evals/trigger/` + `evals/evals.json`.
+3. **Sync discovery links** — ask the agent “Sync ADSK” / `/sync-adsk`, or run:
+   ```bash
+   ./scripts/sync-adsk.sh kit
+   ./scripts/sync-adsk.sh self-check
+   ```
+4. Recommended upstream skills: update [`recommended-skills.json`](recommended-skills.json) and [docs/lifecycle-coverage.md](docs/lifecycle-coverage.md) — do **not** vendor upstream trees unless maintainers agree.
+
+See [docs/skill-authoring.md](docs/skill-authoring.md), [docs/evaluating-skills.md](docs/evaluating-skills.md), and [docs/upgrading.md](docs/upgrading.md#kit-maintainers).
 
 ## Code of conduct
 

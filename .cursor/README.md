@@ -13,4 +13,14 @@ Optional Cursor wiring for **The Agentic Development Starter Kit (ADSK)**.
 
 In **this kit**, skill content is packaged under `skills/` with discovery symlinks from `.agents/skills/` and `.cursor/skills/`.
 
-**App adopters** install into `.agents/skills/` with the CLI — see [`docs/using-adsk.md`](../docs/using-adsk.md). Copy this folder’s `commands/` / `rules/` only if you want Cursor slash commands.
+**Ask the agent:** “Sync ADSK” or `/sync-adsk` — it should run [`scripts/sync-adsk.sh`](../scripts/sync-adsk.sh) (not hand-copy). Adopters need a kit checkout path or clone.
+
+```bash
+# adopter app:
+/path/to/adsk/scripts/sync-adsk.sh adopter --from /path/to/adsk
+
+# kit maintainers:
+./scripts/sync-adsk.sh kit
+```
+
+Step-by-step: [`docs/using-adsk.md`](../docs/using-adsk.md) (adopters), [`docs/upgrading.md`](../docs/upgrading.md) (both).

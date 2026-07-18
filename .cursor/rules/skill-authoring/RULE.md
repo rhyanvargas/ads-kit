@@ -25,4 +25,6 @@ Also apply when the user asks to create, optimize, or review a skill — even if
 | Kit source | `skills/<name>/` + symlinks under `.agents/skills/` and `.cursor/skills/` |
 | Adopter app | `.agents/skills/<name>/` only |
 
+After adding/removing a **kit** first-party skill, sync discovery links: `./scripts/sync-adsk.sh kit` (or `/sync-adsk` / “Sync ADSK”).
+
 Do not duplicate the full optimizer playbook into commands or this rule.

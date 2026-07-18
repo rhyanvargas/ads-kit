@@ -1,12 +1,33 @@
 # Using ADSK in your project
 
-For people adding ADSK to an app (not contributing to this kit).
+For people adding ADSK to an **app** (not contributing to this kit).
 
 Skills in **your** project live under `.agents/skills/` ([agentskills.io](https://agentskills.io/client-implementation/adding-skills-support#where-to-scan)). There is no root `skills/` folder in your app.
 
+**Kit maintainers** (this repo): see [upgrading.md](upgrading.md#kit-maintainers) and [CONTRIBUTING.md](../CONTRIBUTING.md).
+
 ---
 
-## 1. Install (pick one)
+## Ask your coding agent (recommended)
+
+You can ask the agent in plain language, for example:
+
+- “Sync ADSK”
+- “Update ADSK Cursor commands and skills”
+- `/sync-adsk` (after Cursor wiring is installed)
+
+The agent should run [`scripts/sync-adsk.sh`](../scripts/sync-adsk.sh) — not hand-copy files.
+
+| You are in… | Agent should run |
+|-------------|------------------|
+| **This kit repo** | `./scripts/sync-adsk.sh kit` |
+| **Your app** | `<kit>/scripts/sync-adsk.sh adopter --from <kit>` from the app root |
+
+**Adopter requirement:** the agent needs a kit checkout (path you provide, an existing clone, or it clones GitHub once). `npx skills add` installs skills only; it does **not** install the sync script into your app. After the first Cursor sync, `/sync-adsk` is available in your project and points the agent at the same flow.
+
+---
+
+## 1. Install skills
 
 ### This project only (recommended)
 
@@ -28,91 +49,110 @@ Skills go to `~/.agents/skills/` instead of the repo.
 
 ---
 
-## 2. Optional: Cursor slash commands
+## 2. Optional: Cursor slash commands (first time)
 
-Skills work without this. Add it only if you want `/draft-spec`, `/plan-impl`, etc.
+Skills work without this. Do this only if you want `/draft-spec`, `/plan-impl`, `/sync-adsk`, etc.
 
-1. Clone or download ADSK once.
-2. Copy into your app:
+### Steps
 
-```bash
-mkdir -p .cursor
-cp -R /path/to/agentic-development-starter-kit/.cursor/commands .cursor/
-cp -R /path/to/agentic-development-starter-kit/.cursor/rules .cursor/
-mkdir -p .cursor/docs/specs .cursor/plans
-```
+1. Clone ADSK once (keep the checkout for later updates):
 
-Do **not** copy ADSK’s specs/plans folders with content — start empty.
+   ```bash
+   git clone https://github.com/rhyanvargas/agentic-development-starter-kit.git ~/src/adsk
+   ```
 
-Then open the project in Cursor and try `/quick-start`.
+2. From **your app root**, either:
+
+   **A. Ask your agent:** “Sync ADSK Cursor commands from `~/src/adsk`”
+
+   **B. Run the script yourself:**
+
+   ```bash
+   ~/src/adsk/scripts/sync-adsk.sh adopter --from ~/src/adsk
+   ```
+
+3. Open the project in Cursor and try `/quick-start`.
+
+### What the sync does
+
+| Artifact | Behavior |
+|----------|----------|
+| `.cursor/commands/` | Writes/updates stock ADSK commands; rewrites `skills/<name>` → `.agents/skills/<name>` |
+| `.cursor/rules/` | Adds stock rules (`skill-authoring`, `testing`, `project-cmds`) only if missing |
+| `.agents/skills/` | Runs `npx skills update` (or `add` if none installed) |
+| Specs / plans | Never overwritten; ensures empty `.cursor/docs/specs/` + `.cursor/plans/` exist |
+
+Useful flags: `--dry-run`, `--commands-only`, `--skip-skills`, `--force-rules`, `--rules all|none`, `--skills-from-path` (offline copy from kit `skills/`).
 
 ---
 
 ## 3. Get updates later
 
-When ADSK ships changes on GitHub:
+When ADSK ships changes, skim [`CHANGELOG.md`](../CHANGELOG.md) on GitHub, then update.
+
+### Cursor wiring + skills (if you use slash commands)
+
+1. Update your kit checkout: `git -C ~/src/adsk pull`
+2. From your **app** root, ask the agent “Sync ADSK” / run `/sync-adsk`, **or**:
+
+   ```bash
+   ~/src/adsk/scripts/sync-adsk.sh adopter --from ~/src/adsk
+   ```
+
+### Skills only (no Cursor wiring)
+
+From your app repo:
 
 ```bash
-# skim CHANGELOG.md on GitHub first, then (from your app repo):
 npx skills update
 ```
 
-The CLI may ask for **Update scope**. Choose based on how you installed:
+If the CLI asks for **Update scope**:
 
 | Scope | Choose when |
 |-------|-------------|
-| **Project** | You installed with `npx skills add …` in this repo (recommended). Updates `.agents/skills/` in the current directory. |
-| **Global** | You installed with `-g` and want `~/.agents/skills/` refreshed (not this app’s folder). |
-| **Both** | You keep the same skills in project **and** global and want both refreshed together. |
+| **Project** | You installed with `npx skills add …` in this repo (recommended) |
+| **Global** | You installed with `-g` |
+| **Both** | You keep the same skills in project **and** global |
 
-For a normal app install, pick **Project**. Prefer matching the scope you used at install time; do not pick Global just because it appears second.
+For a normal app install, pick **Project**.
 
-That refreshes installed skills. It does not touch your specs, plans, or custom rules.
-
-If you copied Cursor commands/rules and want newer stock commands, re-copy `.cursor/commands/` only. Do not overwrite rules you customized.
+`npx skills update` alone does **not** refresh Cursor commands/rules. The sync script does. It will not overwrite customized rules unless you pass `--force-rules`.
 
 ---
 
 ## 4. Add your own skill (your project only)
 
-Create a folder under `.agents/skills/` (folder name = skill `name`):
+1. Create a folder under `.agents/skills/` (folder name = skill `name`):
 
-```bash
-mkdir -p .agents/skills/my-company-skill
-```
+   ```bash
+   mkdir -p .agents/skills/my-company-skill
+   ```
 
-Add `.agents/skills/my-company-skill/SKILL.md`:
+2. Add `.agents/skills/my-company-skill/SKILL.md`:
 
-```markdown
----
-name: my-company-skill
-description: >-
-  Does X for our app. Use when the user asks about Y. Do not use for Z
-  (near-miss).
----
+   ```markdown
+   ---
+   name: my-company-skill
+   description: >-
+     Does X for our app. Use when the user asks about Y. Do not use for Z
+     (near-miss).
+   ---
 
-# My company skill
+   # My company skill
 
-1. …
-```
+   1. …
+   ```
 
-**Optimize before you ship it.** With ADSK installed you get `skill-optimizer`:
+3. **Optimize before you ship it.** Ask the agent to follow `skill-optimizer` (or `/optimize-skill`):
+   - Keep `SKILL.md` lean; put depth in `references/` with when-to-load conditions
+   - Add `evals/trigger/eval_queries.json` (~20 should/shouldn’t queries, including near-misses)
+   - Validate: `npx --yes skills-ref validate ./.agents/skills/my-company-skill`
 
-1. Ask the agent to follow `skill-optimizer` (or run `/optimize-skill` if you copied Cursor commands).
-2. Keep `SKILL.md` lean; put depth in `references/` with when-to-load conditions.
-3. Add `evals/trigger/eval_queries.json` (~20 should/shouldn’t queries, including near-misses).
-4. Validate: `npx --yes skills-ref validate ./.agents/skills/my-company-skill`
-
-If you copied `.cursor/rules/` from ADSK, the `skill-authoring` rule reminds the agent of these gates when `SKILL.md` is in context.
-
-Restart / refresh the agent so it picks up the new skill.
+4. Restart / refresh the agent so it picks up the new skill.
 
 **Share with the team:** commit `.agents/skills/`.  
-**Keep private:** add to `.gitignore`, for example:
-
-```gitignore
-.agents/skills/my-company-skill/
-```
+**Keep private:** gitignore, for example `.agents/skills/my-company-skill/`.
 
 More authoring guidance: [skill-authoring.md](skill-authoring.md).
 
@@ -120,9 +160,11 @@ More authoring guidance: [skill-authoring.md](skill-authoring.md).
 
 ## 5. Quick check
 
-- Agent sees `spec-driven-workflow`, `skill-optimizer`, and `devops-strategy-facilitator` (if installed).
-- Project install → folders under `.agents/skills/`.
-- Your specs/plans (`.cursor/docs/specs/`, `.cursor/plans/`, or portable `docs/specs|plans`) are unchanged after `npx skills update`.
+- Agent sees `spec-driven-workflow`, `skill-optimizer`, and `devops-strategy-facilitator` (if installed)
+- Project install → real folders under `.agents/skills/`
+- Specs/plans unchanged after update/sync
+- Synced slash commands reference `.agents/skills/<name>` (not kit `skills/`)
+- `/sync-adsk` is available if you synced Cursor commands
 
 ---
 
@@ -130,7 +172,9 @@ More authoring guidance: [skill-authoring.md](skill-authoring.md).
 
 | Topic | Detail |
 |-------|--------|
-| This ADSK repo | Ships package source under `skills/`; that layout is for the kit, not your app |
-| Cursor-only skills | You may also use `.cursor/skills/`; prefer `.agents/skills/` for portability |
-| Upstream PRs | [CONTRIBUTING.md](../CONTRIBUTING.md) — only if improving ADSK itself |
+| This ADSK repo | Package source under `skills/`; not used that way in your app |
+| Cursor sync | [`scripts/sync-adsk.sh`](../scripts/sync-adsk.sh) `adopter` |
+| Ask the agent | Preferred UX; agent must run the script (see top of this page) |
+| Cursor-only skills | `.cursor/skills/` works; prefer `.agents/skills/` for portability |
+| Upstream PRs | [CONTRIBUTING.md](../CONTRIBUTING.md) |
 | Releases | [CHANGELOG.md](../CHANGELOG.md) |

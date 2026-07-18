@@ -9,20 +9,20 @@ This rule should list the **exact** commands the agent must use to verify work i
 
 If this repo has no code/test tooling (docs-only), state that explicitly.
 
-## Default (docs-only repo)
+## Default (docs + sync script)
 
-This repository is documentation/templates only. There is no project-level build/test toolchain to run.
+This repository is documentation/templates plus `scripts/sync-adsk.sh`. There is no app build/test toolchain.
 
-If you add executable code to this repo in the future, update this file with the real commands below.
-
-## Commands (fill when applicable)
+## Commands
 
 ```bash
-# Build:     <e.g. npm run build | cargo build | go build ./...>
-# Test:      <e.g. npm test | pytest | cargo test | go test ./...>
-# Lint:      <e.g. npm run lint | ruff check | cargo clippy>
-# Typecheck: <e.g. npm run typecheck | mypy>
-# Run/dev:   <e.g. npm run dev | python -m app | cargo run>
+# Smoke (sync script):  ./scripts/sync-adsk.sh self-check
+# Kit symlinks:         ./scripts/sync-adsk.sh kit
+# Dry-run kit:          ./scripts/sync-adsk.sh kit --dry-run
+# Build:                n/a
+# Test:                 ./scripts/sync-adsk.sh self-check
+# Lint:                 n/a
+# Typecheck:            n/a
 ```
 
 ## Required environment (fill when applicable)

@@ -13,12 +13,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Adopter guide: [docs/using-adsk.md](docs/using-adsk.md)
 - First-party skill `skill-optimizer` — clarity / trigger / token optimization playbook for kit + adopters
 - Cursor rule `.cursor/rules/skill-authoring/` and command `/optimize-skill`
+- [`scripts/sync-adsk.sh`](scripts/sync-adsk.sh) — `kit` (discovery symlinks), `adopter` (Cursor sync + path translate + skills CLI), `self-check`
+- Cursor command `/sync-adsk` — agents run the sync script (kit or adopter); docs spell out ask-agent flows for both audiences
 
 ### Changed
 
 - Adopter path is CLI-first: `npx skills add` / `npx skills update`; app skills live in `.agents/skills/` (no root `skills/` in consumer apps)
 - README / AGENTS.md separate **kit package layout** (`skills/`) from **adopter layout** (`.agents/skills/`)
-- [docs/upgrading.md](docs/upgrading.md) defers to `using-adsk.md`
+- [docs/using-adsk.md](docs/using-adsk.md) / [docs/upgrading.md](docs/upgrading.md): Cursor updates via `sync-adsk.sh adopter` (not manual `cp` alone)
 - `spec-driven-workflow`: gated procedure, assumption surfacing, success-criteria reframing, living-spec guidance (patterns absorbed from high-adoption upstream SDD skills; not vendored); leaner activation body and tighter description boundaries
 - `devops-strategy-facilitator`: clearer near-miss description boundaries; trigger eval set expanded to ~20 queries
 - [docs/skill-authoring.md](docs/skill-authoring.md) / [docs/using-adsk.md](docs/using-adsk.md): optimization gates required for new skills
