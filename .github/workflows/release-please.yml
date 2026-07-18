@@ -1,0 +1,22 @@
+# Opens/updates a Release PR from Conventional Commits; merges cut the GitHub Release + tag.
+# Docs: https://github.com/googleapis/release-please-action
+name: release-please
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v4
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json

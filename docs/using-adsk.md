@@ -177,4 +177,4 @@ More authoring guidance: [skill-authoring.md](skill-authoring.md).
 | Ask the agent | Preferred UX; agent must run the script (see top of this page) |
 | Cursor-only skills | `.cursor/skills/` works; prefer `.agents/skills/` for portability |
 | Upstream PRs | [CONTRIBUTING.md](../CONTRIBUTING.md) |
-| Releases | [CHANGELOG.md](../CHANGELOG.md) |
+| Releases | [CHANGELOG.md](../CHANGELOG.md) · [RELEASE.md](RELEASE.md) |

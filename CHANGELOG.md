@@ -7,8 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+Changelog entries for tagged releases are produced by [release-please](https://github.com/googleapis/release-please) from Conventional Commits (see [docs/RELEASE.md](docs/RELEASE.md)). Prefer `feat:` / `fix:` PR titles for adopter-visible work over editing this file by hand.
+
 ### Added
 
+- release-please workflow (`simple` type) — Conventional Commits → Release PR → tag + `CHANGELOG.md` / `version.txt`
 - Project-level `.agents/skills/` symlinks → `skills/` (agentskills.io cross-client discovery)
 - Adopter guide: [docs/using-adsk.md](docs/using-adsk.md)
 - First-party skill `skill-optimizer` — clarity / trigger / token optimization playbook for kit + adopters

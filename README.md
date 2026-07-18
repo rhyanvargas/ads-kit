@@ -81,6 +81,7 @@ Then `/quick-start` → `/draft-spec` → `/plan-impl` → `/implement-spec` →
 | [docs/evaluating-skills.md](docs/evaluating-skills.md) | Eval-driven iteration |
 | [docs/lifecycle-coverage.md](docs/lifecycle-coverage.md) | Enterprise lifecycle map |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Upstream contributions |
+| [docs/RELEASE.md](docs/RELEASE.md) | release-please + Conventional Commits |
 | [CHANGELOG.md](CHANGELOG.md) | Release notes |
 
 ## License

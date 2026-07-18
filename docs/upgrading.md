@@ -57,11 +57,11 @@ Work in the **agentic-development-starter-kit** repo.
    ```
 
 4. Keep thin Cursor commands in `.cursor/commands/` pointing at the skill (no duplicated playbooks).
-5. Update [CHANGELOG.md](../CHANGELOG.md) under `[Unreleased]` when behavior changes.
+5. Use a Conventional Commit PR title (`feat:` / `fix:` for user-visible changes) so release-please can update [CHANGELOG.md](../CHANGELOG.md) at release time — see [RELEASE.md](RELEASE.md).
 
 ### Before a release
 
-Follow [RELEASE.md](RELEASE.md) (includes `self-check` and symlink checks).
+Follow [RELEASE.md](RELEASE.md) (bootstrap tag once, then merge Release PRs; includes `self-check` and symlink checks).
 
 ### Smoke / verify commands
 
@@ -93,4 +93,4 @@ If your remote still points at `rhyan-cursor-docs`:
 
 ## Releases
 
-See [CHANGELOG.md](../CHANGELOG.md). First public tag target: **v0.1.0**.
+Automated via release-please — [RELEASE.md](RELEASE.md). Notes: [CHANGELOG.md](../CHANGELOG.md). Bootstrap tag: **v0.1.0**.

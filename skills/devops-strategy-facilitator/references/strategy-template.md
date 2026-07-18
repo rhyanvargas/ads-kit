@@ -15,6 +15,7 @@ Use this structure for the deliverable (keep ≤ ~1–2 pages).
 ## Delivery Model
 - **Release cadence**: {e.g., on-demand | weekly | date-based release branches}
 - **Promotion model**: {e.g., build once → promote artifacts}
+- **Release notes**: {e.g., Conventional Commits + release-please | Keep a Changelog manual | Changesets}
 
 ## Branching & PR Policy
 - **Branch types**: {e.g., feature/*, release/*, main}

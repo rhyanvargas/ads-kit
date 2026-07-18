@@ -23,6 +23,17 @@ Adopters (not contributing upstream) should use [docs/using-adsk.md](docs/using-
    ```
    (or the current `skills-ref` install method from [agentskills.io](https://agentskills.io/specification#validation))
 5. Open a PR with a clear description of *why* the change helps adopters.
+6. Use a [Conventional Commits](https://www.conventionalcommits.org/) **PR title** (preferred with squash-merge) so [release-please](https://github.com/googleapis/release-please) can version and update `CHANGELOG.md` on release:
+
+   | Prefix | Use for |
+   |--------|---------|
+   | `feat:` | User-visible capability (skills, adopter path, sync script) |
+   | `fix:` | Bug fix |
+   | `docs:` | Docs-only |
+   | `chore:` | Internal / non-user-facing |
+   | `feat!:` / `fix!:` | Breaking change |
+
+   Release process: [docs/RELEASE.md](docs/RELEASE.md).
 
 ## Adding or changing skills
 
