@@ -7,6 +7,7 @@ Thanks for helping improve **The Agentic Development Starter Kit (ADSK)**.
 - **Portable first**: skill content lives in `skills/<name>/` (Agent Skills format).
 - **No duplication**: Cursor commands/rules should reference skills, not copy them.
 - **Discovery links**: after adding a first-party skill, run `./scripts/sync-adsk.sh kit` (or add relative symlinks under `.agents/skills/` and `.cursor/skills/` → `../../skills/<name>`).
+- **Adopter product = profile adoption**: do not build a skill-marketplace or menu that competes with skills.sh. Follow [docs/product/create-adsk.md](docs/product/create-adsk.md) and [`profiles.json`](profiles.json); update those plus [`.cursor/docs/specs/create-adsk.md`](.cursor/docs/specs/create-adsk.md) together when changing the adopter path.
 - **Evidence-based**: prefer links to real paths and agentskills.io guidance.
 - **Eval when you change behavior**: update or add `evals/evals.json` cases for first-party skills.
 

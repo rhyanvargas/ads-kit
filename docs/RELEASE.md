@@ -31,6 +31,7 @@ Do this **once** before relying on automation for later versions. Manifest and `
 - [ ] `./scripts/sync-adsk.sh self-check` passes
 - [ ] Spot-check thin commands still point at skills
 - [ ] `docs/using-adsk.md` adopt/update steps match the layout (incl. sync script)
+- [ ] Adopter product contract consistent: `docs/product/create-adsk.md` ↔ `profiles.json` ↔ `.cursor/docs/specs/create-adsk.md` (and using-adsk direction callout)
 
 ```bash
 git tag -a v0.1.0 -m "v0.1.0 — The Agentic Development Starter Kit (ADSK)"

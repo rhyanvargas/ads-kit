@@ -4,6 +4,14 @@ This repository is the **kit source** (package + optional Cursor wiring).
 
 **Adopters adding ADSK to an app:** follow [docs/using-adsk.md](docs/using-adsk.md) — install into `.agents/skills/`, not a root `skills/` folder.
 
+## Product direction (adopter)
+
+- **Contract:** [docs/product/create-adsk.md](docs/product/create-adsk.md) — kit **profile** adoption, not a skills marketplace.
+- **Profiles:** [`profiles.json`](profiles.json) (core / delivery / maintainer / skills-only).
+- **Rule:** [`.cursor/rules/adopter-product/`](.cursor/rules/adopter-product/) — do not invent skill-picker UX that competes with skills.sh.
+- **North star (planned):** `npx create-adsk` — wraps `npx skills` + Cursor adopter sync; living spec [`.cursor/docs/specs/create-adsk.md`](.cursor/docs/specs/create-adsk.md).
+- **Interim:** `npx skills add …` + `scripts/sync-adsk.sh adopter --from <kit>` (see using-adsk).
+
 ## When the user asks to sync ADSK
 
 Run the script; do not hand-copy skill trees or Cursor files.

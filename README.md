@@ -7,6 +7,12 @@ Portable, eval-ready starter for **spec-driven agentic development**. Use it wit
 
 **Repository:** [`rhyanvargas/agentic-development-starter-kit`](https://github.com/rhyanvargas/agentic-development-starter-kit)
 
+### Direction
+
+- **`npx skills`** installs skill folders.
+- **`npx create-adsk`** (planned) adopts ADSK as a versioned **profile** (skills + Cursor wiring) — see [docs/product/create-adsk.md](docs/product/create-adsk.md) and [`profiles.json`](profiles.json).
+- Until that CLI ships, use the install + sync steps below.
+
 ## Use in your app (2 minutes)
 
 In your project:
@@ -98,6 +104,8 @@ cd agentic-development-starter-kit
 | Doc | Topic |
 |-----|--------|
 | [docs/using-adsk.md](docs/using-adsk.md) | Install, ask-agent sync, Cursor, custom skills |
+| [docs/product/create-adsk.md](docs/product/create-adsk.md) | Product contract — create-adsk profiles (planned CLI) |
+| [`profiles.json`](profiles.json) | Machine-readable adopter profiles |
 | [docs/product-value-loop.md](docs/product-value-loop.md) | Optional discover → research → prioritize → plan → execute |
 | [docs/upgrading.md](docs/upgrading.md) | Updates (adopter section) |
 

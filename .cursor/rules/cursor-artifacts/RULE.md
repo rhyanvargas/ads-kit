@@ -20,6 +20,8 @@ Use the right artifact type. Do not duplicate the same guidance in multiple plac
 | Commands | `.cursor/commands/*.md` | Explicit `/` slash workflows |
 | Specs | `.cursor/docs/specs/` (Cursor default) | Generated feature specs; portable alternative `docs/specs/` |
 | Plans | `.cursor/plans/` (Cursor default) | Implementation plans; portable alternative `docs/plans/` |
+| Product contract | `docs/product/create-adsk.md` | Adopter product direction (create-adsk) |
+| Adopter profiles | `profiles.json` | Machine-readable profile → skills → Cursor defaults |
 | Templates | `.cursor/templates/` | Copy-paste starters for new rules |
 
 **This kit:** real content in `skills/`; `.agents/skills/` and `.cursor/skills/` are symlinks.  

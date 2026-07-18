@@ -6,6 +6,16 @@ Skills in **your** project live under `.agents/skills/` ([agentskills.io](https:
 
 **Kit maintainers** (this repo): see [upgrading.md](upgrading.md#kit-maintainers) and [CONTRIBUTING.md](../CONTRIBUTING.md).
 
+### Direction (two-tool model)
+
+| Goal | Use |
+|------|-----|
+| Install skill folders only | `npx skills add …` (below) |
+| Adopt ADSK as a **profile** (skills + Cursor wiring + saved config) | **`npx create-adsk`** — *planned*; see [product/create-adsk.md](product/create-adsk.md) and [`profiles.json`](../profiles.json) |
+| Cursor commands today (interim) | Kit checkout + `sync-adsk.sh adopter` (section 2) |
+
+Until create-adsk ships, the steps below remain the supported path.
+
 ---
 
 ## Ask your coding agent (recommended)
