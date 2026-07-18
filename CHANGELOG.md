@@ -5,6 +5,23 @@ All notable changes to **The Agentic Development Starter Kit (ADSK)** are docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0](https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.1.0...v0.2.0) (2026-07-18)
+
+
+### Added
+
+* add first-party readme-authoring skill for evidence-grounded READMEs. ([eb55df4](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/eb55df4d89f914b9e6c4492c01ec767099357741))
+* add release-automation skill for Conventional Commits changelog/semver. ([32d91a7](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/32d91a724cdbe87889d48a9ec601f92da894a044))
+
+
+### Changed
+
+* add /update-readme command, create plans directory ([91943e1](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/91943e170c4b3c8021ccc544fd0affd65bafca92))
+* add product value loop playbook and optional upstream skill pins. ([0021506](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/002150681ef03a2b6844e3b4e04cce7abcf4f3ea))
+* clarify kit discovery layout, sync script, and upstream install path. ([2afb79e](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/2afb79e07f691dafe892707d9c5dcad0a4eefad9))
+* surface readme-authoring and the product value loop across kit guides. ([25b3907](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/25b390751ed5ff754dc5d42f599922b1b2e5833a))
+* tighten first-party skill triggers, boundaries, and evals. ([b1c46af](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/b1c46afce721665955093eccf4e8dc163cec895f))
+
 ## [Unreleased]
 
 Changelog entries for tagged releases are produced by [release-please](https://github.com/googleapis/release-please) from Conventional Commits (see [docs/RELEASE.md](docs/RELEASE.md)). Prefer `feat:` / `fix:` PR titles for adopter-visible work over editing this file by hand.
