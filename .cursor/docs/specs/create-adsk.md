@@ -7,7 +7,7 @@ Ship `npx create-adsk` so app teams can adopt ADSK as a **versioned profile** (s
 Product contract: [`docs/product/create-adsk.md`](../../../docs/product/create-adsk.md).  
 Profiles: [`profiles.json`](../../../profiles.json).
 
-**Status:** CLI implemented in [`packages/create-adsk`](../../../packages/create-adsk). Registry publish workflow: [`.github/workflows/publish-create-adsk.yml`](../../../.github/workflows/publish-create-adsk.yml) (OIDC Trusted Publishing; first registry release still a maintainer bootstrap — see [`docs/RELEASE.md`](../../../docs/RELEASE.md)). Plan: [`.cursor/plans/create-adsk.plan.md`](../../plans/create-adsk.plan.md).
+**Status:** CLI implemented in [`packages/create-adsk`](../../../packages/create-adsk). Registry publish workflow: [`.github/workflows/publish-create-adsk.yml`](../../../.github/workflows/publish-create-adsk.yml) (OIDC Trusted Publishing). **First registry release:** maintainer bootstrap — [`.cursor/plans/create_adsk_npm_first_publish.plan.md`](../../plans/create_adsk_npm_first_publish.plan.md) + [`docs/RELEASE.md`](../../../docs/RELEASE.md). Product plan: [`.cursor/plans/create-adsk.plan.md`](../../plans/create-adsk.plan.md).
 
 ## Assumptions
 

@@ -51,6 +51,8 @@ The workflow uses `GITHUB_TOKEN` with `contents` + `pull-requests` write. If Rel
 
 Kit tags (`vX.Y.Z` from release-please) and the npm CLI package are **versioned independently**.
 
+Living maintainer plan: [`.cursor/plans/create_adsk_npm_first_publish.plan.md`](../.cursor/plans/create_adsk_npm_first_publish.plan.md).
+
 | Artifact | Role |
 |----------|------|
 | [`.github/workflows/publish-create-adsk.yml`](../.github/workflows/publish-create-adsk.yml) | Publishes `packages/create-adsk` via npm Trusted Publishing (OIDC) |
