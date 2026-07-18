@@ -1,0 +1,47 @@
+{
+  "skill_name": "release-automation",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Set up release automation. Repo has .github/workflows/ci.yml and origin points at github.com/acme/app. No release tooling yet. Default branch main, versionless docs package.",
+      "expected_output": "Confirms GitHub Actions, writes project-context.md + docs/RELEASE.md, adds release-please workflow/config/manifest, and calls out Actions permission to create PRs.",
+      "assertions": [
+        "Confirms or states GitHub Actions as platform before or while installing",
+        "Creates or updates references/project-context.md with github-actions",
+        "Adds release-please workflow and config (not Azure-only tooling as primary)",
+        "Mentions allowing GitHub Actions to create pull requests or equivalent credentials note"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "This work app is on Azure Repos with azure-pipelines.yml. Automate changelog from Conventional Commits. Do not use GitHub-only tools.",
+      "expected_output": "Confirms azure-devops, writes project-context, uses git-cliff (or equivalent) in/near Azure Pipelines, explicitly avoids release-please.",
+      "assertions": [
+        "Sets platform to azure-devops in project context",
+        "Does not install release-please as the solution",
+        "Proposes or adds Azure Pipeline–compatible changelog automation",
+        "Includes Conventional Commits / PR title guidance"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "references/project-context.md already says platform=azure-devops and tooling=git-cliff+pipeline. User says 'refresh release docs only'.",
+      "expected_output": "Reuses saved context without re-asking platform; updates docs/RELEASE.md for Azure path; does not add GitHub release-please files.",
+      "assertions": [
+        "Does not ask the user to re-confirm platform as if unknown",
+        "Does not add .github/workflows/release-please.yml",
+        "Keeps or refreshes docs aligned with Azure DevOps context"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Remote is github.com but CI is only azure-pipelines.yml. Set up releases.",
+      "expected_output": "Surfaces mixed evidence, asks which release path to use (Actions+release-please vs Azure pipeline changelog), waits for confirmation before writing workflows.",
+      "assertions": [
+        "Notes mixed GitHub host + Azure Pipelines evidence",
+        "Asks for confirmation before installing a specific tool",
+        "Does not silently install both competing systems"
+      ]
+    }
+  ]
+}

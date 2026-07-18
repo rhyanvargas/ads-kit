@@ -172,7 +172,7 @@ More authoring guidance: [skill-authoring.md](skill-authoring.md).
 
 ## 5. Quick check
 
-- Agent sees `spec-driven-workflow`, `skill-optimizer`, `devops-strategy-facilitator`, and `readme-authoring` (if installed)
+- Agent sees `spec-driven-workflow`, `skill-optimizer`, `devops-strategy-facilitator`, `release-automation`, and `readme-authoring` (if installed)
 - Project install → real folders under `.agents/skills/`
 - Specs/plans unchanged after update/sync
 - Synced slash commands reference `.agents/skills/<name>` (not kit `skills/`)

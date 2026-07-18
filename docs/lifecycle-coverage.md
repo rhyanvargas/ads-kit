@@ -15,6 +15,7 @@ How The Agentic Development Starter Kit maps to enterprise product delivery stag
 | Develop | **Core** | SDD implement + recommended TDD |
 | Test | **Core** | Recommended TDD + Cursor `testing` / `project-cmds` rules in consumer projects |
 | Deploy | **Core (strategy)** | First-party `devops-strategy-facilitator` (strategy, not full pipelines) |
+| Release / changelog | **Core** | First-party `release-automation` (+ Cursor `/setup-releases`; platform-confirmed) |
 | Secure | **Gap (v1)** | Documented gap — use org-approved security review process; discover via `find-skills` under allowlist |
 | Maintain / monitor | **Gap (v1)** | Observability minimums only inside DevOps strategy template |
 | Debug | **Recommended** | Superpowers `systematic-debugging` |
@@ -37,6 +38,7 @@ Full playbook and install commands: **[product-value-loop.md](product-value-loop
 ADSK first-party (in this repo)
 ├── spec-driven-workflow     → specify, plan, implement, review, brownfield
 ├── devops-strategy-facilitator → delivery strategy decisions
+├── release-automation       → Conventional Commits changelog/semver (GH or Azure)
 ├── skill-optimizer          → create/optimize skills (triggers, tokens, evals)
 └── readme-authoring         → evidence-grounded README create/update/review
 

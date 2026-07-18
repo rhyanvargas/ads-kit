@@ -1,0 +1,22 @@
+[
+  { "query": "Set up automated changelog and version bumps for this repo", "should_trigger": true },
+  { "query": "Add release-please so merges to main cut releases", "should_trigger": true },
+  { "query": "/setup-releases", "should_trigger": true },
+  { "query": "Automate semver tags from Conventional Commits", "should_trigger": true },
+  { "query": "Wire release automation for our Azure DevOps project", "should_trigger": true },
+  { "query": "We need auto CHANGELOG.md updates on release", "should_trigger": true },
+  { "query": "Confirm our CI platform and install matching release tooling", "should_trigger": true },
+  { "query": "Bootstrap the first release tag and Release PR flow", "should_trigger": true },
+  { "query": "Update this project's local release skill for Azure Pipelines", "should_trigger": true },
+  { "query": "Add Conventional Commits PR title checks for changelog automation", "should_trigger": true },
+  { "query": "Design our full DevOps strategy including envs and promotion", "should_trigger": false },
+  { "query": "/design-devops-strategy", "should_trigger": false },
+  { "query": "Draft a spec for the notifications feature", "should_trigger": false },
+  { "query": "Update the README to match the codebase", "should_trigger": false },
+  { "query": "/update-readme", "should_trigger": false },
+  { "query": "Optimize this skill's SKILL.md description", "should_trigger": false },
+  { "query": "Debug why this unit test failed on line 42", "should_trigger": false },
+  { "query": "Write marketing release notes fluff for the landing page", "should_trigger": false },
+  { "query": "Find a third-party skill for slide decks", "should_trigger": false },
+  { "query": "Implement the checkout API from the approved spec", "should_trigger": false }
+]

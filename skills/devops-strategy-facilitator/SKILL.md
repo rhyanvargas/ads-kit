@@ -5,8 +5,9 @@ description: >-
   environments, promotion, governance, artifacts, secrets, and rollback.
   Use when designing or refining delivery strategy, environment promotion,
   deployment governance, or when /design-devops-strategy is invoked. Do not
-  use for feature specs, writing Dockerfiles or pipeline YAML for a single
-  app, unit tests, or debugging one failed CI run.
+  use for wiring release-please/changelog automation (use release-automation),
+  feature specs, writing Dockerfiles or a single app pipeline, unit tests, or
+  debugging one failed CI run.
 ---
 
 # DevOps Strategy Facilitator

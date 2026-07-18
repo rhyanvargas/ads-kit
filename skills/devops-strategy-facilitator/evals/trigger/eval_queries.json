@@ -14,9 +14,9 @@
   { "query": "Write unit tests first for this bug fix", "should_trigger": false },
   { "query": "Write a Dockerfile for this Node app", "should_trigger": false },
   { "query": "Add a GitHub Actions workflow that runs lint and test on PRs", "should_trigger": false },
+  { "query": "Set up release-please and auto CHANGELOG from Conventional Commits", "should_trigger": false },
   { "query": "Why did this single GitHub Actions run fail on lint?", "should_trigger": false },
   { "query": "Update the README to document our deploy steps", "should_trigger": false },
   { "query": "Optimize this skill's SKILL.md description", "should_trigger": false },
-  { "query": "Refactor this React component for readability", "should_trigger": false },
   { "query": "Implement the approved export-csv spec", "should_trigger": false }
 ]

@@ -8,6 +8,7 @@ Per [agentskills.io](https://agentskills.io/client-implementation/adding-skills-
 |-------|------|
 | `skills/spec-driven-workflow` | Symlink → `../../skills/spec-driven-workflow` |
 | `skills/devops-strategy-facilitator` | Symlink → `../../skills/devops-strategy-facilitator` |
+| `skills/release-automation` | Symlink → `../../skills/release-automation` |
 | `skills/skill-optimizer` | Symlink → `../../skills/skill-optimizer` |
 | `skills/readme-authoring` | Symlink → `../../skills/readme-authoring` |
 

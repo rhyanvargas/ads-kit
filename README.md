@@ -59,6 +59,7 @@ That syncs `.cursor/commands/` (paths → `.agents/skills/`), adds missing stock
 
 - **`spec-driven-workflow`** — spec → plan → implement → review (+ brownfield extract)
 - **`devops-strategy-facilitator`** — concise CI/CD, branching, environments strategy
+- **`release-automation`** — Conventional Commits → changelog/semver (GitHub or Azure DevOps; `/setup-releases`)
 - **`skill-optimizer`** — author/optimize skills for trigger accuracy, clarity, and token cost
 - **`readme-authoring`** — evidence-grounded README create/update/review (audience-aware; `/update-readme`)
 
