@@ -5,6 +5,18 @@ All notable changes to **The Agentic Development Starter Kit (ADSK)** are docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.1](https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.3.0...v0.3.1) (2026-07-18)
+
+
+### Fixed
+
+* always run Tier 1 CI so required tier1 status reports ([a675562](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/a675562ecae3ad6c1c7c259233677c452baf0844))
+
+
+### Changed
+
+* lock create-adsk implementation decisions into living spec and plan ([5c0eae2](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/5c0eae256c5f58385daa356a82d5a99d0e9c221b))
+
 ## [0.3.0](https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.2.0...v0.3.0) (2026-07-18)
 
 
