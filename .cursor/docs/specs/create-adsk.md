@@ -7,7 +7,7 @@ Ship `npx create-adsk` so app teams can adopt ADSK as a **versioned profile** (s
 Product contract: [`docs/product/create-adsk.md`](../../../docs/product/create-adsk.md).  
 Profiles: [`profiles.json`](../../../profiles.json).
 
-**Status:** Spec for planned CLI. Implementation plan: [`.cursor/plans/create-adsk.plan.md`](../../plans/create-adsk.plan.md).
+**Status:** CLI implemented in [`packages/create-adsk`](../../../packages/create-adsk) (local / git path; npm registry publish is a later release step). Plan: [`.cursor/plans/create-adsk.plan.md`](../../plans/create-adsk.plan.md).
 
 ## Assumptions
 
@@ -24,23 +24,23 @@ Profiles: [`profiles.json`](../../../profiles.json).
 
 ### Functional
 
-- [ ] REQ-001: `npx create-adsk` (and `init`) interactively selects a profile from `profiles.json` (`core` | `delivery` | `maintainer` | `skills-only`) — not a free-form multi-select of arbitrary skills.
-- [ ] REQ-002: After profile choice, optionally prompt to add product-value-loop packs (`optional_packs` in `profiles.json`); default is No.
-- [ ] REQ-003: Skill installation shells out to `npx skills add` with `--skill` flags for the profile’s skill list (and `-y` / non-interactive when `--yes`).
-- [ ] REQ-004: When profile `cursor` is `commands`, sync Cursor commands into the target app (path rewrite to `.agents/skills/<name>`), reusing adopter sync behavior.
-- [ ] REQ-005: When profile `rules` is `stock`, add stock rules add-if-missing (same set as `sync-adsk.sh`); never overwrite existing rules unless `--force-rules`.
-- [ ] REQ-006: When profile is `skills-only` (`cursor: none`), perform no `.cursor/commands` or `.cursor/rules` writes.
-- [ ] REQ-007: Write `.adsk/config.json` with at least: `version`, `profile`, `cursor`, `rules`, `scope`, `kitRef`, `optionalPacks`.
-- [ ] REQ-008: `npx create-adsk update` refreshes skills and re-syncs Cursor artifacts according to the saved config (skip Cursor when `cursor` is `none`).
-- [ ] REQ-009: `npx create-adsk status` prints installed profile, kit ref, cursor/rules mode, and obvious drift (e.g. missing skills from profile).
-- [ ] REQ-010: Support `--yes` (non-interactive defaults), `--dry-run`, and `--scope project|global` (default project).
-- [ ] REQ-011: Non-interactive profile selection via `--profile <id>` for CI/scripts.
+- [x] REQ-001: `npx create-adsk` (and `init`) interactively selects a profile from `profiles.json` (`core` | `delivery` | `maintainer` | `skills-only`) — not a free-form multi-select of arbitrary skills.
+- [x] REQ-002: After profile choice, optionally prompt to add product-value-loop packs (`optional_packs` in `profiles.json`); default is No.
+- [x] REQ-003: Skill installation shells out to `npx skills add` with `--skill` flags for the profile’s skill list (and `-y` / non-interactive when `--yes`).
+- [x] REQ-004: When profile `cursor` is `commands`, sync Cursor commands into the target app (path rewrite to `.agents/skills/<name>`), reusing adopter sync behavior.
+- [x] REQ-005: When profile `rules` is `stock`, add stock rules add-if-missing (same set as `sync-adsk.sh`); never overwrite existing rules unless `--force-rules`.
+- [x] REQ-006: When profile is `skills-only` (`cursor: none`), perform no `.cursor/commands` or `.cursor/rules` writes.
+- [x] REQ-007: Write `.adsk/config.json` with at least: `version`, `profile`, `cursor`, `rules`, `scope`, `kitRef`, `optionalPacks`.
+- [x] REQ-008: `npx create-adsk update` refreshes skills and re-syncs Cursor artifacts according to the saved config (skip Cursor when `cursor` is `none`).
+- [x] REQ-009: `npx create-adsk status` prints installed profile, kit ref, cursor/rules mode, and obvious drift (e.g. missing skills from profile).
+- [x] REQ-010: Support `--yes` (non-interactive defaults), `--dry-run`, and `--scope project|global` (default project).
+- [x] REQ-011: Non-interactive profile selection via `--profile <id>` for CI/scripts.
 
 ### Non-Functional
 
-- [ ] REQ-012: Must not implement a third-party or registry skill browser.
-- [ ] REQ-013: Must not expose `sync-adsk.sh kit` (maintainer symlink mode).
-- [ ] REQ-014: Docs and CLI help state the two-tool model (skills = folders; create-adsk = kit profile).
+- [x] REQ-012: Must not implement a third-party or registry skill browser.
+- [x] REQ-013: Must not expose `sync-adsk.sh kit` (maintainer symlink mode).
+- [x] REQ-014: Docs and CLI help state the two-tool model (skills = folders; create-adsk = kit profile).
 
 ## Acceptance Criteria
 
@@ -51,11 +51,9 @@ Profiles: [`profiles.json`](../../../profiles.json).
 
 ## Test Strategy
 
-- REQ-001–011: CLI integration tests (temp dir fixture) asserting skills CLI args, Cursor file presence/absence, and config shape — **when CLI is implemented**.
-- REQ-012–014: Review / golden help text assertions.
-- **This bake-in slice (docs only):** No executable tests. Verify by inspection that `profiles.json` skill lists match this spec’s profile table and `docs/product/create-adsk.md`. Smoke: `./scripts/sync-adsk.sh self-check`.
-
-**No tests needed because…** this change set is documentation, JSON contract, and Cursor rules only (non-behavioral for runtime code).
+- REQ-001–011: CLI integration tests in `packages/create-adsk/test/*.integration.test.ts` (temp dir + fake skills runner).
+- REQ-012–014: Golden help text in `packages/create-adsk/test/help.test.ts`.
+- Verify: `npm test -w create-adsk` and `./scripts/sync-adsk.sh self-check`.
 
 ## Boundaries
 

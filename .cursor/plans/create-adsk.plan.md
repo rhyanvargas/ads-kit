@@ -4,34 +4,34 @@ overview: Ship packages/create-adsk so npx create-adsk applies a versioned ADSK 
 todos:
   - id: T1
     content: "REQ-012/013 — Scaffold packages/create-adsk (package.json, bin, tsconfig, vitest)"
-    status: pending
+    status: completed
   - id: T2
     content: "REQ-001/007 — Load profiles.json; AdskConfig types; write/read .adsk/config.json"
-    status: pending
+    status: completed
   - id: T3
     content: "REQ-003/010/011 — Skills runner (npx skills add --skill… -y; scope; dry-run)"
-    status: pending
+    status: completed
   - id: T4
     content: "REQ-004/005/006 — Cursor sync port (commands path rewrite; stock rules add-if-missing)"
-    status: pending
+    status: completed
   - id: T5
     content: "REQ-001/002/010/011 — init command (interactive + --profile/--yes/--dry-run)"
-    status: pending
+    status: completed
   - id: T6
     content: "REQ-008 — update command from saved .adsk/config.json"
-    status: pending
+    status: completed
   - id: T7
     content: "REQ-009 — status command (profile, kitRef, drift)"
-    status: pending
+    status: completed
   - id: T8
     content: "REQ-012/014 — Help/README two-tool copy; no marketplace UX; golden help test"
-    status: pending
+    status: completed
   - id: T9
     content: "Publish prep — snapshot script, root workspace, project-cmds, docs pointers"
-    status: pending
+    status: completed
   - id: T10
     content: "REQ-001–014 — Integration fixture suite (delivery/--yes, skills-only, update, status)"
-    status: pending
+    status: completed
 isProject: false
 ---
 

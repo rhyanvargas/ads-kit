@@ -11,10 +11,18 @@ Skills in **your** project live under `.agents/skills/` ([agentskills.io](https:
 | Goal | Use |
 |------|-----|
 | Install skill folders only | `npx skills add …` (below) |
-| Adopt ADSK as a **profile** (skills + Cursor wiring + saved config) | **`npx create-adsk`** — *planned*; see [product/create-adsk.md](product/create-adsk.md) and [`profiles.json`](../profiles.json) |
-| Cursor commands today (interim) | Kit checkout + `sync-adsk.sh adopter` (section 2) |
+| Adopt ADSK as a **profile** (skills + Cursor wiring + saved config) | **`npx create-adsk`** — package at [`packages/create-adsk`](../packages/create-adsk); see [product/create-adsk.md](product/create-adsk.md) and [`profiles.json`](../profiles.json) |
+| Cursor commands (script path) | Kit checkout + `sync-adsk.sh adopter` (section 2) — still valid without the CLI |
 
-Until create-adsk ships, the steps below remain the supported path.
+Preferred when the package is available locally or on npm:
+
+```bash
+npx create-adsk --profile delivery --yes
+# from a kit checkout:
+# npx --yes /path/to/agentic-development-starter-kit/packages/create-adsk --profile delivery --yes
+```
+
+The steps below remain the supported script-based path.
 
 ---
 

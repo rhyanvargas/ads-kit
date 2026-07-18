@@ -2,7 +2,7 @@
   "$schema_comment": "ADSK adopter profiles — machine-readable contract for create-adsk. Docs must not invent a different skill list. See docs/product/create-adsk.md.",
   "version": 1,
   "product": "create-adsk",
-  "status": "planned",
+  "status": "implemented",
   "kit_source": "rhyanvargas/agentic-development-starter-kit",
   "do_not": [
     "Expose a third-party or arbitrary GitHub skill catalog in create-adsk UX",

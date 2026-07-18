@@ -21,10 +21,14 @@ This repository is documentation/templates plus `scripts/sync-adsk.sh` and Tier 
 # Dry-run kit:          ./scripts/sync-adsk.sh kit --dry-run
 # Skill Tier 1 gates:   ./scripts/check-skills-ci.sh
 # Skill Tier 1 fixtures:./scripts/check-skills-ci.sh --self-test
-# Build:                n/a
-# Test:                 ./scripts/sync-adsk.sh self-check && ./scripts/check-skills-ci.sh --self-test
+# create-adsk snapshot: ./scripts/prepare-create-adsk-snapshot.sh
+# create-adsk test:     npm test -w create-adsk
+# create-adsk build:    npm run build -w create-adsk
+# create-adsk typecheck:npm run typecheck -w create-adsk
+# Build:                npm run build -w create-adsk
+# Test:                 ./scripts/sync-adsk.sh self-check && ./scripts/check-skills-ci.sh --self-test && npm test -w create-adsk
 # Lint:                 n/a
-# Typecheck:            n/a
+# Typecheck:            npm run typecheck -w create-adsk
 ```
 
 ## Required environment (fill when applicable)
