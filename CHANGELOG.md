@@ -5,6 +5,21 @@ All notable changes to **The Agentic Development Starter Kit (ADSK)** are docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0](https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.2.0...v0.3.0) (2026-07-18)
+
+
+### Added
+
+* add Tier 1 skill eval CI gates and soft Tier 2 stub ([d70eb5a](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/d70eb5ad239acacdc4c424e0412c6d138bbe0133))
+
+
+### Changed
+
+* add create-adsk living spec and bake plan ([59fa9ee](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/59fa9ee8d2355d3039e93613e0362bda817f7a1c))
+* add create-adsk product contract, profiles, and adopter rule ([b29d88e](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/b29d88ec77add19bf17f5dd46421d643c2867afd))
+* add skill eval CI living spec ([605077d](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/605077d900a855c2a7f05c2fdd3dd42cdb03baa4))
+* wire create-adsk direction into kit guides and rules ([5e72258](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/5e7225845f980d06a646c5e289d6be09f59920d7))
+
 ## [0.2.0](https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.1.0...v0.2.0) (2026-07-18)
 
 
