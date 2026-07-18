@@ -17,13 +17,15 @@ Adopter guide (install, update, add your own skill): [docs/using-adsk.md](../../
 npx skills add rhyanvargas/agentic-development-starter-kit
 ```
 
-Skills land in `.agents/skills/`. Updates: `npx skills update`.
+Skills land in `.agents/skills/`. Updates: from the app repo run `npx skills update` and choose **Project** (refreshes that repo’s `.agents/skills/`). Choose **Global** only if you installed with `-g`; **Both** only if you maintain project and hub copies. See [docs/using-adsk.md](../../../docs/using-adsk.md#3-get-updates-later).
 
 ### Global (all projects)
 
 ```bash
 npx skills add rhyanvargas/agentic-development-starter-kit -g
 ```
+
+Updates for a global install: `npx skills update` → **Global** (or **Both** if you also have a project copy).
 
 ### Use this kit repo directly
 

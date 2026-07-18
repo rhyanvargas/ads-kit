@@ -17,11 +17,13 @@ npx skills add rhyanvargas/agentic-development-starter-kit
 
 Skills install under `.agents/skills/` (not a root `skills/` folder).
 
-Later:
+Later (from your app repo):
 
 ```bash
 npx skills update
 ```
+
+If the CLI asks for **Update scope**, choose **Project** for a normal app install (`.agents/skills/` in the current repo). Use **Global** only if you installed with `-g`; use **Both** only if you maintain both. Details: [docs/using-adsk.md](docs/using-adsk.md#3-get-updates-later).
 
 **Full guide** (global install, optional Cursor `/` commands, add your own skill, gitignore): [docs/using-adsk.md](docs/using-adsk.md).
 

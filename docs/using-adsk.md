@@ -53,9 +53,19 @@ Then open the project in Cursor and try `/quick-start`.
 When ADSK ships changes on GitHub:
 
 ```bash
-# skim CHANGELOG.md on GitHub first, then:
+# skim CHANGELOG.md on GitHub first, then (from your app repo):
 npx skills update
 ```
+
+The CLI may ask for **Update scope**. Choose based on how you installed:
+
+| Scope | Choose when |
+|-------|-------------|
+| **Project** | You installed with `npx skills add …` in this repo (recommended). Updates `.agents/skills/` in the current directory. |
+| **Global** | You installed with `-g` and want `~/.agents/skills/` refreshed (not this app’s folder). |
+| **Both** | You keep the same skills in project **and** global and want both refreshed together. |
+
+For a normal app install, pick **Project**. Prefer matching the scope you used at install time; do not pick Global just because it appears second.
 
 That refreshes installed skills. It does not touch your specs, plans, or custom rules.
 
