@@ -67,13 +67,71 @@
   ],
   "optional": [
     {
+      "id": "product-value-loop-wondelai",
+      "source": "wondelai/skills",
+      "license": "MIT (upstream; verify per skill)",
+      "lifecycle_roles": ["discover", "prioritize", "product-strategy"],
+      "skills": [
+        "inspired-product",
+        "mom-test",
+        "continuous-discovery",
+        "jobs-to-be-done"
+      ],
+      "trust_notes": "High-adoption product methodology pack (Cagan / Torres / Mom Test / JTBD). Complements ADSK SDD; does not replace it. Playbook: docs/product-value-loop.md.",
+      "install": "npx skills add wondelai/skills --skill inspired-product --skill mom-test --skill continuous-discovery --skill jobs-to-be-done -y",
+      "install_global": "npx skills add wondelai/skills --skill inspired-product --skill mom-test --skill continuous-discovery --skill jobs-to-be-done -g -y",
+      "pin": {
+        "strategy": "git-tag-or-commit",
+        "value": "latest-reviewed",
+        "note": "Replace with an explicit tag/commit after your security review."
+      },
+      "disposition": "optional",
+      "docs": "docs/product-value-loop.md"
+    },
+    {
+      "id": "product-value-loop-deanpeters",
+      "source": "deanpeters/product-manager-skills",
+      "license": "See upstream repository",
+      "lifecycle_roles": ["plan", "prioritize", "roadmap"],
+      "skills": [
+        "product-strategy-session",
+        "roadmap-planning",
+        "prioritization-advisor"
+      ],
+      "trust_notes": "High-adoption PM facilitation skills for strategy sessions and outcome roadmaps. Pair with wondelai discovery skills; execute with ADSK spec-driven-workflow.",
+      "install": "npx skills add deanpeters/product-manager-skills --skill product-strategy-session --skill roadmap-planning --skill prioritization-advisor -y",
+      "install_global": "npx skills add deanpeters/product-manager-skills --skill product-strategy-session --skill roadmap-planning --skill prioritization-advisor -g -y",
+      "pin": {
+        "strategy": "git-tag-or-commit",
+        "value": "latest-reviewed"
+      },
+      "disposition": "optional",
+      "docs": "docs/product-value-loop.md"
+    },
+    {
+      "id": "competitive-intelligence",
+      "source": "anthropics/knowledge-work-plugins",
+      "skill": "competitive-intelligence",
+      "license": "See upstream repository",
+      "lifecycle_roles": ["research", "discover"],
+      "trust_notes": "Official Anthropic knowledge-work pack. Automated scanners may flag medium risk (research/network behavior). Human-review SKILL.md before team rollout.",
+      "install": "npx skills add anthropics/knowledge-work-plugins --skill competitive-intelligence -y",
+      "install_global": "npx skills add anthropics/knowledge-work-plugins --skill competitive-intelligence -g -y",
+      "pin": {
+        "strategy": "git-tag-or-commit",
+        "value": "latest-reviewed"
+      },
+      "disposition": "optional",
+      "docs": "docs/product-value-loop.md"
+    },
+    {
       "id": "frontend-design",
       "source": "anthropics/skills",
       "skill": "frontend-design",
       "license": "Apache-2.0 (upstream)",
       "lifecycle_roles": ["design-ui"],
       "trust_notes": "High-adoption UI craft skill. Optional for non-UI teams.",
-      "install": "npx skills add anthropics/skills@frontend-design -g",
+      "install": "npx skills add anthropics/skills@frontend-design -y",
       "disposition": "optional"
     }
   ],
@@ -94,6 +152,25 @@
         "Reframe vague goals as measurable success criteria",
         "AI-ready unambiguous language + self-contained specs",
         "Optional PRODUCT/TECH split for large features only"
+      ]
+    },
+    {
+      "id": "overlapping-readme",
+      "examples": [
+        "softaworks/agent-toolkit@crafting-effective-readmes",
+        "accelint/accelint-readme-writer",
+        "other generic README authoring packs that replace ADSK readme-authoring"
+      ],
+      "reason": "Collides with first-party skills/readme-authoring (trigger overlap + divergent templates). Reviewed 2026-07-18: absorb audience/type templates + evidence-grounded sync into ADSK instead of vendoring.",
+      "absorbed_patterns": [
+        "Audience/project-type templates (OSS, internal, personal, config)",
+        "Task modes: create, add section, update/sync, review",
+        "Section checklist by audience",
+        "Evidence discovery from manifests, entry points, examples, existing docs",
+        "Package-manager detection from lockfiles",
+        "Gap list (missing/stale) before editing",
+        "No fabricated examples; public surface only",
+        "Human prose / anti-promotional tone without requiring a separate humanizer skill"
       ]
     }
   ]

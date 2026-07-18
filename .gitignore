@@ -17,6 +17,19 @@ Thumbs.db
 # sync-adsk.sh self-check temp dirs
 .adsk-self-check.*/
 
+# Local upstream skill installs (kit discovery is symlinks only — do not vendor)
+# Install in adopter apps via recommended-skills.json / docs/product-value-loop.md
+skills-lock.json
+.agents/skills/competitive-intelligence/
+.agents/skills/continuous-discovery/
+.agents/skills/crafting-effective-readmes/
+.agents/skills/inspired-product/
+.agents/skills/jobs-to-be-done/
+.agents/skills/mom-test/
+.agents/skills/prioritization-advisor/
+.agents/skills/product-strategy-session/
+.agents/skills/roadmap-planning/
+
 # Local env / secrets
 .env
 .env.*

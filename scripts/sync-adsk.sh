@@ -331,7 +331,7 @@ mode_kit() {
     fi
   done < <(list_skill_names "$root")
 
-  # Report stale discovery links
+  # Report stale discovery links and non-symlink vendored trees
   local link
   for link in "${root}/.agents/skills"/* "${root}/.cursor/skills"/*; do
     [[ -e "$link" || -L "$link" ]] || continue
@@ -341,8 +341,14 @@ mode_kit() {
         rm -f "$link"
         info "Removed stale symlink $(basename "$link")"
       fi
+    elif [[ ! -L "$link" ]]; then
+      warn "non-symlink discovery entry (do not commit; install upstream in adopter apps only): ${link}"
     fi
   done
+
+  if [[ -f "${root}/skills-lock.json" ]]; then
+    warn "skills-lock.json present — kit repo should not vendor CLI lockfiles (gitignore + delete)"
+  fi
 
   info "Kit sync complete"
 }
