@@ -29,9 +29,11 @@ Do this **once** before relying on automation for later versions. Manifest and `
 - [ ] `CHANGELOG.md` `[0.1.0]` section is accurate
 - [ ] Symlinks under `.agents/skills/` and `.cursor/skills/` resolve (`./scripts/sync-adsk.sh kit`)
 - [ ] `./scripts/sync-adsk.sh self-check` passes
+- [ ] `./scripts/check-skills-ci.sh` (and `--self-test`) passes — Tier 1 skill gates
 - [ ] Spot-check thin commands still point at skills
 - [ ] `docs/using-adsk.md` adopt/update steps match the layout (incl. sync script)
 - [ ] Adopter product contract consistent: `docs/product/create-adsk.md` ↔ `profiles.json` ↔ `.cursor/docs/specs/create-adsk.md` (and using-adsk direction callout)
+- [ ] (Ops) After first green `skills-ci` run on `main`, optionally mark **skills-ci / tier1** as a **required** status check in branch protection — do **not** require `skills-evals-soft`
 
 ```bash
 git tag -a v0.1.0 -m "v0.1.0 — The Agentic Development Starter Kit (ADSK)"
@@ -48,5 +50,5 @@ The workflow uses `GITHUB_TOKEN` with `contents` + `pull-requests` write. If Rel
 ## Optional next
 
 - Publish/list on [skills.sh](https://skills.sh) via `npx skills`
-- Run first eval iteration and fill numeric deltas in `docs/evals/SCORECARD.md`
+- Run Tier 2 with_skill vs without_skill iterations (see `docs/evaluating-skills.md`) and fill numeric deltas in `docs/evals/SCORECARD.md`
 - Add enterprise adoption docs (governance / allowlist) if targeting large orgs next

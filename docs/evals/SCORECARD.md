@@ -16,7 +16,7 @@ Scoring axes (1–5): **Fit** (lifecycle value), **Portability**, **Clarity**, *
 
 ### How to interpret “Eval readiness”
 
-Cases and assertions live under each skill’s `evals/`. Published **with vs without** numeric deltas appear here after you run a local iteration (see [docs/evaluating-skills.md](../evaluating-skills.md)). Until then, treat readiness as “harness ready,” not “benchmarked on your model.”
+Cases and assertions live under each skill’s `evals/`. Published **with vs without** numeric deltas appear here after a **Tier 2** run (scheduled/manual soft evals or local iteration — see [docs/evaluating-skills.md](../evaluating-skills.md)); Tier 1 CI only checks harness integrity, not pass rates. Until Tier 2 numbers exist, treat readiness as “harness ready,” not “benchmarked on your model.”
 
 **Template for pasting run results:**
 

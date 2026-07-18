@@ -1,0 +1,14 @@
+{
+  "skill_name": "valid-skill",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Run a tiny fixture check for valid-skill.",
+      "expected_output": "A short acknowledgment that this is a fixture case.",
+      "assertions": [
+        "Mentions fixture or valid-skill",
+        "Stays concise"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+# Tier 1 hard gate: skills-ref validate + eval harness integrity (no LLM calls).
+# Spec: .cursor/docs/specs/skill-eval-ci.md
+name: skills-ci
+
+on:
+  pull_request:
+    paths:
+      - "skills/**"
+      - "scripts/check-skills-ci.sh"
+      - "scripts/fixtures/skill-ci/**"
+      - ".github/workflows/skills-ci.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "skills/**"
+      - "scripts/check-skills-ci.sh"
+      - "scripts/fixtures/skill-ci/**"
+      - ".github/workflows/skills-ci.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  tier1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Tier 1 skill gates
+        run: ./scripts/check-skills-ci.sh
+
+      - name: Self-test (fixture mutations)
+        run: ./scripts/check-skills-ci.sh --self-test

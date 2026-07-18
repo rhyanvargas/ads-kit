@@ -110,8 +110,8 @@ Tier 1 job sketch: checkout → setup Node → `./scripts/check-skills-ci.sh`.
 
 ## Done when
 
-- [ ] Spec requirements above implemented or explicitly deferred with SCORECARD/docs notes
-- [ ] `./scripts/check-skills-ci.sh` passes on current tree
-- [ ] Tier 1 workflow visible on a skill-touching PR
-- [ ] project-cmds + evaluating-skills + RELEASE updated
-- [ ] Tier 3 still documented as future, not implemented
+- [x] Spec requirements above implemented or explicitly deferred with SCORECARD/docs notes
+- [x] `./scripts/check-skills-ci.sh` passes on current tree
+- [ ] Tier 1 workflow visible on a skill-touching PR _(verify after merge / on PR)_
+- [x] project-cmds + evaluating-skills + RELEASE updated
+- [x] Tier 3 still documented as future, not implemented

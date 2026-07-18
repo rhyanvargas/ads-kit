@@ -9,9 +9,9 @@ This rule should list the **exact** commands the agent must use to verify work i
 
 If this repo has no code/test tooling (docs-only), state that explicitly.
 
-## Default (docs + sync script)
+## Default (docs + sync + skill CI script)
 
-This repository is documentation/templates plus `scripts/sync-adsk.sh`. There is no app build/test toolchain.
+This repository is documentation/templates plus `scripts/sync-adsk.sh` and Tier 1 skill gates in `scripts/check-skills-ci.sh`. There is no app build toolchain.
 
 ## Commands
 
@@ -19,8 +19,10 @@ This repository is documentation/templates plus `scripts/sync-adsk.sh`. There is
 # Smoke (sync script):  ./scripts/sync-adsk.sh self-check
 # Kit symlinks:         ./scripts/sync-adsk.sh kit
 # Dry-run kit:          ./scripts/sync-adsk.sh kit --dry-run
+# Skill Tier 1 gates:   ./scripts/check-skills-ci.sh
+# Skill Tier 1 fixtures:./scripts/check-skills-ci.sh --self-test
 # Build:                n/a
-# Test:                 ./scripts/sync-adsk.sh self-check
+# Test:                 ./scripts/sync-adsk.sh self-check && ./scripts/check-skills-ci.sh --self-test
 # Lint:                 n/a
 # Typecheck:            n/a
 ```

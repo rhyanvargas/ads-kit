@@ -1,0 +1,82 @@
+[
+  {
+    "query": "fixture query true 0",
+    "should_trigger": true
+  },
+  {
+    "query": "fixture query true 1",
+    "should_trigger": true
+  },
+  {
+    "query": "fixture query true 2",
+    "should_trigger": true
+  },
+  {
+    "query": "fixture query true 3",
+    "should_trigger": true
+  },
+  {
+    "query": "fixture query true 4",
+    "should_trigger": true
+  },
+  {
+    "query": "fixture query true 5",
+    "should_trigger": true
+  },
+  {
+    "query": "fixture query true 6",
+    "should_trigger": true
+  },
+  {
+    "query": "fixture query true 7",
+    "should_trigger": true
+  },
+  {
+    "query": "fixture query true 8",
+    "should_trigger": true
+  },
+  {
+    "query": "fixture query true 9",
+    "should_trigger": true
+  },
+  {
+    "query": "fixture query false 0",
+    "should_trigger": false
+  },
+  {
+    "query": "fixture query false 1",
+    "should_trigger": false
+  },
+  {
+    "query": "fixture query false 2",
+    "should_trigger": false
+  },
+  {
+    "query": "fixture query false 3",
+    "should_trigger": false
+  },
+  {
+    "query": "fixture query false 4",
+    "should_trigger": false
+  },
+  {
+    "query": "fixture query false 5",
+    "should_trigger": false
+  },
+  {
+    "query": "fixture query false 6",
+    "should_trigger": false
+  },
+  {
+    "query": "fixture query false 7",
+    "should_trigger": false
+  },
+  {
+    "query": "fixture query false 8",
+    "should_trigger": false
+  },
+  {
+    "query": "fixture query false 9",
+    "should_trigger": false
+  }
+]

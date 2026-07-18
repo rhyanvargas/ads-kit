@@ -94,6 +94,32 @@ When authoring or revising skills, follow **`skill-optimizer`** (`references/eva
 
 Optional automation: Anthropic [`skill-creator`](https://github.com/anthropics/skills/tree/main/skills/skill-creator) (listed in `recommended-skills.json`).
 
+## CI tiers (this kit)
+
+| Tier | When | What | Merge impact |
+|------|------|------|--------------|
+| **1 (hard)** | PRs/pushes touching `skills/**` (and the check script / workflow) | `skills-ref validate` + eval harness integrity (`evals.json` + trigger queries shape) via [`scripts/check-skills-ci.sh`](../scripts/check-skills-ci.sh) | Fails the job on check failure |
+| **2 (soft)** | Weekly schedule + `workflow_dispatch` (`.github/workflows/skills-evals-soft.yml`) | Full with_skill vs without_skill iterations (runbook below); v1 uploads a stub summary artifact | Must **not** be a required PR check; does not block release-please |
+| **3** | Future | Hard pass-rate gate vs baselines | Out of scope until flakiness/cost baselines exist |
+
+Local verify (same as CI Tier 1):
+
+```bash
+./scripts/check-skills-ci.sh
+./scripts/check-skills-ci.sh --self-test
+```
+
+Path filters skip Tier 1 when a PR only changes docs outside `skills/**` / the check script / workflow.
+
+### Tier 2 runbook (manual until agent loops are automated)
+
+1. For each first-party skill, run with_skill vs without_skill iterations as in [Running evals](#running-evals) / [Aggregating](#aggregating).
+2. Keep generated workspaces gitignored (`*-workspace/`, `**/iteration-*/`).
+3. Optionally upload grading/`benchmark.json` (or a short summary markdown) as a workflow artifact when extending the soft workflow.
+4. Paste pass-rate / token deltas into [docs/evals/SCORECARD.md](evals/SCORECARD.md) using the results template.
+
+SCORECARD numeric deltas come from **Tier 2**, not Tier 1.
+
 ## Publishing results
 
 Update [docs/evals/SCORECARD.md](evals/SCORECARD.md) so adopters can decide keep / optional / replace.
