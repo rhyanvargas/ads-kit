@@ -63,6 +63,36 @@
         "value": "latest-reviewed"
       },
       "disposition": "recommend-maintainers"
+    },
+    {
+      "id": "dependabot",
+      "source": "github/awesome-copilot",
+      "skill": "dependabot",
+      "license": "See upstream repository",
+      "lifecycle_roles": ["secure", "maintain"],
+      "trust_notes": "GitHub org (high trust). Guide for Dependabot YAML, grouping, and supply-chain update workflows.",
+      "install": "npx skills add github/awesome-copilot@dependabot -g",
+      "pin": {
+        "strategy": "git-tag-or-commit",
+        "value": "latest-reviewed",
+        "note": "Replace with an explicit tag/commit after your security review."
+      },
+      "disposition": "recommend"
+    },
+    {
+      "id": "npm-security-best-practices",
+      "source": "aradotso/security-skills",
+      "skill": "npm-security-best-practices",
+      "license": "See upstream repository",
+      "lifecycle_roles": ["secure", "maintain"],
+      "trust_notes": "Smaller maintainer (~783 installs on skills.sh). Review SKILL.md before team rollout; complements Dependabot + npm audit CI.",
+      "install": "npx skills add aradotso/security-skills@npm-security-best-practices -g",
+      "pin": {
+        "strategy": "git-tag-or-commit",
+        "value": "latest-reviewed",
+        "note": "Replace with an explicit tag/commit after your security review."
+      },
+      "disposition": "recommend"
     }
   ],
   "optional": [

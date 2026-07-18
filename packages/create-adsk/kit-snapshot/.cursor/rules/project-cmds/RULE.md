@@ -21,6 +21,7 @@ This repository is documentation/templates plus `scripts/sync-adsk.sh`, Tier 1 s
 # Dry-run kit:          ./scripts/sync-adsk.sh kit --dry-run
 # Skill Tier 1 gates:   ./scripts/check-skills-ci.sh
 # Skill Tier 1 fixtures:./scripts/check-skills-ci.sh --self-test
+# Dependency audit:     npm ci && npm audit --audit-level=high
 # create-adsk snapshot: ./scripts/prepare-create-adsk-snapshot.sh
 # create-adsk test:     npm test -w create-adsk
 # create-adsk build:    npm run build -w create-adsk

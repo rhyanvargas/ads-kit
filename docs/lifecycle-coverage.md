@@ -16,7 +16,7 @@ How The Agentic Development Starter Kit maps to enterprise product delivery stag
 | Test | **Core** | Recommended TDD + Cursor `testing` / `project-cmds` rules in consumer projects |
 | Deploy | **Core (strategy)** | First-party `devops-strategy-facilitator` (strategy, not full pipelines) |
 | Release / changelog | **Core** | First-party `release-automation` (+ Cursor `/setup-releases`; platform-confirmed) |
-| Secure | **Gap (v1)** | Documented gap — use org-approved security review process; discover via `find-skills` under allowlist |
+| Secure | **Recommended (baseline)** | Kit: Dependabot + `npm audit` CI ([SECURITY.md](../SECURITY.md)); skills: `dependabot`, `npm-security-best-practices`. Broader AppSec still via org-approved review |
 | Maintain / monitor | **Gap (v1)** | Observability minimums only inside DevOps strategy template |
 | Debug | **Recommended** | Superpowers `systematic-debugging` |
 | Author agent skills | **Core** | First-party `skill-optimizer` (+ Cursor `skill-authoring` rule / `/optimize-skill`) |
@@ -47,6 +47,8 @@ Recommended upstream (pinned in recommended-skills.json)
 ├── obra/superpowers         → plans, TDD, debug, review habits
 ├── vercel-labs find-skills  → safe discovery under trust policy
 ├── anthropics skill-creator → maintainers / eval automation
+├── github/awesome-copilot dependabot → Dependabot config / supply-chain updates
+├── aradotso npm-security-best-practices → npm install hardening guidance
 └── optional product value loop
     ├── wondelai             → inspired-product, mom-test, continuous-discovery, JTBD
     ├── deanpeters           → strategy session, roadmap, prioritization
@@ -72,7 +74,7 @@ Decision scorecard: [`docs/evals/SCORECARD.md`](evals/SCORECARD.md).
 
 ## Extending coverage
 
-When filling Secure / Monitor gaps:
+When extending Secure beyond the npm/Dependabot baseline, or filling Monitor gaps:
 
 1. Prefer a **thin first-party skill** if the procedure is company-critical and must be portable.
 2. Or add a **pinned recommended** entry after trust review.

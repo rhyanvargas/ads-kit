@@ -21,6 +21,20 @@ Include:
 - Affected paths (skills, scripts, install docs)
 - Whether the issue involves recommended upstream skills (if so, name the source)
 
+## Dependency security
+
+This repository uses free GitHub Dependabot and an npm audit CI gate:
+
+- **Dependabot version updates:** [`.github/dependabot.yml`](.github/dependabot.yml) — weekly npm (root workspace / `create-adsk`) and GitHub Actions updates
+- **Dependabot alerts + security updates:** enable once in the GitHub Security tab (not fully encoded in YAML)
+- **CI audit gate:** [`.github/workflows/skills-ci.yml`](.github/workflows/skills-ci.yml) runs `npm ci` then `npm audit --audit-level=high` on every PR and push to `main`
+
+Local check:
+
+```bash
+npm ci && npm audit --audit-level=high
+```
+
 ## Skill supply-chain guidance
 
 ADSK recommends (but does not vendor) third-party skills. Treat unpinned installs
