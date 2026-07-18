@@ -6,8 +6,10 @@ How The Agentic Development Starter Kit maps to enterprise product delivery stag
 
 | Stage | Coverage | Mechanism |
 |-------|----------|-----------|
-| Ideate / discover | Partial | Optional: Superpowers `brainstorming`; product-discovery skills only after trust review |
-| Plan / organize | **Core** | First-party `spec-driven-workflow` + recommended `writing-plans` |
+| Ideate / discover | **Optional (recommended pack)** | Product value loop: wondelai (`inspired-product`, `mom-test`, `continuous-discovery`, `jobs-to-be-done`) — see [product-value-loop.md](product-value-loop.md) |
+| Research (market / competitors) | **Optional** | Anthropic `competitive-intelligence` (+ loop doc) |
+| Prioritize | **Optional** | OST + opportunity assessment + `prioritization-advisor` |
+| Plan / organize | **Core** | First-party `spec-driven-workflow` + recommended `writing-plans`; product roadmaps via `roadmap-planning` / `product-strategy-session` |
 | Design (system) | **Core** | Captured in specs (`spec-writing-guide`) |
 | Design (UI) | Optional | `frontend-design` (Anthropic) via recommended optional list |
 | Develop | **Core** | SDD implement + recommended TDD |
@@ -17,6 +19,17 @@ How The Agentic Development Starter Kit maps to enterprise product delivery stag
 | Maintain / monitor | **Gap (v1)** | Observability minimums only inside DevOps strategy template |
 | Debug | **Recommended** | Superpowers `systematic-debugging` |
 | Author agent skills | **Core** | First-party `skill-optimizer` (+ Cursor `skill-authoring` rule / `/optimize-skill`) |
+| Document (README) | **Core** | First-party `readme-authoring` (+ Cursor `/update-readme`) |
+
+## Best workflow (product → delivery)
+
+When maximizing customer value (not just shipping features):
+
+```text
+Discover → Research → Prioritize → Plan → Execute → measure → Discover
+```
+
+Full playbook and install commands: **[product-value-loop.md](product-value-loop.md)**.
 
 ## First-party vs recommended
 
@@ -24,13 +37,18 @@ How The Agentic Development Starter Kit maps to enterprise product delivery stag
 ADSK first-party (in this repo)
 ├── spec-driven-workflow     → specify, plan, implement, review, brownfield
 ├── devops-strategy-facilitator → delivery strategy decisions
-└── skill-optimizer          → create/optimize skills (triggers, tokens, evals)
+├── skill-optimizer          → create/optimize skills (triggers, tokens, evals)
+└── readme-authoring         → evidence-grounded README create/update/review
 
 
 Recommended upstream (pinned in recommended-skills.json)
 ├── obra/superpowers         → plans, TDD, debug, review habits
 ├── vercel-labs find-skills  → safe discovery under trust policy
-└── anthropics skill-creator → maintainers / eval automation
+├── anthropics skill-creator → maintainers / eval automation
+└── optional product value loop
+    ├── wondelai             → inspired-product, mom-test, continuous-discovery, JTBD
+    ├── deanpeters           → strategy session, roadmap, prioritization
+    └── anthropics           → competitive-intelligence
 
 Do not add overlapping SDD packs — see recommended-skills.json do_not_add.overlapping-sdd
 ```
@@ -41,7 +59,7 @@ Do **not** install arbitrary skills.sh long-tail packages into production teams.
 
 Prefer:
 
-1. Official or well-known orgs (`anthropics`, `vercel-labs`, `obra`, …)
+1. Official or well-known orgs (`anthropics`, `vercel-labs`, `obra`, …) or high-adoption maintainers after review
 2. Compatible open-source license
 3. Strong adoption signal
 4. Human review of `SKILL.md` and `scripts/`

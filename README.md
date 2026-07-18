@@ -59,6 +59,17 @@ That syncs `.cursor/commands/` (paths → `.agents/skills/`), adds missing stock
 - **`spec-driven-workflow`** — spec → plan → implement → review (+ brownfield extract)
 - **`devops-strategy-facilitator`** — concise CI/CD, branching, environments strategy
 - **`skill-optimizer`** — author/optimize skills for trigger accuracy, clarity, and token cost
+- **`readme-authoring`** — evidence-grounded README create/update/review (audience-aware; `/update-readme`)
+
+## Product value loop (optional)
+
+To maximize customer value before (and while) you execute specs:
+
+```text
+Discover → Research → Prioritize → Plan → Execute → measure → Discover
+```
+
+Recommended upstream skills (`inspired-product`, `mom-test`, `continuous-discovery`, JTBD, competitive intel, roadmap/prioritization) install **project-local** or **global** (`-g`) — see **[docs/product-value-loop.md](docs/product-value-loop.md)**. They complement ADSK SDD; they do not replace it. Pins live in [`recommended-skills.json`](recommended-skills.json).
 
 ## Try this repo in Cursor
 
@@ -67,22 +78,30 @@ git clone https://github.com/rhyanvargas/agentic-development-starter-kit.git
 cd agentic-development-starter-kit
 ```
 
-Then `/quick-start` → `/draft-spec` → `/plan-impl` → `/implement-spec` → `/review`.
+**Delivery path:** `/quick-start` → `/draft-spec` → `/plan-impl` → `/implement-spec` → `/review`.
+
+**Product path (after installing the optional pack):** Discover/Research/Prioritize with the product skills → then the same ADSK delivery commands — see [docs/product-value-loop.md](docs/product-value-loop.md).
 
 ## Docs
 
+**Adopters**
+
 | Doc | Topic |
 |-----|--------|
-| [docs/using-adsk.md](docs/using-adsk.md) | Adopter: install, ask-agent sync, Cursor, custom skills |
-| [docs/upgrading.md](docs/upgrading.md) | Adopter + kit-maintainer sync/upgrade steps |
-| [scripts/sync-adsk.sh](scripts/sync-adsk.sh) | Sync Cursor wiring + discovery links |
-| [AGENTS.md](AGENTS.md) | Repo-level agent contract (kit maintainers) |
-| [docs/skill-authoring.md](docs/skill-authoring.md) | Skill authoring |
-| [docs/evaluating-skills.md](docs/evaluating-skills.md) | Eval-driven iteration |
-| [docs/lifecycle-coverage.md](docs/lifecycle-coverage.md) | Enterprise lifecycle map |
-| [CONTRIBUTING.md](CONTRIBUTING.md) | Upstream contributions |
-| [docs/RELEASE.md](docs/RELEASE.md) | release-please + Conventional Commits |
-| [CHANGELOG.md](CHANGELOG.md) | Release notes |
+| [docs/using-adsk.md](docs/using-adsk.md) | Install, ask-agent sync, Cursor, custom skills |
+| [docs/product-value-loop.md](docs/product-value-loop.md) | Optional discover → research → prioritize → plan → execute |
+| [docs/upgrading.md](docs/upgrading.md) | Updates (adopter section) |
+
+**Kit maintainers**
+
+| Doc | Topic |
+|-----|--------|
+| [AGENTS.md](AGENTS.md) | Repo layout contract (package source vs discovery) |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Contributions; do not vendor upstream skills |
+| [docs/upgrading.md](docs/upgrading.md#kit-maintainers) | Sync after first-party skill changes |
+| [docs/skill-authoring.md](docs/skill-authoring.md) / [evaluating-skills.md](docs/evaluating-skills.md) | Author + eval skills |
+| [docs/lifecycle-coverage.md](docs/lifecycle-coverage.md) / [docs/evals/SCORECARD.md](docs/evals/SCORECARD.md) | Coverage map |
+| [docs/RELEASE.md](docs/RELEASE.md) / [CHANGELOG.md](CHANGELOG.md) | Releases |
 
 ## License
 

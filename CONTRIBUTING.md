@@ -44,7 +44,7 @@ Adopters (not contributing upstream) should use [docs/using-adsk.md](docs/using-
    ./scripts/sync-adsk.sh kit
    ./scripts/sync-adsk.sh self-check
    ```
-4. Recommended upstream skills: update [`recommended-skills.json`](recommended-skills.json) and [docs/lifecycle-coverage.md](docs/lifecycle-coverage.md) — do **not** vendor upstream trees unless maintainers agree.
+4. Recommended upstream skills: update [`recommended-skills.json`](recommended-skills.json) and [docs/lifecycle-coverage.md](docs/lifecycle-coverage.md). Do **not** vendor upstream trees into `skills/` or commit real folders / `skills-lock.json` under `.agents/skills/` (kit discovery = symlinks only).
 
 See [docs/skill-authoring.md](docs/skill-authoring.md), [docs/evaluating-skills.md](docs/evaluating-skills.md), and [docs/upgrading.md](docs/upgrading.md#kit-maintainers).
 

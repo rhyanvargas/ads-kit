@@ -47,6 +47,18 @@ npx skills add rhyanvargas/agentic-development-starter-kit -g
 
 Skills go to `~/.agents/skills/` instead of the repo.
 
+### Optional: product value loop (discover → ship)
+
+ADSK’s first-party skills cover **spec → plan → implement → review**. To add customer discovery, competitive research, prioritization, and outcome roadmaps, install the recommended product pack and follow:
+
+**[docs/product-value-loop.md](product-value-loop.md)**
+
+```text
+Discover → Research → Prioritize → Plan → Execute → measure → Discover
+```
+
+Those upstream skills are listed under `optional` in [`recommended-skills.json`](../recommended-skills.json). Install **project-local** (team share) and/or **global** (`-g`, personal) after your trust review; do not treat them as ADSK first-party packages.
+
 ---
 
 ## 2. Optional: Cursor slash commands (first time)
@@ -160,7 +172,7 @@ More authoring guidance: [skill-authoring.md](skill-authoring.md).
 
 ## 5. Quick check
 
-- Agent sees `spec-driven-workflow`, `skill-optimizer`, and `devops-strategy-facilitator` (if installed)
+- Agent sees `spec-driven-workflow`, `skill-optimizer`, `devops-strategy-facilitator`, and `readme-authoring` (if installed)
 - Project install → real folders under `.agents/skills/`
 - Specs/plans unchanged after update/sync
 - Synced slash commands reference `.agents/skills/<name>` (not kit `skills/`)

@@ -38,7 +38,8 @@ Prefer:
 - When changing workflow behavior, update the skill **and** any thin command that invokes it.
 - New first-party skills: add under `skills/<name>/`, then sync (`./scripts/sync-adsk.sh kit` or ask the agent / `/sync-adsk`).
 - Adopter Cursor updates: `adopter --from <kit>` (see [docs/using-adsk.md](docs/using-adsk.md)).
-- Recommended upstream skills are listed in `recommended-skills.json` — do not vendor them without an explicit decision.
+- Recommended upstream skills are listed in `recommended-skills.json` — install in **adopter apps** only. Never commit real folders under `.agents/skills/` or `skills-lock.json` in this kit (discovery = symlinks to `skills/` only).
+- Optional product discovery → delivery loop: [docs/product-value-loop.md](docs/product-value-loop.md) (upstream skills + ADSK SDD).
 
 ## Authoring & evals
 

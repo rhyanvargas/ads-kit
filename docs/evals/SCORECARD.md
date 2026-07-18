@@ -11,6 +11,7 @@ Scoring axes (1–5): **Fit** (lifecycle value), **Portability**, **Clarity**, *
 | `spec-driven-workflow` | 5 | 5 | 4 | 5 (in-repo Apache-2.0) | 4 (cases defined; run locally) | **Keep (core)** | Kit spine: specify → plan → implement → review + brownfield |
 | `devops-strategy-facilitator` | 4 | 5 | 5 | 5 | 4 (cases defined; run locally) | **Keep** | Decision-first strategy sessions; not a full SRE pack |
 | `skill-optimizer` | 5 | 5 | 5 | 5 | 4 (cases defined; run locally) | **Keep** | Author/optimize skills; required gate for new skills |
+| `readme-authoring` | 4 | 5 | 5 | 5 (in-repo Apache-2.0) | 4 (cases defined; run locally) | **Keep** | Audience-aware + evidence-grounded README craft; absorbs upstream README patterns |
 
 ### How to interpret “Eval readiness”
 
@@ -31,7 +32,9 @@ Cases and assertions live under each skill’s `evals/`. Published **with vs wit
 | `vercel-labs/skills` → `find-skills` | 4 for discovery | Official Vercel Labs CLI ecosystem | Encourages registry installs — still apply trust checklist | **Recommend (pinned)** |
 | `anthropics/skills` → `skill-creator` | 4 for maintainers/evals | Official Anthropic; Apache-2.0 | Maintainer-oriented; not required for every developer | **Recommend (maintainers)** |
 | `anthropics/skills` → `frontend-design` | 3 (UI) | Official + high installs | UI craft only | **Optional** |
+| Product value loop (wondelai / deanpeters / `competitive-intelligence`) | 5 for product teams | See per-source notes in `recommended-skills.json` | Install in **adopter apps** only; never vendor into kit | **Optional** — [product-value-loop.md](../product-value-loop.md) |
 | Overlapping SDD skills (`to-spec`, other “spec-driven-development” packs) | — | Varies | Collides with first-party SDD | **Do not add** |
+| Overlapping README skills (`crafting-effective-readmes`, `accelint-readme-writer`, …) | — | Varies | Collides with first-party `readme-authoring` | **Do not add** |
 
 ## Gaps (v1)
 

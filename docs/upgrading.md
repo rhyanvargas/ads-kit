@@ -49,7 +49,7 @@ Work in the **agentic-development-starter-kit** repo.
    ./scripts/sync-adsk.sh kit
    ```
 
-3. Confirm:
+3. Confirm discovery entries are **symlinks** only (no real upstream skill folders, no `skills-lock.json`):
 
    ```bash
    ./scripts/sync-adsk.sh self-check

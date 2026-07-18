@@ -11,7 +11,10 @@ Changelog entries for tagged releases are produced by [release-please](https://g
 
 ### Added
 
+- First-party skill `readme-authoring` — audience-aware, evidence-grounded README create/update/review (patterns absorbed from upstream README skills; not vendored); `/update-readme` invokes it
 - release-please workflow (`simple` type) — Conventional Commits → Release PR → tag + `CHANGELOG.md` / `version.txt`
+- [docs/product-value-loop.md](docs/product-value-loop.md) — Discover → Research → Prioritize → Plan → Execute playbook for optional upstream product skills
+- `recommended-skills.json` optional entries: wondelai product pack, deanpeters PM planning, Anthropic `competitive-intelligence`
 - Project-level `.agents/skills/` symlinks → `skills/` (agentskills.io cross-client discovery)
 - Adopter guide: [docs/using-adsk.md](docs/using-adsk.md)
 - First-party skill `skill-optimizer` — clarity / trigger / token optimization playbook for kit + adopters
@@ -28,6 +31,7 @@ Changelog entries for tagged releases are produced by [release-please](https://g
 - `devops-strategy-facilitator`: clearer near-miss description boundaries; trigger eval set expanded to ~20 queries
 - [docs/skill-authoring.md](docs/skill-authoring.md) / [docs/using-adsk.md](docs/using-adsk.md): optimization gates required for new skills
 - `recommended-skills.json` `do_not_add.overlapping-sdd` lists reviewed upstream SDD skills and absorbed patterns
+- `recommended-skills.json`: remove optional `crafting-effective-readmes`; add `do_not_add.overlapping-readme` (use first-party `readme-authoring`)
 
 ### Planned
 
