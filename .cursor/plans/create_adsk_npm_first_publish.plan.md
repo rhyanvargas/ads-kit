@@ -3,28 +3,31 @@ name: create-adsk npm first publish
 overview: Maintainer bootstrap to get create-adsk on the npm registry — reserve the package name, configure npm Trusted Publishing (OIDC), cut create-adsk-v0.1.0, verify npx create-adsk, then harden publish access. Engineering (workflow + docs) is done; remaining steps are manual on npmjs.com and git tag push.
 todos:
   - id: workflow-oidc
-    content: "In-repo: publish-create-adsk.yml + publishConfig.provenance (PR #14)"
+    content: "REQ-000 — publish-create-adsk.yml + publishConfig.provenance (PR #14)"
+    status: completed
+  - id: bootstrap-scripts
+    content: "REQ-006 — maintainer scripts (placeholder, tag, verify) in scripts/"
     status: completed
   - id: reserve-name
-    content: "Manual: npm login + publish 0.0.0 placeholder so create-adsk exists on registry"
+    content: "REQ-001 — maintainer: npm login + ./scripts/npm-bootstrap-create-adsk-placeholder.sh"
     status: pending
   - id: trusted-publisher
-    content: "Manual: npmjs.com Trusted Publisher → rhyanvargas / agentic-development-starter-kit / publish-create-adsk.yml"
+    content: "REQ-002 — maintainer: npmjs.com Trusted Publisher → publish-create-adsk.yml"
     status: pending
   - id: dry-run-pack
-    content: "Optional: GitHub Actions workflow_dispatch dry_run pack on publish-create-adsk"
+    content: "REQ-003 — optional: GitHub Actions workflow_dispatch dry_run pack"
     status: pending
   - id: tag-publish
-    content: "Manual: tag create-adsk-v0.1.0 matching package.json; push tag; confirm Actions publish"
+    content: "REQ-004 — maintainer: ./scripts/tag-create-adsk-release.sh --push"
     status: pending
   - id: verify-npx
-    content: "Verify npm view create-adsk version + npx create-adsk@0.1.0 --help"
+    content: "REQ-005 — ./scripts/verify-create-adsk-registry.sh --npx"
     status: pending
   - id: harden-access
-    content: "Optional: npm package publishing access — disallow tokens after OIDC green"
+    content: "REQ-007 — optional: npm disallow tokens after OIDC green"
     status: pending
   - id: github-security
-    content: "Optional: GitHub Security tab — enable Dependabot alerts + security updates"
+    content: "Optional: GitHub Security — Dependabot alerts + security updates"
     status: pending
 isProject: false
 ---
@@ -48,6 +51,27 @@ isProject: false
 - Publishing the kit repo itself as an npm package (root is `private: true`)
 - Major dependency upgrades (Dependabot #12/#13 — clack 1.x, TS 7 / Vitest 4)
 
+## Requirements → tasks
+
+| Requirement | Description | Task / artifact |
+|-------------|-------------|-----------------|
+| REQ-000 | OIDC publish workflow in CI | `publish-create-adsk.yml` (done) |
+| REQ-001 | Package exists on npm before Trusted Publisher | `./scripts/npm-bootstrap-create-adsk-placeholder.sh` |
+| REQ-002 | npm Trusted Publisher configured | Maintainer npmjs.com UI |
+| REQ-003 | Pack dry-run without publish | Actions `workflow_dispatch` or `gh workflow run` |
+| REQ-004 | Tag matches `package.json`; triggers publish | `./scripts/tag-create-adsk-release.sh --push` |
+| REQ-005 | Registry version + `npx create-adsk` smoke | `./scripts/verify-create-adsk-registry.sh --npx` |
+| REQ-006 | Repeatable maintainer commands in repo | `scripts/npm-bootstrap-*`, `tag-*`, `verify-*` |
+| REQ-007 | Harden publish access post-OIDC | npm package settings (optional) |
+
+Non-behavioral maintainer steps (REQ-001, REQ-002, REQ-004 push, REQ-007) have no automated tests — verified by registry/Actions outcomes per acceptance below.
+
+## Acceptance criteria
+
+- **AC-001:** `npm view create-adsk version` returns the tagged version (e.g. `0.1.0`) after REQ-004.
+- **AC-002:** `npx create-adsk@<version> --help` exits 0 (REQ-005).
+- **AC-003:** GitHub Actions `publish-create-adsk` succeeds on `create-adsk-v*` tag without `NPM_TOKEN` secret (REQ-000 + REQ-002).
+
 ## Preconditions
 
 | Check | Expected |
@@ -66,6 +90,14 @@ Docs: [npm Trusted Publishers](https://docs.npmjs.com/trusted-publishers/)
 ## 1. Reserve the package name (once)
 
 From a machine with npm credentials (not CI):
+
+```bash
+npm login
+./scripts/npm-bootstrap-create-adsk-placeholder.sh
+# preview only: ./scripts/npm-bootstrap-create-adsk-placeholder.sh --dry-run
+```
+
+Or manually:
 
 ```bash
 npm login
@@ -101,6 +133,13 @@ npmjs.com → **create-adsk** → **Settings** → **Trusted Publisher** → **G
 
 GitHub → **Actions** → **publish-create-adsk** → **Run workflow** → `dry_run: true`.
 
+Or from a machine with `gh` auth:
+
+```bash
+gh workflow run publish-create-adsk.yml -f dry_run=true
+gh run list --workflow=publish-create-adsk.yml --limit 1
+```
+
 Expect: pack succeeds; **no** registry version bump beyond placeholder.
 
 ## 4. Cut first real release
@@ -110,6 +149,12 @@ Ensure `main` has the intended version in `packages/create-adsk/package.json`, t
 ```bash
 git checkout main && git pull origin main
 
+./scripts/tag-create-adsk-release.sh --push
+```
+
+Or manually:
+
+```bash
 git tag -a create-adsk-v0.1.0 -m "create-adsk v0.1.0"
 git push origin create-adsk-v0.1.0
 ```
@@ -119,6 +164,12 @@ Workflow runs: `npm ci` → audit → test → build → tag/version check → `
 **Done when:** Actions job green; npm shows `create-adsk@0.1.0`.
 
 ## 5. Verify for adopters
+
+```bash
+./scripts/verify-create-adsk-registry.sh --npx
+```
+
+Or manually:
 
 ```bash
 npm view create-adsk version

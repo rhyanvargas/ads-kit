@@ -9,7 +9,8 @@
 #   - Allowed actions: npm publish
 #
 # Release: bump packages/create-adsk/package.json version, then
-#   git tag -a create-adsk-vX.Y.Z -m "create-adsk vX.Y.Z" && git push origin create-adsk-vX.Y.Z
+#   ./scripts/tag-create-adsk-release.sh --push
+# Bootstrap placeholder: ./scripts/npm-bootstrap-create-adsk-placeholder.sh
 name: publish-create-adsk
 
 on:

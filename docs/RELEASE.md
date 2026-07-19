@@ -60,17 +60,25 @@ Living maintainer plan: [`.cursor/plans/create_adsk_npm_first_publish.plan.md`](
 
 ### Bootstrap (once)
 
-1. Reserve the npm name if needed (placeholder `0.0.0` or first real version) — Trusted Publisher cannot be configured until the package exists on the registry.
+1. Reserve the npm name: `npm login` then `./scripts/npm-bootstrap-create-adsk-placeholder.sh` (Trusted Publisher cannot be configured until the package exists on the registry).
 2. On npmjs.com → `create-adsk` → **Settings → Trusted Publisher** → GitHub Actions:
    - user: `rhyanvargas`, repo: `agentic-development-starter-kit`, workflow: `publish-create-adsk.yml`
-3. Optional: Actions → **publish-create-adsk** → Run workflow with **dry_run** to pack without publishing.
+3. Optional pack dry-run: `gh workflow run publish-create-adsk.yml -f dry_run=true`
 4. Prefer restricting traditional token publish access after OIDC is verified (see [SECURITY.md](../SECURITY.md)).
 
 ### Cut an npm release
 
 ```bash
 # 1. Bump version in packages/create-adsk/package.json (and commit on main)
-# 2. Tag and push (from the commit that has that version):
+# 2. Tag and push (from a clean main checkout):
+./scripts/tag-create-adsk-release.sh --push
+```
+
+Verify: `./scripts/verify-create-adsk-registry.sh --npx`
+
+Manual equivalent:
+
+```bash
 git tag -a create-adsk-v0.1.0 -m "create-adsk v0.1.0"
 git push origin create-adsk-v0.1.0
 ```
