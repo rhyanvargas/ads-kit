@@ -5,6 +5,19 @@ All notable changes to **The Agentic Development Starter Kit (ADSK)** are docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.0](https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.5.0...v0.6.0) (2026-07-19)
+
+
+### Added
+
+* add create-adsk npm publish maintainer scripts ([c67a610](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/c67a610f359ae4b8919cb8a9a89d4f41442761b1))
+* add create-adsk npm publish maintainer scripts ([0855640](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/08556409de3a72352b84c02e60b164dde5a84cde))
+
+
+### Changed
+
+* add create-adsk npm first publish maintainer plan ([#15](https://github.com/rhyanvargas/agentic-development-starter-kit/issues/15)) ([f4b208f](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/f4b208f5e656eefbb5e8faf3a7cd113d5af373b6))
+
 ## [0.5.0](https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.4.0...v0.5.0) (2026-07-18)
 
 
