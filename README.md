@@ -30,14 +30,17 @@ Use `npx skills` for skill folders alone. Use `npx create-adsk` when you want th
 **Recommended — adopt a profile:**
 
 ```bash
-# After publish to npm:
-npx create-adsk --profile delivery --yes
-
-# From a kit checkout (until npm publish):
-npx --yes ./packages/create-adsk --profile delivery --yes
+npx create-adsk
 ```
 
-That installs the profile’s first-party skills, syncs Cursor commands when the profile includes them, and writes `.adsk/config.json`. Later: `npx create-adsk update` / `npx create-adsk status`. Package docs: [`packages/create-adsk`](packages/create-adsk).
+Pick a profile in the prompt (`core`, `delivery`, `maintainer`, or `skills-only`). That installs the matching skills, syncs Cursor commands when the profile includes them, and writes `.adsk/config.json`.
+
+For scripts/CI (no prompts): `npx create-adsk --profile delivery --yes`  
+(`--profile` chooses the kit shape; `--yes` skips prompts — default profile with `--yes` alone is `core`.)
+
+From a kit checkout without npm: `npx --yes ./packages/create-adsk`
+
+Later: `npx create-adsk update` / `npx create-adsk status`. Package docs: [`packages/create-adsk`](packages/create-adsk).
 
 **Skills only** (no Cursor wiring / no profile config):
 

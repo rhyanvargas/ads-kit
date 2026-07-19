@@ -24,26 +24,50 @@ Use `npx skills` to install skill folders. Use `npx create-adsk` when you want t
 
 ## Quick start
 
-```bash
-# From an app repo (after npm publish):
-npx create-adsk --profile delivery --yes
+From your app repo:
 
-# From a kit checkout (until publish):
-npx --yes /path/to/agentic-development-starter-kit/packages/create-adsk --profile delivery --yes
+```bash
+npx create-adsk
 ```
 
-Profiles (`core` | `delivery` | `maintainer` | `skills-only`) are defined in the kit [`profiles.json`](../../profiles.json). Product contract: [`docs/product/create-adsk.md`](../../docs/product/create-adsk.md).
+That opens an interactive prompt: pick a **profile**, optionally add product packs, then install skills and Cursor wiring.
+
+| Profile | You get |
+|---------|---------|
+| `core` | Spec-driven workflow + Cursor commands |
+| `delivery` | Core + DevOps strategy + release automation |
+| `maintainer` | Delivery + skill/README authoring + stock rules |
+| `skills-only` | All first-party skills; no `.cursor/` writes |
+
+Machine-readable source: [`profiles.json`](../../profiles.json). Contract: [`docs/product/create-adsk.md`](../../docs/product/create-adsk.md).
+
+### Non-interactive (CI / scripts)
+
+```bash
+npx create-adsk --profile delivery --yes
+```
+
+| Flag | Meaning |
+|------|---------|
+| `--profile <id>` | Skip the profile picker (`core` is the default if you pass `--yes` alone) |
+| `--yes` / `-y` | No prompts; use defaults (no optional packs unless `--with-optional-packs`) |
+
+### Local kit checkout (before/without npm)
+
+```bash
+npx --yes /path/to/agentic-development-starter-kit/packages/create-adsk
+```
 
 ## Commands
 
 ```bash
-npx create-adsk init --profile delivery --yes   # default command
-npx create-adsk update                          # from .adsk/config.json
-npx create-adsk status                          # profile + drift (exit 1 if drift)
-npx create-adsk --help                          # skills-style banner + command list
+npx create-adsk                 # init (interactive)
+npx create-adsk update          # refresh from .adsk/config.json
+npx create-adsk status          # profile + drift (exit 1 if drift)
+npx create-adsk --help
 ```
 
-Flags: `--yes` / `-y`, `--dry-run`, `--scope project|global`, `--force-rules`, `--with-optional-packs`, `--target <dir>`.
+Other flags: `--dry-run`, `--scope project|global`, `--force-rules`, `--with-optional-packs`, `--target <dir>`.
 
 ## Develop in this monorepo
 
