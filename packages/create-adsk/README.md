@@ -78,6 +78,16 @@ cd packages/create-adsk && npm install && npm test && npm run build
 node dist/cli.js --help
 ```
 
-## Publishing
+## Releases (kit vs npm)
 
-Releases use npm [Trusted Publishing](https://docs.npmjs.com/trusted-publishers/) from [`.github/workflows/publish-create-adsk.yml`](../../.github/workflows/publish-create-adsk.yml) (OIDC + provenance). Day-to-day and bootstrap steps: [`docs/RELEASE.md`](../../docs/RELEASE.md).
+Kit GitHub releases (`v*`) and this npm package are **independent**.
+
+| You want… | Do this |
+|-----------|---------|
+| Land code on GitHub | PR → green `tier1` → merge to `main` |
+| Kit changelog / GitHub Release | Merge the release-please PR when ready |
+| New `npx create-adsk` on npm | Bump `package.json` version on `main`, then tag `create-adsk-vX.Y.Z` |
+
+Full maintainer workflow: [`docs/RELEASE.md`](../../docs/RELEASE.md).
+
+Publishing uses [Trusted Publishing](https://docs.npmjs.com/trusted-publishers/) (OIDC + provenance) via [`.github/workflows/publish-create-adsk.yml`](../../.github/workflows/publish-create-adsk.yml) — no long-lived `NPM_TOKEN`.

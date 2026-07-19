@@ -140,7 +140,7 @@ cd agentic-development-starter-kit
 | [docs/upgrading.md](docs/upgrading.md#kit-maintainers) | Sync / upgrade playbook |
 | [docs/skill-authoring.md](docs/skill-authoring.md) / [evaluating-skills.md](docs/evaluating-skills.md) | Author + eval skills |
 | [docs/lifecycle-coverage.md](docs/lifecycle-coverage.md) / [docs/evals/SCORECARD.md](docs/evals/SCORECARD.md) | Coverage map |
-| [docs/RELEASE.md](docs/RELEASE.md) / [CHANGELOG.md](CHANGELOG.md) | release-please + Conventional Commits |
+| [docs/RELEASE.md](docs/RELEASE.md) / [CHANGELOG.md](CHANGELOG.md) | Kit release-please **and** optional npm `create-adsk` publish |
 
 ## Contributing
 

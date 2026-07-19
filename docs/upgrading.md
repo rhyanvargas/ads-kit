@@ -67,7 +67,10 @@ Work in the **agentic-development-starter-kit** repo.
 
 ### Before a release
 
-Follow [RELEASE.md](RELEASE.md) (bootstrap tag once, then merge Release PRs; includes `self-check` and symlink checks).
+Follow [RELEASE.md](RELEASE.md):
+
+- **Kit:** merge the release-please Release PR when you want a GitHub `vX.Y.Z`
+- **npm (optional):** bump `packages/create-adsk` and tag `create-adsk-vX.Y.Z` only when the CLI/snapshot should ship to the registry
 
 ### Smoke / verify commands
 
@@ -99,4 +102,7 @@ If your remote still points at `rhyan-cursor-docs`:
 
 ## Releases
 
-Automated via release-please — [RELEASE.md](RELEASE.md). Notes: [CHANGELOG.md](../CHANGELOG.md). Bootstrap tag: **v0.1.0**.
+Two independent tracks — full detail: [RELEASE.md](RELEASE.md).
+
+1. **Kit updates:** PR → green `tier1` → merge to `main`. Optionally merge the release-please Release PR for a GitHub `vX.Y.Z` release.
+2. **npm `create-adsk` (optional):** after CLI/snapshot changes are on `main`, bump `packages/create-adsk/package.json` version and push tag `create-adsk-vX.Y.Z` (does **not** happen automatically on merge to `main`).
