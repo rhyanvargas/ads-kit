@@ -41,6 +41,18 @@
         "Includes or proposes a what's-here style section",
         "Does not force OSS install/API/license sections as the primary structure"
       ]
+    },
+    {
+      "id": 5,
+      "prompt": "Our published create-* CLI README leads with `npx create-foo --profile delivery --yes` and also explains skills-only and a sync script in the same first section. Make the Quick Start readable like create-next-app / create-vite.",
+      "expected_output": "Restructures to Quick Start with Interactive (zero-flag) first, Non-interactive for flags, and alternatives below or linked — without inventing CLI behavior.",
+      "assertions": [
+        "Uses a Quick Start (or Interactive) heading rather than a long product-brief title as the primary install heading",
+        "Leads with an interactive / zero-flag happy-path command before the flag-heavy CI command",
+        "Moves alternate install modes (skills-only / script sync) below the primary Quick Start or into a linked Alternatives section",
+        "Does not invent flags or package behavior not stated in the prompt"
+      ]
     }
   ]
 }
+

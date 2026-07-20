@@ -3,10 +3,11 @@ name: readme-authoring
 description: >-
   Create, update, review, or sync README.md files with evidence from the
   codebase, matched to audience (OSS, internal, personal, config). Use when
-  writing or refreshing a README, documenting a package, fixing stale docs, or
-  when /update-readme is invoked. Do not use for changelogs, release notes,
-  API reference generation, CONTRIBUTING-only or AGENTS.md-only edits,
-  marketing copy, or optimizing Agent Skills.
+  writing or refreshing a README, documenting a package or CLI quick start,
+  fixing stale/dense install docs, or when /update-readme is invoked. Do not
+  use for changelogs, release notes, API reference generation,
+  CONTRIBUTING-only or AGENTS.md-only edits, marketing landing copy, or
+  optimizing Agent Skills.
 ---
 
 # README Authoring
@@ -18,8 +19,9 @@ repo actually does.
 
 - **Audience first** — OSS users ≠ new hires ≠ future-you in a config folder.
 - **Evidence over invention** — claims, commands, and APIs must match files.
-- **Shortest path to working** — install + one copy-pasteable example early.
-- **Link, don’t duplicate** — deeper docs (AGENTS.md, ARCHITECTURE.md, CONTRIBUTING) stay linked.
+- **Shortest path to working** — one happy-path command early; flags and alternate installs below.
+- **Quick Start first viewport** — prefer `## Quick Start`; interactive/zero-flag path first; Non-interactive second (see `references/quick-start-patterns.md` for npm/CLI packages).
+- **Link, don’t duplicate** — deeper docs stay linked.
 - **Human prose** — direct, active voice; no promotional or inflated AI tone.
 
 ## Procedure
@@ -50,6 +52,7 @@ Present a short gap list before writing:
 - **Missing** — real capability undocumented
 - **Stale** — documented but gone / renamed / wrong commands
 - **Wrong audience** — sections that don’t match project type
+- **Dense Quick Start** — flag soup, three install stories, or jargon in the first viewport (npm/CLI)
 
 ### 4. Draft or patch
 
@@ -57,11 +60,13 @@ Present a short gap list before writing:
 2. Load only the matching template under `references/templates/` when creating a new README or doing a major restructure.
 3. Prefer surgical edits when syncing; don’t rewrite a healthy README for style alone.
 4. Load `references/writing-guide.md` when prose quality, AI-tone cleanup, or example hygiene needs a pass.
+5. Load `references/quick-start-patterns.md` when the package is a public npm CLI/scaffolder, or the install section is hard to scan.
 
 ### 5. Validate before done
 
 - [ ] Name + what/why + usage path present
 - [ ] Install/run commands match lockfile / scripts / CI
+- [ ] Quick Start leads with the interactive/happy path (flags under Non-interactive if needed)
 - [ ] Examples are real or clearly marked as illustrative with verified APIs
 - [ ] Links resolve; no invented features or deps
 - [ ] Audience-appropriate sections only (checklist)
@@ -74,6 +79,7 @@ Present a short gap list before writing:
 | `references/section-checklist.md` | Choosing or auditing sections by project type |
 | `references/evidence-discovery.md` | Large/monorepo trees, unclear entry points, sync audits |
 | `references/writing-guide.md` | Prose cleanup, anti-patterns, example rules |
+| `references/quick-start-patterns.md` | npm/CLI Quick Start density; Interactive vs Non-interactive shape |
 | `references/templates/oss.md` | New or major OSS README |
 | `references/templates/internal.md` | New or major internal/service README |
 | `references/templates/personal.md` | Personal / portfolio project |

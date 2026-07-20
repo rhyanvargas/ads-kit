@@ -12,7 +12,7 @@ Scoring axes (1–5): **Fit** (lifecycle value), **Portability**, **Clarity**, *
 | `devops-strategy-facilitator` | 4 | 5 | 5 | 5 | 4 (cases defined; run locally) | **Keep** | Decision-first strategy sessions; not a full SRE pack |
 | `release-automation` | 5 | 5 | 5 | 5 | 4 (cases defined; run locally) | **Keep** | Platform-confirmed changelog/semver (GitHub release-please or Azure + git-cliff) |
 | `skill-optimizer` | 5 | 5 | 5 | 5 | 4 (cases defined; run locally) | **Keep** | Author/optimize skills; required gate for new skills |
-| `readme-authoring` | 4 | 5 | 5 | 5 (in-repo Apache-2.0) | 4 (cases defined; run locally) | **Keep** | Audience-aware + evidence-grounded README craft; absorbs upstream README patterns |
+| `readme-authoring` | 4 | 5 | 5 | 5 (in-repo Apache-2.0) | 4 (cases + npm CLI Quick Start pattern) | **Keep** | Audience-aware + evidence-grounded README craft; OSS Quick Start patterns in `references/quick-start-patterns.md` |
 
 ### How to interpret “Eval readiness”
 

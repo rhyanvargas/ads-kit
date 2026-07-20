@@ -9,6 +9,8 @@
   { "query": "Review our README for accuracy and missing sections", "should_trigger": true },
   { "query": "Add an installation section to the README", "should_trigger": true },
   { "query": "readme still says npm but we switched to pnpm — sync it", "should_trigger": true },
+  { "query": "Our Quick Start is hard to read — too many flags in the first command", "should_trigger": true },
+  { "query": "Rewrite the npm package README Quick Start like create-next-app", "should_trigger": true },
   { "query": "Draft a changelog for the next release", "should_trigger": false },
   { "query": "Write release notes for v2.0", "should_trigger": false },
   { "query": "Generate OpenAPI/API reference docs from the code", "should_trigger": false },
