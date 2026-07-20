@@ -2,10 +2,10 @@
 
 Two release tracks share `main` but are **independent**:
 
-| Track | What ships | Trigger | Version source |
-|-------|------------|---------|----------------|
-| **Kit** (GitHub) | Skills, Cursor wiring, docs, scripts | Merge release-please PR → `vX.Y.Z` tag | `version.txt` / `.release-please-manifest.json` |
-| **npm** (`create-adsk`) | CLI package adopters run via `npx create-adsk` | Push `create-adsk-vX.Y.Z` tag | `packages/create-adsk/package.json` `version` |
+| Track                   | What ships                                     | Trigger                                | Version source                                  |
+| ----------------------- | ---------------------------------------------- | -------------------------------------- | ----------------------------------------------- |
+| **Kit** (GitHub)        | Skills, Cursor wiring, docs, scripts           | Merge release-please PR → `vX.Y.Z` tag | `version.txt` / `.release-please-manifest.json` |
+| **npm** (`create-adsk`) | CLI package adopters run via `npx create-adsk` | Push `create-adsk-vX.Y.Z` tag          | `packages/create-adsk/package.json` `version`   |
 
 Merging to `main` does **not** publish to npm. Publishing to npm does **not** cut a kit GitHub release.
 
@@ -30,13 +30,37 @@ flowchart TD
 
 Most commits stop after step 1–2. Steps 3–4 are optional timing (batch several features into one kit release).
 
-| Artifact | Role |
-|----------|------|
-| `.github/workflows/release-please.yml` | Runs on push to `main` |
-| `release-please-config.json` | `simple` release type → `CHANGELOG.md` + `version.txt` |
-| `.release-please-manifest.json` | Last released kit version |
-| `version.txt` | Kit semver |
-| `CHANGELOG.md` | Kit changelog |
+| Artifact                               | Role                                                   |
+| -------------------------------------- | ------------------------------------------------------ |
+| `.github/workflows/release-please.yml` | Push to `main`, weekly cron fallback, manual dispatch  |
+| `release-please-config.json`           | `simple` release type → `CHANGELOG.md` + `version.txt` |
+| `.release-please-manifest.json`        | Last released kit version                              |
+| `version.txt`                          | Kit semver                                             |
+| `CHANGELOG.md`                         | Kit changelog                                          |
+
+### When release-please fails
+
+`release-please` is **not** a required merge check (`tier1` / `skills-ci` is). A red run after merging to `main` does **not** block shipping code or npm publish — it only means the Release PR may not have been opened/updated yet.
+
+| Symptom | Likely cause | What to do |
+| ------- | ------------ | ---------- |
+| `No server is currently available to service your request` | Transient GitHub API outage (503) | Use a recovery option below — no code change needed |
+| Release PR missing after `feat:` / `fix:` merges | Failed or skipped release-please run | Refresh release-please (below), then check open PRs for `chore(main): release …` |
+| `GitHub Actions is not permitted to create or approve pull requests` | Repo workflow permissions | [Permissions note](#permissions-note) — enable PR creation for Actions |
+| Failures persist after reruns **and** the weekly cron | Config, token, or permissions issue | Inspect the job log; fix permissions or open an issue — do not keep blindly rerunning |
+
+**Automatic recovery (no action):**
+
+- The **next push to `main`** re-triggers release-please.
+- **Weekly cron** (Mondays 09:00 UTC) re-runs release-please as a fallback when a push-triggered run failed on a flake.
+
+**Manual recovery (pick one):**
+
+1. **Re-run the failed job** — Actions → `release-please` → failed run → **Re-run jobs**.
+2. **CLI rerun** — `gh run rerun <run-id> --failed` (use the failed run id from Actions).
+3. **On-demand refresh** — Actions → `release-please` → **Run workflow** (same as `gh workflow run release-please.yml`).
+
+Do **not** add retry loops to `publish-create-adsk` — npm publish is side-effectful; fail fast and rerun manually per [Later npm releases](#later-npm-releases).
 
 ## Optional: publish / update `create-adsk` on npm
 
@@ -63,20 +87,20 @@ Do this when adopters should get a new CLI via `npx create-adsk` (CLI code, vend
 4. Watch **Actions → publish-create-adsk** (OIDC; no `NPM_TOKEN`).
 5. Verify: `./scripts/verify-create-adsk-registry.sh --npx`
 
-| Artifact | Role |
-|----------|------|
-| [`.github/workflows/publish-create-adsk.yml`](../.github/workflows/publish-create-adsk.yml) | Publish on `create-adsk-v*` tags |
-| Tag pattern | `create-adsk-vX.Y.Z` must match `package.json` version |
+| Artifact                                                                                    | Role                                                   |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| [`.github/workflows/publish-create-adsk.yml`](../.github/workflows/publish-create-adsk.yml) | Publish on `create-adsk-v*` tags                       |
+| Tag pattern                                                                                 | `create-adsk-vX.Y.Z` must match `package.json` version |
 
 Optional pack dry-run (no publish): `gh workflow run publish-create-adsk.yml -f dry_run=true`
 
 ## Decision guide
 
-| Change | Kit release PR? | npm tag? |
-|--------|-----------------|----------|
-| Skill / Cursor / docs only | When you want a GitHub release note | Usually **no** |
-| `packages/create-adsk` CLI or `kit-snapshot` | Optional (same PR can be `feat`) | **Yes**, after version bump |
-| CI / maintainer scripts only | Optional | **No** |
+| Change                                       | Kit release PR?                     | npm tag?                    |
+| -------------------------------------------- | ----------------------------------- | --------------------------- |
+| Skill / Cursor / docs only                   | When you want a GitHub release note | Usually **no**              |
+| `packages/create-adsk` CLI or `kit-snapshot` | Optional (same PR can be `feat`)    | **Yes**, after version bump |
+| CI / maintainer scripts only                 | Optional                            | **No**                      |
 
 ## Bootstrap — first kit public tag (v0.1.0)
 

@@ -4,15 +4,15 @@ Load only when `platform` is `github-actions` (git host must be GitHub).
 
 ## Artifacts to add/update
 
-| Path | Role |
-|------|------|
-| `.github/workflows/release-please.yml` | On push to default branch |
-| `release-please-config.json` | Release type + changelog sections |
-| `.release-please-manifest.json` | Last released version |
-| `version.txt` (or package manifest) | Semver source for `simple` / extra-files |
-| `CHANGELOG.md` | Maintained by Release PRs |
-| `docs/RELEASE.md` | Human day-to-day + bootstrap |
-| `.github/PULL_REQUEST_TEMPLATE.md` | Conventional Commit title checkbox |
+| Path                                   | Role                                     |
+| -------------------------------------- | ---------------------------------------- |
+| `.github/workflows/release-please.yml` | Push to default branch + weekly cron fallback + `workflow_dispatch` |
+| `release-please-config.json`           | Release type + changelog sections        |
+| `.release-please-manifest.json`        | Last released version                    |
+| `version.txt` (or package manifest)    | Semver source for `simple` / extra-files |
+| `CHANGELOG.md`                         | Maintained by Release PRs                |
+| `docs/RELEASE.md`                      | Human day-to-day + bootstrap + failure recovery |
+| `.github/PULL_REQUEST_TEMPLATE.md`     | Conventional Commit title checkbox       |
 
 ## Minimal workflow
 
@@ -20,7 +20,13 @@ Load only when `platform` is `github-actions` (git host must be GitHub).
 name: release-please
 on:
   push:
-    branches: [main]   # use project default_branch
+    branches: [main] # use project default_branch
+  schedule:
+    - cron: "0 9 * * 1" # weekly fallback for transient GitHub API flakes
+  workflow_dispatch:
+concurrency:
+  group: release-please
+  cancel-in-progress: false
 permissions:
   contents: write
   pull-requests: write
@@ -28,6 +34,7 @@ permissions:
 jobs:
   release-please:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: googleapis/release-please-action@v4
         with:
@@ -39,15 +46,15 @@ jobs:
 
 ```json
 {
-  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
-  "packages": {
-    ".": {
-      "release-type": "simple",
-      "changelog-path": "CHANGELOG.md",
-      "bump-minor-pre-major": true,
-      "extra-files": ["version.txt"]
-    }
-  }
+	"$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+	"packages": {
+		".": {
+			"release-type": "simple",
+			"changelog-path": "CHANGELOG.md",
+			"bump-minor-pre-major": true,
+			"extra-files": ["version.txt"]
+		}
+	}
 }
 ```
 
@@ -58,8 +65,8 @@ Manifest example: `{ ".": "0.1.0" }`.
 
 ## Permissions (common failure)
 
-If the job fails with *“GitHub Actions is not permitted to create or approve
-pull requests”*:
+If the job fails with _“GitHub Actions is not permitted to create or approve
+pull requests”_:
 
 **Settings → Actions → General → Workflow permissions** → enable
 “Allow GitHub Actions to create and approve pull requests”
@@ -78,6 +85,16 @@ Record the outcome under `notes` in `project-context.md`.
 1. Squash-merge PRs with Conventional Commit titles.
 2. release-please opens/updates a Release PR.
 3. Maintainers merge the Release PR → GitHub Release + `vX.Y.Z` tag.
+
+## Transient failures (503 / “No server is currently available”)
+
+release-please is usually **not** a required PR check. When a push-triggered run fails on a GitHub API flake:
+
+1. **Wait** — next push to default branch re-triggers the workflow.
+2. **Weekly cron** — schedule re-runs release-please as a belt-and-suspenders fallback.
+3. **Manual** — re-run the failed job, or `gh workflow run release-please.yml`.
+
+Document the symptom → action table in `docs/RELEASE.md`. Do **not** add automatic retries to npm publish workflows.
 
 ## Do not
 
