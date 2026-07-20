@@ -5,6 +5,22 @@ All notable changes to **The Agentic Development Starter Kit (ADSK)** are docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.0](https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.6.0...v0.7.0) (2026-07-20)
+
+
+### Added
+
+* teach readme-authoring OSS Quick Start patterns ([58d920b](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/58d920b4b60e5a1c63e9970e2254c3b8341e8963))
+
+
+### Changed
+
+* clarify create-adsk quick start and release workflow ([058cb98](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/058cb98f32ade128e060a8653d31ce93ccce634c))
+* document kit vs optional npm create-adsk release workflow ([e672bff](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/e672bff00d0eaa1cf185c1eca9f070309fa040d5))
+* lead create-adsk quick start with interactive default ([1caa806](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/1caa806f9d7bdd42563b44387c80b1949881e0ac))
+* mark create-adsk@0.1.0 live on npm after bootstrap verify ([f7b5358](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/f7b5358ff82d7bec69cd2ae821af8aec5296e77e))
+* reshape create-adsk Quick Start like top npm CLIs ([8b3e908](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/8b3e90818764eefe7dec3d0469ee8aa5ce54c94b))
+
 ## [0.6.0](https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.5.0...v0.6.0) (2026-07-19)
 
 
