@@ -5,8 +5,10 @@
 ## Do
 
 - Lead with the shortest path to a working result
+- Prefer the heading **`## Quick Start`** over long product-brief titles
+- One happy-path command first; put CI flags under **Non-interactive**
 - Show copy-pasteable commands and code; show expected output when it helps
-- Use tables for env vars, flags, and script maps
+- Use tables for env vars, flags, and alternate install paths
 - Write for a fresh machine — spell out prerequisites
 - Prefer second person and active voice (“Run…”, “You get…”)
 - Keep badges to ≤3–4 useful ones (version, build, license)
@@ -15,6 +17,8 @@
 
 - Fabricate APIs, flags, or sample output
 - Assume “the usual setup commands”
+- Lead with a flag-heavy CI command as the recommended path
+- Stack three install stories in the first viewport
 - Dump every internal module into an API section
 - Paste full CONTRIBUTING / architecture docs into the README
 - Use significance inflation (“pivotal”, “seamless”, “game-changer”)
@@ -25,8 +29,10 @@
 | Prefer | Avoid |
 |--------|--------|
 | Snippets from `examples/` or tests | Made-up APIs that “look right” |
-| One minimal quick start (< ~20 lines) | Kitchen-sink first example |
+| One minimal quick start (< ~20 lines above the fold) | Kitchen-sink first example + flag glossary |
 | Correct package manager from lockfile | Defaulting to `npm` everywhere |
+
+For npm CLIs / `create-*` tools, also load `quick-start-patterns.md`.
 
 ## Length
 
@@ -36,4 +42,4 @@
 
 ## Voice check (before finish)
 
-Read the draft once as a busy new user. Delete anything that doesn’t help them install, understand, or run the next command.
+Read the draft once as a busy new user. Delete anything that doesn’t help them install, understand, or run the next command. If the first screen still needs a glossary to run the first command, move that glossary down.

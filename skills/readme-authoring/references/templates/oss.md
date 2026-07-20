@@ -12,21 +12,45 @@ Replace bracketed placeholders. Keep only sections you can support with evidence
 
 <!-- Optional: ≤3–4 badges — version, build, license -->
 
-## Installation
+## Quick Start
+
+<!-- Libraries: install then tiny code sample. CLIs: Interactive then Non-interactive. -->
+
+### Interactive (CLIs / create-* tools)
 
 ```bash
-# package-manager install command from lockfile/manifest
+npx [cli-name]
 ```
 
-### Requirements
+Follow the prompts to [one outcome sentence].
 
-- [Runtime + version if required]
+### Non-interactive (optional)
 
-## Quick start
+```bash
+npx [cli-name] --[flag] --yes
+```
 
-```text
+| Flag | Meaning |
+|------|---------|
+| `--[flag]` | … |
+
+### Installation (libraries)
+
+```bash
+# package-manager install from lockfile/manifest
+```
+
+Requirements: [runtime + version if required]
+
+```js
 # Minimal real example — primary use case
 ```
+
+## Alternatives (optional)
+
+| Goal | Path |
+|------|------|
+| Other install mode | command or link to docs |
 
 ## About
 

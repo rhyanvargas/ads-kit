@@ -30,6 +30,8 @@
 
 **OSS / libraries:** Heading → (TOC if long) → Install → Quick start → About → Usage/API → Contributing → License  
 
+**OSS / CLIs & create-* tools:** Heading → **Quick Start** (Interactive → Non-interactive) → Alternatives (table or link) → About/Usage → Contributing → License. Keep the first viewport to one command + one sentence; load `quick-start-patterns.md` when reviewing density.
+
 **Internal / services:** Heading → Overview → Local setup → Run/test → Architecture/key files → Ops notes → Contributing links  
 
 **Config:** Heading → What’s here → Why → How to extend → Gotchas  
