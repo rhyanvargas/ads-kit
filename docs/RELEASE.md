@@ -44,7 +44,7 @@ Do this when adopters should get a new CLI via `npx create-adsk` (CLI code, vend
 
 ### First time only (bootstrap)
 
-Already done if `create-adsk@0.0.0` exists and Trusted Publisher points at `publish-create-adsk.yml`. Details: [`.cursor/plans/create_adsk_npm_first_publish.plan.md`](../.cursor/plans/create_adsk_npm_first_publish.plan.md).
+**Done** — `create-adsk@0.1.0` is on the registry (bootstrap placeholder `0.0.0` + Trusted Publisher → `publish-create-adsk.yml`). Smoke: `./scripts/verify-create-adsk-registry.sh --npx`. Details: [`.cursor/plans/create_adsk_npm_first_publish.plan.md`](../.cursor/plans/create_adsk_npm_first_publish.plan.md).
 
 1. Placeholder on registry + Trusted Publisher (`rhyanvargas` / `agentic-development-starter-kit` / `publish-create-adsk.yml`)
 2. Prefer disallowing long-lived publish tokens after OIDC works — [SECURITY.md](../SECURITY.md)

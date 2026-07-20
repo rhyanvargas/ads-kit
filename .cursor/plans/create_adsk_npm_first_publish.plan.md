@@ -1,6 +1,6 @@
 ---
 name: create-adsk npm first publish
-overview: Maintainer bootstrap to get create-adsk on the npm registry — reserve the package name, configure npm Trusted Publishing (OIDC), cut create-adsk-v0.1.0, verify npx create-adsk, then harden publish access. Engineering (workflow + docs) is done; remaining steps are manual on npmjs.com and git tag push.
+overview: Maintainer bootstrap to get create-adsk on the npm registry — reserve the package name, configure npm Trusted Publishing (OIDC), cut create-adsk-v0.1.0, verify npx create-adsk, then harden publish access. Bootstrap complete as of 2026-07-19 (`create-adsk@0.1.0` on npm; tag `create-adsk-v0.1.0`).
 todos:
   - id: workflow-oidc
     content: "REQ-000 — publish-create-adsk.yml + publishConfig.provenance (PR #14)"
@@ -10,19 +10,19 @@ todos:
     status: completed
   - id: reserve-name
     content: "REQ-001 — maintainer: npm login + ./scripts/npm-bootstrap-create-adsk-placeholder.sh"
-    status: pending
+    status: completed
   - id: trusted-publisher
     content: "REQ-002 — maintainer: npmjs.com Trusted Publisher → publish-create-adsk.yml"
-    status: pending
+    status: completed
   - id: dry-run-pack
     content: "REQ-003 — optional: GitHub Actions workflow_dispatch dry_run pack"
     status: pending
   - id: tag-publish
     content: "REQ-004 — maintainer: ./scripts/tag-create-adsk-release.sh --push"
-    status: pending
+    status: completed
   - id: verify-npx
     content: "REQ-005 — ./scripts/verify-create-adsk-registry.sh --npx"
-    status: pending
+    status: completed
   - id: harden-access
     content: "REQ-007 — optional: npm disallow tokens after OIDC green"
     status: pending
@@ -78,7 +78,7 @@ Non-behavioral maintainer steps (REQ-001, REQ-002, REQ-004 push, REQ-007) have n
 |-------|----------|
 | `main` includes Trusted Publishing workflow | merged via [#14](https://github.com/rhyanvargas/agentic-development-starter-kit/pull/14) |
 | `packages/create-adsk/package.json` `version` | `0.1.0` (or chosen first release) |
-| npm registry | `create-adsk` **not** published yet (`npm view create-adsk` → 404) |
+| npm registry | `create-adsk@0.1.0` published (`npm view create-adsk version` → `0.1.0`) |
 | npm account | Maintainer with publish rights to unscoped name `create-adsk` |
 
 ## Why a manual bootstrap is required
