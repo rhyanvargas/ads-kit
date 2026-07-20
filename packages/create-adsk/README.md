@@ -9,28 +9,17 @@
 
 # create-adsk
 
-Adopt the **Agentic Development Starter Kit (ADSK)** as a versioned **profile** — first-party skills via the skills CLI plus optional Cursor commands/rules — without a skills marketplace UX.
+Adopt the **Agentic Development Starter Kit (ADSK)** as a versioned **profile** — skills via the skills CLI plus optional Cursor commands/rules. Not a skills marketplace.
 
-A ready-to-adopt kit for agentic, spec-driven development — workflow skills, Cursor slash commands, and a versioned profile for your team.
+## Quick Start
 
-## Two-tool model
-
-| Tool | Owns |
-|------|------|
-| **`npx skills`** | Install and update skill folders into `.agents/skills/` |
-| **`npx create-adsk`** | Apply an ADSK profile (skills + Cursor + `.adsk/config.json`) |
-
-Use `npx skills` to install skill folders. Use `npx create-adsk` when you want this kit’s workflow + Cursor adopted as a versioned profile in your repo.
-
-## Quick start
-
-From your app repo:
+### Interactive
 
 ```bash
 npx create-adsk
 ```
 
-That opens an interactive prompt: pick a **profile**, optionally add product packs, then install skills and Cursor wiring.
+Follow the prompts. You pick a profile, optionally add product packs, then the CLI installs skills, syncs Cursor commands when the profile includes them, and writes `.adsk/config.json`.
 
 | Profile | You get |
 |---------|---------|
@@ -39,9 +28,9 @@ That opens an interactive prompt: pick a **profile**, optionally add product pac
 | `maintainer` | Delivery + skill/README authoring + stock rules |
 | `skills-only` | All first-party skills; no `.cursor/` writes |
 
-Machine-readable source: [`profiles.json`](../../profiles.json). Contract: [`docs/product/create-adsk.md`](../../docs/product/create-adsk.md).
+Source: [`profiles.json`](../../profiles.json). Contract: [`docs/product/create-adsk.md`](../../docs/product/create-adsk.md).
 
-### Non-interactive (CI / scripts)
+### Non-interactive
 
 ```bash
 npx create-adsk --profile delivery --yes
@@ -49,25 +38,37 @@ npx create-adsk --profile delivery --yes
 
 | Flag | Meaning |
 |------|---------|
-| `--profile <id>` | Skip the profile picker (`core` is the default if you pass `--yes` alone) |
-| `--yes` / `-y` | No prompts; use defaults (no optional packs unless `--with-optional-packs`) |
+| `--profile <id>` | Choose a profile without prompting |
+| `--yes` / `-y` | Skip prompts (`core` if `--profile` is omitted; optional packs off unless `--with-optional-packs`) |
 
-### Local kit checkout (before/without npm)
+See `npx create-adsk --help` for the full option list.
+
+## Commands
+
+```bash
+npx create-adsk          # init (interactive; default)
+npx create-adsk update   # refresh from .adsk/config.json
+npx create-adsk status   # profile + drift (exit 1 if drift)
+```
+
+Other useful flags: `--dry-run`, `--scope project|global`, `--force-rules`, `--with-optional-packs`, `--target <dir>`.
+
+## Two tools
+
+| Tool | Owns |
+|------|------|
+| **`npx skills`** | Skill folders in `.agents/skills/` |
+| **`npx create-adsk`** | ADSK profile (skills + Cursor + `.adsk/config.json`) |
+
+## Local kit path (optional)
+
+Developing against a checkout instead of the published package:
 
 ```bash
 npx --yes /path/to/agentic-development-starter-kit/packages/create-adsk
 ```
 
-## Commands
-
-```bash
-npx create-adsk                 # init (interactive)
-npx create-adsk update          # refresh from .adsk/config.json
-npx create-adsk status          # profile + drift (exit 1 if drift)
-npx create-adsk --help
-```
-
-Other flags: `--dry-run`, `--scope project|global`, `--force-rules`, `--with-optional-packs`, `--target <dir>`.
+(`npx --yes` skips the npx install prompt for that path — not the same as create-adsk `--yes`.)
 
 ## Develop in this monorepo
 
@@ -88,6 +89,4 @@ Kit GitHub releases (`v*`) and this npm package are **independent**.
 | Kit changelog / GitHub Release | Merge the release-please PR when ready |
 | New `npx create-adsk` on npm | Bump `package.json` version on `main`, then tag `create-adsk-vX.Y.Z` |
 
-Full maintainer workflow: [`docs/RELEASE.md`](../../docs/RELEASE.md).
-
-Publishing uses [Trusted Publishing](https://docs.npmjs.com/trusted-publishers/) (OIDC + provenance) via [`.github/workflows/publish-create-adsk.yml`](../../.github/workflows/publish-create-adsk.yml) — no long-lived `NPM_TOKEN`.
+Full workflow: [`docs/RELEASE.md`](../../docs/RELEASE.md). Publishing uses [Trusted Publishing](https://docs.npmjs.com/trusted-publishers/) via [`.github/workflows/publish-create-adsk.yml`](../../.github/workflows/publish-create-adsk.yml).

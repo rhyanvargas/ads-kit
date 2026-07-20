@@ -18,11 +18,13 @@ Skills in **your** project live under `.agents/skills/` ([agentskills.io](https:
 
 ## 0. Recommended: adopt a profile with create-adsk
 
+### Interactive
+
 ```bash
 npx create-adsk
 ```
 
-Interactive by default: pick a profile, optionally add product-value-loop packs, then install.
+Follow the prompts. Pick a profile, optionally add product-value-loop packs, then install.
 
 | Profile | What you get |
 |---------|----------------|
@@ -31,21 +33,18 @@ Interactive by default: pick a profile, optionally add product-value-loop packs,
 | `maintainer` | Delivery + skill-optimizer + readme-authoring + Cursor commands + stock rules |
 | `skills-only` | All five first-party skills; no `.cursor/` writes |
 
-Scripts/CI (no prompts): `npx create-adsk --profile delivery --yes`  
-(`--yes` alone defaults profile to `core`.)
-
-From a kit checkout without npm: `npx --yes /path/to/agentic-development-starter-kit/packages/create-adsk`
-
-Later:
+### Non-interactive
 
 ```bash
-npx create-adsk update    # refresh skills + Cursor from .adsk/config.json
-npx create-adsk status    # profile + drift (exit 1 if drift)
+npx create-adsk --profile delivery --yes
 ```
 
-Flags: `--dry-run`, `--scope project|global`, `--force-rules`, `--with-optional-packs`. Details: [`packages/create-adsk/README.md`](../packages/create-adsk/README.md).
+`--profile` chooses the profile; `--yes` skips prompts (`core` if you omit `--profile`).
 
-The sections below remain valid for skills-only installs and the script-based Cursor path.
+Later: `npx create-adsk update` · `npx create-adsk status`.  
+Flags and local kit path: [`packages/create-adsk/README.md`](../packages/create-adsk/README.md).
+
+The sections below cover skills-only installs and the script-based Cursor path.
 
 ---
 

@@ -16,57 +16,44 @@ A ready-to-adopt kit for agentic, spec-driven development — workflow skills, C
 
 **Repository:** [`rhyanvargas/agentic-development-starter-kit`](https://github.com/rhyanvargas/agentic-development-starter-kit)
 
-### Two-tool model
-
-| Tool | Owns |
-|------|------|
-| **`npx skills`** | Install and update skill folders into `.agents/skills/` |
-| **`npx create-adsk`** | Adopt ADSK as a versioned **profile** (skills + Cursor wiring + `.adsk/config.json`) |
-
-Use `npx skills` for skill folders alone. Use `npx create-adsk` when you want this kit’s workflow + Cursor commands adopted as a versioned profile. Profiles: [`profiles.json`](profiles.json). Contract: [docs/product/create-adsk.md](docs/product/create-adsk.md).
-
-## Use in your app (2 minutes)
-
-**Recommended — adopt a profile:**
+## Quick Start
 
 ```bash
 npx create-adsk
 ```
 
-Pick a profile in the prompt (`core`, `delivery`, `maintainer`, or `skills-only`). That installs the matching skills, syncs Cursor commands when the profile includes them, and writes `.adsk/config.json`.
+Follow the prompts to pick a profile (`core`, `delivery`, `maintainer`, or `skills-only`). That installs skills, optional Cursor commands, and `.adsk/config.json`.
 
-For scripts/CI (no prompts): `npx create-adsk --profile delivery --yes`  
-(`--profile` chooses the kit shape; `--yes` skips prompts — default profile with `--yes` alone is `core`.)
-
-From a kit checkout without npm: `npx --yes ./packages/create-adsk`
-
-Later: `npx create-adsk update` / `npx create-adsk status`. Package docs: [`packages/create-adsk`](packages/create-adsk).
-
-**Skills only** (no Cursor wiring / no profile config):
+### Non-interactive
 
 ```bash
-npx skills add rhyanvargas/agentic-development-starter-kit
+npx create-adsk --profile delivery --yes
 ```
 
-Skills install under `.agents/skills/` (not a root `skills/` folder). Updates: `npx skills update` (choose **Project** scope for a normal app install).
+| Flag | Meaning |
+|------|---------|
+| `--profile <id>` | Choose a profile without prompting |
+| `--yes` / `-y` | Skip prompts (`core` if `--profile` is omitted) |
 
-**Script-based Cursor sync** (without create-adsk): ask your agent “Sync ADSK” / `/sync-adsk`, or run [`scripts/sync-adsk.sh`](scripts/sync-adsk.sh) `adopter --from <kit>`. Step-by-step: [docs/using-adsk.md](docs/using-adsk.md).
+Later: `npx create-adsk update` · `npx create-adsk status` · [create-adsk docs](packages/create-adsk)
 
-**Full guide:** [docs/using-adsk.md](docs/using-adsk.md).  
-**Kit maintainers:** [docs/upgrading.md](docs/upgrading.md#kit-maintainers).
+### Alternatives
 
-### Optional: Cursor slash commands (script path)
+| Goal | Command / path |
+|------|----------------|
+| Skills only (no Cursor / no profile config) | `npx skills add rhyanvargas/agentic-development-starter-kit` |
+| Cursor sync without create-adsk | [docs/using-adsk.md](docs/using-adsk.md) (`sync-adsk.sh adopter`) |
 
-Skills work without slash commands. If you are not using `create-adsk` and still want `/draft-spec`, `/sync-adsk`, `/update-readme`, and friends:
+Skills install under `.agents/skills/`. Full adopter guide: [docs/using-adsk.md](docs/using-adsk.md). Maintainers: [docs/upgrading.md](docs/upgrading.md#kit-maintainers).
 
-1. Clone ADSK once → keep the checkout.
-2. Ask your agent to sync from that path, **or** run:
+### Two tools
 
-```bash
-/path/to/adsk/scripts/sync-adsk.sh adopter --from /path/to/adsk
-```
+| Tool | Use when |
+|------|----------|
+| **`npx create-adsk`** | You want a versioned ADSK **profile** (skills + Cursor + config) |
+| **`npx skills`** | You only want skill folders |
 
-That syncs `.cursor/commands/` (paths → `.agents/skills/`), adds missing stock rules, and refreshes skills via the CLI.
+Profiles: [`profiles.json`](profiles.json). Contract: [docs/product/create-adsk.md](docs/product/create-adsk.md).
 
 ## What’s in this kit repo
 

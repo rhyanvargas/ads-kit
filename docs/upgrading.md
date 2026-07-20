@@ -31,7 +31,7 @@ Step-by-step install, Cursor sync, updates, and custom skills: **[using-adsk.md]
 
 **Recommended short path (profile + Cursor):**
 
-1. `npx create-adsk --profile delivery --yes` (or from a kit checkout: `npx --yes ./packages/create-adsk …`)
+1. `npx create-adsk` (or non-interactive: `npx create-adsk --profile delivery --yes`)
 2. Later: `npx create-adsk update` / `npx create-adsk status`
 
 **Alternate (skills / script):**
