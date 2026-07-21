@@ -9,6 +9,9 @@
 
 # create-adsk
 
+[![npm downloads](https://img.shields.io/npm/dm/create-adsk)](https://www.npmjs.com/package/create-adsk)
+[![Socket Badge](https://socket.dev/api/badge/npm/package/create-adsk)](https://socket.dev/npm/package/create-adsk)
+
 Adopt the **Agentic Development Starter Kit (ADSK)** as a versioned **profile** — skills via the skills CLI plus optional Cursor commands/rules. Not a skills marketplace.
 
 ## Quick Start
