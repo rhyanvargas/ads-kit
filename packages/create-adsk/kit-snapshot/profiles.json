@@ -37,7 +37,8 @@
         "release-automation",
         "skill-optimizer",
         "readme-authoring",
-        "supply-chain-gate"
+        "supply-chain-gate",
+        "pull-request-authoring"
       ],
       "cursor": "commands",
       "rules": "stock"
@@ -50,7 +51,8 @@
         "release-automation",
         "skill-optimizer",
         "readme-authoring",
-        "supply-chain-gate"
+        "supply-chain-gate",
+        "pull-request-authoring"
       ],
       "cursor": "none",
       "rules": "none"

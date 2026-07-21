@@ -1,0 +1,22 @@
+[
+  { "query": "Create a pull request for this branch", "should_trigger": true },
+  { "query": "/create-pr", "should_trigger": true },
+  { "query": "Open a PR and fill the description from the commits", "should_trigger": true },
+  { "query": "The PR description is empty — can you fill it?", "should_trigger": true },
+  { "query": "gh pr create with a proper Summary and Changes", "should_trigger": true },
+  { "query": "Draft a Conventional Commits PR title and body", "should_trigger": true },
+  { "query": "Update the existing PR body from git log main...HEAD", "should_trigger": true },
+  { "query": "Prefill the pull request template from our commits", "should_trigger": true },
+  { "query": "Push and open a GitHub PR for this work", "should_trigger": true },
+  { "query": "Fix the blank PR description on this branch", "should_trigger": true },
+  { "query": "Set up release-please and changelog automation", "should_trigger": false },
+  { "query": "/setup-releases", "should_trigger": false },
+  { "query": "Socket security check failed on my PR", "should_trigger": false },
+  { "query": "/setup-socket", "should_trigger": false },
+  { "query": "Review this PR against the feature spec", "should_trigger": false },
+  { "query": "/review --spec checkout", "should_trigger": false },
+  { "query": "Write a commit message for these staged changes", "should_trigger": false },
+  { "query": "Optimize this skill's SKILL.md description", "should_trigger": false },
+  { "query": "Update the README to match the codebase", "should_trigger": false },
+  { "query": "Draft a spec for the checkout feature", "should_trigger": false }
+]
