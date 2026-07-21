@@ -26,14 +26,15 @@
         "requesting-code-review",
         "brainstorming"
       ],
-      "trust_notes": "High-adoption engineering methodology pack. May assume Superpowers-specific paths (e.g. docs/superpowers/). Pin and adapt paths to your repo layout.",
+      "trust_notes": "Full Superpowers tree (includes brainstorming / code-review). For team ADSK adoption prefer optional pack engineering-methods (selective subset + playbook). May assume Superpowers-specific paths (e.g. docs/superpowers/). Pin and adapt paths to your repo layout.",
       "install": "npx skills add obra/superpowers -g",
       "pin": {
         "strategy": "git-tag-or-commit",
         "value": "latest-reviewed",
         "note": "Replace with an explicit tag/commit after your security review."
       },
-      "disposition": "recommend"
+      "disposition": "recommend",
+      "docs": "docs/engineering-methods.md"
     },
     {
       "id": "find-skills",
@@ -96,6 +97,27 @@
     }
   ],
   "optional": [
+    {
+      "id": "engineering-methods",
+      "source": "obra/superpowers",
+      "license": "See upstream repository",
+      "lifecycle_roles": ["plan", "develop", "test", "debug"],
+      "skills": [
+        "writing-plans",
+        "test-driven-development",
+        "systematic-debugging"
+      ],
+      "trust_notes": "Selective Superpowers subset for ADSK engineering-methods pack. Complements SDD; does not replace it. Playbook: docs/engineering-methods.md. Prefer this pack over installing the full Superpowers tree unless you need brainstorming/code-review skills too.",
+      "install": "npx skills add obra/superpowers --skill writing-plans --skill test-driven-development --skill systematic-debugging -y",
+      "install_global": "npx skills add obra/superpowers --skill writing-plans --skill test-driven-development --skill systematic-debugging -g -y",
+      "pin": {
+        "strategy": "git-tag-or-commit",
+        "value": "latest-reviewed",
+        "note": "Replace with an explicit tag/commit after your security review."
+      },
+      "disposition": "optional",
+      "docs": "docs/engineering-methods.md"
+    },
     {
       "id": "product-value-loop-wondelai",
       "source": "wondelai/skills",

@@ -25,7 +25,7 @@ Profiles: [`profiles.json`](../../../profiles.json).
 ### Functional
 
 - [x] REQ-001: `npx create-adsk` (and `init`) interactively selects a profile from `profiles.json` (`core` | `delivery` | `maintainer` | `skills-only`) — not a free-form multi-select of arbitrary skills.
-- [x] REQ-002: After profile choice, optionally prompt to add product-value-loop packs (`optional_packs` in `profiles.json`); default is No.
+- [x] REQ-002: After profile choice, optionally select **workflow packs** from `optional_packs.packs` in `profiles.json` (multiselect; defaults off). Packs are methodology contracts (`product-value-loop`, `engineering-methods`), not a skill picker. Non-interactive: `--packs <ids>` or `--with-optional-packs` (all). Config stores pack IDs in `optionalPacks`.
 - [x] REQ-003: Skill installation shells out to `npx skills add` with `--skill` flags for the profile’s skill list (and `-y` / non-interactive when `--yes`).
 - [x] REQ-004: When profile `cursor` is `commands`, sync Cursor commands into the target app (path rewrite to `.agents/skills/<name>`), reusing adopter sync behavior.
 - [x] REQ-005: When profile `rules` is `stock`, add stock rules add-if-missing (same set as `sync-adsk.sh`); never overwrite existing rules unless `--force-rules`.

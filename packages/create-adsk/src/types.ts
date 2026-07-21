@@ -10,17 +10,24 @@ export interface ProfileDef {
   rules: RulesMode;
 }
 
+/** Named workflow pack (methodology contract) — not a skill picker. */
+export interface OptionalPackDef {
+  id: string;
+  description: string;
+  prompt_default: boolean;
+  /** IDs in recommended-skills.json (optional/recommended pools). */
+  entry_ids: string[];
+  docs: string;
+}
+
 export interface ProfilesFile {
   version: number;
   product: string;
   kit_source: string;
   profiles: Record<ProfileId, ProfileDef>;
   optional_packs: {
-    prompt_default: boolean;
-    description: string;
-    ids: string[];
     source_file: string;
-    docs: string;
+    packs: OptionalPackDef[];
   };
   config_marker: {
     path: string;
@@ -35,6 +42,7 @@ export interface AdskConfig {
   rules: RulesMode;
   scope: Scope;
   kitRef: string;
+  /** Selected pack IDs from profiles.json optional_packs.packs[].id */
   optionalPacks: string[];
 }
 

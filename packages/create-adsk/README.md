@@ -22,7 +22,7 @@ Adopt the **Agentic Development Starter Kit (ADSK)** as a versioned **profile** 
 npx create-adsk
 ```
 
-Follow the prompts. You pick a profile, optionally add product packs, then the CLI installs skills, syncs Cursor commands when the profile includes them, and writes `.adsk/config.json`.
+Follow the prompts. You pick a **profile** (kit depth), optionally select **packs** (`product-value-loop`, `engineering-methods`), then the CLI installs skills, syncs Cursor commands when the profile includes them, and writes `.adsk/config.json`.
 
 | Profile | You get |
 |---------|---------|
@@ -42,7 +42,9 @@ npx create-adsk --profile delivery --yes
 | Flag | Meaning |
 |------|---------|
 | `--profile <id>` | Choose a profile without prompting |
-| `--yes` / `-y` | Skip prompts (`core` if `--profile` is omitted; optional packs off unless `--with-optional-packs`) |
+| `--yes` / `-y` | Skip prompts (`core` if `--profile` is omitted; packs off unless `--packs` / `--with-optional-packs`) |
+| `--packs <ids>` | Comma-separated pack IDs (e.g. `engineering-methods`) |
+| `--with-optional-packs` | Include all packs |
 
 See `npx create-adsk --help` for the full option list.
 
@@ -54,7 +56,7 @@ npx create-adsk update   # refresh from .adsk/config.json
 npx create-adsk status   # profile + drift (exit 1 if drift)
 ```
 
-Other useful flags: `--dry-run`, `--scope project|global`, `--force-rules`, `--with-optional-packs`, `--target <dir>`.
+Other useful flags: `--dry-run`, `--scope project|global`, `--force-rules`, `--target <dir>`. Pack docs: [`docs/engineering-methods.md`](../../docs/engineering-methods.md), [`docs/product-value-loop.md`](../../docs/product-value-loop.md).
 
 ## Two tools
 

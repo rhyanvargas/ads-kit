@@ -4,7 +4,7 @@ Create an implementation plan from a specification.
 
 ## Skill
 
-Read and follow **`skills/spec-driven-workflow`**. Resolve paths with `references/artifact-homes.md`. For Cursor plan files, follow `references/cursor-adapter.md` (YAML `todos` required). Recommended upstream `writing-plans` (see `recommended-skills.json`) may also apply for granular task style.
+Read and follow **`skills/spec-driven-workflow`**. Resolve paths with `references/artifact-homes.md`. For Cursor plan files, follow `references/cursor-adapter.md` (YAML `todos` required). When the **engineering-methods** pack is installed, use upstream `writing-plans` for granular task style — see `docs/engineering-methods.md`.
 
 ## Usage
 

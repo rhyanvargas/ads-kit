@@ -24,7 +24,7 @@ A ready-to-adopt kit for agentic, spec-driven development — workflow skills, C
 npx create-adsk
 ```
 
-Follow the prompts to pick a profile (`core`, `delivery`, `maintainer`, or `skills-only`). That installs skills, optional Cursor commands, and `.adsk/config.json`.
+Follow the prompts to pick a profile (`core`, `delivery`, `maintainer`, or `skills-only`) and optionally add packs. That installs skills, optional Cursor commands, and `.adsk/config.json`. Team framing: [docs/product/for-eng-leads.md](docs/product/for-eng-leads.md).
 
 ### Non-interactive
 
@@ -83,8 +83,8 @@ Profiles: [`profiles.json`](profiles.json). Contract: [docs/product/create-adsk.
 
 Install after trust review — pins and commands in [`recommended-skills.json`](recommended-skills.json):
 
-- **Recommended:** Superpowers (`writing-plans`, TDD, systematic debugging), Vercel Labs `find-skills`, Anthropic `skill-creator` (maintainers)
-- **Optional:** product value loop pack + `frontend-design` (see below)
+- **Recommended:** Superpowers (full tree), Vercel Labs `find-skills`, Anthropic `skill-creator` (maintainers)
+- **Optional packs (create-adsk):** `engineering-methods` (Superpowers subset — [docs](docs/engineering-methods.md)), product-value-loop ([docs](docs/product-value-loop.md)), plus `frontend-design`
 
 ## Product value loop (optional)
 
@@ -115,9 +115,12 @@ cd agentic-development-starter-kit
 |-----|--------|
 | [docs/using-adsk.md](docs/using-adsk.md) | Install, create-adsk, ask-agent sync, Cursor, custom skills |
 | [docs/product/create-adsk.md](docs/product/create-adsk.md) | Product contract — create-adsk profiles |
+| [docs/product/for-eng-leads.md](docs/product/for-eng-leads.md) | Eng-lead pitch — team standard vs skills.sh |
+| [docs/product/profiles-and-packs.md](docs/product/profiles-and-packs.md) | Profile (depth) × pack (methodology) model |
 | [packages/create-adsk](packages/create-adsk) | `create-adsk` CLI (init / update / status) |
 | [`profiles.json`](profiles.json) | Machine-readable adopter profiles |
-| [docs/product-value-loop.md](docs/product-value-loop.md) | Optional discover → research → prioritize → plan → execute |
+| [docs/product-value-loop.md](docs/product-value-loop.md) | Optional pack: discover → research → prioritize → plan → execute |
+| [docs/engineering-methods.md](docs/engineering-methods.md) | Optional pack: TDD / debug / writing-plans wired into SDD |
 | [docs/upgrading.md](docs/upgrading.md) | Updates (adopter section) |
 
 **Kit maintainers**

@@ -14,6 +14,8 @@ Single source of truth for ADSK’s **adopter product**. Agents and contributors
 
 **Repo adopter for the Agentic Development Starter Kit** — workflow + Cursor wiring + versioned profile. Not a skills marketplace.
 
+**Team framing:** Profile = kit depth; packs = methodology contracts (`product-value-loop`, `engineering-methods`). Eng-lead pitch: [for-eng-leads.md](for-eng-leads.md). Model: [profiles-and-packs.md](profiles-and-packs.md). Playbooks: [product-value-loop.md](../product-value-loop.md), [engineering-methods.md](../engineering-methods.md). Do not invent domain profiles that clone [skills.sh topics](https://www.skills.sh/topic).
+
 ## Two-tool model
 
 | Tool | Owns | Does not own |
@@ -38,7 +40,7 @@ Machine-readable source: [`profiles.json`](../../profiles.json).
 | **maintainer** | Delivery + `skill-optimizer` + `readme-authoring` + `supply-chain-gate` + `pull-request-authoring` | Commands | Stock |
 | **skills-only** | All first-party skills | None (no `.cursor/` writes) | None |
 
-Optional second prompt (default **No**): add recommended **product-value-loop** upstream packs from [`recommended-skills.json`](../../recommended-skills.json). Never mixed into a free-form skill picker.
+After profile choice, optional **pack** multiselect from `optional_packs.packs` in [`profiles.json`](../../profiles.json) (defaults off). Each pack expands to `entry_ids` in [`recommended-skills.json`](../../recommended-skills.json). Never a free-form skill picker. Flags: `--packs <ids>`, `--with-optional-packs` (all). See [profiles-and-packs.md](profiles-and-packs.md).
 
 ---
 
