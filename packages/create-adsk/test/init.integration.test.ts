@@ -81,9 +81,38 @@ describe("init integration", () => {
     const joined = logs.join("\n");
     expect(joined).toContain("[dry-run] profile=delivery");
     expect(joined).toContain("would run: npx --yes skills add");
+    expect(joined).toContain("packs: none");
     expect(joined).toContain("no files written");
     expect(existsSync(join(app, ".adsk", "config.json"))).toBe(false);
     expect(existsSync(join(app, ".cursor", "commands"))).toBe(false);
+  });
+
+  it("init --packs engineering-methods installs Superpowers subset and records pack id", async () => {
+    const app = makeTempApp();
+    const calls: string[][] = [];
+    const cfg = await runInit({
+      target: app,
+      profile: "core",
+      yes: true,
+      dryRun: false,
+      scope: "project",
+      forceRules: false,
+      withOptionalPacks: false,
+      packsFlag: "engineering-methods",
+      snapshotRoot: snapshotRoot(),
+      run: fakeSkillsRunner(calls),
+    });
+
+    expect(cfg.optionalPacks).toEqual(["engineering-methods"]);
+    expect(calls.length).toBe(2);
+    const packArgv = calls[1].join(" ");
+    expect(packArgv).toContain("obra/superpowers");
+    expect(packArgv).toContain("--skill writing-plans");
+    expect(packArgv).toContain("--skill test-driven-development");
+    expect(packArgv).toContain("--skill systematic-debugging");
+    expect(existsSync(join(app, ".agents", "skills", "writing-plans"))).toBe(
+      true,
+    );
   });
 
   // REQ-006

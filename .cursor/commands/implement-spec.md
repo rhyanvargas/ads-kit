@@ -4,7 +4,7 @@ Implement from a specification or plan.
 
 ## Skill
 
-Read and follow **`skills/spec-driven-workflow`**. Honor `@.cursor/rules/testing` and `@.cursor/rules/project-cmds` for tests and verify commands. Recommended upstream TDD skill applies when installing the recommended pack.
+Read and follow **`skills/spec-driven-workflow`**. Honor `@.cursor/rules/testing` and `@.cursor/rules/project-cmds` for tests and verify commands. When the **engineering-methods** pack is installed, follow `test-driven-development` (and `systematic-debugging` on failures) — see `docs/engineering-methods.md`.
 
 ## Usage
 

@@ -59,15 +59,28 @@
     }
   },
   "optional_packs": {
-    "prompt_default": false,
-    "description": "Optional yes/no after profile choice — not a skill picker. Install via recommended-skills.json.",
-    "ids": [
-      "product-value-loop-wondelai",
-      "product-value-loop-deanpeters",
-      "competitive-intelligence"
-    ],
+    "$comment": "Named workflow packs (methodology contracts) — not a skills.sh topic browser. Install via recommended-skills.json entry_ids. UX: Profile = depth, Packs = methodology.",
     "source_file": "recommended-skills.json",
-    "docs": "docs/product-value-loop.md"
+    "packs": [
+      {
+        "id": "product-value-loop",
+        "description": "Discover → research → prioritize → plan, then execute with SDD.",
+        "prompt_default": false,
+        "entry_ids": [
+          "product-value-loop-wondelai",
+          "product-value-loop-deanpeters",
+          "competitive-intelligence"
+        ],
+        "docs": "docs/product-value-loop.md"
+      },
+      {
+        "id": "engineering-methods",
+        "description": "Superpowers TDD, systematic debugging, and writing-plans wired into SDD implement.",
+        "prompt_default": false,
+        "entry_ids": ["engineering-methods"],
+        "docs": "docs/engineering-methods.md"
+      }
+    ]
   },
   "config_marker": {
     "path": ".adsk/config.json",

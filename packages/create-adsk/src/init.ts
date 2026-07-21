@@ -2,12 +2,16 @@ import * as p from "@clack/prompts";
 import { writeConfig } from "./config.js";
 import { syncCursor } from "./cursor-sync.js";
 import {
+  expandPackIdsToEntryIds,
   findOptionalPack,
   getProfile,
   isProfileId,
+  listOptionalPackIds,
   listProfileIds,
   loadProfiles,
   loadRecommendedSkills,
+  parsePackIdsFlag,
+  resolvePackSelection,
 } from "./profiles.js";
 import { getSnapshotRoot, readKitRef } from "./snapshot.js";
 import {
@@ -26,6 +30,8 @@ export interface InitOptions {
   scope: Scope;
   forceRules: boolean;
   withOptionalPacks: boolean;
+  /** Raw `--packs` flag value (comma-separated). */
+  packsFlag?: string;
   snapshotRoot?: string;
   run?: RunCommand;
 }
@@ -42,6 +48,9 @@ export async function runInit(opts: InitOptions): Promise<AdskConfig> {
 
   if (opts.dryRun) {
     console.log(`[dry-run] profile=${profileId} scope=${opts.scope} kitRef=${kitRef}`);
+    if (optionalPacks.length > 0) {
+      console.log(`[dry-run] packs=${optionalPacks.join(",")}`);
+    }
   }
 
   const skillsArgv = buildSkillsAddArgv({
@@ -66,23 +75,26 @@ export async function runInit(opts: InitOptions): Promise<AdskConfig> {
     );
   }
 
-  if (optionalPacks.length > 0) {
+  const entryIds = expandPackIdsToEntryIds(profiles, optionalPacks);
+  if (entryIds.length > 0) {
     const recommended = loadRecommendedSkills(snapshotRoot);
-    for (const packId of optionalPacks) {
-      const entry = findOptionalPack(recommended, packId);
+    for (const entryId of entryIds) {
+      const entry = findOptionalPack(recommended, entryId);
       if (!entry) {
-        throw new Error(`Unknown optional pack: ${packId}`);
+        throw new Error(`Unknown optional pack entry: ${entryId}`);
       }
       const installCmd =
         opts.scope === "global"
           ? entry.install_global ?? entry.install
           : entry.install ?? entry.install_global;
       if (!installCmd) {
-        throw new Error(`Optional pack ${packId} has no install command`);
+        throw new Error(`Optional pack entry ${entryId} has no install command`);
       }
       const packArgv = buildOptionalPackArgv(installCmd, opts.scope, true);
       if (opts.dryRun) {
-        console.log(`[dry-run] would run optional pack ${packId}: ${packArgv.join(" ")}`);
+        console.log(
+          `[dry-run] would run pack entry ${entryId}: ${packArgv.join(" ")}`,
+        );
       }
       const packResult = await runSkills(packArgv, {
         cwd: opts.target,
@@ -90,11 +102,11 @@ export async function runInit(opts: InitOptions): Promise<AdskConfig> {
         run: opts.run,
       });
       if (packResult.code !== 0) {
-        throw new Error(`optional pack install failed: ${packId}`);
+        throw new Error(`optional pack install failed: ${entryId}`);
       }
     }
   } else if (opts.dryRun) {
-    console.log("[dry-run] optional packs: none");
+    console.log("[dry-run] packs: none");
   }
 
   const syncResult = syncCursor({
@@ -159,7 +171,7 @@ async function resolveProfile(
   }
 
   const choice = await p.select({
-    message: "Select an ADSK profile",
+    message: "Select profile (kit depth)",
     options: listProfileIds().map((id) => ({
       value: id,
       label: id,
@@ -177,20 +189,41 @@ async function resolveOptionalPacks(
   opts: InitOptions,
   profiles: ReturnType<typeof loadProfiles>,
 ): Promise<string[]> {
-  if (opts.yes) {
-    return opts.withOptionalPacks ? [...profiles.optional_packs.ids] : [];
-  }
-  if (opts.withOptionalPacks) {
-    return [...profiles.optional_packs.ids];
+  let packsFromFlag: string[] | undefined;
+  if (opts.packsFlag !== undefined) {
+    packsFromFlag = parsePackIdsFlag(opts.packsFlag, profiles);
   }
 
-  const add = await p.confirm({
-    message: `Add optional product-value-loop packs? (${profiles.optional_packs.description})`,
-    initialValue: profiles.optional_packs.prompt_default,
+  if (opts.yes || packsFromFlag !== undefined || opts.withOptionalPacks) {
+    return resolvePackSelection(
+      {
+        yes: opts.yes,
+        withOptionalPacks: opts.withOptionalPacks,
+        packs: packsFromFlag,
+      },
+      profiles,
+    );
+  }
+
+  const packDefs = profiles.optional_packs.packs;
+  if (packDefs.length === 0) return [];
+
+  const selected = await p.multiselect({
+    message:
+      "Select optional packs (methodology contracts — not a skill picker)",
+    options: packDefs.map((pack) => ({
+      value: pack.id,
+      label: pack.id,
+      hint: pack.description,
+    })),
+    required: false,
+    initialValues: packDefs.filter((p) => p.prompt_default).map((p) => p.id),
   });
-  if (p.isCancel(add)) {
+  if (p.isCancel(selected)) {
     p.cancel("Cancelled");
     process.exit(1);
   }
-  return add ? [...profiles.optional_packs.ids] : [];
+  const ids = selected as string[];
+  const known = new Set(listOptionalPackIds(profiles));
+  return ids.filter((id) => known.has(id));
 }
