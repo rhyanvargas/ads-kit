@@ -21,6 +21,8 @@ How The Agentic Development Starter Kit maps to enterprise product delivery stag
 | Debug | **Recommended** | Superpowers `systematic-debugging` |
 | Author agent skills | **Core** | First-party `skill-optimizer` (+ Cursor `skill-authoring` rule / `/optimize-skill`) |
 | Document (README) | **Core** | First-party `readme-authoring` (+ Cursor `/update-readme`) |
+| Pull requests | **Core (maintainer)** | First-party `pull-request-authoring` (+ Cursor `/create-pr`) — commit-derived PR bodies |
+| Secure / supply chain | **Core (maintainer)** | First-party `supply-chain-gate` (+ `/setup-socket`); Dependabot + npm audit + Socket CI |
 
 ## Best workflow (product → delivery)
 
@@ -40,14 +42,16 @@ ADSK first-party (in this repo)
 ├── devops-strategy-facilitator → delivery strategy decisions
 ├── release-automation       → Conventional Commits changelog/semver (GH or Azure)
 ├── skill-optimizer          → create/optimize skills (triggers, tokens, evals)
-└── readme-authoring         → evidence-grounded README create/update/review
+├── readme-authoring         → evidence-grounded README create/update/review
+├── supply-chain-gate        → Socket / supply-chain PR triage + dependency intake
+└── pull-request-authoring   → commit-derived GitHub PR title/body (+ `/create-pr`)
 
 
 Recommended upstream (pinned in recommended-skills.json)
 ├── obra/superpowers         → plans, TDD, debug, review habits
 ├── vercel-labs find-skills  → safe discovery under trust policy
 ├── anthropics skill-creator → maintainers / eval automation
-├── github/awesome-copilot dependabot → Dependabot config / supply-chain updates
+├── github/awesome-copilot dependabot → Dependabot YAML / update workflows
 ├── aradotso npm-security-best-practices → npm install hardening guidance
 └── optional product value loop
     ├── wondelai             → inspired-product, mom-test, continuous-discovery, JTBD

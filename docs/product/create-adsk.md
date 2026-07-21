@@ -35,8 +35,8 @@ Machine-readable source: [`profiles.json`](../../profiles.json).
 |---------|--------|----------------|---------------|
 | **core** | `spec-driven-workflow` | Commands | None |
 | **delivery** | Core + `devops-strategy-facilitator` + `release-automation` | Commands | None |
-| **maintainer** | Delivery + `skill-optimizer` + `readme-authoring` | Commands | Stock |
-| **skills-only** | All five first-party | None (no `.cursor/` writes) | None |
+| **maintainer** | Delivery + `skill-optimizer` + `readme-authoring` + `supply-chain-gate` + `pull-request-authoring` | Commands | Stock |
+| **skills-only** | All first-party skills | None (no `.cursor/` writes) | None |
 
 Optional second prompt (default **No**): add recommended **product-value-loop** upstream packs from [`recommended-skills.json`](../../recommended-skills.json). Never mixed into a free-form skill picker.
 

@@ -11,6 +11,7 @@
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Agent Skills](https://img.shields.io/badge/Agent_Skills-compatible-green.svg)](https://agentskills.io)
+[![Socket Badge](https://socket.dev/api/badge/npm/package/create-adsk)](https://socket.dev/npm/package/create-adsk)
 
 A ready-to-adopt kit for agentic, spec-driven development — workflow skills, Cursor slash commands, and a versioned profile for your team.
 
@@ -75,6 +76,7 @@ Profiles: [`profiles.json`](profiles.json). Contract: [docs/product/create-adsk.
 - **`release-automation`** — Conventional Commits → changelog/semver (GitHub or Azure DevOps; `/setup-releases`)
 - **`skill-optimizer`** — author/optimize skills for trigger accuracy, clarity, and token cost
 - **`readme-authoring`** — evidence-grounded README create/update/review (audience-aware; `/update-readme`)
+- **`supply-chain-gate`** — Socket / supply-chain PR triage and dependency intake (`/setup-socket`)
 
 ## Recommended upstream (adopter apps)
 

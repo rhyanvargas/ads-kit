@@ -36,7 +36,9 @@
         "devops-strategy-facilitator",
         "release-automation",
         "skill-optimizer",
-        "readme-authoring"
+        "readme-authoring",
+        "supply-chain-gate",
+        "pull-request-authoring"
       ],
       "cursor": "commands",
       "rules": "stock"
@@ -48,7 +50,9 @@
         "devops-strategy-facilitator",
         "release-automation",
         "skill-optimizer",
-        "readme-authoring"
+        "readme-authoring",
+        "supply-chain-gate",
+        "pull-request-authoring"
       ],
       "cursor": "none",
       "rules": "none"
