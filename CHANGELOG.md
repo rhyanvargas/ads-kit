@@ -5,6 +5,20 @@ All notable changes to **The Agentic Development Starter Kit (ADSK)** are docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.0](https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.7.0...v0.8.0) (2026-07-21)
+
+
+### Added
+
+* add pull-request-authoring skill and /create-pr ([fbb4655](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/fbb4655ad1b64d18e6fe6f6eced876c110d96e63))
+* add Socket CI and supply-chain-gate skill ([e0db7fb](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/e0db7fb885e42a22203ad6382e3cb62addf270ba))
+* add Socket supply-chain gate and pull-request-authoring ([758a5ba](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/758a5bad1f9a8ae8194048e18c75242013f684a8))
+
+
+### Changed
+
+* add Socket security badge for create-adsk ([0b9694d](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/0b9694d62bb6c287d0ef0e5ff968126fb0a23835))
+
 ## [0.7.0](https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.6.0...v0.7.0) (2026-07-20)
 
 
