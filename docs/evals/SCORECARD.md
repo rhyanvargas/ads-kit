@@ -22,7 +22,8 @@ Cases and assertions live under each skill’s `evals/`. Published **with vs wit
 
 1. Generate (or download the Actions artifact from **skills-evals-soft**):
    ```bash
-   ./scripts/run-skill-evals-soft.sh --skill skill-optimizer
+   ./scripts/run-skill-evals-soft.sh
+   # or one skill: ./scripts/run-skill-evals-soft.sh --skill skill-optimizer
    ```
 2. Complete with/without runs and grade `eval-*/**/grading.json`.
 3. Copy the **Aggregate** table from `.adsk-tier2-out/<skill>/scorecard-paste.md` into the template below (replace `_TBD_` for that skill).

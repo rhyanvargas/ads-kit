@@ -9,9 +9,10 @@
 # Runbook: docs/evaluating-skills.md (Tier 2)
 #
 # Usage:
-#   ./scripts/run-skill-evals-soft.sh
+#   ./scripts/run-skill-evals-soft.sh                    # all first-party skills
+#   ./scripts/run-skill-evals-soft.sh --all              # same as default
 #   ./scripts/run-skill-evals-soft.sh --skill skill-optimizer
-#   ./scripts/run-skill-evals-soft.sh --skill readme-authoring --out /tmp/tier2-out
+#   ./scripts/run-skill-evals-soft.sh --all --out /tmp/tier2-out
 #   ./scripts/run-skill-evals-soft.sh --self-test
 
 set -euo pipefail
@@ -26,14 +27,16 @@ usage() {
 run-skill-evals-soft.sh — Tier 2 soft eval package (no LLM)
 
 Usage:
-  ./scripts/run-skill-evals-soft.sh [--skill NAME] [--out DIR]
+  ./scripts/run-skill-evals-soft.sh [--all] [--out DIR]
+  ./scripts/run-skill-evals-soft.sh --skill NAME [--out DIR]
   ./scripts/run-skill-evals-soft.sh --self-test
   ./scripts/run-skill-evals-soft.sh -h|--help
 
-Default skill: skill-optimizer (first-party optimizer gate).
-Writes tier2-summary.md + scorecard-paste.md (+ cases.json) under --out
-(default: <repo>/.adsk-tier2-out/<skill>/ — gitignored via .adsk-* pattern if present,
- or use an explicit --out under /tmp).
+Default: package every first-party skill under skills/*/ with SKILL.md
+→ <repo>/.adsk-tier2-out/<skill>/ per skill + batch index at
+  .adsk-tier2-out/tier2-batch-summary.md and scorecard-paste-all.md
+
+--skill NAME packages one skill only (--out defaults to .../<skill>/ or use an explicit path).
 
 Exit 0 on success; non-zero on failure.
 EOF
@@ -47,12 +50,17 @@ fail() {
 SKILL_NAME=""
 OUT_DIR=""
 SELF_TEST=0
+PACKAGE_ALL=0
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
     -h|--help)
       usage
       exit 0
+      ;;
+    --all)
+      PACKAGE_ALL=1
+      shift
       ;;
     --skill)
       [[ $# -ge 2 ]] || { fail "--skill requires a name"; exit 1; }
@@ -75,8 +83,9 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-if [[ -z "${SKILL_NAME}" ]]; then
-  SKILL_NAME="${DEFAULT_SKILL}"
+if [[ -n "${SKILL_NAME}" && "${PACKAGE_ALL}" -eq 1 ]]; then
+  fail "use --skill NAME or --all, not both"
+  exit 1
 fi
 
 package_skill() {
@@ -280,6 +289,126 @@ print(f"Wrote Tier 2 package for {name} → {out}")
 PY
 }
 
+discover_first_party_skills() {
+  DISCOVERED_SKILLS=()
+  local dir name
+  shopt -s nullglob
+  for dir in "${SKILLS_ROOT}"/*/ ; do
+    [[ -f "${dir}SKILL.md" ]] || continue
+    name="$(basename "${dir%/}")"
+    DISCOVERED_SKILLS+=("$name")
+  done
+  shopt -u nullglob
+  if [[ ${#DISCOVERED_SKILLS[@]} -eq 0 ]]; then
+    fail "no skills/*/SKILL.md found under ${SKILLS_ROOT}"
+    return 1
+  fi
+}
+
+write_batch_artifacts() {
+  local parent_out="$1"
+  shift
+  python3 - "$parent_out" "$@" <<'PY'
+import json, sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+parent = Path(sys.argv[1])
+names = sys.argv[2:]
+now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+rows = []
+summary_rows = []
+total_cases = 0
+for name in sorted(names):
+    cases_path = parent / name / "cases.json"
+    if not cases_path.is_file():
+        sys.exit(f"missing cases.json for {name}")
+    manifest = json.loads(cases_path.read_text(encoding="utf-8"))
+    case_count = manifest.get("case_count") or len(manifest.get("cases") or [])
+    total_cases += case_count
+    n_trig = manifest.get("trigger_query_count", "?")
+    summary_rows.append(
+        f"| `{name}` | {case_count} | {n_trig} | `{name}/tier2-summary.md` | `{name}/scorecard-paste.md` |"
+    )
+    for c in manifest.get("cases") or []:
+        cid = c.get("id")
+        rows.append(
+            f"| `{name}` | {cid} | _TBD_ | _TBD_ | _TBD_ | _TBD_ | _pending_ |"
+        )
+
+batch_summary = f"""# Tier 2 batch package — all first-party skills
+
+Generated: {now}
+
+| Field | Value |
+|-------|-------|
+| Skills packaged | {len(names)} |
+| Total output cases | {total_cases} |
+| Mode | **Package only** (no LLM agent loops) |
+
+## Skills
+
+| Skill | Cases | Trigger queries | Summary | SCORECARD paste |
+|-------|-------|-----------------|---------|-----------------|
+{chr(10).join(summary_rows)}
+
+## Runbook
+
+1. For each skill subdirectory, run `eval-*/with_skill` and `without_skill` arms (see that skill's `tier2-summary.md`).
+2. Grade each `grading.json`; fill that skill's aggregate row in `scorecard-paste.md`.
+3. Paste rows from `scorecard-paste-all.md` (or per-skill paste files) into `docs/evals/SCORECARD.md`.
+
+Regenerate: `./scripts/run-skill-evals-soft.sh` or `./scripts/run-skill-evals-soft.sh --all`
+"""
+(parent / "tier2-batch-summary.md").write_text(batch_summary, encoding="utf-8")
+
+paste_all = f"""# SCORECARD paste block — all first-party skills
+
+Generated: {now}
+
+Copy rows into [docs/evals/SCORECARD.md](../../docs/evals/SCORECARD.md)
+under **Template for pasting run results** (replace `_TBD_` rows per skill).
+
+| Skill | Eval id / Iteration | with_skill pass_rate | without_skill pass_rate | Δ pass_rate | Token Δ | Recommendation |
+|-------|---------------------|----------------------|-------------------------|-------------|---------|----------------|
+{chr(10).join(rows)}
+
+## Aggregate per skill (fill after grading all cases)
+
+| Skill | Iteration | with_skill pass_rate | without_skill pass_rate | Δ pass_rate | Token Δ | Recommendation |
+|-------|-----------|----------------------|-------------------------|-------------|---------|----------------|
+"""
+for name in sorted(names):
+    paste_all += f"| `{name}` | 1 | _TBD_ | _TBD_ | _TBD_ | _TBD_ | keep / revise / replace |\n"
+
+(parent / "scorecard-paste-all.md").write_text(paste_all, encoding="utf-8")
+print(f"Wrote batch index → {parent}/tier2-batch-summary.md")
+PY
+}
+
+package_all_skills() {
+  local parent_out="$1"
+  local name failed=0
+
+  discover_first_party_skills || return 1
+  mkdir -p "${parent_out}"
+
+  for name in "${DISCOVERED_SKILLS[@]}"; do
+    if ! package_skill "${name}" "${parent_out}/${name}"; then
+      failed=1
+    fi
+  done
+
+  if [[ "$failed" -ne 0 ]]; then
+    return 1
+  fi
+
+  write_batch_artifacts "${parent_out}" "${DISCOVERED_SKILLS[@]}" || return 1
+  echo "Packaged ${#DISCOVERED_SKILLS[@]} skills → ${parent_out}"
+  echo "Next: grade each skill's eval-*/ dirs; paste scorecard-paste-all.md into docs/evals/SCORECARD.md"
+}
+
 run_self_test() {
   local tmp
   tmp="$(mktemp -d "${TMPDIR:-/tmp}/adsk-tier2-selftest.XXXXXX")"
@@ -302,6 +431,19 @@ run_self_test() {
     exit 1
   fi
 
+  echo "→ Self-test: package all first-party skills"
+  package_all_skills "${tmp}/batch"
+  [[ -f "${tmp}/batch/tier2-batch-summary.md" ]] || fail "missing tier2-batch-summary.md"
+  [[ -f "${tmp}/batch/scorecard-paste-all.md" ]] || fail "missing scorecard-paste-all.md"
+  discover_first_party_skills || exit 1
+  [[ -f "${tmp}/batch/${DEFAULT_SKILL}/cases.json" ]] || fail "batch missing default skill package"
+  local n_packaged=0 name
+  for name in "${DISCOVERED_SKILLS[@]}"; do
+    [[ -d "${tmp}/batch/${name}" ]] || fail "batch missing skill dir: ${name}"
+    n_packaged=$((n_packaged + 1))
+  done
+  [[ "$n_packaged" -eq "${#DISCOVERED_SKILLS[@]}" ]] || fail "batch skill count mismatch"
+
   echo "→ Self-test passed"
 }
 
@@ -310,9 +452,17 @@ if [[ "${SELF_TEST}" -eq 1 ]]; then
   exit 0
 fi
 
-if [[ -z "${OUT_DIR}" ]]; then
-  OUT_DIR="${REPO_ROOT}/.adsk-tier2-out/${SKILL_NAME}"
+if [[ -n "${SKILL_NAME}" ]]; then
+  if [[ -z "${OUT_DIR}" ]]; then
+    OUT_DIR="${REPO_ROOT}/.adsk-tier2-out/${SKILL_NAME}"
+  fi
+  package_skill "${SKILL_NAME}" "${OUT_DIR}" || exit 1
+  echo "Next: grade eval-*/{with,without}_skill/grading.json then paste scorecard-paste.md into docs/evals/SCORECARD.md"
+  exit 0
 fi
 
-package_skill "${SKILL_NAME}" "${OUT_DIR}" || exit 1
-echo "Next: grade eval-*/{with,without}_skill/grading.json then paste scorecard-paste.md into docs/evals/SCORECARD.md"
+if [[ -z "${OUT_DIR}" ]]; then
+  OUT_DIR="${REPO_ROOT}/.adsk-tier2-out"
+fi
+
+package_all_skills "${OUT_DIR}" || exit 1

@@ -1,4 +1,4 @@
-# Tier 2 soft signal: scheduled / manual eval package for one first-party skill.
+# Tier 2 soft signal: scheduled / manual eval package for first-party skill(s).
 # Does NOT run on PRs. Must not be a required status check. Does not block release-please.
 # Packages prompts + grading stubs + SCORECARD paste block (no LLM calls in Actions).
 # Spec: .cursor/docs/specs/skill-eval-ci.md
@@ -12,9 +12,9 @@ on:
   workflow_dispatch:
     inputs:
       skill:
-        description: "First-party skill folder under skills/ (default skill-optimizer)"
+        description: "Skill folder under skills/, or 'all' for every first-party skill (default all)"
         required: false
-        default: "skill-optimizer"
+        default: "all"
 
 permissions:
   contents: read
@@ -31,18 +31,22 @@ jobs:
       - name: Package Tier 2 eval artifact
         id: package
         env:
-          SKILL: ${{ github.event.inputs.skill || 'skill-optimizer' }}
+          SKILL: ${{ github.event.inputs.skill || 'all' }}
         run: |
           set -euo pipefail
           OUT="${RUNNER_TEMP}/tier2-${SKILL}"
-          ./scripts/run-skill-evals-soft.sh --skill "${SKILL}" --out "${OUT}"
+          if [[ "${SKILL}" == "all" ]]; then
+            ./scripts/run-skill-evals-soft.sh --all --out "${OUT}"
+            cat "${OUT}/tier2-batch-summary.md"
+          else
+            ./scripts/run-skill-evals-soft.sh --skill "${SKILL}" --out "${OUT}"
+            cat "${OUT}/tier2-summary.md"
+          fi
           echo "out=${OUT}" >> "${GITHUB_OUTPUT}"
-          # Surface summary in the job log
-          cat "${OUT}/tier2-summary.md"
 
       - name: Upload Tier 2 package
         uses: actions/upload-artifact@v7
         with:
-          name: tier2-${{ github.event.inputs.skill || 'skill-optimizer' }}
+          name: tier2-${{ github.event.inputs.skill || 'all' }}
           path: ${{ steps.package.outputs.out }}
           if-no-files-found: error
