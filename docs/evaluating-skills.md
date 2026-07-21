@@ -99,7 +99,7 @@ Optional automation: Anthropic [`skill-creator`](https://github.com/anthropics/s
 | Tier | When | What | Merge impact |
 |------|------|------|--------------|
 | **1 (hard)** | Every PR + every push to `main` (`.github/workflows/skills-ci.yml`) | `skills-ref validate` + eval harness integrity (`evals.json` + trigger queries shape) via [`scripts/check-skills-ci.sh`](../scripts/check-skills-ci.sh) | Fails the job on check failure; required check context `tier1` |
-| **2 (soft)** | Weekly schedule + `workflow_dispatch` (`.github/workflows/skills-evals-soft.yml`) | Packages one skill’s prompts + grading stubs + SCORECARD paste block via [`scripts/run-skill-evals-soft.sh`](../scripts/run-skill-evals-soft.sh); uploads artifact. Agent loops stay maintainer-run (no LLM in Actions yet) | Must **not** be a required PR check; does not block release-please |
+| **2 (soft)** | Weekly schedule + `workflow_dispatch` (`.github/workflows/skills-evals-soft.yml`) | Packages all first-party skills (or one via input): prompts + grading stubs + SCORECARD paste via [`scripts/run-skill-evals-soft.sh`](../scripts/run-skill-evals-soft.sh); uploads artifact. Agent loops stay maintainer-run (no LLM in Actions yet) | Must **not** be a required PR check; does not block release-please |
 | **3** | Future | Hard pass-rate gate vs baselines | Out of scope until flakiness/cost baselines exist |
 
 Local verify (same as CI Tier 1):
@@ -109,10 +109,11 @@ Local verify (same as CI Tier 1):
 ./scripts/check-skills-ci.sh --self-test
 ```
 
-Tier 2 package (soft; default skill `skill-optimizer`):
+Tier 2 package (soft; default all first-party skills):
 
 ```bash
 ./scripts/run-skill-evals-soft.sh
+./scripts/run-skill-evals-soft.sh --all
 ./scripts/run-skill-evals-soft.sh --skill readme-authoring
 ./scripts/run-skill-evals-soft.sh --self-test
 ```
@@ -125,10 +126,12 @@ Tier 1 has **no path filters** so the required `tier1` status always reports (in
 
 1. **Package** (local or Actions):
    ```bash
+   ./scripts/run-skill-evals-soft.sh
+   # → .adsk-tier2-out/{tier2-batch-summary.md,scorecard-paste-all.md,<skill>/...}
    ./scripts/run-skill-evals-soft.sh --skill skill-optimizer
    # → .adsk-tier2-out/skill-optimizer/{tier2-summary.md,scorecard-paste.md,cases.json,eval-*/}
    ```
-   Or: Actions → **skills-evals-soft** → Run workflow → optional `skill` input → download artifact.
+   Or: Actions → **skills-evals-soft** → Run workflow → optional `skill` input (`all` or one skill) → download artifact.
 2. **Run agents** for each `eval-<id>/`: clean context **with** skill, then **without**; paste prompts from `cases.json`; save outputs under each arm.
 3. **Grade** each `grading.json` (PASS/FAIL + evidence). Prefer scripts for mechanical checks; LLM/blind A/B for semantic ones ([Grading](#grading)).
 4. **Paste** the aggregate table from `scorecard-paste.md` into [evals/SCORECARD.md](evals/SCORECARD.md). Update that skill’s **Eval readiness** note when benchmarked.
