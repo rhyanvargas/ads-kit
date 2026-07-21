@@ -5,6 +5,19 @@ All notable changes to **The Agentic Development Starter Kit (ADSK)** are docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.9.0](https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.8.0...v0.9.0) (2026-07-21)
+
+
+### Added
+
+* **create-adsk:** add workflow packs and engineering-methods ([#27](https://github.com/rhyanvargas/agentic-development-starter-kit/pull/27))
+* **evals:** ship Tier 2 soft package for SCORECARD runs ([#28](https://github.com/rhyanvargas/agentic-development-starter-kit/pull/28))
+
+
+### Changed
+
+* add npm downloads badge for create-adsk ([#25](https://github.com/rhyanvargas/agentic-development-starter-kit/pull/25))
+
 ## [0.8.0](https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.7.0...v0.8.0) (2026-07-21)
 
 
