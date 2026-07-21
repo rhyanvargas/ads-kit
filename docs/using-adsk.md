@@ -4,6 +4,8 @@ For people adding ADSK to an **app** (not contributing to this kit).
 
 Skills in **your** project live under `.agents/skills/` ([agentskills.io](https://agentskills.io/client-implementation/adding-skills-support#where-to-scan)). There is no root `skills/` folder in your app.
 
+**Engineering leads** (team standard vs skills.sh discovery): [product/for-eng-leads.md](product/for-eng-leads.md) · [product/profiles-and-packs.md](product/profiles-and-packs.md).
+
 **Kit maintainers** (this repo): see [upgrading.md](upgrading.md#kit-maintainers) and [CONTRIBUTING.md](../CONTRIBUTING.md).
 
 ### Two-tool model
@@ -24,7 +26,7 @@ Skills in **your** project live under `.agents/skills/` ([agentskills.io](https:
 npx create-adsk
 ```
 
-Follow the prompts. Pick a profile, optionally add product-value-loop packs, then install.
+Follow the prompts. Pick a **profile** (kit depth), then optional **packs** (methodology: `product-value-loop`, `engineering-methods`), then install. See [product/profiles-and-packs.md](product/profiles-and-packs.md).
 
 | Profile | What you get |
 |---------|----------------|
@@ -37,9 +39,10 @@ Follow the prompts. Pick a profile, optionally add product-value-loop packs, the
 
 ```bash
 npx create-adsk --profile delivery --yes
+npx create-adsk --profile core --yes --packs engineering-methods
 ```
 
-`--profile` chooses the profile; `--yes` skips prompts (`core` if you omit `--profile`).
+`--profile` chooses the profile; `--yes` skips prompts (`core` if you omit `--profile`). Packs: `--packs <ids>` or `--with-optional-packs` (all). Playbooks: [product-value-loop.md](product-value-loop.md), [engineering-methods.md](engineering-methods.md).
 
 Later: `npx create-adsk update` · `npx create-adsk status`.  
 Flags and local kit path: [`packages/create-adsk/README.md`](../packages/create-adsk/README.md).
@@ -98,7 +101,7 @@ ADSK’s first-party skills cover **spec → plan → implement → review**. To
 Discover → Research → Prioritize → Plan → Execute → measure → Discover
 ```
 
-Those upstream skills are listed under `optional` in [`recommended-skills.json`](../recommended-skills.json). Install **project-local** (team share) and/or **global** (`-g`, personal) after your trust review; do not treat them as ADSK first-party packages. With create-adsk, you can also answer yes to the optional-packs prompt (or pass `--with-optional-packs`).
+Those upstream skills are listed under `optional` in [`recommended-skills.json`](../recommended-skills.json). Install **project-local** (team share) and/or **global** (`-g`, personal) after your trust review; do not treat them as ADSK first-party packages. With create-adsk, select packs interactively or pass `--packs` / `--with-optional-packs`.
 
 ---
 

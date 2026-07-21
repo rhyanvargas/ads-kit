@@ -2,7 +2,7 @@
 
 How to use **recommended upstream product skills** with ADSK’s first-party execution spine so teams discover real customer problems, research the market, prioritize honestly, plan outcomes, then ship with specs — and repeat.
 
-These skills are **not** first-party ADSK packages. They are pinned recommendations in [`recommended-skills.json`](../recommended-skills.json). Install them into your app’s `.agents/skills/` after trust review. Do not vendor their trees into this kit’s `skills/` package source.
+These skills are **not** first-party ADSK packages. They are pinned recommendations in [`recommended-skills.json`](../recommended-skills.json). Install them into your app’s `.agents/skills/` after trust review (or select the **`product-value-loop`** pack in `npx create-adsk`). Do not vendor their trees into this kit’s `skills/` package source. Pack model: [product/profiles-and-packs.md](product/profiles-and-packs.md).
 
 ---
 

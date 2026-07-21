@@ -44,8 +44,12 @@ program
   .option("--force-rules", "Overwrite existing stock rules", false)
   .option(
     "--with-optional-packs",
-    "Include optional product-value-loop packs (default off with --yes)",
+    "Include all optional packs (product-value-loop, engineering-methods); default off with --yes",
     false,
+  )
+  .option(
+    "--packs <ids>",
+    "Comma-separated pack IDs (e.g. engineering-methods or product-value-loop,engineering-methods). Overrides --with-optional-packs",
   )
   .action(async (opts) => {
     try {
@@ -61,6 +65,7 @@ program
         scope: parseScope(opts.scope),
         forceRules: Boolean(opts.forceRules),
         withOptionalPacks: Boolean(opts.withOptionalPacks),
+        packsFlag: opts.packs,
       });
     } catch (err) {
       console.error(err instanceof Error ? err.message : err);
