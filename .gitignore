@@ -17,6 +17,9 @@ Thumbs.db
 # sync-adsk.sh self-check temp dirs
 .adsk-self-check.*/
 
+# Tier 2 soft eval packages (local default --out)
+.adsk-tier2-out/
+
 # Local upstream skill installs (kit discovery is symlinks only — do not vendor)
 # Install in adopter apps via recommended-skills.json / docs/product-value-loop.md
 skills-lock.json

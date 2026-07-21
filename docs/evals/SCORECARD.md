@@ -16,12 +16,23 @@ Scoring axes (1–5): **Fit** (lifecycle value), **Portability**, **Clarity**, *
 
 ### How to interpret “Eval readiness”
 
-Cases and assertions live under each skill’s `evals/`. Published **with vs without** numeric deltas appear here after a **Tier 2** run (scheduled/manual soft evals or local iteration — see [docs/evaluating-skills.md](../evaluating-skills.md)); Tier 1 CI only checks harness integrity, not pass rates. Until Tier 2 numbers exist, treat readiness as “harness ready,” not “benchmarked on your model.”
+Cases and assertions live under each skill’s `evals/`. Published **with vs without** numeric deltas appear here after a **Tier 2** run (see [docs/evaluating-skills.md](../evaluating-skills.md)); Tier 1 CI only checks harness integrity, not pass rates. Until Tier 2 numbers exist, treat readiness as “harness ready,” not “benchmarked on your model.”
+
+### How to fill results from a Tier 2 package
+
+1. Generate (or download the Actions artifact from **skills-evals-soft**):
+   ```bash
+   ./scripts/run-skill-evals-soft.sh --skill skill-optimizer
+   ```
+2. Complete with/without runs and grade `eval-*/**/grading.json`.
+3. Copy the **Aggregate** table from `.adsk-tier2-out/<skill>/scorecard-paste.md` into the template below (replace `_TBD_` for that skill).
+4. Optionally bump **Eval readiness** to 5 and note the iteration date in **Notes**.
 
 **Template for pasting run results:**
 
 | Skill | Iteration | with_skill pass_rate | without_skill pass_rate | Δ pass_rate | Token Δ | Recommendation |
 |-------|-----------|----------------------|-------------------------|-------------|---------|----------------|
+| `skill-optimizer` | 1 | _TBD_ | _TBD_ | _TBD_ | _TBD_ | keep |
 | `spec-driven-workflow` | 1 | _TBD_ | _TBD_ | _TBD_ | _TBD_ | keep |
 | `devops-strategy-facilitator` | 1 | _TBD_ | _TBD_ | _TBD_ | _TBD_ | keep |
 

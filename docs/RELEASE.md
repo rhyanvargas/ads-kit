@@ -117,5 +117,5 @@ release-please uses `GITHUB_TOKEN` with `contents` + `pull-requests` write. If R
 ## Optional next
 
 - Publish/list on [skills.sh](https://skills.sh) via `npx skills`
-- Tier 2 evals — [docs/evaluating-skills.md](evaluating-skills.md)
+- Tier 2 eval package — `./scripts/run-skill-evals-soft.sh` / [docs/evaluating-skills.md](evaluating-skills.md); paste into [docs/evals/SCORECARD.md](evals/SCORECARD.md)
 - Enterprise adoption docs if targeting large orgs

@@ -1,7 +1,8 @@
-# Tier 2 soft signal: scheduled / manual with_skill vs without_skill evals.
+# Tier 2 soft signal: scheduled / manual eval package for one first-party skill.
 # Does NOT run on PRs. Must not be a required status check. Does not block release-please.
+# Packages prompts + grading stubs + SCORECARD paste block (no LLM calls in Actions).
 # Spec: .cursor/docs/specs/skill-eval-ci.md
-# Runbook: docs/evaluating-skills.md (Tier 2 section)
+# Runbook: docs/evaluating-skills.md (Tier 2)
 name: skills-evals-soft
 
 on:
@@ -9,36 +10,39 @@ on:
     # Mondays 15:00 UTC
     - cron: "0 15 * * 1"
   workflow_dispatch:
+    inputs:
+      skill:
+        description: "First-party skill folder under skills/ (default skill-optimizer)"
+        required: false
+        default: "skill-optimizer"
 
 permissions:
   contents: read
 
 jobs:
-  tier2-stub:
+  tier2-package:
     runs-on: ubuntu-latest
     # Soft signal only — missing secrets / incomplete automation must not fail required gates.
     continue-on-error: true
-    timeout-minutes: 30
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v7
 
-      - name: Tier 2 runbook notice
+      - name: Package Tier 2 eval artifact
+        id: package
+        env:
+          SKILL: ${{ github.event.inputs.skill || 'skill-optimizer' }}
         run: |
           set -euo pipefail
-          {
-            echo "# Tier 2 soft evals (v1 stub)"
-            echo
-            echo "Full with_skill vs without_skill agent loops are not automated in Actions yet."
-            echo "Follow the runbook in docs/evaluating-skills.md (Tier 2), then paste"
-            echo "pass-rate / token deltas into docs/evals/SCORECARD.md."
-            echo
-            echo "This workflow is intentionally soft (continue-on-error)."
-            echo "Do not add it as a required PR check; SCORECARD numbers come from Tier 2, not Tier 1."
-          } | tee tier2-summary.md
+          OUT="${RUNNER_TEMP}/tier2-${SKILL}"
+          ./scripts/run-skill-evals-soft.sh --skill "${SKILL}" --out "${OUT}"
+          echo "out=${OUT}" >> "${GITHUB_OUTPUT}"
+          # Surface summary in the job log
+          cat "${OUT}/tier2-summary.md"
 
-      - name: Upload summary artifact
+      - name: Upload Tier 2 package
         uses: actions/upload-artifact@v7
         with:
-          name: tier2-eval-summary
-          path: tier2-summary.md
+          name: tier2-${{ github.event.inputs.skill || 'skill-optimizer' }}
+          path: ${{ steps.package.outputs.out }}
           if-no-files-found: error
