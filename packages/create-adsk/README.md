@@ -25,7 +25,7 @@ Follow the prompts. You pick a profile, optionally add product packs, then the C
 |---------|---------|
 | `core` | Spec-driven workflow + Cursor commands |
 | `delivery` | Core + DevOps strategy + release automation |
-| `maintainer` | Delivery + skill/README authoring + stock rules |
+| `maintainer` | Delivery + skill/README authoring + supply-chain gate + stock rules |
 | `skills-only` | All first-party skills; no `.cursor/` writes |
 
 Source: [`profiles.json`](../../profiles.json). Contract: [`docs/product/create-adsk.md`](../../docs/product/create-adsk.md).

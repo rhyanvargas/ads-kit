@@ -26,6 +26,7 @@ This repository is documentation/templates plus `scripts/sync-adsk.sh`, Tier 1 s
 # create-adsk npm placeholder: ./scripts/npm-bootstrap-create-adsk-placeholder.sh
 # create-adsk npm tag:       ./scripts/tag-create-adsk-release.sh [--push]
 # create-adsk npm verify:    ./scripts/verify-create-adsk-registry.sh [--npx]
+# release-please refresh:    gh workflow run release-please.yml
 # create-adsk test:     npm test -w create-adsk
 # create-adsk build:    npm run build -w create-adsk
 # create-adsk typecheck:npm run typecheck -w create-adsk

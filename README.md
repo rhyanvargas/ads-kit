@@ -75,6 +75,7 @@ Profiles: [`profiles.json`](profiles.json). Contract: [docs/product/create-adsk.
 - **`release-automation`** — Conventional Commits → changelog/semver (GitHub or Azure DevOps; `/setup-releases`)
 - **`skill-optimizer`** — author/optimize skills for trigger accuracy, clarity, and token cost
 - **`readme-authoring`** — evidence-grounded README create/update/review (audience-aware; `/update-readme`)
+- **`supply-chain-gate`** — Socket / supply-chain PR triage and dependency intake (`/setup-socket`)
 
 ## Recommended upstream (adopter apps)
 

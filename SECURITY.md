@@ -23,17 +23,43 @@ Include:
 
 ## Dependency security
 
-This repository uses free GitHub Dependabot and an npm audit CI gate:
+This repository uses free GitHub Dependabot, npm audit CI, and Socket:
 
 - **Dependabot version updates:** [`.github/dependabot.yml`](.github/dependabot.yml) — weekly npm (root workspace / `create-adsk`) and GitHub Actions updates
 - **Dependabot alerts + security updates:** enable once in the GitHub Security tab (not fully encoded in YAML)
 - **CI audit gate:** [`.github/workflows/skills-ci.yml`](.github/workflows/skills-ci.yml) runs `npm ci` then `npm audit --audit-level=high` on every PR and push to `main`
+- **Socket for GitHub:** org/repo app for PR dependency comments
+- **Socket CI:** [`.github/workflows/socket.yml`](.github/workflows/socket.yml) runs `socketcli` when `SOCKET_SECURITY_API_KEY` is set (repo or org secret)
 
 Local check:
 
 ```bash
 npm ci && npm audit --audit-level=high
 ```
+
+## Socket policy (this repo)
+
+Success criterion is **policy-clean PR gates**, not a perfect 100 on every Socket package-health gauge for `create-adsk` (a CLI that writes files and spawns `npx skills` will keep filesystem/shell capability signals).
+
+| Alert class | Default stance | Notes |
+|-------------|----------------|-------|
+| Known malware / AI malware / typosquat / obfuscated code | **Block** | Never merge |
+| Install scripts (`postinstall` / `preinstall` on published deps) | **Block** | `create-adsk` must not ship consumer install scripts |
+| Git / HTTP / GitHub URL dependencies | **Block** | Prefer registry + lockfile |
+| Telemetry / protestware | **Block** | |
+| New High capability creep (network, eval, env harvest) without justification | **Block** | Document exception in PR if truly required |
+| Filesystem access / shell access in `create-adsk` | **Monitor / warn** | Expected for adopter CLI; do not “fix” by removing product behavior |
+| Recently published / new author / low downloads on brand-new packages | **Monitor** | Cool-down + reputation; not a merge blocker by itself |
+| Wildcard (`^`/`~`) ranges on **published** `create-adsk` production deps | **Warn → fix** | Prefer exact pins in `packages/create-adsk/package.json` |
+
+**Maintainer bootstrap (once):**
+
+1. Install [Socket for GitHub](https://socket.dev) on this repo (done if you already see Socket PR comments).
+2. Create a Socket API token and add GitHub Actions secret `SOCKET_SECURITY_API_KEY` (repo or org).
+3. In the Socket dashboard, align org/repo policy with the table above (block vs warn).
+4. Optional: require the `socket-security` check in branch protection after the secret is live.
+
+Agent playbook: first-party skill `supply-chain-gate` (`/setup-socket`).
 
 ## npm Trusted Publishing (`create-adsk`)
 

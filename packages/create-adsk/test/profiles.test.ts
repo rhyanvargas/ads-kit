@@ -17,4 +17,11 @@ describe("profiles", () => {
     const profiles = loadProfiles(snapshotRoot());
     expect(getProfile(profiles, "skills-only").cursor).toBe("none");
   });
+
+  it("maintainer includes supply-chain-gate", () => {
+    const profiles = loadProfiles(snapshotRoot());
+    expect(getProfile(profiles, "maintainer").skills).toContain(
+      "supply-chain-gate",
+    );
+  });
 });

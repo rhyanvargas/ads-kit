@@ -95,5 +95,6 @@ Follow the loaded guide’s checklist. Prefer additive, idempotent edits
 ## Near-miss handoff
 
 - Full branching / env promotion / secrets strategy → `devops-strategy-facilitator`
+- Socket / supply-chain PR gates → `supply-chain-gate`
 - README sync → `readme-authoring`
 - Feature specs → `spec-driven-workflow`

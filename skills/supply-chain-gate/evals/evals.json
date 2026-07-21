@@ -1,0 +1,46 @@
+{
+  "skill_name": "supply-chain-gate",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Socket PR comment says create-adsk has filesystem access and shell access alerts, and recently published. CI socket-security is yellow/red. What should we do before merge?",
+      "expected_output": "Treat filesystem/shell as monitor for the CLI; recently published as cool-down; do not gut fs/spawn; only block if High classes (malware, install scripts) appear.",
+      "assertions": [
+        "Does not recommend removing filesystem or child_process from create-adsk solely to raise Socket scores",
+        "Classifies filesystem/shell as expected/monitor (or equivalent)",
+        "Mentions recently published / cool-down as non-blocking alone",
+        "References policy allowlist or SECURITY.md Socket policy"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "PR adds a dependency that runs a postinstall script. Socket flags install scripts. Merge?",
+      "expected_output": "Block merge; replace or remove the dependency; do not grant a silent exception.",
+      "assertions": [
+        "States merge should be blocked",
+        "Identifies install scripts as a block-class alert",
+        "Recommends removing or replacing the dependency (not ignoring)"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Wire Socket into GitHub Actions for this kit. Secret may not exist yet.",
+      "expected_output": "Points at socket.yml + SOCKET_SECURITY_API_KEY; notes graceful skip without secret; points at policy allowlist.",
+      "assertions": [
+        "Mentions SOCKET_SECURITY_API_KEY",
+        "Mentions .github/workflows/socket.yml or equivalent Socket Actions workflow",
+        "Does not invent committing the API token into the repo"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Add a new production dependency to packages/create-adsk/package.json.",
+      "expected_output": "Runs intake checklist: Socket/health check, reject install scripts, exact pin, npm audit.",
+      "assertions": [
+        "Requires exact version pin (no caret) for create-adsk production deps",
+        "Mentions checking Socket or supply-chain signals before adding",
+        "Mentions npm audit"
+      ]
+    }
+  ]
+}

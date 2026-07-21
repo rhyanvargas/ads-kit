@@ -30,8 +30,8 @@ Follow the prompts. Pick a profile, optionally add product-value-loop packs, the
 |---------|----------------|
 | `core` | `spec-driven-workflow` + Cursor commands |
 | `delivery` | Core + DevOps strategy + release automation + Cursor commands |
-| `maintainer` | Delivery + skill-optimizer + readme-authoring + Cursor commands + stock rules |
-| `skills-only` | All five first-party skills; no `.cursor/` writes |
+| `maintainer` | Delivery + skill-optimizer + readme-authoring + supply-chain-gate + Cursor commands + stock rules |
+| `skills-only` | All first-party skills; no `.cursor/` writes |
 
 ### Non-interactive
 
@@ -220,7 +220,7 @@ More authoring guidance: [skill-authoring.md](skill-authoring.md).
 
 ## 5. Quick check
 
-- Agent sees `spec-driven-workflow`, `skill-optimizer`, `devops-strategy-facilitator`, `release-automation`, and `readme-authoring` (if installed)
+- Agent sees first-party skills from your profile (including `supply-chain-gate` on maintainer / skills-only)
 - Project install → real folders under `.agents/skills/`
 - Specs/plans unchanged after update/sync
 - Synced slash commands reference `.agents/skills/<name>` (not kit `skills/`)
