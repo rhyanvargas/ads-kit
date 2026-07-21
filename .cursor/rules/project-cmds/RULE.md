@@ -21,6 +21,8 @@ This repository is documentation/templates plus `scripts/sync-adsk.sh`, Tier 1 s
 # Dry-run kit:          ./scripts/sync-adsk.sh kit --dry-run
 # Skill Tier 1 gates:   ./scripts/check-skills-ci.sh
 # Skill Tier 1 fixtures:./scripts/check-skills-ci.sh --self-test
+# Skill Tier 2 package: ./scripts/run-skill-evals-soft.sh [--skill NAME]
+# Skill Tier 2 fixtures:./scripts/run-skill-evals-soft.sh --self-test
 # Dependency audit:     npm ci && npm audit --audit-level=high
 # create-adsk snapshot: ./scripts/prepare-create-adsk-snapshot.sh
 # create-adsk npm placeholder: ./scripts/npm-bootstrap-create-adsk-placeholder.sh
@@ -31,7 +33,7 @@ This repository is documentation/templates plus `scripts/sync-adsk.sh`, Tier 1 s
 # create-adsk build:    npm run build -w create-adsk
 # create-adsk typecheck:npm run typecheck -w create-adsk
 # Build:                npm run build -w create-adsk
-# Test:                 ./scripts/sync-adsk.sh self-check && ./scripts/check-skills-ci.sh --self-test && npm test -w create-adsk
+# Test:                 ./scripts/sync-adsk.sh self-check && ./scripts/check-skills-ci.sh --self-test && ./scripts/run-skill-evals-soft.sh --self-test && npm test -w create-adsk
 # Lint:                 n/a
 # Typecheck:            npm run typecheck -w create-adsk
 ```

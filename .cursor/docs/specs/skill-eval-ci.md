@@ -41,10 +41,10 @@ Confirmed from product direction discussion (correct before implement if wrong):
 
 ### Functional — Tier 2 (scheduled / manual soft evals)
 
-- [ ] REQ-009: A separate workflow (or separate job with `if`) supports `schedule` (e.g. weekly) and `workflow_dispatch`, and does **not** run on every PR by default.
-- [ ] REQ-010: Tier 2 documents how to run full with_skill vs without_skill iterations (per evaluating-skills) and, when automation is feasible in v1, uploads results as a **workflow artifact** (grading/benchmark JSON or a summary markdown). If full agent automation is not feasible without secrets/productized harness, Tier 2 v1 may be a **documented manual runbook + artifact upload path** — but the workflow stub and docs must exist.
-- [ ] REQ-011: Tier 2 failures (or missing API secrets) must **not** fail PR checks or block release-please. Soft signal only (job `continue-on-error: true` or separate non-required workflow).
-- [ ] REQ-012: After a Tier 2 run (automated or manual), maintainers can paste pass-rate / token deltas into [docs/evals/SCORECARD.md](../../../docs/evals/SCORECARD.md) using the existing results template; docs state that SCORECARD numbers come from Tier 2, not Tier 1.
+- [x] REQ-009: A separate workflow (or separate job with `if`) supports `schedule` (e.g. weekly) and `workflow_dispatch`, and does **not** run on every PR by default.
+- [x] REQ-010: Tier 2 documents how to run full with_skill vs without_skill iterations (per evaluating-skills) and uploads a **workflow artifact** via [`scripts/run-skill-evals-soft.sh`](../../../scripts/run-skill-evals-soft.sh) (summary + SCORECARD paste + grading stubs). Full agent loops remain maintainer-run until secrets/harness exist.
+- [x] REQ-011: Tier 2 failures (or missing API secrets) must **not** fail PR checks or block release-please. Soft signal only (job `continue-on-error: true` or separate non-required workflow).
+- [x] REQ-012: After a Tier 2 run (automated or manual), maintainers can paste pass-rate / token deltas into [docs/evals/SCORECARD.md](../../../docs/evals/SCORECARD.md) using `scorecard-paste.md` from the package; docs state that SCORECARD numbers come from Tier 2, not Tier 1.
 
 ### Non-Functional
 
@@ -104,14 +104,17 @@ Suggested layout:
 .github/workflows/skills-ci.yml          # Tier 1 on PR / push paths
 .github/workflows/skills-evals-soft.yml  # Tier 2 schedule + workflow_dispatch
 scripts/check-skills-ci.sh               # REQ-007 local+CI entrypoint
+scripts/run-skill-evals-soft.sh          # Tier 2 package + SCORECARD paste
 ```
 
-Tier 1 job sketch: checkout → setup Node → `./scripts/check-skills-ci.sh`.
+Tier 1 job sketch: checkout → setup Node → `./scripts/check-skills-ci.sh`.  
+Tier 2 job sketch: checkout → `./scripts/run-skill-evals-soft.sh --skill …` → upload artifact.
 
 ## Done when
 
 - [x] Spec requirements above implemented or explicitly deferred with SCORECARD/docs notes
 - [x] `./scripts/check-skills-ci.sh` passes on current tree
-- [ ] Tier 1 workflow visible on a skill-touching PR _(verify after merge / on PR)_
-- [x] project-cmds + evaluating-skills + RELEASE updated
+- [x] Tier 1 workflow visible on PRs (`tier1` required check)
+- [x] Tier 2 package script + soft workflow upload SCORECARD-ready artifact
+- [x] project-cmds + evaluating-skills + SCORECARD updated
 - [x] Tier 3 still documented as future, not implemented
