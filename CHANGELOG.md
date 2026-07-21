@@ -10,16 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-* **create-adsk:** add workflow packs and engineering-methods ([e1f930b](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/e1f930bf8d3554ace297b55abf8b8e8166651af7))
-* **create-adsk:** add workflow packs and engineering-methods ([ac45e17](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/ac45e177f5b1f761719bbb32bff4fc05c8736589))
-* **evals:** ship Tier 2 soft package for SCORECARD runs ([9a5de3b](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/9a5de3bab6840a31bc138cb49a1ec4e7176180bb))
-* **evals:** ship Tier 2 soft package for SCORECARD runs ([3f68d26](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/3f68d269e0292c45528dea7fd5f21def4db27416))
+* **create-adsk:** add workflow packs and engineering-methods ([#27](https://github.com/rhyanvargas/agentic-development-starter-kit/pull/27))
+* **evals:** ship Tier 2 soft package for SCORECARD runs ([#28](https://github.com/rhyanvargas/agentic-development-starter-kit/pull/28))
 
 
 ### Changed
 
-* add npm downloads badge for create-adsk ([622322e](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/622322e873d4d9f7600d2519c13ecc7cd79bdf49))
-* add npm downloads badge for create-adsk ([488aae6](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/488aae635c949d076e0a633ddd8aeb7b2fccf7a2))
+* add npm downloads badge for create-adsk ([#25](https://github.com/rhyanvargas/agentic-development-starter-kit/pull/25))
 
 ## [0.8.0](https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.7.0...v0.8.0) (2026-07-21)
 
