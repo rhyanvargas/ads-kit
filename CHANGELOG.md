@@ -5,6 +5,14 @@ All notable changes to **The Agentic Development Starter Kit (ADSK)** are docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.10.0](https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.9.0...v0.10.0) (2026-07-22)
+
+
+### Added
+
+* add ADSK brand assets and social preview ([#31](https://github.com/rhyanvargas/agentic-development-starter-kit/issues/31)) ([ede382e](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/ede382ea3e4fd70f76d8dc2646db69a567b5aef3))
+* **evals:** batch-package all first-party skills for Tier 2 ([#29](https://github.com/rhyanvargas/agentic-development-starter-kit/issues/29)) ([8b07028](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/8b07028a409028f02455f85406eb5e2227015ff1))
+
 ## [0.9.0](https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.8.0...v0.9.0) (2026-07-21)
 
 
