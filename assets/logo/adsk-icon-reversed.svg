@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">ADSK Logo (Reversed)</title>
+  <desc id="desc">White mark for dark backgrounds</desc>
+
+  <rect fill="#0F2744" x="32" y="32" width="448" height="448" rx="96"/>
+
+  <rect fill="#FFFFFF" x="148" y="168" width="216" height="52" rx="12"/>
+  <rect fill="#FFFFFF" x="128" y="232" width="256" height="52" rx="12"/>
+  <rect fill="#FFFFFF" x="148" y="296" width="216" height="52" rx="12"/>
+</svg>

@@ -1,18 +1,13 @@
-```text
- █████╗ ██████╗ ███████╗██╗  ██╗
-██╔══██╗██╔══██╗██╔════╝██║ ██╔╝
-███████║██║  ██║███████╗█████╔╝
-██╔══██║██║  ██║╚════██║██╔═██╗
-██║  ██║██████╔╝███████║██║  ██╗
-╚═╝  ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝
-```
+![Agentic Development Starter Kit](https://raw.githubusercontent.com/rhyanvargas/agentic-development-starter-kit/main/assets/social-preview.png)
 
 # create-adsk
 
 [![npm downloads](https://img.shields.io/npm/dm/create-adsk)](https://www.npmjs.com/package/create-adsk)
 [![Socket Badge](https://socket.dev/api/badge/npm/package/create-adsk)](https://socket.dev/npm/package/create-adsk)
 
-Adopt the **Agentic Development Starter Kit (ADSK)** as a versioned **profile** — skills via the skills CLI plus optional Cursor commands/rules. Not a skills marketplace.
+Adopt agent skills, Cursor commands, and team profiles — versioned in your repo. Not a skills marketplace.
+
+(`create-adsk` applies an ADSK **profile**: skills via the skills CLI plus optional Cursor commands/rules.)
 
 ## Quick Start
 
@@ -28,7 +23,7 @@ Follow the prompts. You pick a **profile** (kit depth), optionally select **pack
 |---------|---------|
 | `core` | Spec-driven workflow + Cursor commands |
 | `delivery` | Core + DevOps strategy + release automation |
-| `maintainer` | Delivery + skill/README authoring + supply-chain gate + stock rules |
+| `maintainer` | Delivery + skill/README/PR authoring + supply-chain gate + stock rules |
 | `skills-only` | All first-party skills; no `.cursor/` writes |
 
 Source: [`profiles.json`](../../profiles.json). Contract: [`docs/product/create-adsk.md`](../../docs/product/create-adsk.md).
