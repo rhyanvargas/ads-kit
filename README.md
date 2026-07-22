@@ -1,11 +1,4 @@
-```text
- █████╗ ██████╗ ███████╗██╗  ██╗
-██╔══██╗██╔══██╗██╔════╝██║ ██╔╝
-███████║██║  ██║███████╗█████╔╝
-██╔══██║██║  ██║╚════██║██╔═██╗
-██║  ██║██████╔╝███████║██║  ██╗
-╚═╝  ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝
-```
+![Agentic Development Starter Kit — adopt agent skills, Cursor commands, and team profiles, versioned in your repo.](assets/social-preview.png)
 
 # The Agentic Development Starter Kit (ADSK)
 
@@ -14,7 +7,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/create-adsk)](https://www.npmjs.com/package/create-adsk)
 [![Socket Badge](https://socket.dev/api/badge/npm/package/create-adsk)](https://socket.dev/npm/package/create-adsk)
 
-A ready-to-adopt kit for agentic, spec-driven development — workflow skills, Cursor slash commands, and a versioned profile for your team.
+Adopt agent skills, Cursor commands, and team profiles — versioned in your repo.
 
 **Repository:** [`rhyanvargas/agentic-development-starter-kit`](https://github.com/rhyanvargas/agentic-development-starter-kit)
 
