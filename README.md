@@ -13,6 +13,8 @@ Adopt agent skills, Cursor commands, and team profiles — versioned in your rep
 
 ## Quick Start
 
+### Interactive
+
 ```bash
 npx create-adsk
 ```
@@ -28,7 +30,9 @@ npx create-adsk --profile delivery --yes
 | Flag | Meaning |
 |------|---------|
 | `--profile <id>` | Choose a profile without prompting |
-| `--yes` / `-y` | Skip prompts (`core` if `--profile` is omitted) |
+| `--yes` / `-y` | Skip prompts (`core` if `--profile` is omitted; packs off unless set below) |
+| `--packs <ids>` | Comma-separated pack IDs (e.g. `engineering-methods`) |
+| `--with-optional-packs` | Include all packs |
 
 Later: `npx create-adsk update` · `npx create-adsk status` · [create-adsk docs](packages/create-adsk)
 
@@ -59,6 +63,7 @@ Profiles: [`profiles.json`](profiles.json). Contract: [docs/product/create-adsk.
 | **Cursor wiring** | `.cursor/commands/`, `.cursor/rules/` | Optional slash commands + quality gates |
 | **Adopter CLI** | [`packages/create-adsk`](packages/create-adsk) | `npx create-adsk` — init / update / status |
 | **Sync script** | [`scripts/sync-adsk.sh`](scripts/sync-adsk.sh) | Kit discovery links + adopter Cursor sync (`kit` / `adopter` / `self-check`) |
+| **Brand assets** | [`assets/`](assets/) | Logo, favicons, social preview (`social-preview.svg` / `.png`) |
 | **Recommended upstream** | [`recommended-skills.json`](recommended-skills.json) | Pinned external skills for **adopter apps** (not shipped as first-party) |
 
 **Your app** should use `.agents/skills/` only — see [docs/using-adsk.md](docs/using-adsk.md).
@@ -71,23 +76,24 @@ Profiles: [`profiles.json`](profiles.json). Contract: [docs/product/create-adsk.
 - **`skill-optimizer`** — author/optimize skills for trigger accuracy, clarity, and token cost
 - **`readme-authoring`** — evidence-grounded README create/update/review (audience-aware; `/update-readme`)
 - **`supply-chain-gate`** — Socket / supply-chain PR triage and dependency intake (`/setup-socket`)
+- **`pull-request-authoring`** — open/refresh GitHub PRs from branch commits (`/create-pr`)
+
+Source of truth for which profile installs which skills: [`profiles.json`](profiles.json).
 
 ## Recommended upstream (adopter apps)
 
 Install after trust review — pins and commands in [`recommended-skills.json`](recommended-skills.json):
 
-- **Recommended:** Superpowers (full tree), Vercel Labs `find-skills`, Anthropic `skill-creator` (maintainers)
-- **Optional packs (create-adsk):** `engineering-methods` (Superpowers subset — [docs](docs/engineering-methods.md)), product-value-loop ([docs](docs/product-value-loop.md)), plus `frontend-design`
+- **Recommended:** Superpowers (full tree), Vercel Labs `find-skills`, Dependabot guide, npm security best practices; Anthropic `skill-creator` (maintainers)
+- **Optional packs (create-adsk):** `engineering-methods` ([docs](docs/engineering-methods.md)), `product-value-loop` ([docs](docs/product-value-loop.md)), plus `frontend-design`
 
 ## Product value loop (optional)
-
-To maximize customer value before (and while) you execute specs:
 
 ```text
 Discover → Research → Prioritize → Plan → Execute → (measure) → Discover
 ```
 
-Optional upstream skills (`inspired-product`, `mom-test`, `continuous-discovery`, `jobs-to-be-done`, `competitive-intelligence`, roadmap/prioritization) install **project-local** or **global** (`-g`) — see **[docs/product-value-loop.md](docs/product-value-loop.md)**. They complement ADSK spec-driven delivery; they do not replace it. Pins live in [`recommended-skills.json`](recommended-skills.json).
+Optional upstream skills for that loop install **project-local** or **global** (`-g`) via the `product-value-loop` pack — see **[docs/product-value-loop.md](docs/product-value-loop.md)**. They complement ADSK spec-driven delivery; they do not replace it.
 
 ## Try this repo in Cursor
 
