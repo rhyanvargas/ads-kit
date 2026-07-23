@@ -3,24 +3,41 @@ import {
   buildOptionalPackArgv,
   buildSkillsAddArgv,
   buildSkillsUpdateArgv,
-  resolveSpawnCommand,
+  resolveSpawnSpec,
 } from "../src/skills.js";
 
-describe("resolveSpawnCommand", () => {
-  it("maps npx/npm to .cmd on win32 (avoids spawn ENOENT)", () => {
-    expect(resolveSpawnCommand("npx", "win32")).toBe("npx.cmd");
-    expect(resolveSpawnCommand("npm", "win32")).toBe("npm.cmd");
+describe("resolveSpawnSpec", () => {
+  it("uses shell:true on win32 so npx.cmd does not hit CVE-2024-27980 EINVAL", () => {
+    expect(resolveSpawnSpec("npx", "win32")).toEqual({
+      command: "npx.cmd",
+      shell: true,
+    });
+    expect(resolveSpawnSpec("npm", "win32")).toEqual({
+      command: "npm.cmd",
+      shell: true,
+    });
   });
 
-  it("leaves commands unchanged on non-Windows", () => {
-    expect(resolveSpawnCommand("npx", "darwin")).toBe("npx");
-    expect(resolveSpawnCommand("npx", "linux")).toBe("npx");
-    expect(resolveSpawnCommand("npm", "darwin")).toBe("npm");
+  it("keeps shell:false and bare commands on non-Windows", () => {
+    expect(resolveSpawnSpec("npx", "darwin")).toEqual({
+      command: "npx",
+      shell: false,
+    });
+    expect(resolveSpawnSpec("npx", "linux")).toEqual({
+      command: "npx",
+      shell: false,
+    });
   });
 
-  it("does not double-suffix or rewrite unrelated commands", () => {
-    expect(resolveSpawnCommand("npx.cmd", "win32")).toBe("npx.cmd");
-    expect(resolveSpawnCommand("node", "win32")).toBe("node");
+  it("does not double-suffix or rewrite unrelated commands on win32", () => {
+    expect(resolveSpawnSpec("npx.cmd", "win32")).toEqual({
+      command: "npx.cmd",
+      shell: true,
+    });
+    expect(resolveSpawnSpec("node", "win32")).toEqual({
+      command: "node",
+      shell: true,
+    });
   });
 });
 

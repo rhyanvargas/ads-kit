@@ -6,17 +6,23 @@ export type RunCommand = (
   opts: { cwd: string; dryRun: boolean },
 ) => Promise<{ code: number; argv: string[] }>;
 
+export type SpawnSpec = { command: string; shell: boolean };
+
 /**
- * Resolve npm/npx for `spawn(..., { shell: false })`.
- * On Windows, Node cannot find bare `npx`/`npm` (they are `.cmd` shims) → ENOENT.
+ * Windows spawn rules for npm/npx:
+ * - Bare `npx` with `shell: false` → ENOENT (shim is `npx.cmd`)
+ * - `npx.cmd` with `shell: false` → EINVAL (CVE-2024-27980 blocks .cmd/.bat)
+ * So win32 must use the `.cmd` name **and** `shell: true`.
  */
-export function resolveSpawnCommand(
+export function resolveSpawnSpec(
   cmd: string,
   platform: NodeJS.Platform = process.platform,
-): string {
-  if (platform !== "win32") return cmd;
-  if (cmd === "npx" || cmd === "npm") return `${cmd}.cmd`;
-  return cmd;
+): SpawnSpec {
+  if (platform !== "win32") {
+    return { command: cmd, shell: false };
+  }
+  const command = cmd === "npx" || cmd === "npm" ? `${cmd}.cmd` : cmd;
+  return { command, shell: true };
 }
 
 export function buildSkillsAddArgv(opts: {
@@ -70,20 +76,20 @@ export const defaultRunCommand: RunCommand = async (argv, opts) => {
     return { code: 0, argv };
   }
   const [cmd, ...args] = argv;
-  const resolved = resolveSpawnCommand(cmd);
+  const { command, shell } = resolveSpawnSpec(cmd);
   const code = await new Promise<number>((resolve, reject) => {
-    const child = spawn(resolved, args, {
+    const child = spawn(command, args, {
       cwd: opts.cwd,
       stdio: "inherit",
-      shell: false,
+      shell,
     });
     child.on("error", (err: NodeJS.ErrnoException) => {
-      if (err.code === "ENOENT") {
+      if (err.code === "ENOENT" || err.code === "EINVAL") {
         reject(
           new Error(
-            `Failed to spawn '${resolved}' (ENOENT). Ensure Node.js is installed and on PATH` +
+            `Failed to spawn '${command}' (${err.code}). Ensure Node.js/npm are installed and on PATH` +
               (process.platform === "win32"
-                ? " (Windows: create-adsk runs npx.cmd without a shell)."
+                ? " (Windows: create-adsk spawns npx.cmd with shell:true)."
                 : ".") +
               ` Command was: ${argv.join(" ")}`,
           ),
