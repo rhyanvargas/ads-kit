@@ -5,6 +5,13 @@ All notable changes to **The Agentic Development Starter Kit (ADSK)** are docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.10.2](https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.10.1...v0.10.2) (2026-07-23)
+
+
+### Fixed
+
+* **create-adsk:** use shell:true with npx.cmd on Windows ([#34](https://github.com/rhyanvargas/agentic-development-starter-kit/issues/34)) ([b090ae4](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/b090ae46aaafda537f636bfa662b0938b449b940))
+
 ## [0.10.1](https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.10.0...v0.10.1) (2026-07-23)
 
 
