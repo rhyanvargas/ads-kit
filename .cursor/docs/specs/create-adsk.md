@@ -41,6 +41,7 @@ Profiles: [`profiles.json`](../../../profiles.json).
 - [x] REQ-012: Must not implement a third-party or registry skill browser.
 - [x] REQ-013: Must not expose `sync-adsk.sh kit` (maintainer symlink mode).
 - [x] REQ-014: Docs and CLI help state the two-tool model (skills = folders; create-adsk = kit profile).
+- [x] REQ-015: On Windows, skill install/update must spawn `npx.cmd` / `npm.cmd` (not bare `npx`/`npm` with `shell: false`) so adopters do not hit `spawn npx ENOENT`.
 
 ## Acceptance Criteria
 
@@ -53,6 +54,7 @@ Profiles: [`profiles.json`](../../../profiles.json).
 
 - REQ-001–011: CLI integration tests in `packages/create-adsk/test/*.integration.test.ts` (temp dir + fake skills runner).
 - REQ-012–014: Golden help text in `packages/create-adsk/test/help.test.ts`.
+- REQ-015: `resolveSpawnCommand` unit tests in `packages/create-adsk/test/skills-args.test.ts`.
 - Verify: `npm test -w create-adsk` and `./scripts/sync-adsk.sh self-check`.
 
 ## Boundaries

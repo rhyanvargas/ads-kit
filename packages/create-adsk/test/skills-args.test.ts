@@ -3,7 +3,26 @@ import {
   buildOptionalPackArgv,
   buildSkillsAddArgv,
   buildSkillsUpdateArgv,
+  resolveSpawnCommand,
 } from "../src/skills.js";
+
+describe("resolveSpawnCommand", () => {
+  it("maps npx/npm to .cmd on win32 (avoids spawn ENOENT)", () => {
+    expect(resolveSpawnCommand("npx", "win32")).toBe("npx.cmd");
+    expect(resolveSpawnCommand("npm", "win32")).toBe("npm.cmd");
+  });
+
+  it("leaves commands unchanged on non-Windows", () => {
+    expect(resolveSpawnCommand("npx", "darwin")).toBe("npx");
+    expect(resolveSpawnCommand("npx", "linux")).toBe("npx");
+    expect(resolveSpawnCommand("npm", "darwin")).toBe("npm");
+  });
+
+  it("does not double-suffix or rewrite unrelated commands", () => {
+    expect(resolveSpawnCommand("npx.cmd", "win32")).toBe("npx.cmd");
+    expect(resolveSpawnCommand("node", "win32")).toBe("node");
+  });
+});
 
 describe("skills argv builders", () => {
   it("builds project skills add with --skill per skill and -y", () => {

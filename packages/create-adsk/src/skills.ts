@@ -6,6 +6,19 @@ export type RunCommand = (
   opts: { cwd: string; dryRun: boolean },
 ) => Promise<{ code: number; argv: string[] }>;
 
+/**
+ * Resolve npm/npx for `spawn(..., { shell: false })`.
+ * On Windows, Node cannot find bare `npx`/`npm` (they are `.cmd` shims) → ENOENT.
+ */
+export function resolveSpawnCommand(
+  cmd: string,
+  platform: NodeJS.Platform = process.platform,
+): string {
+  if (platform !== "win32") return cmd;
+  if (cmd === "npx" || cmd === "npm") return `${cmd}.cmd`;
+  return cmd;
+}
+
 export function buildSkillsAddArgv(opts: {
   kitSource: string;
   skills: string[];
@@ -57,13 +70,28 @@ export const defaultRunCommand: RunCommand = async (argv, opts) => {
     return { code: 0, argv };
   }
   const [cmd, ...args] = argv;
+  const resolved = resolveSpawnCommand(cmd);
   const code = await new Promise<number>((resolve, reject) => {
-    const child = spawn(cmd, args, {
+    const child = spawn(resolved, args, {
       cwd: opts.cwd,
       stdio: "inherit",
       shell: false,
     });
-    child.on("error", reject);
+    child.on("error", (err: NodeJS.ErrnoException) => {
+      if (err.code === "ENOENT") {
+        reject(
+          new Error(
+            `Failed to spawn '${resolved}' (ENOENT). Ensure Node.js is installed and on PATH` +
+              (process.platform === "win32"
+                ? " (Windows: create-adsk runs npx.cmd without a shell)."
+                : ".") +
+              ` Command was: ${argv.join(" ")}`,
+          ),
+        );
+        return;
+      }
+      reject(err);
+    });
     child.on("close", (c) => resolve(c ?? 1));
   });
   return { code, argv };
