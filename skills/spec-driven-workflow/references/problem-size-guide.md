@@ -90,11 +90,20 @@ Then skip to implementation:
 - Spec prevents scope creep
 - Review ensures completeness
 
+### Tracer bullet (when architecture/integration is ambiguous)
+
+If the Medium plan touches unclear architecture or a new integration path, require a **tracer bullet** before multi-phase implement:
+
+- Thin vertical slice (one path end-to-end) + one project verify
+- Plan includes an explicit tracer task, **or** “N/A — architecture proven” with justification
+
+Skip the tracer only when the integration path is already proven in-repo.
+
 ---
 
 ## Large Changes
 
-**Research before spec.**
+**Research before spec. Tracer before multi-phase implement.**
 
 ### Examples
 - New system or major feature
@@ -107,13 +116,18 @@ Then skip to implementation:
 2. Understand constraints and dependencies
 3. `/draft-spec "..."` - be very detailed
 4. Split into smaller specs if needed
-5. Full workflow for each sub-spec
+5. Full workflow for each sub-spec — plans **must** include a tracer-bullet task (thin vertical slice + one verify) **before** multi-phase implement, or “N/A — architecture proven” with justification
 
 ### Why research first?
 - Large scope = high ambiguity
 - Need to understand constraints
 - May require human decisions
 - Spec needs to be very specific
+
+### Why tracer before full build?
+- Validates architecture early with one runnable path
+- Cheap to discard vs rewriting after multi-file implement
+- Large path cannot skip tracer without explicit justification
 
 ---
 

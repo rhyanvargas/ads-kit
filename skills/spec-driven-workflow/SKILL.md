@@ -29,16 +29,19 @@ Read `references/problem-size-guide.md` when size is unclear.
 Do not advance phases until the current artifact is good enough (user review for medium+; self-check for small).
 
 ```
-SIZE → SPECIFY → PLAN (medium+) → IMPLEMENT → REVIEW
+SIZE → SPECIFY → PLAN (medium+) → CLEAR → IMPLEMENT → REVIEW
               ↑______________ living spec ______________|
 ```
 
 1. **Size** — Match depth to problem size (table above).
 2. **Specify** — Surface assumptions first, then write testable requirements (`REQ-XXX` preferred). Read `references/spec-writing-guide.md`.
 3. **Plan** (medium+) — Break work into concrete, verifiable tasks. Prefer a written plan before multi-file changes.
-4. **Implement** — Follow the spec/plan; map each requirement to tests unless non-behavioral with explicit justification.
-5. **Review** — Check correctness, security-sensitive paths, test coverage, and spec compliance.
-6. **Brownfield** — Document existing behavior with extract-spec before large changes. Read `references/brownfield-workflow.md`.
+   - **Tracer bullet** (Large, and Medium when architecture/integration is ambiguous): include a thin vertical slice + one verify **before** multi-phase implement, or an explicit “N/A — architecture proven” justification. See `references/problem-size-guide.md`.
+   - Prefer splitting **build** tasks from **verify/review** tasks so QA can proceed in parallel with the next REQ slice (optional for Small).
+4. **Clear** (Medium+) — Persist exploration into the living spec/plan; start implement lean. Do not carry the full exploration transcript as working context. Bounded explore (subagent or dedicated chat) is fine; durable findings must already be in artifacts.
+5. **Implement** — Follow the spec/plan; map each requirement to tests unless non-behavioral with explicit justification.
+6. **Review** — Check correctness, security-sensitive paths, test coverage, and spec compliance.
+7. **Brownfield** — Document existing behavior with extract-spec before large changes. Read `references/brownfield-workflow.md`.
 
 ### Before writing a spec
 
@@ -106,4 +109,4 @@ Load references only when needed:
 - Requirements are specific and testable.
 - Medium+ specs name preferred test seams (highest useful existing boundary) when behavior is non-trivial.
 - Implemented requirements have automated tests (or a short justification when truly non-behavioral).
-- Run the project's verify commands (tests/lint/typecheck) before claiming done.
+- **Fail-closed verify:** Before claiming done, run `project-cmds` (or documented project verify). If verify is **not** configured, do **not** claim done — instruct `/quick-start` or set `project-cmds` / portable equivalent. “Looks good” without verify is forbidden.

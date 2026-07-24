@@ -149,12 +149,13 @@ If the agent is going wrong:
 
 Fixing mid-stream often makes things worse.
 
-### Keep context fresh
+### Clear before implement (Medium+)
 
-Long sessions accumulate cruft:
-- Start new chats for new tasks
-- Reference specific files, don't rely on memory
-- Re-state constraints when they matter
+Explore → Plan → **Clear** → Implement:
+- Bound exploration (subagent or dedicated chat OK)
+- Persist durable findings into the living spec and/or plan
+- Start implement lean — do not carry the full exploration transcript as working context
+- Reference specific files and the living artifacts; re-state constraints when they matter
 
 ---
 

@@ -48,6 +48,8 @@ Do **not** ship the mattpocock suite (`setup` → `to-spec` → `to-tickets` →
 
 Do **not** treat this pack as a skills.sh Testing topic clone. It is a **versioned team contract** wired to ADSK commands.
 
+HITL vs AFK (when background agents are OK): [product/agent-autonomy.md](product/agent-autonomy.md) — docs only; no AFK skill in this pack.
+
 ## PRD vs engineering spec
 
 | Need | Use |

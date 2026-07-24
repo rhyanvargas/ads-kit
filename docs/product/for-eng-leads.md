@@ -24,6 +24,8 @@ Teams already have a skills marketplace ([skills.sh](https://skills.sh), includi
 
 > When my team uses coding agents, I need a **shared floor** for security, docs, delivery, and specs — versioned and updatable — without turning every engineer into a skill curator or blocking creative use of the long tail.
 
+**Thesis:** **Process + feedback loops beat more agent power.** Stronger models without gated specs, tracer validation, fail-closed verify, and review still amplify bad habits. ADSK’s value is the trustworthy delivery spine — not raw model strength.
+
 **Why now:** Agents amplify both good and bad habits. Without a team contract, each repo drifts (different SDD packs, README writers, release scripts). With only a catalog, you get installs but no update channel, Cursor wiring, or collision policy.
 
 ## Positioning (one sentence)
@@ -129,6 +131,7 @@ Tune the mandate to org risk; the kit gives you the **mechanism**, not a single 
 
 | Doc | Use |
 |-----|-----|
+| [agent-autonomy.md](agent-autonomy.md) | HITL vs AFK policy (docs only; no Ralph product) |
 | [profiles-and-packs.md](profiles-and-packs.md) | Depth × methodology model; shipped vs planned |
 | [create-adsk.md](create-adsk.md) | Adopter product contract |
 | [using-adsk.md](../using-adsk.md) | Install / update / alternate paths |

@@ -8,7 +8,7 @@ Single source of truth for ADSK’s **adopter product**. Agents and contributors
 
 ## Job
 
-> When I’m starting or standardizing agentic work in an app repo, I want to adopt a proven spec→ship kit with optional Cursor slash commands, so I can get a consistent team workflow without assembling skills, commands, and sync scripts myself.
+> When I’m starting or standardizing agentic work in an app repo, I want to adopt a proven spec→ship kit with optional Cursor slash commands, so I can get a consistent team workflow (process + feedback loops, not more agent power) without assembling skills, commands, and sync scripts myself.
 
 ## One-liner
 

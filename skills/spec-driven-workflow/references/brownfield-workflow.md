@@ -83,7 +83,7 @@ Call out risk areas: shared modules, data migrations, API consumers.
 ```
 
 - Prefer extending existing tests before changing behavior
-- Run project verify commands after each meaningful slice
+- **Fail-closed verify:** run `project-cmds` / project verify after each meaningful slice; if verify is missing, refuse “done” and point to `/quick-start`
 - Keep the baseline spec updated if you discover prior behavior was wrong
 
 ### 6. Review

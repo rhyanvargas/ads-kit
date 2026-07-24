@@ -68,9 +68,9 @@ Create an implementation plan from a specification.
 
 ### Behavior
 1. Reads and analyzes the spec
-2. Breaks down into concrete steps
+2. Breaks down into concrete steps (prefer build vs verify/review split for parallel QA)
 3. Identifies files to create/modify
-4. Plans tests and verification
+4. Plans tests and verification; for Large (and ambiguous Medium), requires a **tracer bullet** task or “N/A — architecture proven” justification
 5. Writes **trackable todos** (Cursor: YAML frontmatter `todos` — see `cursor-adapter.md`)
 
 ### Output
@@ -104,11 +104,12 @@ From plan:
 ```
 
 ### Behavior
-1. Reads spec/plan
-2. Creates and modifies files
-3. Writes tests
-4. Runs tests and linters
-5. Fixes issues (up to 3 iterations)
+1. Clears exploration into living artifacts when Medium+ (start lean)
+2. Reads spec/plan
+3. Creates and modifies files
+4. Writes tests
+5. **Fail-closed:** runs project verify (`project-cmds`); fixes failures. If verify is not configured, refuses to claim done and points to `/quick-start` — never a silent “looks good”
+6. Fixes issues (up to 3 iterations)
 
 ### Output
 - Generated code following the spec
@@ -213,12 +214,14 @@ Initialize the spec-driven workflow for a project.
 1. Detects tech stack (language, framework, tools)
 2. Reads existing config files
 3. Updates `.cursor/rules/project/RULE.md` and `.cursor/rules/project-cmds/RULE.md`
-4. Provides next steps
+4. Confirms skills under `.agents/skills/`
+5. Ends with the **where truth lives** checklist: artifact home, verify location, skills path, next command (`/draft-spec` vs `/extract-spec`)
 
 ### Output
 - Updated project rules
 - Detected stack summary
 - Recommended workflow (greenfield vs brownfield)
+- Checklist of where specs, verify, and skills live
 
 ### What It Detects
 - Package manager (npm, pip, cargo, etc.)
@@ -226,6 +229,7 @@ Initialize the spec-driven workflow for a project.
 - Test framework (Jest, pytest, etc.)
 - Linter (ESLint, ruff, etc.)
 - Build commands
+- Artifact home convention (`.cursor/...` vs `docs/...`)
 
 ---
 
