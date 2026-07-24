@@ -5,6 +5,13 @@ All notable changes to **The Agentic Development Starter Kit (ADSK)** are docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.10.5](https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.10.4...v0.10.5) (2026-07-24)
+
+
+### Changed
+
+* **evals:** add adopter /run-skill-evals path and SCORECARD-first guidance ([#41](https://github.com/rhyanvargas/agentic-development-starter-kit/issues/41)) ([71c5500](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/71c55002e4cbfd0cc4cab299b5a0a16e8039be06))
+
 ## [0.10.4](https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.10.3...v0.10.4) (2026-07-24)
 
 
