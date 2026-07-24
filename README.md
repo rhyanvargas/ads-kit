@@ -114,10 +114,11 @@ cd agentic-development-starter-kit
 
 | Doc | Topic |
 |-----|--------|
-| [docs/using-adsk.md](docs/using-adsk.md) | Install, create-adsk, ask-agent sync, Cursor, custom skills |
+| [docs/using-adsk.md](docs/using-adsk.md) | Install, create-adsk, ask-agent sync, Cursor, custom skills, when to eval |
 | [docs/product/create-adsk.md](docs/product/create-adsk.md) | Product contract — create-adsk profiles |
 | [docs/product/for-eng-leads.md](docs/product/for-eng-leads.md) | Eng-lead pitch — team standard vs skills.sh |
 | [docs/product/profiles-and-packs.md](docs/product/profiles-and-packs.md) | Profile (depth) × pack (methodology) model |
+| [docs/evals/SCORECARD.md](docs/evals/SCORECARD.md) | First-party with/without eval results (trust by default) |
 | [packages/create-adsk](packages/create-adsk) | `create-adsk` CLI (init / update / status) |
 | [`profiles.json`](profiles.json) | Machine-readable adopter profiles |
 | [docs/product-value-loop.md](docs/product-value-loop.md) | Optional pack: discover → research → prioritize → plan → execute |

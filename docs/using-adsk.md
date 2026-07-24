@@ -186,6 +186,8 @@ For a normal app install, pick **Project**.
 
 ## 4. Add your own skill (your project only)
 
+**Profile:** use **`maintainer`** (or `skills-only`) so `skill-optimizer` and `/optimize-skill` are available. Do not ship a company skill without that loop.
+
 1. Create a folder under `.agents/skills/` (folder name = skill `name`):
 
    ```bash
@@ -207,12 +209,15 @@ For a normal app install, pick **Project**.
    1. …
    ```
 
-3. **Optimize before you ship it.** Ask the agent to follow `skill-optimizer` (or `/optimize-skill`):
+3. **Optimize before you ship it** (`/optimize-skill` or ask the agent to follow `skill-optimizer`):
    - Keep `SKILL.md` lean; put depth in `references/` with when-to-load conditions
    - Add `evals/trigger/eval_queries.json` (~20 should/shouldn’t queries, including near-misses)
+   - Add `evals/evals.json` (2–3 cases + 1 edge) when the skill has behavior instructions
    - Validate: `npx --yes skills-ref validate ./.agents/skills/my-company-skill`
 
-4. Restart / refresh the agent so it picks up the new skill.
+4. **Before commit (behavior change):** `/run-skill-evals .agents/skills/my-company-skill` — with-skill vs without-skill; fix assertions or instructions from the grades.
+
+5. Restart / refresh the agent so it picks up the new skill.
 
 **Share with the team:** commit `.agents/skills/`.  
 **Keep private:** gitignore, for example `.agents/skills/my-company-skill/`.
@@ -221,13 +226,31 @@ More authoring guidance: [skill-authoring.md](skill-authoring.md).
 
 ---
 
-## 5. Quick check
+## 5. Evaluating skills (adopters)
+
+Evals are a **maintainer quality loop**, not something every app re-runs on every PR.
+
+| Situation | Do this |
+|-----------|---------|
+| Trust stock first-party skills | Read [evals/SCORECARD.md](evals/SCORECARD.md) — published with/without deltas |
+| Author or change a **company** skill | `/optimize-skill` → harness + `/run-skill-evals` before ship |
+| Changed model or major skill behavior | Re-run `/run-skill-evals` for that skill only |
+| Day-to-day feature PRs | Do **not** re-benchmark; use normal `/review` |
+
+**Easy path:** after Cursor sync, invoke `/run-skill-evals` (thin command). Full playbook: [evaluating-skills.md](evaluating-skills.md). Kit Tier 1 CI (`check-skills-ci.sh`) only checks harness shape — pass rates come from the agent with/without loop (Tier 2).
+
+Hard LLM pass-rate gates and `create-adsk eval` are **out of scope** until cost/flakiness baselines exist.
+
+---
+
+## 6. Quick check
 
 - Agent sees first-party skills from your profile (including `supply-chain-gate` and `pull-request-authoring` on maintainer / skills-only)
 - Project install → real folders under `.agents/skills/`
 - Specs/plans unchanged after update/sync
 - Synced slash commands reference `.agents/skills/<name>` (not kit `skills/`)
 - `/sync-adsk` is available if you synced Cursor commands (create-adsk or script)
+- `/run-skill-evals` available when you need with/without evidence (maintainer / synced commands)
 - create-adsk adopters have `.adsk/config.json` and `npx create-adsk status` is clean
 
 ---

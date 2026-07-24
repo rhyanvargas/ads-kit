@@ -8,11 +8,13 @@ Scoring axes (1–5): **Fit** (lifecycle value), **Portability**, **Clarity**, *
 
 | Skill | Fit | Portability | Clarity | Trust | Eval readiness | Disposition | Notes |
 |-------|-----|-------------|---------|-------|----------------|-------------|-------|
-| `spec-driven-workflow` | 5 | 5 | 4 | 5 (in-repo Apache-2.0) | 4 (cases defined; run locally) | **Keep (core)** | Kit spine: specify → plan → implement → review + brownfield |
-| `devops-strategy-facilitator` | 4 | 5 | 5 | 5 | 4 (cases defined; run locally) | **Keep** | Decision-first strategy sessions; not a full SRE pack |
-| `release-automation` | 5 | 5 | 5 | 5 | 4 (cases defined; run locally) | **Keep** | Platform-confirmed changelog/semver (GitHub release-please or Azure + git-cliff) |
-| `skill-optimizer` | 5 | 5 | 5 | 5 | 4 (cases defined; run locally) | **Keep** | Author/optimize skills; required gate for new skills |
-| `readme-authoring` | 4 | 5 | 5 | 5 (in-repo Apache-2.0) | 4 (cases + npm CLI Quick Start pattern) | **Keep** | Audience-aware + evidence-grounded README craft; OSS Quick Start patterns in `references/quick-start-patterns.md` |
+| `spec-driven-workflow` | 5 | 5 | 4 | 5 (in-repo Apache-2.0) | 5 (Tier 2 2026-07-24) | **Keep (core)** | Kit spine: specify → plan → implement → review + brownfield |
+| `devops-strategy-facilitator` | 4 | 5 | 5 | 5 | 5 (Tier 2 2026-07-24) | **Keep** | Decision-first strategy sessions; not a full SRE pack; Δ=0 this run (assertions may be weak-signal) |
+| `release-automation` | 5 | 5 | 5 | 5 | 5 (Tier 2 2026-07-24) | **Keep** | Platform-confirmed changelog/semver (GitHub release-please or Azure + git-cliff); strongest Δ this run |
+| `skill-optimizer` | 5 | 5 | 5 | 5 | 5 (Tier 2 2026-07-24) | **Keep** | Author/optimize skills; required gate for new skills |
+| `readme-authoring` | 4 | 5 | 5 | 5 (in-repo Apache-2.0) | 5 (Tier 2 2026-07-24) | **Keep** | Audience-aware + evidence-grounded README craft; Δ=0 this run |
+| `pull-request-authoring` | 5 | 5 | 5 | 5 | 5 (Tier 2 2026-07-24) | **Keep** | Conventional Commits PR title/body via `gh` |
+| `supply-chain-gate` | 5 | 5 | 5 | 5 | 5 (Tier 2 2026-07-24) | **Keep** | Socket / dependency merge triage |
 
 ### How to interpret “Eval readiness”
 
@@ -20,7 +22,7 @@ Cases and assertions live under each skill’s `evals/`. Published **with vs wit
 
 ### How to fill results from a Tier 2 package
 
-1. Generate (or download the Actions artifact from **skills-evals-soft**):
+1. Generate (or download the Actions artifact from **skills-evals-soft**), or ask the agent **`/run-skill-evals`**:
    ```bash
    ./scripts/run-skill-evals-soft.sh
    # or one skill: ./scripts/run-skill-evals-soft.sh --skill skill-optimizer
@@ -29,13 +31,19 @@ Cases and assertions live under each skill’s `evals/`. Published **with vs wit
 3. Copy the **Aggregate** table from `.adsk-tier2-out/<skill>/scorecard-paste.md` into the template below (replace `_TBD_` for that skill).
 4. Optionally bump **Eval readiness** to 5 and note the iteration date in **Notes**.
 
-**Template for pasting run results:**
+Adopters deciding keep/optional/replace: use the published table below; re-run only when you change the skill or model ([evaluating-skills.md](../evaluating-skills.md#adopters-first)).
+
+**Tier 2 iteration 1 results** (2026-07-24; Cursor `agent` CLI ask-mode; isolated workspaces; LLM-graded assertions; token Δ n/a):
 
 | Skill | Iteration | with_skill pass_rate | without_skill pass_rate | Δ pass_rate | Token Δ | Recommendation |
 |-------|-----------|----------------------|-------------------------|-------------|---------|----------------|
-| `skill-optimizer` | 1 | _TBD_ | _TBD_ | _TBD_ | _TBD_ | keep |
-| `spec-driven-workflow` | 1 | _TBD_ | _TBD_ | _TBD_ | _TBD_ | keep |
-| `devops-strategy-facilitator` | 1 | _TBD_ | _TBD_ | _TBD_ | _TBD_ | keep |
+| `devops-strategy-facilitator` | 1 | 1.0 (14/14) | 1.0 (14/14) | +0.0 | n/a | keep |
+| `pull-request-authoring` | 1 | 0.917 (11/12) | 0.833 (10/12) | +0.084 | n/a | keep |
+| `readme-authoring` | 1 | 0.941 (16/17) | 0.941 (16/17) | +0.0 | n/a | keep |
+| `release-automation` | 1 | 1.0 (14/14) | 0.643 (9/14) | +0.357 | n/a | keep |
+| `skill-optimizer` | 1 | 1.0 (14/14) | 0.929 (13/14) | +0.071 | n/a | keep |
+| `spec-driven-workflow` | 1 | 1.0 (27/27) | 0.889 (24/27) | +0.111 | n/a | keep |
+| `supply-chain-gate` | 1 | 0.923 (12/13) | 0.692 (9/13) | +0.231 | n/a | keep |
 
 ## Recommended upstream (not vendored)
 

@@ -23,6 +23,7 @@ This repository is documentation/templates plus `scripts/sync-adsk.sh`, Tier 1 s
 # Skill Tier 1 fixtures:./scripts/check-skills-ci.sh --self-test
 # Skill Tier 2 package: ./scripts/run-skill-evals-soft.sh [--all] [--skill NAME]
 # Skill Tier 2 fixtures:./scripts/run-skill-evals-soft.sh --self-test
+# Skill Tier 2 agent loop (Cursor): /run-skill-evals  # with/without; not a CI gate
 # Dependency audit:     npm ci && npm audit --audit-level=high
 # create-adsk snapshot: ./scripts/prepare-create-adsk-snapshot.sh
 # create-adsk npm placeholder: ./scripts/npm-bootstrap-create-adsk-placeholder.sh

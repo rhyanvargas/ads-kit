@@ -101,9 +101,23 @@ Full adopter guide: [using-adsk.md](../using-adsk.md).
 |-------------------|------------|
 | Profile ≥ `core` (or `delivery` for shipping teams) | Personal / spike skills via `npx skills` |
 | Supply-chain + README standards on maintainer-facing repos | UI craft / niche library skills from skills.sh |
+| Company skills: `maintainer` + `/optimize-skill` + evals before ship | Re-running kit SCORECARD on every PR |
 | Optional: product-value-loop when PMs share the agent workflow | Anything not in `do_not_add` |
 
 Tune the mandate to org risk; the kit gives you the **mechanism**, not a single org policy.
+
+### Skill evals (org policy)
+
+**Thesis:** process + feedback loops beat more agent power — including skill quality loops. Treat evals as **maintainer work**, not an install feature.
+
+| Policy | Detail |
+|--------|--------|
+| **Default** | Trust [evals/SCORECARD.md](../evals/SCORECARD.md) for first-party skills; do **not** re-benchmark every app PR |
+| **Company skills** | Profile ≥ `maintainer`; `/optimize-skill` before ship; `/run-skill-evals` when behavior changes |
+| **Re-run when** | Skill behavior/description changed, or the team switched models |
+| **Do not** | Add hard LLM pass-rate CI gates yet; do not expect `create-adsk eval` (deferred) |
+
+Adopter quick path: [using-adsk.md — Evaluating skills](../using-adsk.md#5-evaluating-skills-adopters). Playbook: [evaluating-skills.md](../evaluating-skills.md).
 
 ## When ADSK is the right kit
 
@@ -135,6 +149,7 @@ Tune the mandate to org risk; the kit gives you the **mechanism**, not a single 
 | [profiles-and-packs.md](profiles-and-packs.md) | Depth × methodology model; shipped vs planned |
 | [create-adsk.md](create-adsk.md) | Adopter product contract |
 | [using-adsk.md](../using-adsk.md) | Install / update / alternate paths |
+| [evaluating-skills.md](../evaluating-skills.md) · [evals/SCORECARD.md](../evals/SCORECARD.md) | When to re-eval; published with/without deltas |
 | [product-value-loop.md](../product-value-loop.md) | Optional discover → ship pack playbook |
 | [`recommended-skills.json`](../../recommended-skills.json) | Pins, trust notes, `do_not_add` |
 | [`profiles.json`](../../profiles.json) | Machine-readable profiles + optional packs |

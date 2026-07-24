@@ -52,7 +52,7 @@ npx --yes skills-ref validate ./.agents/skills/<skill-name>
 
 ## Output evals
 
-Behavior changes need cases in `evals/evals.json`. Run with vs without skill and watch pass-rate and token deltas — [docs/evaluating-skills.md](evaluating-skills.md).
+Behavior changes need cases in `evals/evals.json`. Run with vs without skill and watch pass-rate and token deltas — [docs/evaluating-skills.md](evaluating-skills.md). Cursor: **`/run-skill-evals`**. Adopters: trust [evals/SCORECARD.md](evals/SCORECARD.md) for kit skills; re-run only when you change a skill or model.
 
 ## Layout
 
@@ -76,6 +76,7 @@ skills/<name>/
 |----------|------|
 | Rule `.cursor/rules/skill-authoring/` | Quality gate when skill files are in context |
 | Command `/optimize-skill` | Thin wrapper → `skill-optimizer` |
+| Command `/run-skill-evals` | Thin wrapper → with/without output eval loop |
 | Skill `skill-optimizer` | Full optimization playbook |
 
 ## Anti-patterns

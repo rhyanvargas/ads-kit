@@ -67,7 +67,7 @@ Name each reference and the **condition** to load it. Soft triggers (“see over
 
 Iterate: fail train queries → generalize description/instructions → recheck held-out queries. Do not overfit keywords from individual failures.
 
-Load `references/eval-loop.md` when adding or revising evals (also `docs/evaluating-skills.md` in this repo).
+Load `references/eval-loop.md` when adding or revising evals (also `docs/evaluating-skills.md` in this repo). For a with/without pass in Cursor, prefer `/run-skill-evals`.
 
 ### 6. Layout
 

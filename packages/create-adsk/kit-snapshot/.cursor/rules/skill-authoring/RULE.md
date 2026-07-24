@@ -15,7 +15,7 @@ Also apply when the user asks to create, optimize, or review a skill — even if
 1. Read and apply `skill-optimizer` (kit: `skills/skill-optimizer`; adopter: `.agents/skills/skill-optimizer`).
 2. Keep `SKILL.md` lean; put depth in `references/` with explicit when-to-load conditions.
 3. Write `description` as what + when; add near-miss “Do not use for…” when adjacent skills share keywords.
-4. Add/update `evals/trigger/eval_queries.json` (~20 queries, include near-misses) and behavior `evals/evals.json` when instructions change.
+4. Add/update `evals/trigger/eval_queries.json` (~20 queries, include near-misses) and behavior `evals/evals.json` when instructions change. For a with/without pass, use `/run-skill-evals`.
 5. Run `npx --yes skills-ref validate <skill-dir>` before claiming done.
 
 ## Layout

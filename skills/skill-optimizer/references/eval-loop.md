@@ -1,6 +1,6 @@
 # Eval loop (trigger + output)
 
-Use when adding or revising skill evals. Repo overview: `docs/evaluating-skills.md`.
+Use when adding or revising skill evals. Repo overview: `docs/evaluating-skills.md`. Cursor: `/run-skill-evals` for the with/without output pass.
 
 ## Trigger accuracy
 
@@ -16,7 +16,7 @@ Optional automation: Anthropic [`skill-creator`](https://github.com/anthropics/s
 
 ## Output quality
 
-For each case in `evals/evals.json`, run clean contexts:
+For each case in `evals/evals.json`, run clean contexts (or invoke `/run-skill-evals`):
 
 1. **with_skill** — skill available
 2. **without_skill** (or prior version)
