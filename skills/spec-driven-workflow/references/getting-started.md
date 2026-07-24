@@ -61,7 +61,13 @@ Open in Cursor and run `/quick-start`, or activate `spec-driven-workflow`.
 
 ## Avoid overlapping SDD skills
 
-Do **not** also install generic `spec-driven-development` packs (e.g. Addy Osmani’s or Warp’s) alongside ADSK — they compete for the same triggers and use different paths/templates. Use ADSK SDD as the spine; pair with recommended Superpowers skills for planning/TDD (see repo `recommended-skills.json`).
+Do **not** also install parallel “spec-driven” / PRD packs alongside ADSK — they compete for the same triggers and use different paths/templates. Examples (see `do_not_add.overlapping-sdd` in repo `recommended-skills.json`):
+
+- Addy Osmani `spec-driven-development`, Warp `spec-driven-implementation`
+- Matt Pocock `to-prd` / `to-spec` / `to-tickets` (`to-prd` was renamed to `to-spec`; skills.sh may still list the old name)
+- GitHub `create-specification`
+
+**Use instead:** ADSK `spec-driven-workflow` as the specify→ship spine; optional `engineering-methods` (`writing-plans`, TDD, systematic-debugging) for plan depth; optional `product-value-loop` for discover/prioritize/roadmap. Do not install `to-prd` for “product requirements” — that skill synthesizes chat into tracker tickets, which is a different job from continuous discovery.
 
 ## Next steps
 

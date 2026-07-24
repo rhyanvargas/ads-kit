@@ -162,14 +162,25 @@ npx skills experimental_install
 
 ---
 
+## PRD vs engineering spec
+
+| Need | Use |
+|------|-----|
+| Customer evidence, opportunity trees, strategy, outcome roadmaps | This loop (wondelai / deanpeters / competitive-intel) |
+| Executable engineering requirements (`REQ-XXX`), living specs, implement/review | ADSK `spec-driven-workflow` |
+| Granular TDD implementation plans | [`engineering-methods`](engineering-methods.md) (`writing-plans`) |
+
+Do **not** install Matt Pocock `to-prd` / `to-spec` for “product requirements.” Those skills synthesize the current chat into issue-tracker tickets — a different job from discovery PRDs, and they collide with ADSK SDD triggers/paths (`do_not_add.overlapping-sdd`).
+
 ## Trust notes
 
 - Prefer install counts, maintainer reputation, and a human review of each `SKILL.md` before team rollout ([lifecycle trust criteria](lifecycle-coverage.md#trust-criteria)).
 - `competitive-intelligence` may show elevated automated risk scores (network/research behavior). Review before production use.
-- Do **not** install overlapping generic “spec-driven development” packs alongside ADSK SDD — see `do_not_add` in [`recommended-skills.json`](../recommended-skills.json).
+- Do **not** install overlapping generic “spec-driven development” packs alongside ADSK SDD — see `do_not_add` in [`recommended-skills.json`](../recommended-skills.json) (includes `to-prd` / `to-spec` / `to-tickets`, Addy SDD, Warp SDD).
 
 ## Related
 
 - [lifecycle-coverage.md](lifecycle-coverage.md) — stage map
+- [engineering-methods.md](engineering-methods.md) — Superpowers plan/TDD complement
 - [using-adsk.md](using-adsk.md) — install / sync
 - [recommended-skills.json](../recommended-skills.json) — machine-readable pins

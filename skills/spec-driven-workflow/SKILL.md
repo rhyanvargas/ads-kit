@@ -61,6 +61,8 @@ SUCCESS CRITERIA:
 → Are these the right targets?
 ```
 
+**Sketch test seams (medium+).** Prefer the highest useful *existing* boundary (API, module, port) over inventing new ones; confirm with the user before locking them into the spec. Details: `references/spec-writing-guide.md`.
+
 Do not silently fill ambiguous requirements — that is the failure mode SDD exists to prevent.
 
 ### Living spec
@@ -102,5 +104,6 @@ Load references only when needed:
 
 - Assumptions surfaced before drafting when requirements are ambiguous.
 - Requirements are specific and testable.
+- Medium+ specs name preferred test seams (highest useful existing boundary) when behavior is non-trivial.
 - Implemented requirements have automated tests (or a short justification when truly non-behavioral).
 - Run the project's verify commands (tests/lint/typecheck) before claiming done.
