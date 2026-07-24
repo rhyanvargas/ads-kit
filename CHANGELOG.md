@@ -5,6 +5,13 @@ All notable changes to **The Agentic Development Starter Kit (ADSK)** are docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.10.4](https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.10.3...v0.10.4) (2026-07-24)
+
+
+### Changed
+
+* **sdd:** encode Clear, tracers, fail-closed verify, and process thesis ([#39](https://github.com/rhyanvargas/agentic-development-starter-kit/issues/39)) ([4fa01d5](https://github.com/rhyanvargas/agentic-development-starter-kit/commit/4fa01d54e8e10b3599227269e547a66af5f8ce3d))
+
 ## [0.10.3](https://github.com/rhyanvargas/agentic-development-starter-kit/compare/v0.10.2...v0.10.3) (2026-07-24)
 
 
