@@ -39,6 +39,19 @@ Open in Cursor and run `/quick-start`, or activate `spec-driven-workflow`.
 
 ## First run
 
+### Where truth lives (checklist)
+
+After `/quick-start` (or equivalent setup), confirm:
+
+| Item | Where |
+|------|--------|
+| Spec/plan artifact home | `.cursor/docs/specs` + `.cursor/plans` **or** `docs/specs` + `docs/plans` (see `artifact-homes.md`) |
+| Verify commands | `.cursor/rules/project-cmds/` (or portable project verify docs) — **required before claiming done** |
+| Skills discovery | `.agents/skills/` |
+| Next command | Greenfield → `/draft-spec`; brownfield → `/extract-spec` |
+
+If verify is missing, run `/quick-start` or set `project-cmds` — do not claim implement “done” without it (fail-closed).
+
 ### Brownfield (existing projects)
 
 1. Confirm ADSK skills are available
@@ -58,6 +71,7 @@ Open in Cursor and run `/quick-start`, or activate `spec-driven-workflow`.
 2. Cursor commands (optional): `/draft-spec`, `/plan-impl`, `/implement-spec`, `/review`, `/extract-spec`, `/quick-start`, `/sync-adsk`
 3. In an **app** after CLI install: `.agents/skills/` has the skill folders
 4. In **this kit repo**: `skills/` is package source; `.agents/skills/` and `.cursor/skills/` link to it
+5. Checklist above is complete (artifact home, verify location, skills path, next command)
 
 ## Avoid overlapping SDD skills
 

@@ -9,6 +9,8 @@
 
 Adopt agent skills, Cursor commands, and team profiles — versioned in your repo.
 
+**Process + feedback loops beat more agent power.** ADSK’s edge is a gated spec→ship spine with verify and review — not a bigger model. Team framing: [docs/product/for-eng-leads.md](docs/product/for-eng-leads.md).
+
 **Repository:** [`rhyanvargas/agentic-development-starter-kit`](https://github.com/rhyanvargas/agentic-development-starter-kit)
 
 ## Quick Start
@@ -19,7 +21,7 @@ Adopt agent skills, Cursor commands, and team profiles — versioned in your rep
 npx create-adsk
 ```
 
-Follow the prompts to pick a profile (`core`, `delivery`, `maintainer`, or `skills-only`) and optionally add packs. That installs skills, optional Cursor commands, and `.adsk/config.json`. Team framing: [docs/product/for-eng-leads.md](docs/product/for-eng-leads.md).
+Follow the prompts to pick a profile (`core`, `delivery`, `maintainer`, or `skills-only`) and optionally add packs. That installs skills, optional Cursor commands, and `.adsk/config.json`. Autonomy (HITL vs AFK): [docs/product/agent-autonomy.md](docs/product/agent-autonomy.md).
 
 ### Non-interactive
 

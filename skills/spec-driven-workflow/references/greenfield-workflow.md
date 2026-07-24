@@ -82,10 +82,11 @@ Or from the plan:
 ```
 
 The agent will:
+- Clear exploration into living artifacts when Medium+ (start lean)
 - Follow the spec/plan step by step
 - Create and modify files
 - Write tests
-- Run tests and linters
+- **Fail-closed verify:** run `project-cmds` / project verify; refuse “done” if verify is missing (point to `/quick-start`)
 - Fix issues automatically
 
 ### 6. Review

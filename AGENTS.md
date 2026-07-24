@@ -41,6 +41,8 @@ Prefer:
 | **Commands** | User-invoked multi-step `/` workflows (thin wrappers) |
 | **Skills** | Deep reusable playbooks + `references/` + `evals/` |
 
+Lean steering: keep always-on text short; move procedure depth into skills (see [docs/skill-authoring.md](docs/skill-authoring.md)). HITL vs AFK: [docs/product/agent-autonomy.md](docs/product/agent-autonomy.md).
+
 ## Repo intent
 
 - Keep docs concise and evidence-based (link to real file paths).
