@@ -2,6 +2,16 @@
 
 How to test whether a skill produces good outputs using **eval-driven iteration**. Based on [Evaluating skill output quality](https://agentskills.io/skill-creation/evaluating-skills).
 
+## Adopters first
+
+| Goal | Action |
+|------|--------|
+| Decide keep / optional / replace for **kit** skills | Read [evals/SCORECARD.md](evals/SCORECARD.md) — do **not** re-run every PR |
+| Ship or change a **company** skill | `/optimize-skill` then `/run-skill-evals` (see [using-adsk.md](using-adsk.md#5-evaluating-skills-adopters)) |
+| Re-benchmark after a model change | `/run-skill-evals` for the affected skill only |
+
+Evals are a maintainer quality loop. Cursor entrypoint: **`/run-skill-evals`**. Hard LLM CI gates and `create-adsk eval` are deferred (see Tier 3 below).
+
 ## Why evals
 
 A single happy-path prompt is not enough. Evals answer:
@@ -124,6 +134,8 @@ Tier 1 has **no path filters** so the required `tier1` status always reports (in
 
 **Goal:** fill numeric with/without rows in [evals/SCORECARD.md](evals/SCORECARD.md). Tier 1 never produces those numbers.
 
+**Cursor:** `/run-skill-evals` (or `/run-skill-evals <skill-path>`) drives the same loop for kit or adopter skills.
+
 1. **Package** (local or Actions):
    ```bash
    ./scripts/run-skill-evals-soft.sh
@@ -131,7 +143,8 @@ Tier 1 has **no path filters** so the required `tier1` status always reports (in
    ./scripts/run-skill-evals-soft.sh --skill skill-optimizer
    # → .adsk-tier2-out/skill-optimizer/{tier2-summary.md,scorecard-paste.md,cases.json,eval-*/}
    ```
-   Or: Actions → **skills-evals-soft** → Run workflow → optional `skill` input (`all` or one skill) → download artifact.
+   Or: Actions → **skills-evals-soft** → Run workflow → optional `skill` input (`all` or one skill) → download artifact.  
+   Adopter apps without kit scripts: read prompts from `.agents/skills/<name>/evals/evals.json` (see `/run-skill-evals`).
 2. **Run agents** for each `eval-<id>/`: clean context **with** skill, then **without**; paste prompts from `cases.json`; save outputs under each arm.
 3. **Grade** each `grading.json` (PASS/FAIL + evidence). Prefer scripts for mechanical checks; LLM/blind A/B for semantic ones ([Grading](#grading)).
 4. **Paste** the aggregate table from `scorecard-paste.md` into [evals/SCORECARD.md](evals/SCORECARD.md). Update that skill’s **Eval readiness** note when benchmarked.

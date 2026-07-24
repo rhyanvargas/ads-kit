@@ -19,4 +19,4 @@ Read and follow **`skills/skill-optimizer`** (or `.agents/skills/skill-optimizer
 1. Locate the target skill directory (ask if unclear).
 2. Run the skill-optimizer gates (validate, description, lean body, progressive disclosure, trigger + output evals).
 3. Apply lean edits; move kit-meta/rationale into `references/` with hard when-to-load conditions.
-4. Report what changed and any remaining eval gaps.
+4. Report what changed and any remaining eval gaps. For a full with/without output pass, hand off to `/run-skill-evals`.
