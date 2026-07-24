@@ -65,6 +65,17 @@
         "Chooses docs/specs/ as the output home",
         "Does not require creating .cursor/docs/specs/ for this skills-only layout"
       ]
+    },
+    {
+      "id": 7,
+      "prompt": "Medium feature: add webhook delivery retries with exponential backoff. Before writing the full requirements body, what should you confirm about how we'll test this? Also — should we install mattpocock to-prd for the product requirements doc?",
+      "expected_output": "Sketches preferred test seams (highest useful existing boundary, e.g. outbound HTTP / queue consumer) and confirms them; rejects installing to-prd/to-spec alongside ADSK — use ADSK SDD for the engineering spec (and product-value-loop if discovery PRDs are needed).",
+      "assertions": [
+        "Mentions test seams or preferred external boundaries before or while drafting",
+        "Prefers existing high-level seams over inventing many new internal doubles",
+        "Does not recommend installing to-prd or to-spec as the ADSK/product PRD solution",
+        "Points to ADSK spec-driven workflow (and optionally product-value-loop for discovery) instead of a parallel SDD pack"
+      ]
     }
   ]
 }

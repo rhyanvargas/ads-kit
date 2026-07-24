@@ -249,7 +249,7 @@ Don't let specs rot:
 ### Spec-Driven Development
 - [Martin Fowler: Understanding SDD](https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html)
 - [Alex Merced: AI-Assisted Coding Guide](https://dev.to/alexmercedcoder/a-practical-guide-to-ai-assisted-coding-tools-2fh5)
-- Patterns absorbed (not vendored): [addyosmani/agent-skills@spec-driven-development](https://skills.sh/addyosmani/agent-skills/spec-driven-development) (assumption surfacing, gated phases, success-criteria reframing); [github/awesome-copilot@create-specification](https://skills.sh/github/awesome-copilot/create-specification) (AI-ready language)
+- Patterns absorbed (not vendored): [addyosmani/agent-skills@spec-driven-development](https://skills.sh/addyosmani/agent-skills/spec-driven-development) (assumption surfacing, gated phases, success-criteria reframing); [github/awesome-copilot@create-specification](https://skills.sh/github/awesome-copilot/create-specification) (AI-ready language); [mattpocock/skills@to-spec](https://skills.sh/mattpocock/skills/to-spec) (preferred test seams — formerly `to-prd`); [warpdotdev/common-skills@write-product-spec](https://skills.sh/warpdotdev/common-skills/write-product-spec) (consumer-facing PRODUCT half vs TECH)
 
 ### General AI Coding
 - [Anthropic: Claude Best Practices](https://docs.anthropic.com/claude/docs)

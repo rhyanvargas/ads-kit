@@ -42,9 +42,21 @@ Upstream source: [`obra/superpowers`](https://github.com/obra/superpowers). Full
 
 ## Exclusions
 
-Do **not** add overlapping SDD / “spec-driven” packs that replace ADSK `spec-driven-workflow` — see `do_not_add.overlapping-sdd` in [`recommended-skills.json`](../recommended-skills.json).
+Do **not** add overlapping SDD / “spec-driven” packs that replace ADSK `spec-driven-workflow` — see `do_not_add.overlapping-sdd` in [`recommended-skills.json`](../recommended-skills.json). That includes Matt Pocock `to-prd` / `to-spec` / `to-tickets` (`to-prd` was renamed to `to-spec`; skills.sh may still show the old name), Addy Osmani SDD, Warp SDD, and `create-specification`.
+
+Do **not** ship the mattpocock suite (`setup` → `to-spec` → `to-tickets` → `implement`) as an ADSK optional pack — it is a competing spine with issue-tracker coupling. Personal install is fine; team ADSK adoption stays on first-party SDD + this pack.
 
 Do **not** treat this pack as a skills.sh Testing topic clone. It is a **versioned team contract** wired to ADSK commands.
+
+## PRD vs engineering spec
+
+| Need | Use |
+|------|-----|
+| Discover problems, prioritize, outcome roadmap | [`product-value-loop`](product-value-loop.md) |
+| Executable engineering requirements + plan/implement/review | First-party `spec-driven-workflow` |
+| Bite-sized TDD plans after the living spec is accepted | This pack (`writing-plans`) |
+
+`to-prd` / `to-spec` synthesize chat into tracker tickets — that is **not** continuous-discovery product PRD work.
 
 ## Install
 

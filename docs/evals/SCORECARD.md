@@ -46,7 +46,7 @@ Cases and assertions live under each skill’s `evals/`. Published **with vs wit
 | `anthropics/skills` → `skill-creator` | 4 for maintainers/evals | Official Anthropic; Apache-2.0 | Maintainer-oriented; not required for every developer | **Recommend (maintainers)** |
 | `anthropics/skills` → `frontend-design` | 3 (UI) | Official + high installs | UI craft only | **Optional** |
 | Product value loop (wondelai / deanpeters / `competitive-intelligence`) | 5 for product teams | See per-source notes in `recommended-skills.json` | Install in **adopter apps** only; never vendor into kit | **Optional** — [product-value-loop.md](../product-value-loop.md) |
-| Overlapping SDD skills (`to-spec`, other “spec-driven-development” packs) | — | Varies | Collides with first-party SDD | **Do not add** |
+| Overlapping SDD skills (`to-prd`→`to-spec`, `to-tickets`, Addy/Warp SDD, `create-specification`) | — | Varies | Collides with first-party SDD; competing tracker spine | **Do not add** |
 | Overlapping README skills (`crafting-effective-readmes`, `accelint-readme-writer`, …) | — | Varies | Collides with first-party `readme-authoring` | **Do not add** |
 
 ## Gaps (v1)

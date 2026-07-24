@@ -39,14 +39,28 @@ Write for both humans and agents:
 - Include examples and edge cases where behavior could fork
 - Keep the spec self-contained (do not rely on chat history)
 
+### Sketch preferred test seams (medium+)
+
+Before locking requirements, name where you will prove the behavior from the outside:
+
+1. Prefer an **existing** high seam (HTTP/API boundary, public module, port/adapter) over a new internal seam.
+2. Prefer **fewer** seams — inventing many test doubles usually means the design is unclear.
+3. Confirm seams with the user when they imply new interfaces or architecture.
+4. Record seams under Testing / Strategy (or in a short “Test seams” note) so the plan can map `REQ-XXX` → seam → tests.
+
+Do not put specific file paths or code snippets in the product half of a split spec — seams and interfaces belong in TECH / plan once product intent is stable.
+
 ## Functional vs Technical
 
 ### Functional Spec (What)
 Lives in the feature spec document:
-- User behavior and expectations
-- Acceptance criteria
+- User behavior and expectations (consumer POV — end user, caller, or agent)
+- Acceptance criteria and invariants that must hold
 - Business rules
 - Constraints and edge cases
+- Out of scope
+
+Describe **what the consumer observes**, not internal types, state layout, or module graphs.
 
 ### Technical Spec (How)
 Default home is project rules (`.cursor/rules/`) and conventions:
@@ -59,10 +73,10 @@ For **large** features that need both lenses, you may split:
 
 | File | Contents |
 |------|----------|
-| `{feature}.md` or `PRODUCT.md` | Outcomes, requirements, acceptance, out of scope |
-| `{feature}-tech.md` or `TECH.md` | Approach, APIs, data model, migrations — only when the “how” is a decision, not a preference |
+| `{feature}.md` or `PRODUCT.md` | Outcomes, consumer-facing behavior/invariants, acceptance, out of scope — **no** impl details |
+| `{feature}-tech.md` or `TECH.md` | Approach, APIs, data model, migrations, test seams — only when the “how” is a decision, not a preference |
 
-Prefer one file unless the tech section would dominate the product intent.
+**When to split:** product intent and implementation tradeoffs both need review, or the tech section would dominate the product story. Prefer one file otherwise. Put both under the same artifact home (see `artifact-homes.md`); ticket-id folders (`specs/<id>/PRODUCT.md`) are fine when the project already uses that convention — do not invent Linear/Warp-specific layouts for portable apps.
 
 ### When to Add Technical Details to Spec
 
@@ -285,5 +299,7 @@ Before running `/implement-spec`:
 - [ ] Edge cases documented
 - [ ] Constraints stated
 - [ ] Out of scope defined
-- [ ] No implementation details (unless necessary)
+- [ ] Preferred test seams named (medium+) and confirmed when they imply new boundaries
+- [ ] If PRODUCT/TECH split: product half stays consumer-facing; impl lives in TECH
+- [ ] No implementation details in the product/requirements half (unless necessary)
 - [ ] Spec is saved in the project (not only in chat)

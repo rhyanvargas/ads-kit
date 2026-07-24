@@ -18,5 +18,7 @@
   { "query": "Find me a skill for creating PowerPoint decks", "should_trigger": false },
   { "query": "Add a GitHub Actions workflow that runs lint and test on PRs", "should_trigger": false },
   { "query": "Edit CONTRIBUTING.md only with our PR process", "should_trigger": false },
-  { "query": "Generate OpenAPI/API reference docs from the code", "should_trigger": false }
+  { "query": "Generate OpenAPI/API reference docs from the code", "should_trigger": false },
+  { "query": "Should we install to-prd or to-spec instead of ADSK for writing our feature specs?", "should_trigger": true },
+  { "query": "Run a Mom Test interview script for next week's customer calls", "should_trigger": false }
 ]

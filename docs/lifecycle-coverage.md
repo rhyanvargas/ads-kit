@@ -58,7 +58,7 @@ Recommended upstream (pinned in recommended-skills.json)
     ├── deanpeters           → strategy session, roadmap, prioritization
     └── anthropics           → competitive-intelligence
 
-Do not add overlapping SDD packs — see recommended-skills.json do_not_add.overlapping-sdd
+Do not add overlapping SDD packs (`to-prd`/`to-spec`/`to-tickets`, Addy/Warp SDD, …) — see recommended-skills.json do_not_add.overlapping-sdd
 ```
 
 ## Trust criteria

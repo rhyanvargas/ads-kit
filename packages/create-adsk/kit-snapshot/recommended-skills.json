@@ -194,16 +194,24 @@
         "addyosmani/agent-skills@spec-driven-development",
         "warpdotdev/common-skills@spec-driven-implementation",
         "github/awesome-copilot@create-specification",
-        "to-spec",
+        "mattpocock/skills@to-prd",
+        "mattpocock/skills@to-spec",
+        "mattpocock/skills@to-tickets",
         "other generic spec-driven-development packs that replace ADSK SDD"
       ],
-      "reason": "Collides with first-party skills/spec-driven-workflow (trigger overlap + divergent paths/templates). Reviewed 2026-07-17: absorb useful patterns into ADSK SDD instead of vendoring; keep Superpowers for plan/TDD complement.",
+      "reason": "Collides with first-party skills/spec-driven-workflow (trigger overlap + divergent paths/templates). Reviewed 2026-07-17; refreshed 2026-07-23: mattpocock renamed to-prd → to-spec (skills.sh may still list to-prd); to-spec → to-tickets → implement is a competing spine with tracker coupling — do not offer as an ADSK pack. Absorb useful patterns into ADSK SDD instead of vendoring; keep Superpowers writing-plans/TDD as the engineering-methods complement only.",
+      "notes": [
+        "to-prd is conversation→ticket synthesis, not product-discovery PRD work — use product-value-loop for discover/prioritize/roadmap, ADSK SDD for executable engineering specs.",
+        "Do not ship the mattpocock suite (setup → to-spec → to-tickets → implement) as an ADSK optional pack."
+      ],
       "absorbed_patterns": [
         "Surface assumptions before drafting",
         "Human/self gates between specify → plan → implement",
         "Reframe vague goals as measurable success criteria",
         "AI-ready unambiguous language + self-contained specs",
-        "Optional PRODUCT/TECH split for large features only"
+        "Optional PRODUCT/TECH split for large features only",
+        "Sketch preferred test seams (highest useful existing boundary) before drafting when behavior is non-trivial",
+        "PRODUCT.md behavior as consumer-facing invariants; keep impl out of the product half"
       ]
     },
     {
